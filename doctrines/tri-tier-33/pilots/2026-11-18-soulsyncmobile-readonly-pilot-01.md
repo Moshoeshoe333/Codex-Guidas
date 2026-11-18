@@ -182,6 +182,24 @@ Do not compute a Harmony index from this desk review. A source-inspection note i
 5. Test malformed JSON and structurally invalid records; distinguish an empty ledger from an unavailable/corrupt ledger.
 6. Only after evidence and policy review, prepare a separate proposed remediation package for owner ratification.
 
+### Proposed synthetic-only verification matrix
+
+These are test designs, not executed tests or ratified acceptance criteria. Use a mocked storage adapter and synthetic records only.
+
+| Probe | Injected condition | Required observation to record |
+|---|---|---|
+| P-01 | `getItem` rejects while loading incidents | UI distinguishes storage unavailable from a successfully loaded empty ledger |
+| P-02 | Stored JSON is malformed | Corruption is explicit; it is not silently represented as a valid empty history |
+| P-03 | JSON parses but contains invalid IncidentLog shape | Runtime validation rejects or quarantines the record; invalid data is not trusted as typed data |
+| P-04 | Incident write succeeds; Harmony write fails | Durable state is consistent or has an explicit recoverable partial-commit marker; UI does not claim successful recording |
+| P-05 | Two scans are submitted rapidly to one hook instance | Ordering, incident count and derived Harmony state are deterministic |
+| P-06 | Two hook instances write concurrently | Lost-update behaviour is either prevented or documented as unsupported by an explicit single-writer constraint |
+| P-07 | Storage write rejects during scan | UI displays failure/retry state; no stale result is presented as newly committed |
+| P-08 | Malformed-only URL and mixed malformed/urgent URL | Analyzer output and user-facing action are captured; policy owner decides the intended unanalysable-input semantics before remediation |
+| P-09 | Benign message with no indicators | UI explains that ALLOW means no known heuristic indicator was detected, not that the message or sender is verified safe |
+
+For every probe preserve: test ID, exact commit, synthetic input/fixture, adapter fault, expected contract, actual result, logs, environment, date, observer and uncovered scope. Do not use live banking messages, personal SMS, real credentials, production user data or network access.
+
 **No application fix is authorized or included in this pilot.** A finding is not permission to change code. Any proposed remediation must be separately reviewed, approved and tested.
 
 ## 7. Framework learning
