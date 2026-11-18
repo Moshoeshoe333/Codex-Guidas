@@ -48,3 +48,49 @@
 
 ## Cross-project rule
 Transfer principles, not assumptions. A pattern safe in one project may be inappropriate in another. Every adoption must state context, constraints, evidence and required adaptation.
+
+---
+
+## Source-audit reconciliation — 2026-11-18
+
+This section supersedes any older summary where the inspected source files provide a more precise boundary. It is still a partial audit, not a fresh test execution.
+
+### ScoutSA — source-confirmed current boundary
+
+- Canonical source: [docs/00-gate-status.md](https://github.com/Moshoeshoe333/ScoutSA/blob/main/docs/00-gate-status.md), blob `c79cde2979ad44f2a5811f20cf573cdc428a6013`.
+- Gate 1 closed; Gate 2 closed at conceptual level; ERD/MVP/schema/physical-table boundaries frozen or ratified at their stated levels.
+- SQL remains draft/reviewed. PostgreSQL 17.11 isolated non-production witness recorded 26 tables and 17 foreign keys.
+- Migration/database, RLS, API, UI and production implementation remain HOLD / unauthorized; access-policy ratification remains required.
+- Controlled next move: external validation, not further speculative architecture and not implementation.
+- [Engineering integrity policy](https://github.com/Moshoeshoe333/ScoutSA/blob/main/docs/engineering-integrity.md) records DOC-001 to DOC-004 and CI-001, including wrong-branch writes, fragile generated tests, stale README/gate summaries and zero-byte workflow files. It requires explicit branch writes, read-back, diff inspection and branch-specific controls.
+- The pilot design remains strategy/research only; no live pilot or public listing is authorized.
+
+### SoulSync 3 — source-confirmed methodology and tests
+
+- [33-Tier Framework](https://github.com/Moshoeshoe333/soulsync-3/blob/main/docs/33-tier-framework.md), blob `bf3badc8a30a44779354302b66787da0c28eff05`, defines Point → Knowing → Witness → Gate.
+- The same document expressly says detailed definitions and validation of all 33 tiers remain incomplete. Do not call it a fully specified standard.
+- [Coordinate test file](https://github.com/Moshoeshoe333/soulsync-3/blob/main/tests/test_coordinate99.py), blob `ebd57d9a644b0998ad09531e2d1e1a817a2811dc`, includes nested mutation rejection and source-detachment tests. The source audit did not rerun them.
+- The recent framework documentation commit is `e7771d4b087ce9ff66ceb45b0cf86114e9241cb7`; the deep immutability test commit is `ddcd79046248c8ee4b04238b0489b92199de21fd`.
+
+### SoulSyncMobile — three-repository evidence boundary
+
+- Application: [SOULSYNCMOBILE](https://github.com/Moshoeshoe333/SOULSYNCMOBILE). README says OPEN / evidence pending; G0–G8 gates remain relevant. AsyncStorage is described as bootstrap storage; SQLite remains a production gate.
+- Forensic ledger: [SOULSYNCMOBILE-ledger](https://github.com/Moshoeshoe333/SOULSYNCMOBILE-ledger). E-007 Run #72 is historical CI/Semantic/fixture evidence for its exact older baseline; G-BOOT mobile runtime was not executed and runtime remains N/A in that record.
+- Runtime evidence: [SOULSYNCMOBILE-runtime-evidence](https://github.com/Moshoeshoe333/SOULSYNCMOBILE-runtime-evidence). Keep physical runtime witness artifacts separate from app code and ledger interpretation.
+- Current app package declares Expo ~57, React Native 0.86, React 19.2.3 and TypeScript ~5.9.2. These declarations do not prove installed runtime compatibility.
+- A recent fixture import correction is commit `b85a83c9f672a11c71b94090826710475d8b6f86`; this is a narrow test-source fix, not a verified APK or runtime pass.
+- Do not transfer E-007 evidence to later app commits without exact-boundary verification.
+
+### NAVIGRE / Mall-Navigre — evidence boundary clarified
+
+- Correct repository identity: [Mall-Navigre](https://github.com/Moshoeshoe333/Mall-Navigre).
+- [Master Evidence Ledger](https://github.com/Moshoeshoe333/Mall-Navigre/blob/main/docs/MASTER-EVIDENCE-LEDGER.md), blob `1d8d04a675105febfd424adaf47e2bfbb064e760`, defines L0–L6 and prohibits evidence inheritance from PR head to squash merge.
+- [Pass 5 policy simulation](https://github.com/Moshoeshoe333/Mall-Navigre/blob/main/docs/CORE-0.2-GATE-2-PASS-5-POLICY-SIMULATION.md), blob `e03849a3711ccda8d0159f9b7f2f11c77df20df6`, recommends stored confidence and freshness remain separate; it is analysis, not production authorization.
+- Spatial Seam 4 merge commit: `161afcaa2ad85335649dd1040b414078f7a4636a`. The new boundary authorizes only a current routing start; it does not claim a route exists or is verified. The merge SHA still needs its own execution evidence before claims are promoted.
+- Gate 3 concurrency remains recorded frozen; physical Mall of Africa positioning and sensor deployment are not proven.
+
+### UCI
+
+No UCI repository was present in the accessible repository listing during this audit. Keep UCI classified as a research/product concept until its source of truth is identified. Do not fabricate a repository or infer implementation.
+
+For full source references and audit limitations, see [Repository Archaeology — 2026-11-18](../10-source-audits/2026-11-18-repository-archaeology.md).
