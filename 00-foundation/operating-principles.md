@@ -40,3 +40,12 @@ A prior planning hypothesis allocated 80% of development attention to ScoutSA, 1
 
 ## Change control
 Changes to these principles require rationale, affected projects, evidence, risks and effective date. Never silently rewrite historical decisions.
+
+## Epistemological foundation
+Our reasoning sequence is **Point → Knowing → Witness → Gate**. The 33-perspective filter and three-pass 99-tier sieve are methods for structured scrutiny, not guarantees of truth or a fully validated 99-check standard. The detailed 33-lens taxonomy remains open. See [the doctrine](../doctrines/33-tier-framework.md).
+
+## Human context and honesty
+Build around lived constraints, dignity, privacy, accessibility, safeguarding and sustainable use. For community/youth-facing systems, safeguarding is a precondition for relevant live exposure. Separate synthetic technical tests from empirical user validation. Record material unvalidated assumptions visibly. Critique decisions and systems without blaming people; never conceal failure or overstate evidence.
+
+## Sustainable allocation
+The 80/10/5/5 portfolio split is a provisional planning hypothesis for available project-development attention only. It does not displace livelihood, rest, urgent obligations or evidence-based reprioritisation. Review it regularly; see [Portfolio Ecology](../doctrines/portfolio-ecology.md).
