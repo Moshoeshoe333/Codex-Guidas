@@ -141,3 +141,21 @@ The detailed report contains eight findings:
 - **Safety boundary:** Isolated mock storage and synthetic fixtures only. No real SMS/banking data, no production storage, no application behavior changes and no CI dispatch under this protocol.
 - **Decision required before execution:** Project-owner approval for test-only changes and ratification of the logical persistence authority/commit model. If that contract is undecided, assertions remain BLOCKED-PENDING-DECISION.
 - **Current result:** All five probes remain NOT RUN. This protocol is not evidence of application behaviour.
+
+
+
+### Follow-up — Guardian hook persistence fault injection and dependency audit
+
+- **Target repository:** `Moshoeshoe333/SOULSYNCMOBILE`.
+- **Base:** `4396215ebb190c856312eb083909bf4f6757e4fd`.
+- **Hook-test commit:** `a3c6ae3a945aee82612a91c8072f8202347a6c78`; TypeScript assertion correction: `b010ce0096a36f95fa5588776fe1c5ba1c449eac`.
+- **Scope:** Added a minimal test-only hook renderer and React-hook mock; added two characterization tests for hydration-read failure and partial incident/Harmony persistence. Added `npm run test:guardian-faults` and included it in GitHub Actions. No application runtime file was changed.
+- **Source-observed behaviour 1:** `useGuardianState` catches any hydration error, replaces the in-memory snapshot with empty defaults, and sets `ready=true`. This can present failed restoration as an apparently ready empty ledger.
+- **Source-observed behaviour 2:** `analyzeAndLogInput` persists incidents first and Harmony second, then updates its in-memory snapshot only after both writes succeed. A Harmony write failure can therefore leave a persisted incident while the in-memory ledger remains unchanged.
+- **Test status:** First CI attempts failed TypeScript strictness on inferred callback parameters and nullable mock-storage data (runs `44297060361`, `44297072328`). Test-only type corrections committed as `b010ce0096a36f95fa5588776fe1c5ba1c449eac`. Run `44297244025` was still running when this record was prepared; no Guardian test pass is claimed until its exact commit and logs are inspected.
+- **Dependency audit witness:** Push-triggered run `44297111073` completed the read-only `npm audit --json` report step successfully before the separate TypeScript test failure. Audit summary: 23 findings (21 high, 2 moderate, 0 critical), affecting 22 package names in the resolved install graph. Direct vulnerable packages reported: `expo` and `react-native`; remaining packages are transitive, including Expo CLI/Metro, Metro, Babel preset, React Native codegen/community CLI, `tinyglobby`, `picomatch`, and `minimatch`.
+- **Advisory detail:** npm audit reported GHSA-g3hv-75wg-m249 for minimatch (potential denial of service via globparts amplification) and GHSA-fc5q-39xc-vjpf for picomatch (ReDoS through repeated extglobs). npm's suggested remediation points to Expo 50.0.2 and React Native 0.83.10 with major-version change flags, despite this app declaring Expo ~57.0.0 and React Native 0.86.0. This is not a safe automated fix recommendation; do not apply it. First establish the correct supported SDK/dependency matrix and inspect each advisory's affected code paths.
+- **Evidence limitation:** No committed package lockfile was found in the inspected tree. `npm install` resolves an ephemeral dependency graph on each CI run; audit results can change and are not yet pinned to a reproducible lockfile. The audit summary does not prove runtime exploitability in the shipped app. Treat it as a high-priority dependency supply-chain investigation, not 23 confirmed exploitable app vulnerabilities.
+- **CI hygiene:** Multiple sequential commits to `main` generated overlapping push-triggered CI runs and redundant installs. Future test-only multi-file changes should use one atomic tree commit where possible.
+- **Next gate:** Verify run `44297244025` and the Guardian test logs. Then define persistence semantics explicitly: whether a scan is one logical transaction, whether a durable outbox/journal is justified, what the UI reports after partial persistence, and how hydration failure is surfaced. No runtime fix or dependency upgrade until that contract and supported Expo/RN compatibility are reviewed and ratified.
+
