@@ -3,7 +3,8 @@
 **Pack ID:** CG-PACK-004  
 **Version:** 1.0.0  
 **Maturity:** Operating structure; historical defect migration and recurrence outcomes remain incomplete.  
-**Upstream source:** 11-defect-intelligence/ and 01-lessons-learned/ledger.md
+**Canonical central register:** [11-defect-intelligence/ledger.md](../../11-defect-intelligence/ledger.md)  
+**Supporting source:** 01-lessons-learned/ledger.md (where present)
 
 ## Purpose
 Turn defects into traceable learning and recurrence prevention, not merely closed tickets.
