@@ -127,25 +127,35 @@ A workflow is configured to run typecheck and threat fixtures under Node 22.13.x
 
 **Next verification:** Enumerate the full repository tree and package manager artifacts; establish whether a lockfile exists elsewhere; inspect CI run IDs and logs for the exact commit; then assess clean-install reproducibility. Do not regenerate dependencies during this read-only pilot.
 
-### F-06 — Persistence assurance is not evidenced in this pilot
+### F-06 — Persistence validation and offline assurance are incomplete
 
-**Severity:** Gate-blocking unknown, not a confirmed defect.  
-**Linked tiers:** D-02, D-05, D-10, D-13, D-19; H-2/H-4/H-5/H-6 candidates.  
-**Evidence:** E-01 only.
+**Severity:** Material integrity assurance gap; source-level weaknesses confirmed, runtime consequences not tested.  
+**Linked tiers:** D-02, D-10, D-13; H-2/H-5 candidates.  
+**Evidence:** E-09, E-10.
 
-README describes an AsyncStorage adapter and calls it bootstrap persistence, with SQLite as a production gate. The exact adapter, record schema, write validation, transaction semantics, restart behaviour and retry/conflict handling were not inspected.
+The adapter parses incident JSON and casts it to `IncidentLog[]` without validating record shape, required fields or nested result values. Parse failure returns an empty fallback; storage read failures propagate to the hook. Save methods serialize typed values but do not validate runtime shape. The implementation uses local storage, but no network-disabled or device/restart witness was run.
 
-**Next verification:** Obtain exact source paths and inspect the adapter, domain repository, serialization contract, tests and migration boundary. Then design non-destructive synthetic-data tests for interrupted write, restart, duplicate submission, corrupted record, concurrent update and revoked/changed authority. No real personal data.
+**Next verification:** Test malformed JSON, valid JSON with invalid shape, storage read/write rejection, legacy data and restart using synthetic records. Establish a versioned validation and recovery contract before expanding the ledger. Keep device/offline behaviour OPEN until witnessed.
 
-### F-07 — UI truthfulness and state handling are not evidenced in this pilot
+### F-07 — Hydration failure is presented as a ready empty ledger
 
-**Severity:** Gate-blocking unknown, not a confirmed defect.  
-**Linked tiers:** U-04, U-05, U-12, U-17; H-1/H-2/H-5/H-6 candidates.  
-**Evidence:** E-01, E-04 only.
+**Severity:** High-priority reliability and user-trust defect candidate; source path confirmed, runtime reproduction not performed.  
+**Linked tiers:** U-04, U-05, U-17; D-10; H-2/H-5 candidates.  
+**Evidence:** E-10, E-11.
 
-The README declares Expo React Native and React Navigation. No UI component/screen source or device observation was available to this assessment. It is unknown whether the interface distinguishes no indicators from safe, malformed/unanalysable input from benign input, pending storage from committed storage, or warning from denial.
+The hook catches any error while loading Harmony state and incident logs, resets the in-memory snapshot to unmeasured/empty, and sets `ready` to true. The dashboard uses `ready` to enable analysis and displays the incident count without a storage-health/error indicator. A storage read failure can therefore be represented to the user as an ordinary empty ledger.
 
-**Next verification:** Obtain exact screen/component paths and map each ThreatResult field to rendered copy, colour, icon, accessibility label and action. Then exercise empty, loading, malformed, warning, deny, persistence failure, restart and offline states on a supported device.
+**Next verification:** With a synthetic storage adapter that rejects `getItem`, verify the UI state. Distinguish “loaded and empty” from “could not load”; do not enable normal ledger operations until storage health is known or the user explicitly chooses a degraded mode.
+
+### F-08 — A scan's logical record is persisted through two non-atomic writes
+
+**Severity:** High-priority integrity defect candidate; partial-write failure not dynamically reproduced.  
+**Linked tiers:** D-05, D-19, U-05; H-4/H-5/H-7 candidates.  
+**Evidence:** E-09, E-10, E-11.
+
+The hook writes the updated incident list first and the updated Harmony state second. Each operation is awaited, but there is no transaction spanning both keys. If the first write succeeds and the second fails, the durable incident list can advance while the Harmony state remains stale. The hook updates its in-memory snapshot only after both writes, and the dashboard awaits the promise without a local catch or visible save-failure state.
+
+**Next verification:** Use a synthetic adapter that succeeds on incident write and fails on Harmony write. Verify persisted state, retry behaviour, displayed result and recovery after restart. Decide whether Harmony is derived and rebuildable from the incident ledger, whether a single atomic record is required, or whether an outbox/commit protocol is justified. Do not choose a design before the product's consistency contract is ratified.
 
 ## 5. Harmony status
 
@@ -165,11 +175,11 @@ Do not compute a Harmony index from this desk review. A source-inspection note i
 
 ## 6. Recommended next actions — still read-only first
 
-1. Obtain a complete repository tree and exact paths for persistence, guardian state, navigation and screens.
-2. Inspect the actual call chain from input source through `analyzeThreat` to action, persistence and UI.
-3. Confirm the intended meaning of ALLOW, safe, confidenceScore and fail-closed.
-4. Inspect package manager lockfile state and exact-commit CI run evidence.
-5. Design synthetic-only Harmony probes for malformed input, persistence failure and restart.
+1. Obtain complete repository-tree and package-manager artifact evidence; establish exact-commit CI run evidence.
+2. Ratify the meaning of ALLOW, safe, confidenceScore and fail-closed before changing policy or UI copy.
+3. Design synthetic-only fault-injection tests for storage hydration failure and partial two-key persistence.
+4. Define the logical commit point for a scan: which durable record is authoritative, what can be rebuilt, and how retries avoid duplication.
+5. Test malformed JSON and structurally invalid records; distinguish an empty ledger from an unavailable/corrupt ledger.
 6. Only after evidence and policy review, prepare a separate proposed remediation package for owner ratification.
 
 **No application fix is authorized or included in this pilot.** A finding is not permission to change code. Any proposed remediation must be separately reviewed, approved and tested.
@@ -179,9 +189,11 @@ Do not compute a Harmony index from this desk review. A source-inspection note i
 This pilot demonstrates why Tri-Tier 33 must:
 - allow partial assessments without fabricating a system-wide score;
 - preserve source declarations separately from implementation evidence;
-- make missing source paths visible as OPEN rather than assume absent controls;
+- distinguish a missing source path from a source-inspected weakness;
 - distinguish a regression fixture pass from empirical detection effectiveness;
 - expose cross-layer meaning problems such as `safe` → `ALLOW` before UI copy is trusted;
+- distinguish an empty store from an unavailable store;
+- inspect logical operations spanning multiple persistence writes, not only each storage call individually;
 - require exact commit and run provenance;
 - treat non-execution as an explicit limitation, not as an implied pass.
 
