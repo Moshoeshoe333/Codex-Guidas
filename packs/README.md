@@ -19,6 +19,8 @@ This directory is the selective-reuse layer of Codex-Guidas. Each pack is a boun
 | [Defect Intelligence](defect-intelligence/README.md) | Defect capture, recurrence prevention and lessons | Operating structure; individual migration remains incomplete |
 | [Human-Centred Safety Boundaries](human-centred-safety/README.md) | Privacy, safeguarding, authority and threat-boundary prompts | Principles and review prompts; not a compliance standard |
 
+| [Tri-Tier 33 — Mind · Body · Spirit](tri-tier-33/README.md) | Cross-layer technical integrity across code, persistence and UI | v0.3.0-draft; proposed, not ratified |
+
 ## How to use a pack
 1. Read its README and maturity/limitations before copying anything.
 2. Copy the complete pack directory into the target repository, or fork this repository if the team wants the full knowledge base.
