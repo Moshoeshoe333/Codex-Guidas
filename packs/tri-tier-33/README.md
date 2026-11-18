@@ -37,6 +37,10 @@ To adopt, copy the entire canonical directory into the target repository (for ex
 
 Do not combine their scores or treat one as approval from another.
 
+## Pilot case study
+
+[CG-TT33-PILOT-001 — SoulSyncMobile read-only assessment](../../doctrines/tri-tier-33/pilots/2026-11-18-soulsyncmobile-readonly-pilot-01.md) demonstrates a bounded 15-tier application. It is evidence of one practical use, not independent validation or proof of framework effectiveness.
+
 ## Adoption boundary
 
 This pack does not certify security, privacy, legal compliance, safeguarding, production readiness or market demand. It does not authorize implementation. Project owners must define local profiles, risk triggers, acceptance criteria and approval gates. Preserve the upstream version/commit and revalidate every adopted control in the target project.
