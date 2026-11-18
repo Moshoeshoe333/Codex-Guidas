@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "repository": "Moshoeshoe333/Codex-Guidas",
+  "purpose": "Selective reuse of bounded methodologies and engineering knowledge",
+  "packs": [
+    {"id":"CG-PACK-001","path":"packs/point-knowing-witness-gate","version":"1.0.0","maturity":"foundational-method-open-validation"},
+    {"id":"CG-PACK-002","path":"packs/evidence-first-engineering","version":"1.0.0","maturity":"working-methodology"},
+    {"id":"CG-PACK-003","path":"packs/33-perspective-review","version":"0.2.0","maturity":"proposed-not-ratified"},
+    {"id":"CG-PACK-004","path":"packs/defect-intelligence","version":"1.0.0","maturity":"operating-structure-migration-incomplete"},
+    {"id":"CG-PACK-005","path":"packs/human-centred-safety","version":"1.0.0","maturity":"review-prompts-not-compliance-standard"}
+  ],
+  "reuse_rules": [
+    "preserve-upstream-provenance",
+    "record-local-adaptation",
+    "revalidate-in-target-context",
+    "do-not-infer-authorization",
+    "do-not-promote-maturity-without-evidence"
+  ],
+  "licence": "not-yet-declared"
+}
