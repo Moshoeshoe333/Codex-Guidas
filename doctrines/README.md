@@ -2,6 +2,7 @@
 
 These documents state the principles that guide how we reason, build, allocate effort and treat people. A doctrine is a decision aid, not proof that a project complies with it.
 
+- [Tri-Tier 33 — Mind, Body and Spirit](tri-tier-33/README.md) — proposed technical integrity instrument for code, persistence, UI and their seams (v0.3.0-draft; not ratified).
 ## Core doctrines
 
 - [33-Tier Epistemological Framework](33-tier-framework.md) — how we distinguish purpose, knowledge, evidence and permission.
