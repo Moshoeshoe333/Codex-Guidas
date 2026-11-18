@@ -33,3 +33,24 @@ Unique ID; discovery/review dates; source project and exact artifact; commit/run
 
 ## Promotion rule
 Do not mark a lesson Verified because the recommendation sounds sensible or code was written. State what was tested, where, when, against which commit and with what result. Without source evidence, retain Derived or Proposed status.
+
+## Additional lessons from source archaeology (2026-11-18)
+
+| ID | Lesson | Source evidence | Evidence class | Reusable control |
+|---|---|---|---|---|
+| CG-017 | A repository write is not complete until the intended branch is read back and the diff inspected. | ScoutSA `docs/engineering-integrity.md`, DOC-002 | Observed / verified in source record | Always specify branch; fetch the written path from that branch; inspect commit and diff. |
+| CG-018 | Documentation integrity can be tested as code, but the guard itself needs testing. | ScoutSA DOC-001–DOC-004 | Observed | Test the consistency check locally and in hosted CI; preserve failed runs and exact successful runs. |
+| CG-019 | Zero-byte or invalid workflow files can create misleading CI noise. | ScoutSA CI-001 | Observed | Validate workflow files are non-empty and contain valid triggers/jobs; identify run and job before attributing failure. |
+| CG-020 | Mainline and prototype branches are separate evidence/authority boundaries. | ScoutSA engineering-integrity policy | Observed / derived | Maintain separate branch-specific controls; never infer one branch's status from another. |
+| CG-021 | Deep immutability requires nested mutation rejection and detachment from mutable source inputs. | SoulSync 3 `tests/test_coordinate99.py`, commit `ddcd79046248c8ee4b04238b0489b92199de21fd` | Observed in source; execution not re-run here | Add nested mapping/list mutation tests and source-mutation detachment tests. |
+| CG-022 | Typed absence must not be collapsed into zero, false or a guessed default. | SoulSync 3 33-Tier / coordinate tests | Observed in source | Represent absence explicitly and test non-coercion. |
+| CG-023 | Provenance is lineage, not authorization. | SoulSync 3 coordinate tests | Observed in source | Keep evidence lineage and execution/permission authority separate. |
+| CG-024 | Discovery can be automated; authority cannot be delegated to an agent by implication. | SoulSyncMobile ledger `methodology-delta.md`, MD-SWARM-001 | Adopted methodology in source | Agents may discover/normalize candidate evidence; deterministic/human policy review controls fixture admission and production changes. |
+| CG-025 | A CI harness is not a substitute for physical mobile runtime evidence. | SoulSyncMobile ledger README and MD-GBOOT-001 | Observed / adopted rule | Keep CI, APK build, install, device execution and G-BOOT witness as separate gates. |
+| CG-026 | Keep app source, forensic ledger and runtime evidence in separate repositories with exact cross-references. | SoulSyncMobile ledger README | Observed architecture | Link exact app SHA, workflow/run, branch/ref and artifact identity; ledger changes are not app changes. |
+| CG-027 | Stored observation confidence and freshness may represent different domain facts. | NAVIGRE Pass 5 policy simulation | Derived / proposed policy | Preserve stored confidence; evaluate freshness separately; only accepted contract defines stale authorization. |
+| CG-028 | Authorization does not imply route existence or route verification. | NAVIGRE Spatial Seam 4 artifacts | Observed design invariant | Use narrow authorization result types and test downstream claims independently. |
+| CG-029 | PR-head evidence does not automatically certify the squash-merge commit. | NAVIGRE Master Evidence Ledger and Seam 4 evidence gate | Adopted rule | Recheck exact merge SHA; do not inherit green across code boundaries. |
+| CG-030 | A methodology must disclose what remains unspecified and unvalidated. | SoulSync 3 `docs/33-tier-framework.md` | Observed | State maturity, open definitions, validation gaps and non-claims explicitly. |
+
+These entries are source-backed observations or derived controls. They are not all independently re-executed in this Codex-Guidas import. See [the 2026-11-18 repository archaeology report](../10-source-audits/2026-11-18-repository-archaeology.md) for source paths, blob SHAs and limitations.
