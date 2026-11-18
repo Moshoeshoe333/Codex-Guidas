@@ -14,6 +14,7 @@ The complete portable pack is the six-file directory at **doctrines/tri-tier-33/
 - ui-33.md — Spirit / UI 33.
 - tripartite-harmony.md — seven invariants, probe contracts and scoring.
 - evidence-and-passport.md — evidence model, verdicts and passport template.
+- tier-harmony-crosswalk.md — explicit mapping of all 99 tiers to H-1…H-7.
 
 To adopt, copy the entire canonical directory into the target repository (for example, docs/methods/tri-tier-33/) and add the standard adoption record. Do not copy only this catalogue page.
 
