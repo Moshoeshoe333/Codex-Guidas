@@ -170,3 +170,14 @@ The detailed report contains eight findings:
 - **Dependency audit from the same run:** 23 findings (21 high, 2 moderate, 0 critical). Direct affected dependencies: Expo and React Native. Transitive affected packages include Expo CLI/Metro, Metro, Babel preset, React Native codegen/community CLI, `tinyglobby`, `picomatch`, `minimatch`, `jest-util`, and `jest-worker`. The two advisory records exposed directly in the audit JSON are GHSA-g3hv-75wg-m249 (minimatch DoS) and GHSA-fc5q-39xc-vjpf (picomatch ReDoS).
 - **Important version drift:** The npm audit recommendation varied across fresh `npm install` runs (Expo 50.0.2 in one run, Expo 54.0.33 in the latest, React Native 0.83.10), each marked as a major-version change. The app declares Expo ~57.0.0 and React Native 0.86.0. No dependency was changed. Do not treat the suggested versions as an approved fix.
 - **Residual limits:** The audit graph is not lockfile-pinned; runtime exploitability and production reachability have not been established. Hook tests use a minimal React-hook harness and mock AsyncStorage; native storage, process restart, OS-level lifecycle, and actual device behaviour remain untested. The persistence contract is not ratified and application runtime remains unchanged.
+
+
+
+### Decision package — SSM-PERSISTENCE-CONTRACT-DECISION-001
+
+- **Status:** PROPOSAL ONLY — NOT RATIFIED.
+- **Document:** [SoulSyncMobile Persistence Contract — Decision Proposal](../doctrines/tri-tier-33/pilots/2026-11-18-soulsyncmobile-persistence-contract-decision-proposal.md).
+- **Document commit:** `5533c260198eb8294daa9bd9119b7289144ec48c`.
+- **Recommendation:** Evaluate a single versioned canonical Guardian snapshot (Option B) to remove the known two-key split-write sequence. This is not a claim of AsyncStorage crash atomicity and is not authorization to implement.
+- **Decision required:** Owner ratification of the persistence authority, commit boundary, failure states, retention limits, migration and native-device acceptance tests.
+- **Dependency workstream:** Resolve the SDK/RN compatibility and reproducible-lockfile questions before proposing any upgrades. No dependency change has been made.
