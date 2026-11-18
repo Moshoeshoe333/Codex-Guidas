@@ -25,6 +25,7 @@ We preserve reusable engineering knowledge so that each project benefits from th
 | [Project crosswalk](08-project-crosswalks/project-status.md) | ScoutSA, SoulSync, SoulSyncMobile, NAVIGRE and UCI |
 | [UCI methodology integration boundary](08-project-crosswalks/uci-methodology-integration-boundary.md) | Proposed boundary between Codex-Guidas, UCI and the two 33 frameworks |
 | [Lesson template](09-templates/lesson-template.md) | Standard format for new entries |
+| [Framework Assessment Record](09-templates/framework-assessment-record.md) | Proposed evidence-linked record for bounded framework assessments |
 | [Defect Intelligence](11-defect-intelligence/README.md) | Defect intake, similarity search, verification and learning loop |
 | [33-Perspective Register](doctrines/33-perspective-master-register.md) | Proposed lenses for evidence-led, proportionate decision review |
 
