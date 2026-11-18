@@ -87,7 +87,7 @@ This is a descriptive ladder, not a universal linear ranking of truth. Evidence 
 
 ## 6. Harmony — cross-layer agreement
 
-The seven Harmony Invariants and their probes are specified in [Tripartite Harmony](tripartite-harmony.md). Harmony is assessed at the seams, not inferred from three strong layer scores.
+The seven Harmony Invariants and their probes are specified in [Tripartite Harmony](tripartite-harmony.md). The [Tier ↔ Harmony Crosswalk](tier-harmony-crosswalk.md) maps every C, D and U tier to at least one invariant. Harmony is assessed at the seams, not inferred from three strong layer scores.
 
 Report at least:
 - per-invariant result and evidence references;
