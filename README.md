@@ -31,6 +31,10 @@ We preserve reusable engineering knowledge so that each project benefits from th
 
 The [Reusable Knowledge Packs](packs/README.md) directory provides bounded, versioned units that can be copied into existing repositories or used to seed new ones. It includes an adoption record, machine-readable manifest, provenance rules and explicit maturity limitations. Teams can fork the whole repository or selectively adopt one pack; copying a pack does not transfer project-specific authority or prove its controls.
 
+## Technical integrity framework
+
+The [Tri-Tier 33 Framework](doctrines/tri-tier-33/README.md) assesses codebase (Mind), persistence (Body), user interface (Spirit) and their seven Harmony seams. It is a proposed v0.3.0 technical instrument, distinct from the broader 33-Perspective strategic review. Its 99 tiers are proportionate assessment lenses, not 99 mandatory manual exercises or a certification.
+
 ## Philosophy and doctrine
 
 The [doctrines](doctrines/README.md) record how we reason, build for human realities, sustain a portfolio and communicate uncertainty. They guide decisions but do not substitute for project-specific controls or evidence. The [invariants catalogue](03-architecture/invariants-catalogue.md) translates recurring boundaries into practical checks.
