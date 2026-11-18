@@ -18,6 +18,10 @@
 7. The register does not authorize implementation. Project-specific gates and decision owners remain authoritative.
 8. Do not assign numerical weights until the lenses have been tested against real decisions and the consequences of weighting are understood.
 
+## Relationship to the technical Tri-Tier 33
+
+This register assesses broader project, human, strategic, operational, legal and commercial realities. It is not the same as the technical Tri-Tier 33 (Mind/Codebase, Body/Persistence, Spirit/UI). The two instruments may inform one another, but their scores are not combined and neither grants the other's approval. See [Tri-Tier 33](tri-tier-33/README.md).
+
 ## 2. Proposed 33 perspectives
 
 | ID | Perspective | Operational question | Evidence to seek | Failure signal | Verification approach |
