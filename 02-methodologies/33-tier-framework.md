@@ -59,5 +59,8 @@ The framework is not a substitute for domain expertise, independent review, test
 Use this framework as an evidence and decision discipline, not as a reason to add ceremony. Apply only the tiers or checks relevant to the question and risk. Record when a particular application is incomplete or unsuitable.
 
 
+## Technical integrity companion
+The [Tri-Tier 33 Framework](../doctrines/tri-tier-33/README.md) is a separate technical instrument for assessing code, persistence, UI and cross-layer Harmony. It is not the same thing as the broader 33-Perspective Master Register or the three-pass 99-tier epistemological sieve. Do not combine their scores or infer authorization from a completed technical assessment.
+
 ## Extended epistemological practice
 The companion [33-Tier Epistemological Doctrine](../doctrines/33-tier-framework.md) formalizes the Point → Knowing → Witness → Gate axiom, the 33-perspective filter and the three-pass 99-tier sieve. The 99 label represents three applications of the 33-perspective method, not 99 independently specified or validated checks. Use the sieve proportionately and preserve contradictory evidence.
