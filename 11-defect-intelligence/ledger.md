@@ -113,3 +113,13 @@ The detailed report contains eight findings:
 - Review OPEN, REPRODUCED, FIXED-UNVERIFIED and overdue records at each relevant project gate.
 - Periodically search for repeated failure patterns across repositories and update reusable lessons with clear applicability limits.
 - A green test suite does not prove all failure modes are covered; record what was not tested.
+
+
+### Follow-up protocol — SSM-PERSISTENCE-FI-001
+
+- **Status:** TEST DESIGN ONLY; NOT EXECUTED.
+- **Protocol:** [Synthetic Persistence Fault-Injection Protocol](../doctrines/tri-tier-33/pilots/2026-11-18-soulsyncmobile-persistence-fault-injection-protocol.md).
+- **Priority sequence:** P-01 hydration read failure → P-04 partial two-write failure → P-07 write rejection → P-02 malformed JSON → P-03 invalid record shape.
+- **Safety boundary:** Isolated mock storage and synthetic fixtures only. No real SMS/banking data, no production storage, no application behavior changes and no CI dispatch under this protocol.
+- **Decision required before execution:** Project-owner approval for test-only changes and ratification of the logical persistence authority/commit model. If that contract is undecided, assertions remain BLOCKED-PENDING-DECISION.
+- **Current result:** All five probes remain NOT RUN. This protocol is not evidence of application behaviour.
