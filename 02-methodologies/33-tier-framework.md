@@ -57,3 +57,7 @@ The framework is not a substitute for domain expertise, independent review, test
 ## Adaptation rule
 
 Use this framework as an evidence and decision discipline, not as a reason to add ceremony. Apply only the tiers or checks relevant to the question and risk. Record when a particular application is incomplete or unsuitable.
+
+
+## Extended epistemological practice
+The companion [33-Tier Epistemological Doctrine](../doctrines/33-tier-framework.md) formalizes the Point → Knowing → Witness → Gate axiom, the 33-perspective filter and the three-pass 99-tier sieve. The 99 label represents three applications of the 33-perspective method, not 99 independently specified or validated checks. Use the sieve proportionately and preserve contradictory evidence.
