@@ -23,6 +23,7 @@ We preserve reusable engineering knowledge so that each project benefits from th
 | [Innovation register](06-innovations/project-innovation-register.md) | Ideas, experiments and next proof |
 | [Product validation](07-product-business/product-validation.md) | Usability, adoption and commercial evidence |
 | [Project crosswalk](08-project-crosswalks/project-status.md) | ScoutSA, SoulSync, SoulSyncMobile, NAVIGRE and UCI |
+| [UCI methodology integration boundary](08-project-crosswalks/uci-methodology-integration-boundary.md) | Proposed boundary between Codex-Guidas, UCI and the two 33 frameworks |
 | [Lesson template](09-templates/lesson-template.md) | Standard format for new entries |
 | [Defect Intelligence](11-defect-intelligence/README.md) | Defect intake, similarity search, verification and learning loop |
 | [33-Perspective Register](doctrines/33-perspective-master-register.md) | Proposed lenses for evidence-led, proportionate decision review |
@@ -55,7 +56,10 @@ Transfer principles, not assumptions: a technique must be adapted and re-validat
 
 The first import is a curated synthesis from prior work on ScoutSA, SoulSync 3, SoulSyncMobile, NAVIGRE and the UCI threat-intelligence concept. It is intentionally conservative where current repository evidence has not yet been re-audited.
 
-
 ## Source archaeology
 
 The initial source audit is recorded in [Repository Archaeology — 2026-11-18](10-source-audits/2026-11-18-repository-archaeology.md). It inspected selected primary files and commits across ScoutSA, SoulSync 3, SoulSyncMobile and NAVIGRE. It is a partial audit, not a fresh test execution. The [33-Tier Framework method](02-methodologies/33-tier-framework.md) is also indexed here; its own source explicitly leaves detailed specification and validation of all 33 tiers as open work.
+
+## UCI relationship boundary
+
+Codex-Guidas is a reusable engineering knowledge base, not an institutional command layer. UCI maintains its own proposed institutional governance; projects retain their own implementation and release authority. The UCI cross-reference is informational and does not make the proposed charter binding on Codex-Guidas or other projects.
