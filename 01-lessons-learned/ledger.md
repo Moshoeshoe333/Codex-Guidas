@@ -54,3 +54,13 @@ Do not mark a lesson Verified because the recommendation sounds sensible or code
 | CG-030 | A methodology must disclose what remains unspecified and unvalidated. | SoulSync 3 `docs/33-tier-framework.md` | Observed | State maturity, open definitions, validation gaps and non-claims explicitly. |
 
 These entries are source-backed observations or derived controls. They are not all independently re-executed in this Codex-Guidas import. See [the 2026-11-18 repository archaeology report](../10-source-audits/2026-11-18-repository-archaeology.md) for source paths, blob SHAs and limitations.
+
+
+## Additional lessons from SoulSyncMobile Tri-Tier 33 pilot (2026-11-18)
+
+| ID | Lesson | Source evidence | Evidence class | Reusable control |
+|---|---|---|---|---|
+| CG-031 | A failed or unavailable persistence read must not be represented as a successfully loaded empty dataset. | SoulSyncMobile read-only pilot 01, finding F-07; DEF-2026-001; source blobs `db52b38fd4c9f8909f33df78c8e2752e18993fe2` and `17b1b37df4f93547c099129cff883571c5e9b1d5` | Derived from source inspection; runtime reproduction pending | Model loading, loaded-empty, unavailable and corrupt states distinctly; add synthetic read-failure tests before claiming the control is verified. |
+| CG-032 | A logical operation spanning multiple persistence writes needs an explicit atomicity or recoverable-commit contract. | SoulSyncMobile read-only pilot 01, finding F-08; DEF-2026-002; source blobs `17859deeb96a9fb87353151014ca3982e5668c62` and `db52b38fd4c9f8909f33df78c8e2752e18993fe2` | Derived from source inspection; partial-write reproduction pending | Define the source of truth and commit/acknowledgement point; test partial failure, retry, idempotency and restart recovery with synthetic data. |
+
+These are provisional cross-project lessons derived from source inspection. They are not verified controls until the linked synthetic tests and acceptance criteria have been executed and reviewed.
