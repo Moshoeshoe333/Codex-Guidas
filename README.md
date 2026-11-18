@@ -27,6 +27,10 @@ We preserve reusable engineering knowledge so that each project benefits from th
 | [Defect Intelligence](11-defect-intelligence/README.md) | Defect intake, similarity search, verification and learning loop |
 | [33-Perspective Register](doctrines/33-perspective-master-register.md) | Proposed lenses for evidence-led, proportionate decision review |
 
+## Reusable knowledge packs
+
+The [Reusable Knowledge Packs](packs/README.md) directory provides bounded, versioned units that can be copied into existing repositories or used to seed new ones. It includes an adoption record, machine-readable manifest, provenance rules and explicit maturity limitations. Teams can fork the whole repository or selectively adopt one pack; copying a pack does not transfer project-specific authority or prove its controls.
+
 ## Philosophy and doctrine
 
 The [doctrines](doctrines/README.md) record how we reason, build for human realities, sustain a portfolio and communicate uncertainty. They guide decisions but do not substitute for project-specific controls or evidence. The [invariants catalogue](03-architecture/invariants-catalogue.md) translates recurring boundaries into practical checks.
