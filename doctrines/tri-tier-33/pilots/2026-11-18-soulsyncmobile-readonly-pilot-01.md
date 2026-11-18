@@ -38,12 +38,15 @@ The most recent commit returned by the repository commit listing was `b85a83c9f6
 | E-06 | fixture test runner | [threat-fixtures.test.ts](https://github.com/Moshoeshoe333/SOULSYNCMOBILE/blob/main/src/services/threat/__tests__/threat-fixtures.test.ts) · blob `d94ff883dc570c71780b68743aab37229f9ab01f` | Assertions performed by the fixture test |
 | E-07 | CI workflow | [typecheck.yml](https://github.com/Moshoeshoe333/SOULSYNCMOBILE/blob/main/.github/workflows/typecheck.yml) · blob `61c2aa7cc37799bf974fa2dbd336a120b4078003` | Workflow definition: Node 22.13.x, npm install, typecheck and threat fixture script |
 | E-08 | latest listed commit | [commit b85a83c](https://github.com/Moshoeshoe333/SOULSYNCMOBILE/commit/b85a83c9f672a11c71b94090826710475d8b6f86) | Repository revision/date boundary for this inspection |
+| E-09 | storage adapter | [storageManager.ts](https://github.com/Moshoeshoe333/SOULSYNCMOBILE/blob/main/src/storage/storageManager.ts) · blob `17859deeb96a9fb87353151014ca3982e5668c62` | AsyncStorage read/write, JSON parsing, Harmony normalization, clear operation |
+| E-10 | Guardian state hook | [useGuardianState.ts](https://github.com/Moshoeshoe333/SOULSYNCMOBILE/blob/main/src/hooks/useGuardianState.ts) · blob `db52b38fd4c9f8909f33df78c8e2752e18993fe2` | Hydration error handling, serialized operation queue, two-step persistence, snapshot publication |
+| E-11 | dashboard | [App.tsx](https://github.com/Moshoeshoe333/SOULSYNCMOBILE/blob/main/App.tsx) · blob `17b1b37df4f93547c099129cff883571c5e9b1d5` | Loading/ready control, action display, asynchronous scan handler and error presentation |
 
 **Evidence limitations**
-- The combined status endpoint returned an empty status list for E-08. This is not proof that no CI run exists; it means this inspection did not obtain a passing run record.
+- The combined status endpoint returned an empty status list for E-08. This is not proof that no CI run exists; it means this inspection did not obtain a passing run record for the inspected head.
 - The test command is declared in package.json and CI workflow, but this pilot did not execute it. No test pass is claimed.
 - Root candidates `package-lock.json`, `npm-shrinkwrap.json`, `yarn.lock` and `pnpm-lock.yaml` were not found by exact-path inspection. The repository tree was not exhaustively enumerated; do not turn this into a universal claim that no lockfile exists.
-- Targeted candidate paths for persistence adapter and UI source were not resolved by the repository file fetch. This does not establish that those components are absent. Persistence and UI tiers therefore remain OPEN pending exact source references.
+- Persistence and UI source are now inspected at E-09 through E-11. Runtime/device behaviour remains unwitnessed.
 - README statements are declarations, not runtime witnesses.
 
 ## 3. Fifteen-tier assessment
@@ -54,21 +57,21 @@ Verdicts are bounded to the evidence above. SOLID is not awarded merely because 
 |---|---|---|---|
 | C-14 Observed vs derived typing | Types expose source, risk, confidence, indicators and action, but no explicit evidence/provenance class for an indicator or decision. | SOFT | E-03, E-04 |
 | C-15 Severity and decision separation | Severity/risk/action are separate fields, but `actionForRisk` maps `critical → DENY`, `safe → ALLOW`, otherwise WARN. The meaning of ALLOW is not separately contracted. | SOFT | E-03, E-04 |
-| C-17 Failure containment | URL parse failure is caught and skipped. A malformed URL can therefore contribute no URL indicator; remaining score can still resolve to safe/ALLOW. Caller-level containment was not inspected. | OPEN | E-03, E-05; see F-01 |
+| C-17 Failure containment | URL parse failure is caught and skipped. For the inspected malformed-only input shape, the analyzer can return safe/ALLOW rather than an explicit unanalysable state. | SOFT | E-03, E-05; see F-01 |
 | C-23 Rule-to-fixture traceability | Thirteen fixtures cover several hand-authored cases; runner asserts severity, risk and action, not confidence, indicator set or harmonyDelta. | SOFT | E-05, E-06 |
 | C-25 CI workflow truth | Workflow definition exists, but no current passing run/status evidence was returned for inspected head. | OPEN | E-07, E-08 |
 | C-29 Dependency exposure / reproducibility | Dependency versions include ranges; workflow uses `npm install`. Common root lockfile candidates were not found. Actual resolved dependency tree and build reproducibility were not verified. | OPEN | E-02, E-07 |
-| D-02 Schema and runtime guards | AsyncStorage adapter is declared in README; exact adapter and record validation implementation were not inspected. | OPEN | E-01; source gap |
-| D-05 Transaction and atomicity contract | No inspected persistence implementation establishes atomic write semantics or recovery contract. | OPEN | E-01; source gap |
-| D-10 Offline and sync semantics | README declares offline-first intent; no inspected persistence/queue/restart implementation establishes offline guarantees. | OPEN | E-01; source gap |
-| D-13 Write validation | No inspected storage write boundary or authorization/validation path. | OPEN | source gap |
-| D-19 Concurrency and conflict discipline | No inspected retry, concurrent-write or conflict-resolution implementation. | OPEN | source gap |
-| U-04 Decision-display binding | No screen/component source was inspected to verify binding to canonical result/action values. | OPEN | E-04; UI source gap |
-| U-05 State matrix | Loading, empty, error, pending, offline and recovery UI states could not be inspected. | OPEN | UI source gap |
-| U-12 Claim-tone discipline | README declares offline-first and fail-closed boundaries, but runtime and caller evidence is unavailable; bounded analyzer behaviour raises a qualification question. | OPEN | E-01, E-03; F-01 |
-| U-17 Empty/loading state safety | No UI implementation or device observation was inspected. | OPEN | UI source gap |
+| D-02 Schema and runtime guards | Generic JSON parsing is cast to `IncidentLog[]` without validating record shape, required fields or nested ThreatResult values. | SOFT | E-09; see F-06 |
+| D-05 Transaction and atomicity contract | Incident logs and Harmony state are written through two sequential AsyncStorage calls. No transaction/rollback spans the logical scan record. | SOFT | E-09, E-10; see F-08 |
+| D-10 Offline and sync semantics | The implementation is local-first by declaration and uses AsyncStorage, but no network-disabled or device/restart witness was run. | OPEN | E-01, E-09; see F-06 |
+| D-13 Write validation | Save methods accept typed values but perform no runtime validation before JSON serialization and storage. | SOFT | E-09; see F-06 |
+| D-19 Concurrency and conflict discipline | The hook serializes its own operations through a promise queue; this does not establish cross-instance/process locking or conflict handling for other direct storage callers. | SOFT | E-09, E-10; see F-08 |
+| U-04 Decision-display binding | Dashboard displays action, risk, severity, confidence, harmony delta and indicators from the returned result. The semantic caveat for ALLOW/no indicators is not displayed. | SOFT | E-03, E-11; see F-02, F-07 |
+| U-05 State matrix | Dashboard has a loading/ready state and latest-result state, but no explicit storage error, save-pending, save-failed or recovery state. | SOFT | E-10, E-11; see F-07, F-08 |
+| U-12 Claim-tone discipline | Dashboard labels the value `Confidence: n/100`; no calibration or explanation accompanies it. The UI displays action without explaining that ALLOW is heuristic non-detection, not proof of safety. | SOFT | E-03, E-11; see F-02, F-03 |
+| U-17 Empty/loading state safety | The button is disabled while `ready` is false, but hydration failure sets `ready` true with empty defaults. The UI can therefore present an empty ledger as ready after a storage read failure. | SOFT | E-10, E-11; see F-07 |
 
-**Summary:** 6 code tiers, 5 persistence tiers and 4 UI tiers assessed. No tier is SOLID. Four code tiers are SOFT or OPEN as shown; all persistence and UI tiers remain OPEN because their implementation evidence was not available to this pilot. This is a partial evidence assessment, not a 15/99 score or a Harmony pass.
+**Summary:** 6 code tiers, 5 persistence tiers and 4 UI tiers assessed. No tier is SOLID. After the second source pass, 12 tiers are SOFT and 3 remain OPEN (C-25, C-29 and D-10). SOFT means a source-level weakness or bounded assurance gap was observed; it does not mean dynamic failure was reproduced. This is not a 15/99 score or a Harmony pass.
 
 ## 4. Findings ledger
 
@@ -182,4 +185,4 @@ This pilot demonstrates why Tri-Tier 33 must:
 - require exact commit and run provenance;
 - treat non-execution as an explicit limitation, not as an implied pass.
 
-**Pilot conclusion:** Tri-Tier 33 identified one concrete code-path concern, several policy/measurement questions and substantial persistence/UI evidence gaps. It has demonstrated practical diagnostic value in this narrow desk pilot, but its overall effectiveness and defect-detection rate remain unvalidated.
+**Pilot conclusion:** The second source pass strengthened the pilot: it identified a malformed-input decision concern, a misleading storage-hydration fallback, a non-atomic multi-key logical write, unvalidated persisted record shapes, and missing UI failure states. These are source-supported findings; no fault injection, runtime test or device witness was performed. The framework has demonstrated practical diagnostic value in this narrow desk pilot, but its overall effectiveness and defect-detection rate remain unvalidated.
