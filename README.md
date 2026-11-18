@@ -2,6 +2,8 @@
 
 A living engineering knowledge base documenting lessons learned, development methodologies, architectural principles, innovations, security practices, testing strategies, failures and proven solutions across our projects.
 
+The master compendium of software engineering principles, operating rules, project methodologies, and hard-earned lessons from our development journey. Rooted in truth, evidence-based execution, and the 33-Tier approach.
+
 > **Build to learn. Test to know. Measure to improve. Expand only when evidence earns it.**
 
 ## Why this repository exists
