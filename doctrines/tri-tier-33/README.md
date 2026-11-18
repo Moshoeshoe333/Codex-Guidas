@@ -132,6 +132,10 @@ The universal core defines the 99 lenses, evidence discipline, verdicts, Harmony
 
 SoulSync-specific P1–P7, G-BOOT, E-008/E-009 and ZA detection patterns are not universal requirements. They belong in a SoulSync profile and are referenced by tier IDs only where applicable. ScoutSA and Mall Navigre must define their own profiles. Reuse the method, not another project's assumptions.
 
+## 10. Pilot evidence
+
+The first bounded read-only case study is [CG-TT33-PILOT-001 — SoulSyncMobile](pilots/2026-11-18-soulsyncmobile-readonly-pilot-01.md). It assesses 15 risk-selected tiers, records a malformed-URL fail-open concern for further verification, and leaves persistence/UI and end-to-end Harmony probes OPEN or NOT RUN where source/runtime evidence was unavailable. It is a desk pilot, not a security audit or framework validation.
+
 ## 10. Governance and maturity
 
 This v0.3.0 draft refines the source instrument. It is not formally ratified, empirically calibrated or independently validated. Do not claim universal certification, exhaustive defect detection, compliance, production readiness or proven reduction in defects.
