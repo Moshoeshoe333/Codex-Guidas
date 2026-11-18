@@ -7,7 +7,7 @@
 
 ## What this pack contains
 
-The complete portable pack is the six-file directory at **doctrines/tri-tier-33/**:
+The complete portable pack is the seven-file directory at **doctrines/tri-tier-33/**:
 - README.md — architecture, governance, proportionality and adoption.
 - codebase-33.md — Mind / Codebase 33.
 - persistence-33.md — Body / Persistence 33.
