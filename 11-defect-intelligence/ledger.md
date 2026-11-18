@@ -115,6 +115,22 @@ The detailed report contains eight findings:
 - A green test suite does not prove all failure modes are covered; record what was not tested.
 
 
+### Follow-up implementation — SSM-PERSISTENCE-FI-001 test harness
+
+- **Status:** TEST HARNESS COMMITTED; EXECUTION NOT VERIFIED.
+- **Target repository:** `Moshoeshoe333/SOULSYNCMOBILE`.
+- **Target commit:** `c7a1b73516a40a3684c833290f5315993d199430`.
+- **Base inspected:** `b85a83c9f672a11c71b94090826710475d8b6f86`.
+- **Files added:** `test-support/async-storage-mock.mjs`, `test-support/async-storage-mock.d.mts`, `test-support/async-storage-loader.mjs`, `src/storage/__tests__/storageManager.fault-injection.test.ts`.
+- **Package change:** Added `npm run test:storage-faults`; application source files were not modified.
+- **Verification:** New files and package script were fetched back from GitHub and inspected. No test command, typecheck, device run or CI workflow was executed by this action. No test pass is claimed.
+- **Test coverage authored:** missing/malformed incident data; invalid incident shape characterization; incident read/write rejection; unmeasured/malformed/invalid Harmony data; Harmony normalization write failure; clear-storage failure.
+- **Important characterization:** Source inspection shows `getHarmonyState()` catches a normalization-write rejection in its broad catch and returns UNMEASURED while the invalid bytes remain stored. The test now records this observed behaviour rather than asserting a rejection that the current implementation does not produce.
+- **Important limitation:** The harness replaces the AsyncStorage package with an isolated in-memory mock while exercising the actual `storageManager` module. It does not prove native AsyncStorage, device restart, offline behaviour, hook hydration, or the two-write scan transaction. Those remain separate probes.
+- **CI boundary:** No workflow dispatch was requested or manually invoked. The existing workflow is configured for pushes to `main`; any automatic push-triggered run must be checked separately and must not be mistaken for execution of the new storage suite, which is not yet included in that workflow.
+- **Next gate:** Run the new test command and typecheck in a controlled Node 22 environment; capture raw output and exact commit. Then separately design a hook-level test for hydration failure and the incident-write/Harmony-write partial-commit case. Do not change app runtime code until the persistence authority/commit contract is explicitly decided.
+
+
 ### Follow-up protocol — SSM-PERSISTENCE-FI-001
 
 - **Status:** TEST DESIGN ONLY; NOT EXECUTED.
