@@ -25,7 +25,7 @@ We preserve reusable engineering knowledge so that each project benefits from th
 | [Project crosswalk](08-project-crosswalks/project-status.md) | ScoutSA, SoulSync, SoulSyncMobile, NAVIGRE and UCI |
 | [Lesson template](09-templates/lesson-template.md) | Standard format for new entries |\n| [Defect Intelligence](11-defect-intelligence/README.md) | Defect intake, similarity search, verification and learning loop |
 
-## Evidence and status discipline
+## Philosophy and doctrine\n\nThe [doctrines](doctrines/README.md) record how we reason, build for human realities, sustain a portfolio and communicate uncertainty. They guide decisions but do not substitute for project-specific controls or evidence. The [invariants catalogue](03-architecture/invariants-catalogue.md) translates recurring boundaries into practical checks.\n\n## Evidence and status discipline
 
 Entries distinguish **Observed**, **Derived**, **Proposed**, **Verified** and **Superseded** knowledge. Historical project notes are not a fresh repository audit. Verify exact source artifacts, full commit hashes, test runs and current status before relying on them as release or audit evidence.
 
