@@ -5,6 +5,7 @@ These documents state the principles that guide how we reason, build, allocate e
 ## Core doctrines
 
 - [33-Tier Epistemological Framework](33-tier-framework.md) — how we distinguish purpose, knowledge, evidence and permission.
+- [33-Perspective Master Register](33-perspective-master-register.md) — proposed operational lenses, evidence expectations, failure signals and review rules.
 - [Grassroots Contextual Engineering](scoutsa-doctrine.md) — how we design around real human, community and resource constraints.
 - [Sustainable Portfolio Ecology](portfolio-ecology.md) — how we balance creation, livelihood, focus and preservation.
 - [Honesty Without Malice](honesty-without-malice.md) — how we communicate, record uncertainty and learn from failure.
