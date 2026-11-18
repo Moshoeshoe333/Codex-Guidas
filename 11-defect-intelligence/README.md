@@ -13,7 +13,8 @@ A lightweight, evidence-led mechanism for learning from defects and preventing r
 
 | Defect ID | Project | Severity | State | Summary | Source / evidence |
 |---|---|---|---|---|---|
-| — | — | — | — | No individual defect records migrated yet. Existing historical incident IDs remain in their source project records pending record-by-record extraction. | — |
+| [DEF-2026-001](DEF-2026-001-storage-hydration-failure-masked-as-empty-ledger.md) | SoulSyncMobile | S4 | Investigating | Storage hydration failure may be represented as an empty ledger | Read-only source finding F-07; runtime reproduction pending |
+| [DEF-2026-002](DEF-2026-002-multikey-scan-persistence-is-not-atomic.md) | SoulSyncMobile | S4 | Investigating | Logical scan record spans two non-atomic writes | Read-only source finding F-08; partial-write injection pending |
 
 ## Intake rules
 
