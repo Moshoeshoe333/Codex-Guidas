@@ -21,7 +21,7 @@ We preserve reusable engineering knowledge so that each project benefits from th
 | [Innovation register](06-innovations/project-innovation-register.md) | Ideas, experiments and next proof |
 | [Product validation](07-product-business/product-validation.md) | Usability, adoption and commercial evidence |
 | [Project crosswalk](08-project-crosswalks/project-status.md) | ScoutSA, SoulSync, SoulSyncMobile, NAVIGRE and UCI |
-| [Lesson template](09-templates/lesson-template.md) | Standard format for new entries |
+| [Lesson template](09-templates/lesson-template.md) | Standard format for new entries |\n| [Defect Intelligence](11-defect-intelligence/README.md) | Defect intake, similarity search, verification and learning loop |
 
 ## Evidence and status discipline
 
