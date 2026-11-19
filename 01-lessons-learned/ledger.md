@@ -93,3 +93,6 @@ This additional lesson is provisional until exact-head regression execution and 
 
 
 | CG-040 | Browser synchronization predicates must use the same semantic condition as the assertion and expose the observed UI state on timeout. | ScoutSA OPA-018 | Derived; root cause found and regex corrected, exact-head rerun pending | Prefer a shared predicate/helper; test regexes against actual rendered result strings; report the actual message and state when a wait times out. |
+
+
+| CG-041 | Independent regression suites should continue after one suite fails, while preserving a failing aggregate result and per-suite diagnostics. | ScoutSA OPA-019 | Derived; workflow mitigation committed, exact-head execution pending | Use bounded loops or matrices, cap each process and the overall job, report every suite outcome, and never convert partial success into a green aggregate. |
