@@ -20,6 +20,7 @@ We preserve reusable engineering knowledge so that each project benefits from th
 | [Lessons learned index](01-lessons-learned/ledger.md) | Per-record lessons CG-001 onward; original ledger preserved in archive |
 | [Evidence-first development](02-methodologies/evidence-first-development.md) | Research, decision, implementation and verification workflow |
 | [Which method should I use?](docs/method-selection.md) | Choose the right method without combining maturity scores |
+| [Methodology–knowledge architecture](docs/methodology-knowledge-architecture.md) | How reasoning methods, knowledge retrieval and project authority work together |
 | [Architecture patterns](03-architecture/project-patterns.md) | Reusable design patterns and boundaries |
 | [Security and safeguarding](04-security/safeguarding-and-threat-modeling.md) | Threat modelling, privacy and safety lessons |
 | [Testing and CI](05-testing-verification/verification-and-ci.md) | Verification layers and regression discipline |
@@ -28,6 +29,7 @@ We preserve reusable engineering knowledge so that each project benefits from th
 | [Project crosswalk](08-project-crosswalks/project-status.md) | ScoutSA, SoulSync, SoulSyncMobile, NAVIGRE and UCI |
 | [UCI methodology integration boundary](08-project-crosswalks/uci-methodology-integration-boundary.md) | Proposed boundary between Codex-Guidas, UCI and the two 33 frameworks |
 | [Lesson template](09-templates/lesson-template.md) | Standard format for new entries |
+| [Knowledge application record](09-templates/knowledge-application-record.md) | Record meaningful use of a prior lesson in another project |
 | [Framework Assessment Record](09-templates/framework-assessment-record.md) | Proposed evidence-linked record for bounded framework assessments |
 | [Defect Intelligence](11-defect-intelligence/README.md) | Defect intake, similarity search, verification and learning loop |
 | [33-Perspective Register](doctrines/33-perspective-master-register.md) | Proposed lenses for evidence-led, proportionate decision review |
@@ -42,6 +44,10 @@ Run the local search tool before triage or implementation:
     python scripts/codex.py validate
 
 Search results are candidate records, not a root-cause verdict. Inspect the evidence and applicability boundary before reusing a control.
+
+## How methodology and knowledge work together
+
+Use the [methodology–knowledge architecture](docs/methodology-knowledge-architecture.md) for consequential investigations and decisions. It keeps four responsibilities distinct: reasoning methodology, specialist assessment instruments, Codex-Guidas institutional memory and each owning project's authority. A worked, bounded example demonstrates how to apply a relevant lesson without assuming identical root cause or transferring proof.
 
 ## Reusable knowledge packs
 
@@ -64,7 +70,6 @@ A passing test proves only the tested cases in the recorded environment. A desig
 ## Contribution rule
 
 See [CONTRIBUTING.md](CONTRIBUTING.md), the [canonical record taxonomy](00-foundation/record-taxonomy.md) and the [metadata schema](00-foundation/metadata-schema.md). Pull requests are checked for record metadata, ID uniqueness, index coverage and local Markdown links.
-
 
 Every significant lesson should include its source, context, date, evidence class, impact, root-cause confidence, corrective/preventive action, verification method and residual risk. Do not promote a proposal to a verified practice without reproducible evidence.
 
