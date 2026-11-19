@@ -21,6 +21,7 @@ We preserve reusable engineering knowledge so that each project benefits from th
 | [Evidence-first development](02-methodologies/evidence-first-development.md) | Research, decision, implementation and verification workflow |
 | [Which method should I use?](docs/method-selection.md) | Choose the right method without combining maturity scores |
 | [Methodology–knowledge architecture](docs/methodology-knowledge-architecture.md) | How reasoning methods, knowledge retrieval and project authority work together |
+| [Startup repository benchmark](docs/research/2026-11-19-startup-repo-and-engineering-knowledge-benchmark.md) | Research on startup engineering failures, comparable products and proportionate repository controls |
 | [Architecture patterns](03-architecture/project-patterns.md) | Reusable design patterns and boundaries |
 | [Security and safeguarding](04-security/safeguarding-and-threat-modeling.md) | Threat modelling, privacy and safety lessons |
 | [Testing and CI](05-testing-verification/verification-and-ci.md) | Verification layers and regression discipline |
@@ -44,6 +45,14 @@ Run the local search tool before triage or implementation:
     python scripts/codex.py validate
 
 Search results are candidate records, not a root-cause verdict. Inspect the evidence and applicability boundary before reusing a control.
+
+## Verify the knowledge tooling
+
+The CLI has a standard-library regression suite:
+
+    python -m unittest discover -s tests -v
+
+CI runs these unit tests, validates structured records and local Markdown links, and smoke-tests search and the verification review queue. The tests prove only the cases exercised; they do not independently validate every historical lesson.
 
 ## How methodology and knowledge work together
 
