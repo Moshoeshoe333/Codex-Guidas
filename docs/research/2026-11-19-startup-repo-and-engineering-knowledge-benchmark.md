@@ -118,10 +118,10 @@ The 2026 GitHub Actions study observed only three cases of unresolvable action r
 
 ### Immediate, proportionate improvements
 
-1. **Test the knowledge CLI as software.** Add unit tests for frontmatter parsing, duplicate IDs, allowed states, index coverage, broken links, retrieval filters and overdue review-queue behaviour. CI currently has smoke tests; unit tests will make edge cases reproducible.
-2. **Harden workflow dependencies.** Pin third-party GitHub Actions to verified commit SHAs or use GitHub's workflow dependency lockfile where supported. Add a weekly Dependabot schedule for GitHub Actions so updates are proposed rather than silently drifting.
-3. **Add a focused repository security policy.** A public repository should explain how to report a sensitive security issue. Enable secret scanning/push protection, dependency alerts and code scanning where available. The presence of a `SECURITY.md` file does not itself prove these settings are active.
-4. **Verify default-branch governance.** Use a ruleset to require PRs and passing CI on `main`. A solo maintainer should not impose an artificial multi-person approval gate that cannot be met; introduce independent review when another qualified maintainer exists.
+1. **Test the knowledge CLI as software — implemented on this branch.** Seven standard-library unit tests now cover frontmatter parsing, duplicate keys and IDs, local-link failures, overdue review behaviour, retrieval filters and valid index/record handling. CI runs them before the validator and smoke tests. Expand cases as real defects reveal gaps.
+2. **Harden workflow dependencies — implemented on this branch.** The current workflow pins checkout and setup-python to verified full commit SHAs, with version comments, and `.github/dependabot.yml` requests weekly GitHub Actions dependency updates. Dependabot proposals still require review and passing CI.
+3. **Add a focused repository security policy — document added on this branch; settings remain a maintainer action.** `SECURITY.md` must direct sensitive reports away from public issues and explain that GitHub private vulnerability reporting only works after it is explicitly enabled in repository settings. Separately verify secret scanning, push protection, dependency alerts and code scanning availability. A policy file does not prove any of these controls are active.
+4. **Verify default-branch governance — still unverified.** Inspect the `main` branch ruleset/protection settings directly in GitHub. The research connection could read the branch SHA but could not read protection settings, so no conclusion is made about whether protection is enabled. If configuring a rule, require PR and CI checks; do not impose an unfulfillable two-person approval gate on a solo maintainer.
 5. **Improve documentation freshness checks selectively.** Retain current local-link checks; add executable command examples and source references to important technical claims. Consider symbol/reference checking only when drift appears in practice.
 6. **Keep licence choice explicit.** There is currently no `LICENSE` file on `main`, consistent with the repository's stated decision not to grant an external reuse licence yet. Do not add a licence by automation. Resolve ownership and intended reuse first.
 
@@ -176,3 +176,15 @@ A rise in reported defects can mean better detection, not deteriorating quality.
 ## 8. Decision
 
 Adopt the small, Git-native improvements first: unit tests for the CLI, pinned CI dependencies, dependency update monitoring, and a clear security-reporting path. Preserve the existing methodology and authority boundaries. Do not introduce a developer portal, incident SaaS, semantic search service or aggregate maturity score until actual usage shows a need.
+
+## 9. Implementation status on the Codex-Guidas feature branch
+
+As of 2026-11-19, the following controls have been added to `codex/retrieval-enforcement-2026-11-19` and validated in GitHub Actions:
+
+- Seven CLI unit tests, in addition to metadata/link validation and search/review-queue smoke tests.
+- `actions/checkout` and `actions/setup-python` pinned to verified full commit SHAs.
+- Weekly Dependabot configuration for GitHub Actions.
+- README links to this benchmark and documents the unit-test command.
+- A repository `SECURITY.md` policy. Its private-reporting instructions are conditional: the maintainer must enable GitHub private vulnerability reporting in repository settings and verify the option is available before treating that channel as active.
+
+These checks were run in hosted GitHub Actions on the feature branch; they do not prove that branch rules, secret scanning, push protection, dependency alerts or code scanning are enabled. Those repository settings require a separate owner/admin review. The branch remains a draft PR and these changes have not been merged into `main`.
