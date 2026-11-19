@@ -257,5 +257,6 @@ As of 2026-11-19, the following controls have been added to `codex/retrieval-enf
 - Weekly Dependabot configuration for GitHub Actions.
 - README links to this benchmark and documents the unit-test command.
 - A repository `SECURITY.md` policy. Its private-reporting instructions are conditional: the maintainer must enable GitHub private vulnerability reporting in repository settings and verify the option is available before treating that channel as active.
+- CG-PACK-006, a proposed New Repository Bootstrap and Assurance pack with a baseline checklist and seven optional risk overlays. It is a reusable template only; receiving repositories retain control ownership and must produce their own evidence.
 
 These checks were run in hosted GitHub Actions on the feature branch; they do not prove that branch rules, secret scanning, push protection, dependency alerts or code scanning are enabled. Those repository settings require a separate owner/admin review. The branch remains a draft PR and these changes have not been merged into `main`.
