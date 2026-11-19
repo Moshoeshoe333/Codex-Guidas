@@ -8,6 +8,8 @@ The master compendium of software engineering principles, operating rules, proje
 
 ## Why this repository exists
 
+See [PURPOSE.md](PURPOSE.md) for the primary outcome, scope boundaries and success measures.
+
 We preserve reusable engineering knowledge so that each project benefits from the mistakes, discoveries, experiments and verified practices of the others. This is not a document-counting exercise: knowledge should help us make better decisions, prevent recurring defects, reduce risk, build useful products and validate real-world value.
 
 ## Start here
@@ -15,8 +17,9 @@ We preserve reusable engineering knowledge so that each project benefits from th
 | Area | Purpose |
 |---|---|
 | [Operating principles](00-foundation/operating-principles.md) | Portfolio-wide rules and evidence ladder |
-| [Lessons learned ledger](01-lessons-learned/ledger.md) | Cross-project lessons CG-001 onward |
+| [Lessons learned index](01-lessons-learned/ledger.md) | Per-record lessons CG-001 onward; original ledger preserved in archive |
 | [Evidence-first development](02-methodologies/evidence-first-development.md) | Research, decision, implementation and verification workflow |
+| [Which method should I use?](docs/method-selection.md) | Choose the right method without combining maturity scores |
 | [Architecture patterns](03-architecture/project-patterns.md) | Reusable design patterns and boundaries |
 | [Security and safeguarding](04-security/safeguarding-and-threat-modeling.md) | Threat modelling, privacy and safety lessons |
 | [Testing and CI](05-testing-verification/verification-and-ci.md) | Verification layers and regression discipline |
@@ -28,6 +31,17 @@ We preserve reusable engineering knowledge so that each project benefits from th
 | [Framework Assessment Record](09-templates/framework-assessment-record.md) | Proposed evidence-linked record for bounded framework assessments |
 | [Defect Intelligence](11-defect-intelligence/README.md) | Defect intake, similarity search, verification and learning loop |
 | [33-Perspective Register](doctrines/33-perspective-master-register.md) | Proposed lenses for evidence-led, proportionate decision review |
+
+## Find a prior lesson or defect
+
+Run the local search tool before triage or implementation:
+
+    python scripts/codex.py search "partial write storage"
+    python scripts/codex.py search "hydration failure" --project SOULSYNCMOBILE
+    python scripts/codex.py review-queue
+    python scripts/codex.py validate
+
+Search results are candidate records, not a root-cause verdict. Inspect the evidence and applicability boundary before reusing a control.
 
 ## Reusable knowledge packs
 
@@ -48,6 +62,9 @@ Entries distinguish **Observed**, **Derived**, **Proposed**, **Verified** and **
 A passing test proves only the tested cases in the recorded environment. A design is not implementation. A build is not runtime verification. Synthetic data is not market demand. A prototype is not a validated product.
 
 ## Contribution rule
+
+See [CONTRIBUTING.md](CONTRIBUTING.md), the [canonical record taxonomy](00-foundation/record-taxonomy.md) and the [metadata schema](00-foundation/metadata-schema.md). Pull requests are checked for record metadata, ID uniqueness, index coverage and local Markdown links.
+
 
 Every significant lesson should include its source, context, date, evidence class, impact, root-cause confidence, corrective/preventive action, verification method and residual risk. Do not promote a proposal to a verified practice without reproducible evidence.
 

@@ -1,3 +1,21 @@
+---
+id: "DEF-2026-002"
+record_type: "defect"
+status: "Investigating"
+projects: ["SOULSYNCMOBILE"]
+layer: "body"
+component: "multi-key-persistence"
+failure_mode: "logical scan spans sequential non-atomic storage writes"
+severity: "S4"
+origin_date: "2026-11-18"
+last_reviewed: "2026-11-19"
+verification_due: "2026-12-19"
+evidence_class: "SOURCE-OBSERVED; dynamic reproduction was pending in the source record"
+verification_status: "pending"
+source_path: "11-defect-intelligence/ledger.md (DI-2026-11-18-SSM-001)"
+review_scope: "metadata-and-record-text-reviewed; no native-device or source-project re-execution"
+---
+
 # DEF-2026-002 — A logical scan record spans two non-atomic persistence writes
 
 - **State:** Investigating

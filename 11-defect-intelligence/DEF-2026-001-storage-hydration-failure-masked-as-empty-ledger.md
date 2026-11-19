@@ -1,3 +1,21 @@
+---
+id: "DEF-2026-001"
+record_type: "defect"
+status: "Investigating"
+projects: ["SOULSYNCMOBILE"]
+layer: "body"
+component: "persistence-hydration"
+failure_mode: "storage read failure represented as successfully loaded empty ledger"
+severity: "S4"
+origin_date: "2026-11-18"
+last_reviewed: "2026-11-19"
+verification_due: "2026-12-19"
+evidence_class: "SOURCE-OBSERVED; dynamic reproduction was pending in the source record"
+verification_status: "pending"
+source_path: "11-defect-intelligence/ledger.md (DI-2026-11-18-SSM-001)"
+review_scope: "metadata-and-record-text-reviewed; no native-device or source-project re-execution"
+---
+
 # DEF-2026-001 — Storage hydration failure can be masked as an empty ledger
 
 - **State:** Investigating

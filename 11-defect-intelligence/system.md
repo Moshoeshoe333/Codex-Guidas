@@ -41,32 +41,13 @@ Do not paste secrets, personal data, access tokens, private player information o
 
 ## 4. Severity and priority
 
-Use impact-based severity, not emotional language or the number of files changed.
-
-| Severity | Meaning | Typical response |
-|---|---|---|
-| **S0 Critical** | Active exploitation, material data loss/corruption, severe safety risk, or broad service compromise | Contain immediately; invoke owner incident process; no routine release until controlled |
-| **S1 High** | Major workflow unavailable, significant security/privacy exposure, unsafe access path, or integrity failure | Prioritised fix and explicit release decision |
-| **S2 Moderate** | Important function impaired with workaround; limited scope or recoverable data issue | Schedule promptly; test workaround and fix |
-| **S3 Low** | Minor defect with low impact and safe workaround | Backlog and fix when justified |
-| **S4 Observation** | Near miss, quality concern or improvement opportunity without demonstrated user impact | Record if reusable; avoid inflating defect counts |
+Use impact-based severity, not emotional language or the number of files changed. The canonical S0–S4 definitions are maintained in [record taxonomy](../00-foundation/record-taxonomy.md); do not redefine them in individual packs or registers.
 
 Severity may change as evidence develops. Record who changed it, when and why. A security or safeguarding concern should be escalated under the relevant project policy even if its immediate user impact is not yet known.
 
 ## 5. State model
 
-- **New:** recorded, not yet triaged.
-- **Triaged:** impact and owner assessed.
-- **Investigating:** evidence collection and hypotheses in progress.
-- **Contained:** immediate risk reduced; root cause may remain open.
-- **Fix proposed:** corrective change identified, not yet verified.
-- **In verification:** fix exists and tests/evidence are being evaluated.
-- **Closed:** acceptance criteria passed and residual risk accepted by the proper owner.
-- **Blocked:** progress depends on an external decision, access or prerequisite.
-- **Won't fix:** explicit rationale and authorized acceptance of residual risk.
-- **Reopened:** recurrence or failed acceptance criteria after closure.
-
-Do not use “fixed” as a synonym for “closed.” Code can be changed while verification remains pending.
+The canonical defect workflow states and meanings are maintained in [record taxonomy](../00-foundation/record-taxonomy.md). Do not use “fixed” as a synonym for “closed.” Code can be changed while verification remains pending.
 
 ## 6. Evidence and root-cause discipline
 
@@ -161,3 +142,8 @@ A defect is eligible for closure only when:
 ## 13. First implementation boundary
 
 Start with manual Markdown records and search. Do not build a database, bot, dashboard or cross-repository automation until repeated usage demonstrates a real bottleneck. The first proof is whether the process helps us find and prevent a repeated defect with less time and better evidence.
+
+
+## 14. Structured retrieval
+
+Individual records carry machine-readable frontmatter. The metadata schema defines fields; record taxonomy is the canonical lifecycle/severity vocabulary. Use the repository search before triage and the review queue during monthly maintenance. Search results are suggestions only; maintainers inspect evidence and determine whether causes are genuinely equivalent.

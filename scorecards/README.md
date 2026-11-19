@@ -14,3 +14,6 @@ Scorecards make progress and risk visible without turning activity into vanity m
 ## Weekly portfolio review
 
 Use [weekly-portfolio-scorecard.md](weekly-portfolio-scorecard.md). Keep one primary outcome, explicit blockers and a short list of work deliberately not pursued. Adjust the provisional 80/10/5/5 allocation when capacity or evidence changes.
+
+
+- [Defect Intelligence monthly review template](defect-intelligence-monthly-template.md) — manual definitions and trend capture; baseline remains unestablished until observations are recorded.

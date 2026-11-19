@@ -28,3 +28,17 @@ A lightweight, evidence-led mechanism for learning from defects and preventing r
 ## Historical incident migration
 
 The ScoutSA incidents DOC-001–DOC-004 and CI-001 are documented in its engineering-integrity policy and in the source archaeology report. They have not yet been converted into individual DEF records because each needs its own exact affected commit, incident chronology, closure evidence and current recurrence assessment. Do not fabricate those fields. Convert them one at a time when source evidence is available.
+
+
+## Retrieval and review queue
+
+Use the repository search tool before triage:
+
+    python scripts/codex.py search "hydration empty ledger"
+    python scripts/codex.py search "partial write" --project SOULSYNCMOBILE
+    python scripts/codex.py review-queue
+    python scripts/codex.py validate
+
+Search matches are candidate similarities, not proof of an identical cause. Record search terms and matching IDs in each defect record. The review queue surfaces pending verification and overdue follow-ups; deadlines are review triggers, not evidence.
+
+Structured individual records use YAML frontmatter described in the metadata schema. Canonical state and severity meanings live in the record taxonomy.

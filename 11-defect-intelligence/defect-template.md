@@ -1,7 +1,25 @@
+---
+id: "DEF-YYYY-NNN"
+record_type: "defect"
+status: "New"
+projects: []
+layer: "unknown"
+component: null
+failure_mode: null
+severity: null
+origin_date: null
+last_reviewed: null
+verification_due: null
+evidence_class: "Reported"
+verification_status: "not-claimed"
+source_path: "path/to/source"
+review_scope: "state what was actually reviewed"
+---
+
 # DEF-2026-NNN — [Short factual title]
 
-- **State:** New / Triaged / Investigating / Contained / Fix proposed / In verification / Closed / Blocked / Won't fix / Reopened
-- **Severity:** S0 / S1 / S2 / S3 / S4
+- **State:** See frontmatter and the canonical record taxonomy.
+- **Severity:** S0 / S1 / S2 / S3 / S4 (impact-based; see canonical taxonomy).
 - **Date detected:**
 - **Last updated:**
 - **Owning project/repository:**
@@ -71,3 +89,5 @@ Unknowns, accepted risk, deferred work, owner and due/review date.
 
 ## 13. Reusable lesson
 Existing CG-XXX updated / new CG-XXX proposed / no cross-project lesson (explain).
+
+Use null for unknown metadata. A pending verification must have a review date. Run the knowledge integrity validator before submitting.
