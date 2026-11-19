@@ -30,6 +30,16 @@ This review combines peer-reviewed empirical studies, official documentation and
 - **Security guidance:** OWASP, GitHub and OpenSSF provide threat and control guidance. A listed risk is not a measured frequency claim.
 
 We distinguish **common in the cited samples**, **recommended controls**, and **tail-risk scenarios**. We do not present every plausible failure mode as statistically common in startups.
+### A note on the “91% of failed startups had no automated tests” figure
+
+The 91% figure appears in a 2025/2026-era business/technology article attributing it to an individual audit of 47 failed startup codebases. I could not find a peer-reviewed study or an independently inspectable sampling protocol supporting that number. It may describe that particular audit, but it should **not** be repeated as a general startup failure statistic without the underlying data, selection criteria, definition of “automated testing” and audit method.
+
+Better-described research reports materially different results:
+- An ICSE 2018 technical-debt study surveyed 86 startups: 26 (about 30%) were attempting to implement test automation and 17 (about 20%) explicitly stated that no test automation was used. Manual exploratory testing was still reported as the primary quality practice. The study does not support “91% had no tests.”
+- A study of 11 Namibian startups found that 86% of respondents reported spending substantial effort on manual testing and not performing automated testing. This is a small, geographically specific sample and is not a global estimate.
+- A 2019 multi-vocal analysis of 88 startup experience reports found little discussion of testing and noted cases where teams relied on customers to expose obvious issues; it called for more research rather than claiming a universal percentage.
+
+**Decision:** We adopt the engineering lesson—automate the high-value regression checks and test failure boundaries—but reject the 91% headline as a general fact. The definition also matters: “some automation exists,” “most tests are automated,” “meaningful coverage exists,” and “critical business paths are protected” are not interchangeable claims.
 
 ## 2. Similar repositories and products
 
@@ -42,10 +52,28 @@ We distinguish **common in the cited samples**, **recommended controls**, and **
 | [GitLab Incident Review](https://handbook.gitlab.com/handbook/engineering/infrastructure-platforms/incident-review/) | Blameless reviews, defined roles, owner accountability and corrective actions | Make action ownership explicit; ask whether the action addresses the cause rather than just the symptom | Do not impose a heavyweight incident review on every small defect |
 | [Rootly](https://rootly.com/incident-postmortems/action-items) | Tracks follow-up actions with owners, priority, due dates and status; can sync into ticketing tools | Keep actions linked to their originating incident and review overdue work | Automated incident coordination and ticket synchronisation are premature until incident volume requires them |
 | [OpenSSF Scorecard](https://github.com/ossf/scorecard) and [Best Practices Badge](https://openssf.org/projects/best-practices-badge/) | Structured repository-security checks and self-assessed best-practice criteria | Use individual security findings as prompts for risk reduction, with evidence and applicability notes | Do not turn one aggregate score into a quality verdict or certification; Scorecard itself documents heuristic limits |
+| [ECMWF Codex](https://github.com/ecmwf/codex) | Organisation-specific principles, ADRs, repository structure, project maturity, security disclosure, AI contributions and documentation guidance; changes through discussion and PRs | Keep one navigable governance index; link rules to templates, owners and review paths; make maturity and AI boundaries visible | Do not copy an organisation-wide policy catalogue into a solo-maintained repo without the people/process needed to enforce it |
+| [GitHub Open Source Guides](https://github.com/github/opensource.guide) | Community-oriented guidance for creating, maintaining and contributing to open-source projects | Use as a reference when deciding whether to open external contributions, support and community processes | It is community/project-operations guidance, not a cross-project technical evidence ledger |
+| [Awesome Guidelines](https://github.com/Kristories/awesome-guidelines) | Curated external coding standards and guidelines, organised by language and technology | Link to authoritative external standards instead of duplicating them; retain source, date and applicability | A curated list is not an internal learning system and does not verify that a guideline is suitable for a particular project |
+| [UK Home Office Engineering Guidance and Standards](https://github.com/UKHomeOffice/engineering-guidance-and-standards) | Markdown-based standards site, local builds/tests, Playwright checks and scheduled stale-content review alerts with a dry-run rollout | Later, consider scheduled review reminders with dry-run first; pair review dates with accountable owners and controlled issue creation | Do not add a site generator and automatic issue creation before the manual review queue proves useful |
+| [AI Engineering Hub](https://github.com/patchy631/ai-engineering-hub) | Large collection of runnable AI tutorials and projects organised by skill/difficulty | Separate learning/tutorial material from normative engineering controls; identify runnable examples and environment requirements | Large resource collections are not evidence repositories; project count is not proof of quality or adoption |
 
 ### Product-fit recommendation
 
 Keep the current architecture: Markdown and Git remain the source of truth; the small Python CLI remains the retrieval layer; CI checks record integrity.
+## 2A. Documentation organisation: use Diátaxis as a reading map, not a mass migration
+
+[Diátaxis](https://diataxis.fr/) distinguishes four documentation needs: **tutorials** (learning by doing), **how-to guides** (accomplishing a task), **reference** (authoritative information) and **explanation** (understanding why). It is a content-design framework, not a requirement to move every file into four new directories.
+
+For Codex-Guidas, the useful adaptation is a front-door reading map:
+- **Tutorial:** first knowledge search and validation; a newcomer should be able to run the CLI and interpret its limits.
+- **How-to:** triage a defect, apply a prior lesson, add a lesson, verify a change and perform a review.
+- **Reference:** metadata schema, lifecycle taxonomy, CLI commands, templates, evidence ladders and project crosswalks.
+- **Explanation:** methodology–knowledge architecture, operating principles, research findings and the rationale behind the 33-based methods.
+
+Keep the existing domain folders and source-evidence layout. Add a navigational Diátaxis map and classify new user-facing docs where useful; do not re-home all 41 lessons or project records just to satisfy a documentation taxonomy. A defect record or lesson is an evidence object, not automatically a tutorial or how-to guide.
+
+This also avoids a category error: **documentation-as-code is already partly implemented** because Markdown lives in Git, changes are reviewed through PRs, and CI validates metadata and local links. Adding MkDocs or Docusaurus would add a publishing layer, not create documentation-as-code from scratch. Build and publish a site only when there is a defined external audience, navigation problem or publishing need.
 
 The nearest feature match for decision history is Log4brains/MADR. The closest future publishing options are GitBook or a lightweight static documentation site. Backstage becomes relevant when there are enough distinct services, owners and dependencies to justify a catalog. Rootly/incident.io-style incident coordination becomes relevant when incidents require multiple responders, escalation and cross-system action tracking. None is a replacement for the evidence and authority boundaries already defined here.
 
@@ -133,6 +161,41 @@ The 2026 GitHub Actions study observed only three cases of unresolvable action r
 - Add semantic retrieval or a database only when keyword retrieval is shown to miss relevant records or become operationally slow.
 
 ## 6. How to measure whether these improvements work
+## 5A. Assessment of the additional recommendations
+
+| Recommendation | Decision for Codex-Guidas | Reason |
+|---|---|---|
+| Diátaxis | **Adopt selectively** as a reading map and content-design guide | Improves discovery without a disruptive repository-wide move |
+| Documentation-as-code | **Already partly in place**; improve tests and freshness | Git, PRs and CI are already the canonical authoring path |
+| Stronger README/front door | **Retain and refine** | README now states purpose, offers core paths, CLI commands, test command and benchmark; revisit with actual user feedback |
+| CONTRIBUTING.md | **Already present** | Defines evidence, search and authority boundaries |
+| SECURITY.md | **Added on this feature branch** | Explains private reporting is not active until enabled and verified in GitHub settings |
+| CODE_OF_CONDUCT.md | **Defer until a public contributor/community process is intentionally opened** | A conduct standard matters when the project accepts public participation; avoid presenting a file as a substitute for moderation capacity |
+| CHANGELOG.md and Semantic Versioning | **Defer until there are tagged user-facing releases or external CLI/API consumers** | Not every knowledge-base update is a release; PR history is sufficient while the project remains maintainer-led |
+| CLA or DCO | **Do not add yet** | The repository has deliberately not chosen an outbound reuse licence. Resolve ownership, intended reuse and contribution policy first |
+| MkDocs/Docusaurus | **Defer** | The repo's current audience and navigation needs do not justify maintaining a publishing toolchain |
+| Link checking / Markdown lint | **Incremental** | Local Markdown target validation exists. Add linting and external-link checks only with controlled false-positive handling and maintainable tooling |
+| New-repo bootstrap checklist | **High potential** as a separate reusable knowledge pack | Useful across projects, but it should be derived from actual project onboarding and risk requirements rather than copied as a generic 200-item checklist |
+
+### Important IP distinction: DCO is not a CLA
+
+The Linux Foundation describes the DCO as a contributor's affirmation that they have the right to submit a contribution under the project's stated licence. It is not itself a licence or contract and does not grant the project owner broader relicensing rights. A CLA is a separate agreement whose grant terms vary; it can provide broader inbound rights while copyright ownership generally remains with the author unless the agreement says otherwise.
+
+Therefore neither should be added as a ritual:
+1. Decide who owns existing text/code and which external uses are intended.
+2. Select and review the outbound licence for the repository.
+3. Decide whether contributions are open, restricted or maintainer-only.
+4. Only then choose an appropriate inbound mechanism (DCO, CLA or another policy) with legal review.
+
+Until those decisions are made, keep the repository's no-external-licence warning visible and do not imply that contributions can be relicensed or redistributed on terms that have not been agreed.
+
+### Other claims in the supplied assessment
+
+- **GPL:** Saying that using a GPL library always forces a proprietary startup to open-source its whole codebase is too broad. The GNU FAQ distinguishes incorporating/linking code into a combined program from using a GPL development tool or distributing separate independent programs alongside one another. Obligations depend on the licence version, how components are combined and whether the combined work is conveyed/distributed. LGPL and AGPL have different terms. Review each dependency and integration with qualified legal advice; do not make blanket claims.
+- **Solo-maintainer risk:** This is real operational concentration, but hiring a co-maintainer prematurely is not the default remedy. First document ownership, recovery, release and incident steps; use least-privilege access; identify a backup maintainer when trust and capacity allow.
+- **Regional configuration:** Hardcoded regions, account IDs, endpoints and resource names become risks when environments or deployment regions differ. Make environment-specific values configuration and test every supported deployment target; do not abstract for regions a project will never use.
+- **Money and credits:** Where a project handles value, use explicit currency and decimal/minor-unit representations, defined rounding rules, idempotent credit/debit operations, ledger invariants and boundary tests. A generic `round()` call is not a financial policy.
+- **Premature refactoring / “ego” / hiring by enthusiasm:** These are product and team-management risks, not repository defects in themselves. Translate them into observable practices: ship the smallest safe experiment, solicit disconfirming feedback, document decisions and recruit for a real capability gap. Do not use “launch fast” to bypass security, privacy or safeguarding gates.
 
 Do not count markdown files, templates or tool integrations as impact. Establish a baseline and review:
 
@@ -150,6 +213,9 @@ A rise in reported defects can mean better detection, not deteriorating quality.
 
 ### Startup engineering and testing
 - Klotins, E., Unterkalmsteiner, M. & Gorschek, T. (2019). *Software engineering in start-up companies: An analysis of 88 experience reports*. Empirical Software Engineering. [https://doi.org/10.1007/s10664-018-9620-y](https://doi.org/10.1007/s10664-018-9620-y)
+- *Exploration of Technical Debt in Start-ups* (ICSE-SEIP 2018). Survey material from 86 startups reported that 26 (30%) were attempting test automation and 17 (20%) explicitly reported no automation; manual exploratory testing remained a primary practice. [Research publication record](https://www.researchgate.net/publication/325728693_Exploration_of_technical_debt_in_start-ups) (secondary-hosted paper text; verify publisher copy for formal citation).
+- *Bridging the Gap: Addressing Software Testing Challenges in Namibian Startups through a Tailored Training Approach*. Study of 11 Namibian startups; 86% reported substantial manual testing and lack of automation. [IEEE Xplore](https://ieeexplore.ieee.org/document/10653696)
+- The “91%” claim is attributed to an individual audit of 47 failed startups in business/technology reporting, not to the 86-startup academic survey. [Inc. coverage](https://www.inc.com/maria-jose-gutierrez-chavez/47-startups-failed-most-made-the-same-coding-mistake/91251802).
 - Zheng, L. et al. (2026). *Why Do GitHub Actions Workflows Fail? An Empirical Study*. ACM Transactions on Software Engineering and Methodology. [https://doi.org/10.1145/3749371](https://doi.org/10.1145/3749371)
 
 ### Documentation quality and drift
@@ -166,6 +232,11 @@ A rise in reported defects can mean better detection, not deteriorating quality.
 - OpenSSF, [Scorecard](https://github.com/ossf/scorecard) and [Best Practices Badge](https://openssf.org/projects/best-practices-badge/)
 
 ### Knowledge, decisions and incident learning examples
+### Documentation, community health and IP
+- Diátaxis, [Start here](https://www.diataxis.fr/start-here/)
+- GitHub Docs, [Community health files](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file)
+- Linux Foundation, [DCO](https://bestpractices.linuxfoundation.org/ip/contribution-mechanisms-dco.html) and [DCO/CLA contribution mechanisms](https://bestpractices.linuxfoundation.org/ip/contribution-mechanisms.html)
+- GNU Project, [GPL Frequently Asked Questions](https://www.gnu.org/licenses/gpl-faq.en.html)
 - [MADR](https://github.com/adr/madr)
 - [Log4brains](https://github.com/thomvaill/log4brains)
 - Backstage, [TechDocs](https://backstage.io/docs/features/techdocs/)
