@@ -22,6 +22,7 @@ We preserve reusable engineering knowledge so that each project benefits from th
 | [Which method should I use?](docs/method-selection.md) | Choose the right method without combining maturity scores |
 | [Methodology–knowledge architecture](docs/methodology-knowledge-architecture.md) | How reasoning methods, knowledge retrieval and project authority work together |
 | [Startup repository benchmark](docs/research/2026-11-19-startup-repo-and-engineering-knowledge-benchmark.md) | Research on startup engineering failures, comparable products and proportionate repository controls |
+| [Defect prediction experiment](docs/research/defect-prediction-experiment-proposal.md) | Proposed, human-reviewed JIT risk-prioritisation experiment; no automated gate |
 | [Reading map](docs/reading-map.md) | Find tutorials, how-to guides, reference material and explanations |
 | [New Repository Bootstrap and Assurance](packs/new-repository-bootstrap/README.md) | Establish a proportionate repository baseline and apply risk-triggered overlays |
 | [First knowledge search tutorial](docs/tutorials/first-knowledge-search.md) | Run the CLI and interpret the results safely |
@@ -38,16 +39,24 @@ We preserve reusable engineering knowledge so that each project benefits from th
 | [Defect Intelligence](11-defect-intelligence/README.md) | Defect intake, similarity search, verification and learning loop |
 | [33-Perspective Register](doctrines/33-perspective-master-register.md) | Proposed lenses for evidence-led, proportionate decision review |
 
-## Find a prior lesson or defect
+## Find related knowledge
 
-Run the local search tool before triage or implementation:
+Use the local CLI before a consequential investigation or proposed fix:
 
     python scripts/codex.py search "partial write storage"
     python scripts/codex.py search "hydration failure" --project SOULSYNCMOBILE
     python scripts/codex.py review-queue
     python scripts/codex.py validate
 
-Search results are candidate records, not a root-cause verdict. Inspect the evidence and applicability boundary before reusing a control.
+Recommended search order:
+1. Search the lesson records by symptom, component and failure mode.
+2. Search prior DEF records for similar observations and hypotheses.
+3. Search the owning project's issues, commits, tests, CI runs and incident notes.
+4. Consult related projects only for transferable principles; re-check applicability in the receiving project.
+
+Search results are candidate records, not a root-cause verdict. Inspect evidence, dates, exact source refs and applicability boundaries before reusing a control. Record terms and matching IDs in a DEF when the search materially informs triage or a fix.
+
+The CLI currently provides local keyword retrieval and metadata filters. It is not semantic search. A generated JSON index, richer curated tags and one-command capture are follow-up improvements to validate against real usage; do not mistake this roadmap for implemented functionality.
 
 ## Verify the knowledge tooling
 
@@ -63,11 +72,11 @@ Use the [methodology–knowledge architecture](docs/methodology-knowledge-archit
 
 ## Reusable knowledge packs
 
-The [Reusable Knowledge Packs](packs/README.md) directory provides bounded, versioned units that can be copied into existing repositories or used to seed new ones. It includes an adoption record, machine-readable manifest, provenance rules and explicit maturity limitations. Teams can fork the whole repository or selectively adopt one pack; copying a pack does not transfer project-specific authority or prove its controls.
+The [Reusable Knowledge Packs](packs/README.md) directory provides bounded, versioned units that can be copied into existing repositories or used to seed new ones. It includes an adoption record, machine-readable manifest, provenance rules and explicit maturity limitations. Teams can fork the whole repository or selectively adopt one pack; copying a pack does not transfer project-specific authority or prove its controls. Pack changes are tracked in [packs/CHANGELOG.md](packs/CHANGELOG.md).
 
 ## Technical integrity framework
 
-The [Tri-Tier 33 Framework](doctrines/tri-tier-33/README.md) assesses codebase (Mind), persistence (Body), user interface (Spirit) and their seven Harmony seams. It is a proposed v0.3.0 technical instrument, distinct from the broader 33-Perspective strategic review. Its 99 tiers are proportionate assessment lenses, not 99 mandatory manual exercises or a certification.
+The [Tri-Tier 33 Framework](doctrines/tri-tier-33/README.md) assesses codebase (Mind), persistence (Body), user interface (Spirit) and their seven Harmony seams. It is a proposed v0.3.0 technical instrument, distinct from the broader 33-Perspective strategic review. Its 99 tiers are proportionate assessment lenses, not 99 mandatory manual exercises or a certification. The [timeboxed T1 review playbook](doctrines/tri-tier-33/t1-review-playbook.md) shows one proposed way to apply a focused review in up to two hours.
 
 ## Philosophy and doctrine
 
