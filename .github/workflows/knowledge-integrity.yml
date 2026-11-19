@@ -2,6 +2,7 @@ name: Knowledge integrity
 
 on:
   push:
+    branches: [main]
   pull_request:
   workflow_dispatch:
 
@@ -21,3 +22,13 @@ jobs:
           python-version: "3.12"
       - name: Validate metadata, IDs, index and local links
         run: python scripts/codex.py validate
+      - name: Smoke-test lesson and defect retrieval
+        shell: bash
+        run: |
+          python scripts/codex.py search "hydration" --project SOULSYNCMOBILE | tee search.out
+          grep -q "DEF-2026-001" search.out
+      - name: Smoke-test verification review queue
+        shell: bash
+        run: |
+          python scripts/codex.py review-queue --as-of 2026-11-19 | tee review-queue.out
+          grep -q "DEF-2026-001" review-queue.out
