@@ -175,7 +175,7 @@ The 2026 GitHub Actions study observed only three cases of unresolvable action r
 | CLA or DCO | **Do not add yet** | The repository has deliberately not chosen an outbound reuse licence. Resolve ownership, intended reuse and contribution policy first |
 | MkDocs/Docusaurus | **Defer** | The repo's current audience and navigation needs do not justify maintaining a publishing toolchain |
 | Link checking / Markdown lint | **Incremental** | Local Markdown target validation exists. Add linting and external-link checks only with controlled false-positive handling and maintainable tooling |
-| New-repo bootstrap checklist | **High potential** as a separate reusable knowledge pack | Useful across projects, but it should be derived from actual project onboarding and risk requirements rather than copied as a generic 200-item checklist |
+| New-repo bootstrap checklist | **Drafted as CG-PACK-006 on this feature branch**; proposed, not ratified or externally validated | Uses a proportionate baseline plus optional risk-triggered overlays; each receiving repository must adapt and verify controls locally |
 
 ### Important IP distinction: DCO is not a CLA
 
