@@ -90,3 +90,6 @@ These lessons remain provisional until exact-head browser regression execution a
 | CG-039 | JSON idempotency checks must compare canonical structure, not incidental object-key insertion order. | ScoutSA OPA-017 corrective change | Derived; canonical comparison and replay scenario committed, exact-head execution pending | Define canonicalization for the supported data model; preserve array semantics; test reordered keys, absent/null distinctions and nested structures. Do not call deterministic serialization a cryptographic integrity proof. |
 
 This additional lesson is provisional until exact-head regression execution and independent review. Source record: ScoutSA `prototype/internal-demo`, OPA-017.
+
+
+| CG-040 | Browser synchronization predicates must use the same semantic condition as the assertion and expose the observed UI state on timeout. | ScoutSA OPA-018 | Derived; root cause found and regex corrected, exact-head rerun pending | Prefer a shared predicate/helper; test regexes against actual rendered result strings; report the actual message and state when a wait times out. |
