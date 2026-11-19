@@ -32,7 +32,7 @@ This review combines peer-reviewed empirical studies, official documentation and
 We distinguish **common in the cited samples**, **recommended controls**, and **tail-risk scenarios**. We do not present every plausible failure mode as statistically common in startups.
 ### A note on the “91% of failed startups had no automated tests” figure
 
-The 91% figure appears in a 2025/2026-era business/technology article attributing it to an individual audit of 47 failed startup codebases. I could not find a peer-reviewed study or an independently inspectable sampling protocol supporting that number. It may describe that particular audit, but it should **not** be repeated as a general startup failure statistic without the underlying data, selection criteria, definition of “automated testing” and audit method.
+The 91% figure appears in an October 20, 2025 business/technology article attributing it to an individual audit of 47 failed startup codebases. I could not find a peer-reviewed study or an independently inspectable sampling protocol supporting that number. It may describe that particular audit, but it should **not** be repeated as a general startup failure statistic without the underlying data, selection criteria, definition of “automated testing” and audit method.
 
 Better-described research reports materially different results:
 - An ICSE 2018 technical-debt study surveyed 86 startups: 26 (about 30%) were attempting to implement test automation and 17 (about 20%) explicitly stated that no test automation was used. Manual exploratory testing was still reported as the primary quality practice. The study does not support “91% had no tests.”
