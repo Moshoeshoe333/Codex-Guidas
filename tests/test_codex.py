@@ -154,12 +154,33 @@ class CodexCliTests(unittest.TestCase):
             layer=None,
             component=None,
             failure_mode=None,
+            tag=None,
         )
         output = io.StringIO()
         with redirect_stdout(output):
             result = codex.search(args)
         self.assertEqual(result, 0)
         self.assertIn("DEF-2026-001", output.getvalue())
+
+
+    def test_search_filters_by_explicit_tag(self):
+        metadata = lesson_metadata()
+        metadata["tags"] = ["persistence", "atomicity"]
+        self.write_record(self.lessons / "CG-001.md", metadata, "partial write storage")
+        args = Namespace(
+            query="partial write",
+            type="lesson",
+            project=None,
+            layer=None,
+            component=None,
+            failure_mode=None,
+            tag="atomicity",
+        )
+        output = io.StringIO()
+        with redirect_stdout(output):
+            result = codex.search(args)
+        self.assertEqual(result, 0)
+        self.assertIn("CG-001", output.getvalue())
 
     def test_review_queue_marks_past_due_record_overdue(self):
         record = self.defects / "DEF-2026-001-storage-hydration.md"

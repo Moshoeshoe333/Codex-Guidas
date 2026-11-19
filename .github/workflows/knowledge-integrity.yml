@@ -24,6 +24,8 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Validate metadata, IDs, index and local links
         run: python scripts/codex.py validate
+      - name: Build machine-readable knowledge index
+        run: python scripts/build_index.py --output /tmp/knowledge-index.json
       - name: Smoke-test lesson and defect retrieval
         shell: bash
         run: |

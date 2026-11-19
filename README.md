@@ -47,6 +47,10 @@ Use the local CLI before a consequential investigation or proposed fix:
     python scripts/codex.py search "hydration failure" --project SOULSYNCMOBILE
     python scripts/codex.py review-queue
     python scripts/codex.py validate
+    python scripts/codex.py search "atomic write" --tag persistence
+    python scripts/build_index.py
+
+The generated JSON index is written to `index/knowledge-index.json`. It is a machine-readable projection of Markdown metadata, not a separate source of truth. Rebuild it after record changes; never edit it by hand. Curated tags can be added to a record frontmatter and searched with `--tag`; an empty tag list means no tag has been assigned.
 
 Recommended search order:
 1. Search the lesson records by symptom, component and failure mode.
@@ -56,7 +60,16 @@ Recommended search order:
 
 Search results are candidate records, not a root-cause verdict. Inspect evidence, dates, exact source refs and applicability boundaries before reusing a control. Record terms and matching IDs in a DEF when the search materially informs triage or a fix.
 
-The CLI currently provides local keyword retrieval and metadata filters. It is not semantic search. A generated JSON index, richer curated tags and one-command capture are follow-up improvements to validate against real usage; do not mistake this roadmap for implemented functionality.
+The CLI provides local keyword retrieval and metadata filters. It is not semantic search. Use the quick-capture helper to allocate a new ID and create a record from the full or minimal template. Search results and index entries remain retrieval aids, not root-cause findings or authority.
+
+## Capture a new record
+
+Create a lesson or defect from the repository root:
+
+    python scripts/new_record.py lesson --title "A concise lesson title" --project ScoutSA --quick
+    python scripts/new_record.py defect --title "A factual defect summary" --project SOULSYNCMOBILE --quick
+
+The helper allocates the next unused ID, writes a full metadata header, creates the selected capture template and updates the corresponding register. It does not invent an origin date, source evidence or verification result. Review the generated file before committing it.
 
 ## Verify the knowledge tooling
 

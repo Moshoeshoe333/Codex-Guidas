@@ -159,6 +159,8 @@ def validate_records():
             validate_date(meta.get(field), field, rel, errors)
         if meta.get("verification_status") not in VERIFICATION:
             errors.append(f"{rel}: invalid verification_status {meta.get('verification_status')!r}")
+        if "tags" in meta and (not isinstance(meta["tags"], list) or not all(isinstance(x, str) and x.strip() for x in meta["tags"])):
+            errors.append(f"{rel}: tags must be an array of non-empty strings when present")
         if meta.get("verification_status") == "pending" and meta.get("verification_due") is None:
             errors.append(f"{rel}: pending verification requires verification_due")
         for field in ("evidence_class", "source_path", "review_scope"):
@@ -218,6 +220,8 @@ def search(args):
             continue
         if args.failure_mode and args.failure_mode.casefold() not in str(meta.get("failure_mode") or "").casefold():
             continue
+        if args.tag and args.tag.casefold() not in [tag.casefold() for tag in meta.get("tags", [])]:
+            continue
         haystack = json.dumps(meta, ensure_ascii=False).casefold() + "\n" + body.casefold()
         if all(term in haystack for term in terms):
             matches.append((path, meta))
@@ -272,6 +276,7 @@ def main():
     search_parser.add_argument("--layer", choices=sorted(LAYERS))
     search_parser.add_argument("--component")
     search_parser.add_argument("--failure-mode")
+    search_parser.add_argument("--tag", help="Match an explicitly curated frontmatter tag.")
     queue_parser = sub.add_parser("review-queue", help="List pending verifications and overdue follow-ups.")
     queue_parser.add_argument("--as-of", help="ISO date for deterministic review; defaults to today.")
     args = parser.parse_args()

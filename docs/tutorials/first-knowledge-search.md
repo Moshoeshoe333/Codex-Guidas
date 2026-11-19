@@ -70,6 +70,25 @@ For a consequential decision, use [the methodology–knowledge architecture](../
 
 Choose whether the prior lesson should be applied, adapted, referenced only or rejected. Re-establish current facts and verification in the owning project. Codex-Guidas does not authorize a change to another repository.
 
+## Build the machine-readable index
+
+The JSON index is generated from the Markdown records and is not an independent source of truth:
+
+```bash
+python scripts/build_index.py
+```
+
+Explicitly curated tags can be filtered with `--tag`, for example `python scripts/codex.py search "write" --tag atomicity`. Existing records without tags remain searchable by their text and metadata filters.
+
+## Capture a new record
+
+```bash
+python scripts/new_record.py lesson --title "A concise lesson title" --project ScoutSA --quick
+python scripts/new_record.py defect --title "A factual defect summary" --project SOULSYNCMOBILE --quick
+```
+
+The helper allocates an unused ID and updates the relevant register. It leaves unknown provenance and dates explicit; inspect the generated record before committing.
+
 ## Commands
 
 ### Validate records

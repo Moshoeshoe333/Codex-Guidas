@@ -21,11 +21,13 @@ Structured record files begin with YAML frontmatter delimited by three hyphens. 
 | verification_status | string | pending, source-only, not-claimed, verified or blocked. |
 | source_path | string | Provenance pointer to the source record or artifact. |
 | review_scope | string | What this metadata/content review did and did not establish. |
+| tags | optional array of strings | Curated retrieval tags; omit or use an empty array when not established. Tags are labels, not evidence or status. |
 
 ## Interpretation rules
 
 - Null means unknown or not applicable. It is not a guessed default.
-- Layer and component values are retrieval tags, not architecture certification.
+- Layer and component values are retrieval facets, not architecture certification.
+- Optional tags are curated by a maintainer; do not infer them from a model suggestion or automatically promote them to evidence. The generated index preserves only explicitly supplied tags.
 - The original ledger is retained in 01-lessons-learned; individual lesson files are the current indexed records.
 - The 2026-11-19 migration set last_reviewed to that date for a structural review of record text and metadata only. It did not re-execute source tests or independently validate each referenced project.
 - A 2026-12-19 deadline was assigned to entries explicitly marked as pending verification in the source ledger. This is an administrative follow-up date, not evidence that verification is complete.
