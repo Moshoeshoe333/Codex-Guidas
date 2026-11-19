@@ -22,6 +22,8 @@ We preserve reusable engineering knowledge so that each project benefits from th
 | [Which method should I use?](docs/method-selection.md) | Choose the right method without combining maturity scores |
 | [Methodology–knowledge architecture](docs/methodology-knowledge-architecture.md) | How reasoning methods, knowledge retrieval and project authority work together |
 | [Startup repository benchmark](docs/research/2026-11-19-startup-repo-and-engineering-knowledge-benchmark.md) | Research on startup engineering failures, comparable products and proportionate repository controls |
+| [Reading map](docs/reading-map.md) | Find tutorials, how-to guides, reference material and explanations |
+| [First knowledge search tutorial](docs/tutorials/first-knowledge-search.md) | Run the CLI and interpret the results safely |
 | [Architecture patterns](03-architecture/project-patterns.md) | Reusable design patterns and boundaries |
 | [Security and safeguarding](04-security/safeguarding-and-threat-modeling.md) | Threat modelling, privacy and safety lessons |
 | [Testing and CI](05-testing-verification/verification-and-ci.md) | Verification layers and regression discipline |
