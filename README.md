@@ -23,6 +23,7 @@ We preserve reusable engineering knowledge so that each project benefits from th
 | [Methodology–knowledge architecture](docs/methodology-knowledge-architecture.md) | How reasoning methods, knowledge retrieval and project authority work together |
 | [Startup repository benchmark](docs/research/2026-11-19-startup-repo-and-engineering-knowledge-benchmark.md) | Research on startup engineering failures, comparable products and proportionate repository controls |
 | [Reading map](docs/reading-map.md) | Find tutorials, how-to guides, reference material and explanations |
+| [New Repository Bootstrap and Assurance](packs/new-repository-bootstrap/README.md) | Establish a proportionate repository baseline and apply risk-triggered overlays |
 | [First knowledge search tutorial](docs/tutorials/first-knowledge-search.md) | Run the CLI and interpret the results safely |
 | [Architecture patterns](03-architecture/project-patterns.md) | Reusable design patterns and boundaries |
 | [Security and safeguarding](04-security/safeguarding-and-threat-modeling.md) | Threat modelling, privacy and safety lessons |
