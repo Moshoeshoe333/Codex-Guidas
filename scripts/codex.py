@@ -129,8 +129,10 @@ def validate_records():
             if rid in seen:
                 errors.append(f"duplicate ID {rid}: {seen[rid]} and {rel}")
             seen[rid] = rel
-            if path.stem != rid:
-                errors.append(f"{rel}: filename stem does not match id {rid}")
+            if path.parent == LESSONS and path.stem != rid:
+                errors.append(f"{rel}: lesson filename stem must exactly match id {rid}")
+            if path.parent == DEFECTS and path.stem != rid and not path.stem.startswith(rid + "-"):
+                errors.append(f"{rel}: defect filename must be the ID or begin with ID plus a descriptive suffix: {rid}")
             heading = next((ln.strip() for ln in body.splitlines() if ln.startswith("# ")), "")
             if not heading.startswith("# " + rid + " —"):
                 errors.append(f"{rel}: first heading must begin with '# {rid} —'")
