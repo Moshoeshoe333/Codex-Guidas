@@ -18,6 +18,8 @@ A tutorial should help a new reader complete a safe learning journey. It should 
 - [Defect Intelligence](../11-defect-intelligence/system.md) — detect, triage, investigate, verify and close a defect.
 - [Knowledge application](methodology-knowledge-architecture.md) — decide whether a prior lesson should be applied, adapted, referenced or rejected.
 - [Knowledge application record](../09-templates/knowledge-application-record.md) — capture consequential cross-project transfer.
+- [New Repository Bootstrap and Assurance](../packs/new-repository-bootstrap/README.md) — establish a minimum baseline and choose risk overlays for a new or existing repository.
+- [Baseline checklist](../packs/new-repository-bootstrap/BASELINE-CHECKLIST.md) — record control status and receiving-project evidence.
 
 How-to guidance should name prerequisites, decision authority, expected outcome and stop conditions.
 
