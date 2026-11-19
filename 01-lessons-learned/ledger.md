@@ -75,3 +75,13 @@ These are provisional cross-project lessons derived from source inspection. They
 | CG-036 | Idempotency comparison must cover the full deterministic imported projection while excluding explicitly mutable operational decisions. | ScoutSA OPA-015 | Derived from static source review; regression verification pending | Compare all deterministic source/importer-derived fields, including provenance markers; preserve human decision fields separately; test each omitted field by deliberate mutation. |
 
 These are provisional reusable controls derived from one synthetic prototype review. They are not Verified practices, do not establish database transaction safety, and must be revalidated in each project. Source record: [ScoutSA Tournament Organiser Portal audit — 2026-11-19 Tri-Tier 33 assessment](https://github.com/Moshoeshoe333/ScoutSA/blob/prototype/internal-demo/prototype/verification/TOURNAMENT-ORGANIZER-PORTAL-AUDIT-2026-11-18.md).
+
+
+## Additional lessons from ScoutSA organizer import correction (2026-11-19)
+
+| ID | Lesson | Origin | Evidence class | Reusable control |
+|---|---|---|---|---|
+| CG-037 | Multi-collection imports should stage and validate the complete resulting state before crossing one explicit commit boundary. | ScoutSA OPA-013/014 corrective change | Derived; source change committed, exact-head regression execution pending | Use prepare → validate → commit → present phases. Snapshot complete state on rejection; inject failures after commit; never describe an in-memory staged update as a durable transaction. |
+| CG-038 | A result schema must distinguish commit outcome, per-collection mutations and post-commit presentation outcome. | ScoutSA OPA-013/014 corrective change | Derived; source change and scenarios committed, exact-head regression execution pending | Return per-collection added/skipped/rejected counts, a clear committed/rejected outcome, and a separate presentation status. Verify the visible message against the actual state snapshot. |
+
+These lessons remain provisional until exact-head browser regression execution and independent review. The ScoutSA claim lifecycle proposal is not ratified and must not be treated as a universal schema.
