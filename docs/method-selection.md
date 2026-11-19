@@ -2,6 +2,8 @@
 
 This is the selection map for Codex-Guidas. Use the smallest method that answers the real question. The methods have different scopes; their scores and maturity states must not be combined.
 
+For the relationship between methodology, historical knowledge and project authority, see [Methodology and knowledge architecture](methodology-knowledge-architecture.md).
+
 ## Default path: every consequential change
 
 Use **Point → Knowing → Witness → Gate** as the decision discipline:
@@ -11,7 +13,7 @@ Use **Point → Knowing → Witness → Gate** as the decision discipline:
 3. **Witness:** collect inspectable evidence with source, date, method and limitations.
 4. **Gate:** state required evidence, decision owner, stop condition and authorized next step.
 
-Use this for research, defect triage and decisions that could materially affect users, data, money, safety or release scope. Keep it lightweight for routine changes.
+Use this for research, defect triage and decisions that could materially affect users, data, money, safety or release scope. Keep it lightweight for routine changes. When a prior lesson materially changes a consequential decision, use the [knowledge-application record](../09-templates/knowledge-application-record.md) to show how its evidence and limits were assessed.
 
 ## Select the specialist instrument
 
@@ -42,3 +44,5 @@ The labels answer different questions. Never add, average or transfer a level fr
 ## Quick decision rule
 
 If a defect is being fixed, search first and verify the smallest correction. If a decision is consequential, write the Point/Knowing/Witness/Gate contract. Add a specialist method only when its distinct question is relevant. If a method does not change the evidence collected, the risk exposed or the decision made, do not add it.
+
+Codex-Guidas can surface past learning; the owning project must still re-establish current facts, authorize changes and verify the receiving context.
