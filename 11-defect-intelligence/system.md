@@ -1,15 +1,15 @@
 # Codex-Guidas Defect Intelligence System
 
 **Status:** Proposed operating mechanism — ready for controlled manual use.  
-**Version:** 0.1  
+**Version:** 0.2  
 **Owner:** Project maintainers  
-**Last reviewed:** 2026-11-18
+**Last reviewed:** 2026-11-19
 
 ## 1. Purpose
 
 Turn defects, near misses, confusing test failures and operational surprises into reusable engineering knowledge. The system should reduce repeat failures and shorten diagnosis without becoming a bureaucracy or an autonomous authority to change production code.
 
-It is a learning and traceability mechanism, not a guarantee of defect-free software.
+It is a learning and traceability mechanism, not a guarantee of defect-free software. Its relationship to the broader reasoning method and project authority is defined in the [methodology–knowledge architecture](../docs/methodology-knowledge-architecture.md).
 
 ## 2. Operating loop
 
@@ -25,6 +25,8 @@ It is a learning and traceability mechanism, not a guarantee of defect-free soft
 8. **Verify:** run targeted regression tests and relevant wider checks. Record exact command, environment, commit and outcome.
 9. **Learn:** update the defect record and, only when reusable, add or revise a cross-project lesson.
 10. **Close:** close only when acceptance criteria are met and residual risk is explicit. Otherwise leave open, mitigated or blocked.
+
+For consequential cases where prior knowledge materially affects the response, make the reasoning explicit with the [knowledge-application record](../09-templates/knowledge-application-record.md). A short retrieval note is sufficient for routine low-risk cases.
 
 ## 3. Defect record identity
 
@@ -143,7 +145,12 @@ A defect is eligible for closure only when:
 
 Start with manual Markdown records and search. Do not build a database, bot, dashboard or cross-repository automation until repeated usage demonstrates a real bottleneck. The first proof is whether the process helps us find and prevent a repeated defect with less time and better evidence.
 
-
 ## 14. Structured retrieval
 
 Individual records carry machine-readable frontmatter. The metadata schema defines fields; record taxonomy is the canonical lifecycle/severity vocabulary. Use the repository search before triage and the review queue during monthly maintenance. Search results are suggestions only; maintainers inspect evidence and determine whether causes are genuinely equivalent.
+
+## 15. Knowledge application
+
+For consequential decisions influenced by another project's lesson, use the [knowledge-application record](../09-templates/knowledge-application-record.md). It captures the retrieval, contextual differences, transfer outcome, project decision owner and receiving-project evidence. Use one of four explicit outcomes: apply, adapt, reference only or reject.
+
+This step is selective. A search that does not influence the decision does not need a separate record. Never treat the Codex-Guidas record as an authorization to change the owning project.
