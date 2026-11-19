@@ -55,7 +55,7 @@ class NewRecordTests(unittest.TestCase):
         path = new_record.create_record("defect", "Partial write", "SoulSyncMobile", True, root=self.root)
         content = path.read_text(encoding="utf-8")
         self.assertIn('severity: "S4"', content)
-        self.assertIn("Provisional severity: S4", content)
+        self.assertIn("**Provisional severity:** S4", content)
         self.assertIn("[DEF-", (self.root / "11-defect-intelligence" / "README.md").read_text(encoding="utf-8"))
 
     def test_existing_id_is_not_overwritten(self):
