@@ -22,15 +22,16 @@ These layers inform one another but must not be collapsed. The method determines
 
 ## Default operating sequence
 
-Use the smallest proportionate version of this sequence for consequential work:
+Use the smallest proportionate version of the established sequence for consequential work:
 
 1. **Point — define the decision.** State the user/risk problem, intended outcome, decision to make, scope, exclusions and stop condition.
-2. **Knowing — establish what is known.** Separate observed facts, derived conclusions, assumptions, hypotheses, contradictions and unknowns. Capture the current project baseline.
-3. **Retrieve — consult institutional memory.** Search Codex-Guidas lessons and defect records. Record terms, results and IDs considered. Search the owning project's issues, commits and tests as well. A match is a lead, not proof of identical cause.
-4. **Witness — test applicability with evidence.** Inspect original evidence and dates. Compare system boundaries, versions, threat models, users, data, environment and operating conditions. Record where a prior lesson transfers and where it does not.
-5. **Gate — decide whether and how to proceed.** Name the project decision owner, required evidence, acceptance criteria and explicit authorization. A lesson or AI recommendation cannot pass this gate.
-6. **Execute and verify in the owning project.** Make only the authorized change. Record exact repository, branch, full commit SHA, commands, environment, test results, failures and untested surfaces.
-7. **Learn — update the knowledge record.** Link the result back to the source project. Reuse an existing lesson where possible; add a new lesson only when a transferable principle or control has been established.
+2. **Knowing — establish what is known.** Separate observed facts, derived conclusions, assumptions, hypotheses, contradictions and unknowns. Capture the current project baseline. As part of Knowing, retrieve potentially relevant prior lessons and defects from Codex-Guidas and search the owning project's issues, commits and tests. Record useful terms, results and IDs considered. A match is a lead, not proof of identical cause.
+3. **Witness — test claims and applicability with evidence.** Inspect original evidence and dates. Compare system boundaries, versions, threat models, users, data, environment and operating conditions. Record where a prior lesson transfers and where it does not. The source evidence must support the claim being carried forward.
+4. **Gate — decide whether and how to proceed.** Name the project decision owner, required evidence, acceptance criteria and explicit authorization. A lesson or AI recommendation cannot pass this gate.
+
+After the Gate, execute and verify only the authorized change in the owning project. Record exact repository, branch, full commit SHA, commands, environment, test results, failures and untested surfaces. Then update Codex-Guidas with the result, reusing an existing lesson where possible and adding a new lesson only when a transferable principle or control has been established.
+
+**Retrieval is a supporting activity within Knowing and Witness, not a fifth stage and not a change to Point → Knowing → Witness → Gate.**
 
 For low-risk routine changes, this may be a few lines in the PR or commit record. Do not make every minor edit complete a full assessment.
 
