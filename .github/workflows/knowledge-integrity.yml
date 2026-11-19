@@ -24,8 +24,15 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Validate metadata, IDs, index and local links
         run: python scripts/codex.py validate
-      - name: Build machine-readable knowledge index
-        run: python scripts/build_index.py --output /tmp/knowledge-index.json
+      - name: Build and inspect machine-readable knowledge index
+        run: |
+          python scripts/build_index.py --output /tmp/knowledge-index.json
+          python -c "import json; d=json.load(open('/tmp/knowledge-index.json', encoding='utf-8')); assert any(r['id']=='DEF-2026-002' and 'persistence' in r['tags'] for r in d['records'])"
+      - name: Smoke-test curated tag retrieval
+        shell: bash
+        run: |
+          python scripts/codex.py search "non-atomic" --tag persistence | tee tag-search.out
+          grep -q "DEF-2026-002" tag-search.out
       - name: Smoke-test lesson and defect retrieval
         shell: bash
         run: |
