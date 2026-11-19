@@ -85,3 +85,8 @@ These are provisional reusable controls derived from one synthetic prototype rev
 | CG-038 | A result schema must distinguish commit outcome, per-collection mutations and post-commit presentation outcome. | ScoutSA OPA-013/014 corrective change | Derived; source change and scenarios committed, exact-head regression execution pending | Return per-collection added/skipped/rejected counts, a clear committed/rejected outcome, and a separate presentation status. Verify the visible message against the actual state snapshot. |
 
 These lessons remain provisional until exact-head browser regression execution and independent review. The ScoutSA claim lifecycle proposal is not ratified and must not be treated as a universal schema.
+
+
+| CG-039 | JSON idempotency checks must compare canonical structure, not incidental object-key insertion order. | ScoutSA OPA-017 corrective change | Derived; canonical comparison and replay scenario committed, exact-head execution pending | Define canonicalization for the supported data model; preserve array semantics; test reordered keys, absent/null distinctions and nested structures. Do not call deterministic serialization a cryptographic integrity proof. |
+
+This additional lesson is provisional until exact-head regression execution and independent review. Source record: ScoutSA `prototype/internal-demo`, OPA-017.
