@@ -14,6 +14,7 @@ evidence_class: "SOURCE-OBSERVED + MOCK-BACKED HOOK REPRODUCTION; native persist
 verification_status: "pending"
 source_path: "11-defect-intelligence/ledger.md (DI-2026-11-18-SSM-001)"
 review_scope: "source record and later DI hook-test evidence reconciled; no native-device or application-fix verification"
+tags: ["persistence","atomicity","partial-write","data-integrity"]
 ---
 
 # DEF-2026-002 — A logical scan record spans two non-atomic persistence writes

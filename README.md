@@ -47,7 +47,7 @@ Use the local CLI before a consequential investigation or proposed fix:
     python scripts/codex.py search "hydration failure" --project SOULSYNCMOBILE
     python scripts/codex.py review-queue
     python scripts/codex.py validate
-    python scripts/codex.py search "atomic write" --tag persistence
+    python scripts/codex.py search "non-atomic" --tag persistence
     python scripts/build_index.py
 
 The generated JSON index is written to `index/knowledge-index.json`. It is a machine-readable projection of Markdown metadata, not a separate source of truth. Rebuild it after record changes; never edit it by hand. Curated tags can be added to a record frontmatter and searched with `--tag`; an empty tag list means no tag has been assigned.
