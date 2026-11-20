@@ -24,6 +24,13 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Validate metadata, IDs, index and local links
         run: python scripts/codex.py validate
+      - name: Validate assurance universe and invariant operation registers
+        run: python scripts/assurance_register.py validate
+      - name: Smoke-test assurance review queue
+        shell: bash
+        run: |
+          python scripts/assurance_register.py queue --as-of 2026-11-20 | tee assurance-queue.out
+          grep -q "CG-IC-001" assurance-queue.out
       - name: Build and inspect machine-readable knowledge index
         run: |
           python scripts/build_index.py --output /tmp/knowledge-index.json

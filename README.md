@@ -37,6 +37,7 @@ We preserve reusable engineering knowledge so that each project benefits from th
 | [Knowledge application record](09-templates/knowledge-application-record.md) | Record meaningful use of a prior lesson in another project |
 | [Framework Assessment Record](09-templates/framework-assessment-record.md) | Proposed evidence-linked record for bounded framework assessments |
 | [Defect Intelligence](11-defect-intelligence/README.md) | Defect intake, similarity search, verification and learning loop |
+| [Assurance registers](12-assurance/README.md) | Risk-tiered audit universe, change-trigger routing and invariant operation tracking |
 | [33-Perspective Register](doctrines/33-perspective-master-register.md) | Proposed lenses for evidence-led, proportionate decision review |
 
 ## Find related knowledge

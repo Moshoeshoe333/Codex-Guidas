@@ -1,0 +1,310 @@
+{
+  "schema_version": "1.0",
+  "register_status": "proposed-unratified",
+  "registered_on": "2026-11-20",
+  "authority_boundary": "This register identifies Codex-Guidas assurance assets and proposed review triggers. It does not authorize changes in other repositories, certify compliance, close project gates, or convert inventory review into an audit.",
+  "risk_tiers": {
+    "critical": "Credible severe safety, security, privacy or data-integrity exposure, active exploitation, or highly irreversible consequence.",
+    "high": "Material user, service, security or integrity consequence with significant exposure or limited mitigation.",
+    "moderate": "Meaningful governance, integrity or operational consequence, but bounded scope and plausible recovery/containment.",
+    "low": "Limited consequence and exposure with straightforward recovery.",
+    "unassessed": "Insufficient evidence to assign a defensible tier."
+  },
+  "audit_opinions": [
+    "pass",
+    "conditional",
+    "fail",
+    "abstain-insufficient-evidence"
+  ],
+  "evidence": [
+    {
+      "id": "CG-AU-EV-001",
+      "type": "repository_snapshot",
+      "uri": "https://github.com/Moshoeshoe333/Codex-Guidas/commit/b922a236fb1202c985f02b0a35faea1f95017fdf",
+      "observed_on": "2026-11-20",
+      "scope": "Read-only inspection of the current feature-branch tree and selected assurance, invariant, methodology, pack and CI files to identify assurance assets and proposed review triggers.",
+      "limitation": "Inventory evidence only; not an exhaustive source audit, security assessment, GitHub settings verification, runtime test or independent review. The branch remains a draft PR."
+    }
+  ],
+  "audit_assets": [
+    {
+      "id": "CG-AU-001",
+      "name": "Knowledge-tooling and CI pipeline",
+      "asset_type": "automation",
+      "path_scope": [
+        "scripts",
+        "tests",
+        ".github/workflows"
+      ],
+      "owner_role": "Codex-Guidas repository maintainer",
+      "decision_authority_role": "Repository owner for Codex-Guidas changes only",
+      "risk_tier": "moderate",
+      "risk_rating_status": "provisional",
+      "risk_rationale": "Provisional judgement: these scripts and workflows validate and retrieve engineering knowledge; a defect can create false confidence or suppress diagnostics. The repository is public, but this is not itself a production deployment pipeline.",
+      "risk_approval": null,
+      "review_interval_days": 60,
+      "last_inventory_review_on": "2026-11-20",
+      "last_audit_on": null,
+      "next_review_due": "2027-01-19",
+      "review_status": "identified",
+      "audit_opinion": null,
+      "inventory_evidence_refs": [
+        "CG-AU-EV-001"
+      ],
+      "audit_evidence_refs": [],
+      "change_triggers": [
+        {
+          "paths": [
+            "scripts",
+            "tests"
+          ],
+          "action": "Review validator/search behavior, regression coverage, failure handling and index consistency."
+        },
+        {
+          "paths": [
+            ".github/workflows"
+          ],
+          "action": "Review trigger permissions, pinned action provenance, runner/runtime compatibility and exact-head CI behavior."
+        }
+      ],
+      "limitations": [
+        "No repository settings, branch-protection rules, secrets configuration, runner administration or external integrations were verified."
+      ]
+    },
+    {
+      "id": "CG-AU-002",
+      "name": "Evidence lifecycle, lesson records and defect intelligence",
+      "asset_type": "knowledge-control",
+      "path_scope": [
+        "00-foundation",
+        "01-lessons-learned",
+        "09-templates",
+        "11-defect-intelligence"
+      ],
+      "owner_role": "Codex-Guidas repository maintainer",
+      "decision_authority_role": "Repository owner for knowledge-base status; owning project retains project-specific control and closure authority",
+      "risk_tier": "moderate",
+      "risk_rating_status": "provisional",
+      "risk_rationale": "Provisional judgement: incorrect evidence classification, lesson promotion or defect closure could mislead downstream project decisions. Current records preserve uncertainty and project authority boundaries, but operational effectiveness is not measured.",
+      "risk_approval": null,
+      "review_interval_days": 90,
+      "last_inventory_review_on": "2026-11-20",
+      "last_audit_on": null,
+      "next_review_due": "2027-02-18",
+      "review_status": "identified",
+      "audit_opinion": null,
+      "inventory_evidence_refs": [
+        "CG-AU-EV-001"
+      ],
+      "audit_evidence_refs": [],
+      "change_triggers": [
+        {
+          "paths": [
+            "00-foundation",
+            "09-templates",
+            "scripts"
+          ],
+          "action": "Review taxonomy/schema compatibility, evidence promotion rules, validator behavior and migration implications."
+        },
+        {
+          "paths": [
+            "01-lessons-learned",
+            "11-defect-intelligence"
+          ],
+          "action": "Review material status changes, provenance, defect lifecycle completeness and unresolved/overdue verification."
+        }
+      ],
+      "limitations": [
+        "The metadata validator cannot prove source truth, reviewer identity or competence, delegated authority, project implementation or recurrence reduction."
+      ]
+    },
+    {
+      "id": "CG-AU-003",
+      "name": "Methodologies, invariants and 33-framework lineage",
+      "asset_type": "methodology",
+      "path_scope": [
+        "02-methodologies",
+        "03-architecture",
+        "doctrines"
+      ],
+      "owner_role": "Codex-Guidas repository maintainer",
+      "decision_authority_role": "Repository owner for Codex-Guidas doctrine; each adopting project retains local design and release authority",
+      "risk_tier": "moderate",
+      "risk_rating_status": "provisional",
+      "risk_rationale": "Provisional judgement: these documents shape review methods and may be reused across projects. Misstated maturity, duplicated lineage or unbounded application could create false assurance or unnecessary process burden.",
+      "risk_approval": null,
+      "review_interval_days": 180,
+      "last_inventory_review_on": "2026-11-20",
+      "last_audit_on": null,
+      "next_review_due": "2027-05-19",
+      "review_status": "identified",
+      "audit_opinion": null,
+      "inventory_evidence_refs": [
+        "CG-AU-EV-001"
+      ],
+      "audit_evidence_refs": [],
+      "change_triggers": [
+        {
+          "paths": [
+            "02-methodologies",
+            "03-architecture",
+            "doctrines"
+          ],
+          "action": "Review claim maturity, evidence requirements, invariants, framework lineage/crosswalk and explicit validation limitations."
+        }
+      ],
+      "limitations": [
+        "This register does not certify the frameworks, specify all 33 tiers, validate every lens or authorize adoption by another project."
+      ]
+    },
+    {
+      "id": "CG-AU-004",
+      "name": "Reusable knowledge packs and adoption records",
+      "asset_type": "knowledge-pack",
+      "path_scope": [
+        "packs"
+      ],
+      "owner_role": "Codex-Guidas repository maintainer",
+      "decision_authority_role": "Repository owner for upstream pack content; receiving project owner for local adoption",
+      "risk_tier": "moderate",
+      "risk_rating_status": "provisional",
+      "risk_rationale": "Provisional judgement: a copied pack can transfer useful safeguards but can also transfer unsuitable assumptions, stale controls or licensing confusion. Each receiving project must revalidate local applicability and rights.",
+      "risk_approval": null,
+      "review_interval_days": 180,
+      "last_inventory_review_on": "2026-11-20",
+      "last_audit_on": null,
+      "next_review_due": "2027-05-19",
+      "review_status": "identified",
+      "audit_opinion": null,
+      "inventory_evidence_refs": [
+        "CG-AU-EV-001"
+      ],
+      "audit_evidence_refs": [],
+      "change_triggers": [
+        {
+          "paths": [
+            "packs"
+          ],
+          "action": "Review manifest, version/changelog alignment, maturity labels, upstream provenance, adoption guidance and licensing boundary."
+        }
+      ],
+      "limitations": [
+        "No external reuse licence is declared; no downstream adoption or control effectiveness is inferred from pack availability."
+      ]
+    }
+  ],
+  "invariant_controls": [
+    {
+      "id": "CG-IC-001",
+      "invariant_id": "INV-001",
+      "invariant_name": "Evidence ≠ Authority",
+      "scope": "Codex-Guidas repository records, knowledge tooling and contribution workflow only; not an assertion about operation in ScoutSA, SoulSync, SoulSyncMobile, NAVIGRE, UCI or another receiving project.",
+      "owner_role": "Codex-Guidas maintainer for register stewardship; operational owner must be assigned before operation can be claimed.",
+      "control_owner": null,
+      "ownership_status": "unassigned",
+      "design_state": "partially_documented",
+      "operating_status": "not_assessed",
+      "verification_method": "Sample verified-status promotion and ratification metadata; inspect whether project-specific decisions identify the owning authority and explicit approval. The validator checks declarations but cannot authenticate authority.",
+      "last_verified_on": null,
+      "next_review_due": "2026-12-04",
+      "evidence_refs": [],
+      "notes": "Initial operational baseline not yet performed. The review date is a proposed owner-assignment and verification-planning trigger, not a completed audit or evidence of operation."
+    },
+    {
+      "id": "CG-IC-002",
+      "invariant_id": "INV-002",
+      "invariant_name": "Design ≠ Implementation",
+      "scope": "Codex-Guidas repository records, knowledge tooling and contribution workflow only; not an assertion about operation in ScoutSA, SoulSync, SoulSyncMobile, NAVIGRE, UCI or another receiving project.",
+      "owner_role": "Codex-Guidas maintainer for register stewardship; operational owner must be assigned before operation can be claimed.",
+      "control_owner": null,
+      "ownership_status": "unassigned",
+      "design_state": "documented",
+      "operating_status": "not_assessed",
+      "verification_method": "For sampled consequential claims, trace requirement/design to source files and then to a build or runtime artifact; confirm evidence classes are separately labelled.",
+      "last_verified_on": null,
+      "next_review_due": "2026-12-04",
+      "evidence_refs": [],
+      "notes": "Initial operational baseline not yet performed. The review date is a proposed owner-assignment and verification-planning trigger, not a completed audit or evidence of operation."
+    },
+    {
+      "id": "CG-IC-003",
+      "invariant_id": "INV-009",
+      "invariant_name": "Verification ≠ Guarantee",
+      "scope": "Codex-Guidas repository records, knowledge tooling and contribution workflow only; not an assertion about operation in ScoutSA, SoulSync, SoulSyncMobile, NAVIGRE, UCI or another receiving project.",
+      "owner_role": "Codex-Guidas maintainer for register stewardship; operational owner must be assigned before operation can be claimed.",
+      "control_owner": null,
+      "ownership_status": "unassigned",
+      "design_state": "documented",
+      "operating_status": "not_assessed",
+      "verification_method": "Sample verification records and compare claim boundaries with exact commit, command, environment, cases exercised, exclusions and limitations.",
+      "last_verified_on": null,
+      "next_review_due": "2026-12-04",
+      "evidence_refs": [],
+      "notes": "Initial operational baseline not yet performed. The review date is a proposed owner-assignment and verification-planning trigger, not a completed audit or evidence of operation."
+    },
+    {
+      "id": "CG-IC-004",
+      "invariant_id": "INV-010",
+      "invariant_name": "Fix ≠ Closure",
+      "scope": "Codex-Guidas repository records, knowledge tooling and contribution workflow only; not an assertion about operation in ScoutSA, SoulSync, SoulSyncMobile, NAVIGRE, UCI or another receiving project.",
+      "owner_role": "Codex-Guidas maintainer for register stewardship; operational owner must be assigned before operation can be claimed.",
+      "control_owner": null,
+      "ownership_status": "unassigned",
+      "design_state": "documented",
+      "operating_status": "not_assessed",
+      "verification_method": "Sample closed defect records; require authorized fix reference, exact-commit regression evidence, acceptance criteria, residual risk and owning-project closure approval.",
+      "last_verified_on": null,
+      "next_review_due": "2026-12-04",
+      "evidence_refs": [],
+      "notes": "Initial operational baseline not yet performed. The review date is a proposed owner-assignment and verification-planning trigger, not a completed audit or evidence of operation."
+    },
+    {
+      "id": "CG-IC-005",
+      "invariant_id": "INV-011",
+      "invariant_name": "Historical Green ≠ Current Green",
+      "scope": "Codex-Guidas repository records, knowledge tooling and contribution workflow only; not an assertion about operation in ScoutSA, SoulSync, SoulSyncMobile, NAVIGRE, UCI or another receiving project.",
+      "owner_role": "Codex-Guidas maintainer for register stewardship; operational owner must be assigned before operation can be claimed.",
+      "control_owner": null,
+      "ownership_status": "unassigned",
+      "design_state": "partially_documented",
+      "operating_status": "not_assessed",
+      "verification_method": "Select a reported CI pass and verify workflow run SHA matches the claimed branch/head; distinguish PR head, merge commit, release artifact and runtime evidence.",
+      "last_verified_on": null,
+      "next_review_due": "2026-12-04",
+      "evidence_refs": [],
+      "notes": "Initial operational baseline not yet performed. The review date is a proposed owner-assignment and verification-planning trigger, not a completed audit or evidence of operation."
+    },
+    {
+      "id": "CG-IC-006",
+      "invariant_id": "INV-014",
+      "invariant_name": "Discovery ≠ Authority",
+      "scope": "Codex-Guidas repository records, knowledge tooling and contribution workflow only; not an assertion about operation in ScoutSA, SoulSync, SoulSyncMobile, NAVIGRE, UCI or another receiving project.",
+      "owner_role": "Codex-Guidas maintainer for register stewardship; operational owner must be assigned before operation can be claimed.",
+      "control_owner": null,
+      "ownership_status": "unassigned",
+      "design_state": "documented",
+      "operating_status": "not_assessed",
+      "verification_method": "Inspect retrieval/automation paths and contribution records; verify suggestions cannot promote status, close defects, authorize changes or bypass project gates.",
+      "last_verified_on": null,
+      "next_review_due": "2026-12-04",
+      "evidence_refs": [],
+      "notes": "Initial operational baseline not yet performed. The review date is a proposed owner-assignment and verification-planning trigger, not a completed audit or evidence of operation."
+    },
+    {
+      "id": "CG-IC-007",
+      "invariant_id": "INV-018",
+      "invariant_name": "Similarity ≠ Same Cause",
+      "scope": "Codex-Guidas repository records, knowledge tooling and contribution workflow only; not an assertion about operation in ScoutSA, SoulSync, SoulSyncMobile, NAVIGRE, UCI or another receiving project.",
+      "owner_role": "Codex-Guidas maintainer for register stewardship; operational owner must be assigned before operation can be claimed.",
+      "control_owner": null,
+      "ownership_status": "unassigned",
+      "design_state": "partially_documented",
+      "operating_status": "not_assessed",
+      "verification_method": "Sample a similarity match and inspect whether the record compares reproduction, code path, contradicting evidence and a discriminating test before claiming shared cause.",
+      "last_verified_on": null,
+      "next_review_due": "2026-12-04",
+      "evidence_refs": [],
+      "notes": "Initial operational baseline not yet performed. The review date is a proposed owner-assignment and verification-planning trigger, not a completed audit or evidence of operation."
+    }
+  ]
+}
