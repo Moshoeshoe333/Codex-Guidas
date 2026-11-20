@@ -12,6 +12,11 @@ last_reviewed: null
 verification_due: null
 evidence_class: "Reported"
 verification_status: "not-claimed"
+evidence_refs: []
+author: null
+auditor: null
+ratified_by: null
+assurance_level: "unassessed"
 source_path: "Unknown"
 review_scope: "intake only; state what was and was not reviewed"
 ---

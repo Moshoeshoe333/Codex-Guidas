@@ -48,6 +48,8 @@ class NewRecordTests(unittest.TestCase):
         content = path.read_text(encoding="utf-8")
         self.assertIn('status: "Proposed"', content)
         self.assertIn('source_path: "Unknown"', content)
+        self.assertIn("evidence_refs: []", content)
+        self.assertIn('assurance_level: "unassessed"', content)
         self.assertIn("# CG-001 — Evidence before assumption", content)
         self.assertIn("[CG-001](lessons/CG-001.md)", (self.root / "01-lessons-learned" / "ledger.md").read_text(encoding="utf-8"))
 

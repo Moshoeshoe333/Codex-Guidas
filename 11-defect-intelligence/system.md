@@ -88,7 +88,7 @@ Before creating or updating a CG lesson, answer:
 - Is the DEF linked to the CG lesson and the CG lesson linked back to the DEF?
 - If no lesson is warranted, is that decision recorded in the DEF?
 
-One-off project corrections remain in the DEF. Reusable but unproven controls remain Proposed or Derived as appropriate. Verified is permitted only when the stated control was reproduced against explicit criteria on an exact revision and environment. Do not create a new lesson for every defect.
+One-off project corrections remain in the DEF. Reusable but unproven controls remain Proposed or Derived as appropriate. Verified is permitted only when the stated control was reproduced against explicit criteria on an exact revision and environment. The validator requires Evidence ledger references and named author, auditor and ratifier fields; it distinguishes limited self-review from independent review. See the promotion and assurance rules in record-taxonomy.md. Do not create a new lesson for every defect.
 
 ### 2.8 CLOSE: definition of done
 

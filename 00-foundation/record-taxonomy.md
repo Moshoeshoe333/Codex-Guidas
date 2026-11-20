@@ -49,3 +49,17 @@ Severity is an impact classification, not urgency by itself. Security and safegu
 ## Change rule
 
 Update vocabulary here first, then update the schema validator and templates in the same change. Do not silently rename historical values. An allowed status is not evidence that a record's claims are correct.
+
+## Evidence promotion and assurance
+
+A status transition is a claim about the maturity of knowledge, not a reward for completing paperwork.
+
+| Transition | Minimum basis | Ratification |
+|---|---|---|
+| Observed | A dated, attributable source observation or report. Label source-only observations honestly; do not imply runtime reproduction. | The record author may capture the observation. |
+| Observed to Derived | Identify the observation(s), explain the inference, record plausible alternatives and applicability limits. | A maintainer may classify a bounded inference as Derived; this is not independent verification of a control. |
+| Proposed or Derived to Verified | Define acceptance criteria before testing; attach immutable evidence references; record exact revision, procedure/command, environment, actual result and limitations in the Evidence ledger. The evidence must exercise the stated control, not merely show that documentation or code exists. | Name the author, auditor and ratifier. Normally the auditor is distinct from the author. A transparent self-review may be recorded as limited-self-review, but it is lower assurance and must not be represented as independent. |
+
+There is no universal fixed count of independent sources that fits every claim. A narrow deterministic software claim may be supported by a reproducible test on an exact commit; high-consequence claims need stronger, independent and domain-appropriate evidence. Critical security, privacy, safeguarding and data-integrity controls cannot be promoted on self-review alone. Project-specific controls also require the owning project’s authorized decision-maker; Codex-Guidas cannot ratify another project’s production or release authority.
+
+The CI validator enforces the presence and internal consistency of evidence IDs and review declarations for Verified claims. It does not adjudicate evidence quality, reviewer identity, domain competence or delegated authority. A green CI run therefore proves metadata integrity—not that the claim is substantively true.

@@ -12,6 +12,11 @@ last_reviewed: null
 verification_due: null
 evidence_class: "Proposed"
 verification_status: "not-claimed"
+evidence_refs: []
+author: null
+auditor: null
+ratified_by: null
+assurance_level: "unassessed"
 source_path: "path/to/source"
 review_scope: "state what was actually reviewed"
 ---
@@ -41,6 +46,14 @@ Who or what was affected? What was the consequence?
 
 ## Root cause
 Unknown / suspected / confirmed. Explain the evidence and remaining uncertainty.
+
+## Evidence ledger
+
+| Evidence ID | Type | Exact ref (full commit / CI run / immutable artifact) | Date/context | Observation | Limitation |
+|---|---|---|---|---|---|
+| E-001 | Source / test / CI / runtime / report | | | | |
+
+For a Verified lesson, list the Evidence IDs used in frontmatter evidence_refs. Every referenced row must include an exact artifact, date/context, actual observation and limitation.
 
 ## Corrective action
 What changed or should change?

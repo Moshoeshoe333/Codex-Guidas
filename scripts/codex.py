@@ -33,6 +33,9 @@ REQUIRED = {
 }
 LINK_RE = re.compile(r"(?<!!)\[[^\]]*\]\(([^)]+)\)")
 ID_RE = re.compile(r"^(?:CG-\d{3}|DEF-\d{4}-\d{3})$")
+EVIDENCE_ID_RE = re.compile(r"^E-\d{3}$")
+ASSURANCE_LEVELS = {"unassessed", "limited-self-review", "independent-review"}
+PLACEHOLDER_VALUES = {"", "-", "—", "unknown", "tbd", "todo", "pending", "not recorded"}
 
 
 def parse_scalar(raw: str):
@@ -80,6 +83,56 @@ def validate_date(value, field, path, errors):
         date.fromisoformat(value)
     except ValueError:
         errors.append(f"{path}: invalid {field}: {value!r}")
+
+
+def populated_evidence_value(value: str) -> bool:
+    """Return False for blank or obvious placeholder evidence values."""
+    normalized = value.strip().casefold()
+    return bool(normalized) and normalized not in PLACEHOLDER_VALUES and not (
+        normalized.startswith("[") and normalized.endswith("]")
+    )
+
+
+def evidence_ledger_rows(body: str):
+    """Read E-### rows from this record’s Evidence ledger section."""
+    heading = re.search(r"^##\s+.*evidence ledger.*$", body, flags=re.IGNORECASE | re.MULTILINE)
+    if heading is None:
+        return {}
+    section = body[heading.end():]
+    next_heading = re.search(r"^##\s+", section, flags=re.MULTILINE)
+    if next_heading is not None:
+        section = section[:next_heading.start()]
+
+    header = None
+    columns = {}
+    rows = {}
+    for line in section.splitlines():
+        stripped = line.strip()
+        if not stripped.startswith("|"):
+            continue
+        cells = [cell.strip() for cell in stripped.strip("|").split("|")]
+        normalized = [cell.casefold() for cell in cells]
+        if header is None and any(cell == "evidence id" for cell in normalized):
+            header = normalized
+            for field, prefix in (
+                ("id", "evidence id"), ("exact_ref", "exact ref"),
+                ("date_context", "date/context"), ("observation", "observation"),
+                ("limitation", "limitation"),
+            ):
+                columns[field] = next((i for i, cell in enumerate(header) if cell.startswith(prefix)), None)
+            continue
+        if header is None or all(re.fullmatch(r":?-{3,}:?", cell.replace(" ", "")) for cell in cells):
+            continue
+        if len(cells) < len(header) or columns.get("id") is None:
+            continue
+        evidence_id = cells[columns["id"]]
+        if EVIDENCE_ID_RE.fullmatch(evidence_id):
+            row = {}
+            for field in ("exact_ref", "date_context", "observation", "limitation"):
+                index = columns.get(field)
+                row[field] = cells[index] if index is not None and index < len(cells) else ""
+            rows[evidence_id] = row
+    return rows
 
 
 def validate_local_links():
@@ -159,6 +212,62 @@ def validate_records():
             validate_date(meta.get(field), field, rel, errors)
         if meta.get("verification_status") not in VERIFICATION:
             errors.append(f"{rel}: invalid verification_status {meta.get('verification_status')!r}")
+
+        evidence_refs = meta.get("evidence_refs", [])
+        evidence_rows = evidence_ledger_rows(body)
+        if "evidence_refs" in meta:
+            if not isinstance(evidence_refs, list) or not all(
+                isinstance(item, str) and EVIDENCE_ID_RE.fullmatch(item) for item in evidence_refs
+            ):
+                errors.append(f"{rel}: evidence_refs must be an array of Evidence IDs such as E-001")
+                evidence_refs = []
+            elif len(evidence_refs) != len(set(evidence_refs)):
+                errors.append(f"{rel}: evidence_refs must not contain duplicates")
+        else:
+            evidence_refs = []
+
+        for evidence_id in evidence_refs:
+            row = evidence_rows.get(evidence_id)
+            if row is None:
+                errors.append(f"{rel}: evidence_refs contains {evidence_id}, but no matching row exists in the Evidence ledger")
+                continue
+            for field in ("exact_ref", "date_context", "observation", "limitation"):
+                if not populated_evidence_value(row.get(field, "")):
+                    errors.append(f"{rel}: Evidence {evidence_id} must provide a non-placeholder {field.replace('_', ' ')}")
+
+        author = meta.get("author")
+        auditor = meta.get("auditor")
+        ratified_by = meta.get("ratified_by")
+        for field, value in (("author", author), ("auditor", auditor), ("ratified_by", ratified_by)):
+            if field in meta and value is not None and (not isinstance(value, str) or not value.strip()):
+                errors.append(f"{rel}: {field} must be a non-empty string or null")
+
+        assurance_level = meta.get("assurance_level", "unassessed")
+        if assurance_level not in ASSURANCE_LEVELS:
+            errors.append(f"{rel}: invalid assurance_level {assurance_level!r}")
+
+        verified_lesson = kind == "lesson" and meta.get("status") == "Verified"
+        verified_claim = meta.get("verification_status") == "verified"
+        if verified_lesson and not verified_claim:
+            errors.append(f"{rel}: a Verified lesson must have verification_status: verified")
+        if kind == "lesson" and verified_claim and not verified_lesson:
+            errors.append(f"{rel}: a verified lesson must use status: Verified")
+
+        if verified_lesson or verified_claim:
+            if not evidence_refs:
+                errors.append(f"{rel}: Verified claims require at least one evidence_refs entry")
+            for field, value in (("author", author), ("auditor", auditor), ("ratified_by", ratified_by)):
+                if not isinstance(value, str) or not value.strip():
+                    errors.append(f"{rel}: Verified claims require a named {field}")
+            if isinstance(author, str) and isinstance(auditor, str):
+                if author == auditor and assurance_level != "limited-self-review":
+                    errors.append(f"{rel}: self-audited claims must declare assurance_level: limited-self-review")
+                if author != auditor and assurance_level != "independent-review":
+                    errors.append(f"{rel}: separately audited claims must declare assurance_level: independent-review")
+            if assurance_level == "limited-self-review" and author != auditor:
+                errors.append(f"{rel}: limited-self-review requires author and auditor to be the same person")
+            if assurance_level == "independent-review" and author == auditor:
+                errors.append(f"{rel}: independent-review requires an auditor distinct from the author")
         if "tags" in meta and (not isinstance(meta["tags"], list) or not all(isinstance(x, str) and x.strip() for x in meta["tags"])):
             errors.append(f"{rel}: tags must be an array of non-empty strings when present")
         if meta.get("verification_status") == "pending" and meta.get("verification_due") is None:

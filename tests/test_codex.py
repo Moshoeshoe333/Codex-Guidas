@@ -144,6 +144,70 @@ class CodexCliTests(unittest.TestCase):
         self.assertEqual(result, 1)
         self.assertIn("duplicate ID CG-001", output.getvalue())
 
+    def verified_lesson(self, metadata_overrides=None):
+        metadata = lesson_metadata()
+        metadata.update({
+            "status": "Verified",
+            "verification_status": "verified",
+            "author": "record-author",
+            "auditor": "independent-reviewer",
+            "ratified_by": "project-owner",
+            "assurance_level": "independent-review",
+            "evidence_refs": ["E-001"],
+        })
+        if metadata_overrides:
+            metadata.update(metadata_overrides)
+        body = """## Evidence ledger
+
+| Evidence ID | Type | Exact ref | Date/context | Observation | Limitation |
+|---|---|---|---|---|---|
+| E-001 | CI | https://github.com/example/repo/commit/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa | 2026-11-19; Python 3.12; Ubuntu | Acceptance test passed on the recorded commit | Covers only the stated test and environment |
+"""
+        return metadata, body
+
+    def test_verified_lesson_rejects_missing_evidence_refs(self):
+        metadata, body = self.verified_lesson({"evidence_refs": []})
+        self.write_record(self.lessons / "CG-001.md", metadata, body)
+        self.lesson_index.write_text("[CG-001](lessons/CG-001.md)\n", encoding="utf-8")
+        output = io.StringIO()
+        with redirect_stdout(output):
+            result = codex.validate_records()
+        self.assertEqual(result, 1)
+        self.assertIn("Verified claims require at least one evidence_refs entry", output.getvalue())
+
+    def test_verified_lesson_rejects_dangling_evidence_ref(self):
+        metadata, body = self.verified_lesson({"evidence_refs": ["E-002"]})
+        self.write_record(self.lessons / "CG-001.md", metadata, body)
+        self.lesson_index.write_text("[CG-001](lessons/CG-001.md)\n", encoding="utf-8")
+        output = io.StringIO()
+        with redirect_stdout(output):
+            result = codex.validate_records()
+        self.assertEqual(result, 1)
+        self.assertIn("no matching row exists in the Evidence ledger", output.getvalue())
+
+    def test_verified_lesson_rejects_self_review_mislabeled_independent(self):
+        metadata, body = self.verified_lesson({
+            "auditor": "record-author",
+            "assurance_level": "independent-review",
+        })
+        self.write_record(self.lessons / "CG-001.md", metadata, body)
+        self.lesson_index.write_text("[CG-001](lessons/CG-001.md)\n", encoding="utf-8")
+        output = io.StringIO()
+        with redirect_stdout(output):
+            result = codex.validate_records()
+        self.assertEqual(result, 1)
+        self.assertIn("self-audited claims must declare assurance_level: limited-self-review", output.getvalue())
+
+    def test_verified_lesson_accepts_traceable_evidence_and_independent_review(self):
+        metadata, body = self.verified_lesson()
+        self.write_record(self.lessons / "CG-001.md", metadata, body)
+        self.lesson_index.write_text("[CG-001](lessons/CG-001.md)\n", encoding="utf-8")
+        output = io.StringIO()
+        with redirect_stdout(output):
+            result = codex.validate_records()
+        self.assertEqual(result, 0)
+        self.assertIn("unique IDs", output.getvalue())
+
     def test_search_finds_defect_by_terms_and_project(self):
         record = self.defects / "DEF-2026-001-storage-hydration.md"
         self.write_record(record, defect_metadata(), "storage hydration failure masked as an empty ledger")

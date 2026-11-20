@@ -39,3 +39,17 @@ Structured record files begin with YAML frontmatter delimited by three hyphens. 
 Run: python scripts/codex.py validate
 
 The checker validates frontmatter shape, required fields, allowed state values, ISO dates, filename/ID agreement, uniqueness and lesson-index coverage. It uses only the Python standard library.
+
+## Optional evidence and review fields
+
+| Field | Type | Rule |
+|---|---|---|
+| evidence_refs | array of strings | Evidence IDs (for example, E-001) that must resolve to rows in this record’s Evidence ledger. Required when a record claims Verified. |
+| author | string or null | Person/account that authored the record or control description. |
+| auditor | string or null | Person/account that reviewed the verification evidence. |
+| ratified_by | string or null | Person/account with authority to ratify the status promotion, subject to the owning project’s authority. |
+| assurance_level | string | unassessed, limited-self-review or independent-review. |
+
+A lesson marked Verified must also set verification_status to verified. The validator requires at least one evidence_refs entry; each reference must resolve to an Evidence ledger row containing a non-placeholder exact artifact reference, date/context, observation and limitation. It also requires author, auditor and ratifier declarations. When author and auditor are the same person, the record must declare limited-self-review; when they differ, it must declare independent-review.
+
+These checks validate declarations and references, not the truth of the evidence, the identity or competence of a reviewer, or whether the ratifier has authority. Those remain human governance responsibilities. High-consequence security, privacy, safeguarding or data-integrity claims require independent domain review and the owning project’s approval; a self-review is not sufficient for those claims.
