@@ -1,163 +1,172 @@
 # Codex-Guidas Defect Intelligence System
 
-**Status:** Proposed operating mechanism — ready for controlled manual use.  
-**Version:** 0.1  
+**Status:** Proposed operating mechanism — controlled manual use; not an autonomous incident system.  
+**Version:** 0.3  
 **Owner:** Project maintainers  
-**Last reviewed:** 2026-11-18
+**Last reviewed:** 2026-11-19
 
-## 1. Purpose
+## 1. Purpose and boundaries
 
-Turn defects, near misses, confusing test failures and operational surprises into reusable engineering knowledge. The system should reduce repeat failures and shorten diagnosis without becoming a bureaucracy or an autonomous authority to change production code.
+Turn defects, near misses, confusing test failures and operational surprises into reusable engineering knowledge. The system should reduce repeat failures and shorten diagnosis without becoming bureaucracy or an autonomous authority to change production code.
 
-It is a learning and traceability mechanism, not a guarantee of defect-free software.
+It is a learning and traceability mechanism, not a guarantee of defect-free software. The [methodology–knowledge architecture](../docs/methodology-knowledge-architecture.md) defines how retrieval, evidence and owning-project authority interact.
+
+**Authority rule:** A DEF record does not authorize a fix. The owning project controls implementation, release, severity acceptance and closure. Codex-Guidas maintainers curate the knowledge record; they do not acquire authority over another project's code or risk.
 
 ## 2. Operating loop
 
 `DETECT → CONTAIN → RECORD → TRIAGE → SEARCH → HYPOTHESIZE → FIX → VERIFY → LEARN → CLOSE`
 
-1. **Detect:** preserve the first reliable signal (test output, log, user report, monitoring event or reproducible observation).
-2. **Contain:** protect users/data and stop unsafe progression where needed. Follow the owning project's incident process.
-3. **Record:** create a defect ID and capture exact source boundary.
-4. **Triage:** assess impact, severity, scope, exploitability and urgency.
-5. **Search:** search this repository's lesson ledger and prior defect records for similar symptoms, causes and controls.
-6. **Hypothesize:** separate observed facts from suspected root causes. Keep multiple hypotheses when evidence is ambiguous.
-7. **Fix:** make the smallest authorized change that addresses the demonstrated cause.
-8. **Verify:** run targeted regression tests and relevant wider checks. Record exact command, environment, commit and outcome.
-9. **Learn:** update the defect record and, only when reusable, add or revise a cross-project lesson.
-10. **Close:** close only when acceptance criteria are met and residual risk is explicit. Otherwise leave open, mitigated or blocked.
+The stages describe work, not a rigid serial queue. For an urgent S0/S1 signal, containment and recording may proceed in parallel. Do not delay immediate risk reduction to complete paperwork.
 
-## 3. Defect record identity
-
-Use IDs `DEF-YYYY-NNN` (for example, `DEF-2026-001`). IDs are unique within this knowledge base. Do not reuse IDs after closure or withdrawal.
-
-A defect record must link to:
-- owning repository and affected branch/ref;
-- exact affected commit SHA (or explicitly say unknown);
-- issue, PR, CI run, log or user report where available;
-- the lesson IDs searched or applied;
-- corrective change commit and regression evidence, when available.
-
-Do not paste secrets, personal data, access tokens, private player information or sensitive incident details into this repository. Redact and link to access-controlled evidence where appropriate.
-
-## 4. Severity and priority
-
-Use impact-based severity, not emotional language or the number of files changed.
-
-| Severity | Meaning | Typical response |
+| Stage | Required practice | Exit condition |
 |---|---|---|
-| **S0 Critical** | Active exploitation, material data loss/corruption, severe safety risk, or broad service compromise | Contain immediately; invoke owner incident process; no routine release until controlled |
-| **S1 High** | Major workflow unavailable, significant security/privacy exposure, unsafe access path, or integrity failure | Prioritised fix and explicit release decision |
-| **S2 Moderate** | Important function impaired with workaround; limited scope or recoverable data issue | Schedule promptly; test workaround and fix |
-| **S3 Low** | Minor defect with low impact and safe workaround | Backlog and fix when justified |
-| **S4 Observation** | Near miss, quality concern or improvement opportunity without demonstrated user impact | Record if reusable; avoid inflating defect counts |
+| **DETECT** | Preserve the earliest trustworthy signal: exact test output, log, report, monitoring event or reproducible observation. Record repository, branch/ref, full commit SHA (or Unknown), environment, command/procedure, timestamp and original signature. Classify the signal as deterministic, intermittent, environment-specific, user-reported or source-observed. | A durable signal note exists and another investigator could attempt reproduction. |
+| **CONTAIN** | Follow the owning project's incident process for S0/S1. Prefer reversible, bounded actions. Record what changed, what remains exposed, who accepted any residual exposure, and a review/expiry trigger. Containment is not a root-cause fix. | Immediate risk is reduced, or residual exposure and accountable owner are explicit. |
+| **RECORD** | Allocate a unique DEF ID; create the record; preserve facts before interpretation. Fill known fields and write Unknown where evidence is absent. Link the register, exact source artifacts and evidence IDs. | The DEF is discoverable from the register and contains at least one evidence entry or an explicit explanation that evidence is not yet available. |
+| **TRIAGE** | Assess actual impact separately from plausible worst case; determine scope, urgency, exploitability, data-integrity and safeguarding implications. Assign an owner and next action. Severity may be provisional and must include rationale. | State, severity/rationale, owner, next action and time horizon are recorded. |
+| **SEARCH** | Search the lesson ledger, prior DEFs, owning-project issues/commits/tests/incidents, then related projects for transferable principles only. Record exact terms, IDs considered, matches/no match and why a candidate is or is not the same cause. | Search terms and results are written into the DEF. A match remains a lead, not proof. |
+| **HYPOTHESIZE** | List observations first. Keep plausible explanations separate, with confidence, supporting evidence, contradicting evidence and a discriminating test for each material hypothesis. | At least one testable hypothesis and its next discriminating check are recorded; otherwise state why investigation is blocked. |
+| **FIX** | Define expected behaviour, violated invariant, smallest boundary, exact files/components, tests, compatibility/migration/rollback, security/privacy/safeguarding implications and acceptance criteria. Obtain the owning project's normal authorization before implementation. | An authorized change is linked, or a documented decision defers/rejects the fix and names the risk owner. |
+| **VERIFY** | Verify the exact corrected repository, branch, full commit, command, environment/dependency versions, test scope, result and evidence. State what was not tested. Distinguish static, unit, integration, browser, build, install, device/runtime and user evidence. | Acceptance criteria pass at the relevant evidence level, or remaining failures/limits are explicit. |
+| **LEARN** | Decide whether the finding is project-specific or reusable. Prefer updating an existing CG lesson. If a lesson is created/updated from a DEF, link DEF → CG and CG → DEF. Record applicability limits and uncertainty. | A linked lesson change exists, or the DEF explicitly records why no cross-project lesson is warranted. |
+| **CLOSE** | Check closure criteria, regression evidence, residual risks and security/safeguarding/data-integrity review where relevant. The owning-project authority approves closure or explicitly accepts the residual risk. | The decision, approver, evidence and residual risk are recorded. Otherwise remain open, contained or blocked. |
 
-Severity may change as evidence develops. Record who changed it, when and why. A security or safeguarding concern should be escalated under the relevant project policy even if its immediate user impact is not yet known.
+### 2.1 DETECT: preserve the signal
 
-## 5. State model
+Do not clean, normalize or replace failed output before preserving it. Keep raw evidence in an appropriate access-controlled location when it contains sensitive data; store a redacted reference in this repository. A source-inspection finding is **SOURCE-OBSERVED**, not reproduced. A mock-backed test is mock-backed evidence, not native-device or production evidence.
 
-- **New:** recorded, not yet triaged.
-- **Triaged:** impact and owner assessed.
-- **Investigating:** evidence collection and hypotheses in progress.
-- **Contained:** immediate risk reduced; root cause may remain open.
-- **Fix proposed:** corrective change identified, not yet verified.
-- **In verification:** fix exists and tests/evidence are being evaluated.
-- **Closed:** acceptance criteria passed and residual risk accepted by the proper owner.
-- **Blocked:** progress depends on an external decision, access or prerequisite.
-- **Won't fix:** explicit rationale and authorized acceptance of residual risk.
-- **Reopened:** recurrence or failed acceptance criteria after closure.
+### 2.2 CONTAIN: state the boundary
 
-Do not use “fixed” as a synonym for “closed.” Code can be changed while verification remains pending.
+Record:
+- containment action and start time;
+- affected feature/data/users and known remaining exposure;
+- reversibility and rollback path;
+- accountable owner;
+- review/expiry date or event trigger.
 
-## 6. Evidence and root-cause discipline
+If no safe containment is available, say so and keep the defect Investigating or Blocked with the residual exposure visible. Do not mark Contained merely because a warning was written.
 
-Every record separates:
+### 2.3 TRIAGE: severity is not certainty
 
-- **Observed facts:** directly supported by logs, source, reproduction or testimony.
-- **Impact:** demonstrated effect; distinguish actual impact from plausible worst case.
-- **Hypotheses:** possible explanations with confidence and evidence for/against.
-- **Confirmed cause:** only when a discriminating test, trace or code-path analysis supports it.
-- **Unknowns:** facts still missing.
+Use the canonical S0–S4 taxonomy. Severity represents impact; urgency and confidence are separate judgements. If impact is unknown, state the uncertainty and escalate plausible security/safeguarding exposure under the owning project's policy. Record every severity change with date, decision owner and reason.
 
-A symptom is not a root cause. Temporal correlation is not proof of causation. A green test does not prove an untested path safe.
+### 2.4 SEARCH: mandatory before a material fix
 
-## 7. Similarity search
+Use this order:
+1. Codex-Guidas lesson records by symptom, component and failure mode.
+2. Codex-Guidas defect register and individual DEF records.
+3. Owning repository's issues, commits, tests, CI runs and incident notes.
+4. Related projects for transferable principles only.
 
-Before proposing a fix, search:
-1. the lessons ledger by symptom, component and failure mode;
-2. this defect register for prior records;
-3. the owning repository's issues, commits, tests and incident notes;
-4. related projects only for transferable principles, not presumed identical causes.
+Record search terms and candidate IDs even when there is no match. Search is not a causal conclusion; similarity does not establish a common root cause.
 
-Record the search terms and matching IDs. If no match is found, record that too. A match is a lead, not proof.
+### 2.5 HYPOTHESIZE: demand a discriminating test
 
-## 8. Fix and verification contract
+For each material hypothesis record:
+- confidence as a qualitative working judgement, not a probability unless calibrated;
+- evidence supporting and contradicting it;
+- the smallest test/inspection that distinguishes it from alternatives;
+- expected observations under each alternative.
 
-A corrective change should state:
-- expected behaviour and violated invariant;
-- smallest affected boundary;
-- files/components to change and why;
-- tests to add or update;
-- compatibility, migration and rollback implications;
-- security/privacy/safeguarding implications;
-- acceptance criteria.
+Do not confirm a cause from timing, correlation, a single plausible code path or a test that does not distinguish competing explanations.
 
-Verification must record exact repository, branch, full commit SHA, command, environment/dependency versions, test scope, result and evidence link. Distinguish static checks, unit tests, integration tests, browser workflows, builds, installation, device/runtime execution and user validation.
+### 2.6 FIX and VERIFY: preserve authorization and exactness
 
-Never transfer a successful result to a different commit without an explicit evidence rule and re-verification.
+A DEF is not a change request approval. No implementation may cross an unresolved owning-project decision gate. Verification belongs to the exact changed commit; a green PR head does not automatically verify a different merge commit or release artifact.
 
-## 9. Learning promotion
+A test proves only the cases, environment and conditions exercised. Preserve failed tests and negative evidence after a correction.
 
-Promote a defect into the cross-project lesson ledger only when it has a reusable principle or control.
+### 2.7 LEARN: promotion checklist
 
-- One-off project-specific correction: keep it in the project defect record.
-- Reusable but not yet proven control: lesson status **Proposed** or **Derived**.
-- Reproducibly demonstrated control: may be **Verified**, with exact evidence.
-- Contradicted or replaced control: mark **Superseded**, preserving history.
+Before creating or updating a CG lesson, answer:
+- Is there a reusable principle or control beyond this one project?
+- Is the control demonstrated, merely proposed, or only inferred?
+- What exact evidence supports the lesson's status?
+- Does an existing CG lesson already cover the principle?
+- What are the applicability boundaries and known counterexamples?
+- Is the DEF linked to the CG lesson and the CG lesson linked back to the DEF?
+- If no lesson is warranted, is that decision recorded in the DEF?
 
-Do not create a new lesson for every defect. Prefer linking to an existing lesson and improving its evidence.
+One-off project corrections remain in the DEF. Reusable but unproven controls remain Proposed or Derived as appropriate. Verified is permitted only when the stated control was reproduced against explicit criteria on an exact revision and environment. The validator requires Evidence ledger references and named author, auditor and ratifier fields; it distinguishes limited self-review from independent review. See the promotion and assurance rules in record-taxonomy.md. Do not create a new lesson for every defect.
 
-## 10. Automation boundaries
+### 2.8 CLOSE: definition of done
+
+Closure requires:
+- observed signal and impact (or lack of demonstrated impact) described;
+- authorized corrective change linked to an exact commit, or an explicit won't-fix decision by the proper authority;
+- relevant acceptance criteria and regression evidence recorded;
+- untested surfaces and residual risks stated;
+- security, privacy, safeguarding and data-integrity implications reviewed where relevant;
+- reusable-lesson decision recorded;
+- owning-project authority and closure rationale named.
+
+A closed record may retain residual risk only when the owner explicitly accepts it. Reopen on recurrence, failed acceptance criteria or new evidence that invalidates the prior conclusion. Use **Superseded** only when a newer record replaces the historical one and the link/reason is preserved.
+
+## 3. State model
+
+Canonical states are defined in [record-taxonomy.md](../00-foundation/record-taxonomy.md): New, Triaged, Investigating, Contained, Fix proposed, In verification, Closed, Blocked, Won't fix and Reopened.
+
+These are not a mandatory linear sequence:
+- New normally proceeds to Triaged, then Investigating.
+- Containment may occur at any active stage; it does not imply root cause or fix.
+- Blocked may be entered from any active stage when access, evidence or an external decision is missing.
+- Fix proposed precedes In verification when a change exists and awaits evidence.
+- Closed requires the closure criteria above.
+- Reopened requires a recurrence or new evidence that invalidates closure.
+
+Do not invent additional states in individual records. Record finer-grained evidence labels such as SOURCE-OBSERVED, REPRODUCED, FIXED-UNVERIFIED or MOCK-BACKED as evidence annotations, not competing lifecycle states.
+
+## 4. Defect identity and evidence safety
+
+Use IDs `DEF-YYYY-NNN`. IDs are unique and never reused. Every material claim should point to an Evidence ID in the record's evidence ledger. Each evidence entry identifies source, exact ref, observation, date/context and limitation.
+
+A record should link to the owning repository, affected branch/ref, full commit SHA (or Unknown), issue/PR/CI/log where available, searched/applied CG lessons, corrective change and regression evidence when available.
+
+Do not place secrets, credentials, raw personal data, private player information or sensitive safeguarding details in this repository. Redact and link to access-controlled evidence where appropriate.
+
+## 5. Severity and priority
+
+Use impact-based severity from the canonical taxonomy. Severity may change as evidence develops; record who changed it, when and why. Severity is not a confidence score or a priority queue by itself. Security and safeguarding concerns may require escalation before impact is fully known.
+
+## 6. Automation boundaries
 
 Automation may:
 - collect CI metadata and logs;
-- detect recurring error signatures;
-- suggest similar lessons and prior defects;
-- draft a defect record;
-- remind maintainers of missing evidence fields.
+- validate record structure, links and ID uniqueness;
+- generate a searchable index;
+- suggest similar lessons/DEFs and draft records;
+- surface missing evidence, overdue reviews and stale Investigating records;
+- calculate descriptive metrics from explicitly defined records.
 
-Automation must not, without explicit authorized review:
-- change severity or close a safety/security incident;
+Automation must not:
+- confirm root cause from similarity;
+- change severity or close safety/security items;
+- accept residual risk;
 - promote a lesson to Verified;
-- modify production policy or security controls;
-- bypass project decision gates;
-- merge code, change access or deploy a fix.
+- modify production policy, merge code, change access or deploy a fix;
+- bypass an owning-project decision gate.
 
-Model-generated similarity and root-cause suggestions are hypotheses only. Human maintainers remain accountable for triage, authorization and closure.
+Prediction and similarity outputs are hypotheses/prioritisation signals only. Human review remains responsible for interpretation, severity, containment and closure.
 
-## 11. Minimal operational metrics
+## 7. Measures: learning, not volume
 
-Review monthly or at a meaningful release boundary:
-- new defects by severity;
-- open and reopened defects;
-- median time to contain S0/S1 issues;
-- recurrence rate for known failure modes;
-- percentage of closed defects with regression evidence;
+At monthly or release boundaries, consider:
+- new defects by severity and evidence class;
+- open, blocked and reopened counts;
+- time to contain S0/S1 (only where timestamps are reliable);
+- recurrence of known failure modes;
+- closed defects with exact-commit regression evidence / eligible closures;
 - defects with unknown root cause;
-- lessons reused by more than one project.
+- closed DEFs that updated or created a CG lesson;
+- lessons applied by more than one project with receiving-project evidence.
 
-Do not optimize for fewer reported defects. A rise in recorded defects may reflect better detection. Interpret trends alongside exposure, usage and reporting quality.
+State numerator, denominator, source, sample size and limitations. More recorded defects may indicate better detection, not worsening quality. Do not claim defect reduction or ROI from record counts alone.
 
-## 12. Definition of done
+## 8. Governing references
 
-A defect is eligible for closure only when:
-- the observed failure and impact are described;
-- the fix is authorized and linked to an exact commit;
-- acceptance criteria pass at the relevant evidence level;
-- regression coverage exists where practical, or the reason it cannot be added is documented;
-- security/safeguarding and data-integrity implications are reviewed where relevant;
-- residual risks and follow-up work are explicit;
-- the owning project's authority approves closure.
-
-## 13. First implementation boundary
-
-Start with manual Markdown records and search. Do not build a database, bot, dashboard or cross-repository automation until repeated usage demonstrates a real bottleneck. The first proof is whether the process helps us find and prevent a repeated defect with less time and better evidence.
+- [Canonical record taxonomy](../00-foundation/record-taxonomy.md)
+- [Structured metadata schema](../00-foundation/metadata-schema.md)
+- [Methodology–knowledge architecture](../docs/methodology-knowledge-architecture.md)
+- [Defect record template](defect-template.md)
+- [Knowledge-application record template](../09-templates/knowledge-application-record.md)

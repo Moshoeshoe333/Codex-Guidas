@@ -1,6 +1,29 @@
+---
+id: "CG-XXX"
+record_type: "lesson"
+status: "Proposed"
+projects: []
+layer: "unknown"
+component: null
+failure_mode: null
+severity: null
+origin_date: null
+last_reviewed: null
+verification_due: null
+evidence_class: "Proposed"
+verification_status: "not-claimed"
+evidence_refs: []
+author: null
+auditor: null
+ratified_by: null
+assurance_level: "unassessed"
+source_path: "path/to/source"
+review_scope: "state what was actually reviewed"
+---
+
 # CG-XXX — [Concise lesson title]
 
-- **Status:** Proposed / Observed / Derived / Verified / Superseded
+- **Status:** See frontmatter; use the canonical vocabulary in record-taxonomy.md.
 - **Date discovered:**
 - **Last reviewed:**
 - **Source project:**
@@ -24,6 +47,14 @@ Who or what was affected? What was the consequence?
 ## Root cause
 Unknown / suspected / confirmed. Explain the evidence and remaining uncertainty.
 
+## Evidence ledger
+
+| Evidence ID | Type | Exact ref (full commit / CI run / immutable artifact) | Date/context | Observation | Limitation |
+|---|---|---|---|---|---|
+| E-001 | Source / test / CI / runtime / report | | | | |
+
+For a Verified lesson, list the Evidence IDs used in frontmatter evidence_refs. Every referenced row must include an exact artifact, date/context, actual observation and limitation.
+
 ## Corrective action
 What changed or should change?
 
@@ -42,3 +73,4 @@ What remains unresolved? Where might this lesson not apply?
 
 ## Review decision
 Keep / revise / verify / supersede / retire, with rationale and reviewer.
+Before submitting, run the knowledge integrity validator. Keep unknown values null; do not mark a lesson Verified without exact-commit evidence.

@@ -19,6 +19,7 @@ This directory is the selective-reuse layer of Codex-Guidas. Each pack is a boun
 | [Defect Intelligence](defect-intelligence/README.md) | Defect capture, recurrence prevention and lessons | Operating structure; individual migration remains incomplete |
 | [Human-Centred Safety Boundaries](human-centred-safety/README.md) | Privacy, safeguarding, authority and threat-boundary prompts | Principles and review prompts; not a compliance standard |
 
+| [New Repository Bootstrap and Assurance](new-repository-bootstrap/README.md) | Establish a proportionate baseline and select risk overlays for a new or existing repository | v1.0.0-draft; proposed template, requires local adaptation and evidence |
 | [Tri-Tier 33 — Mind · Body · Spirit](tri-tier-33/README.md) | Cross-layer technical integrity across code, persistence and UI | v0.3.0-draft; proposed, not ratified |
 
 ## How to use a pack
