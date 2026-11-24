@@ -142,3 +142,60 @@ The Benoni procurement-assistant lead now has a matching employer-owned contact 
 - The official contact address is verified as a company contact, **not as a vacancy-specific recruitment address**. The job advert does not itself confirm that applications are accepted by email, the vacancy remains open, salary, or closing date.
 
 **Disposition:** Employer identity and general email contact have a stronger source basis than the earlier aggregator-only leads. The vacancy is still **NOT QUALIFIED** until availability, required documents, salary/range and email-only application route are confirmed. No enquiry has been sent. Do not send a CV or personal documents to a general inbox without first confirming the vacancy and intended application channel.
+
+
+## 13. High-fit public-sector procurement vacancies — official circular verified (2026-11-24)
+
+A search of the Office of the Chief Justice's own Circular 41 of 2026 found two relevant email-application posts closing **27 November 2026**. The official source is the [Office of the Chief Justice vacancy circular (PDF), POST 41/111 and POST 41/112](https://www.judiciary.org.za/images/vacancies/2026/Circular%2041%20of%202026.pdf).
+
+### Lead A — POST 41/112: Supply Chain Clerk
+
+- **Employer:** Office of the Chief Justice
+- **Centre:** National Office, Midrand
+- **Reference:** 2026/177/OCJ
+- **Salary:** R237,453–R279,708 per annum (Level 05), approximately R19,787.75–R23,309 gross per month before deductions.
+- **Minimum qualification / experience:** Grade 12; no previous experience required.
+- **Knowledge expectations:** administrative and procurement procedures; PFMA; SCM frameworks, policies and procedures; budgeting/financial management; PPPFA; Public Service Act/Regulations; National Treasury Regulations; MS Office and report writing.
+- **Main duties:** asset records and register; electronic purchasing system; demand/procurement plans; bid specification/evaluation committee support; procurement reporting, stores and records.
+- **Official application email printed in advert:** 2026/177/OCJ@judiciary.org.za.
+- **Closing date:** 27 November 2026.
+
+**Fit assessment:** Strong practical overlap with recorded Belgium Campus supplier sourcing/quotation comparisons, purchase-order coordination, R2m+ Snipe-IT asset register and 500+ annual e-commerce orders. Main evidence gap: the CV does not currently demonstrate working knowledge of PFMA, PPPFA, Treasury Regulations or public-sector SCM prescripts. Do not claim this knowledge without a real basis. The salary is above the previously preferred R12,000–R18,000 monthly range; it is a favourable but material preference deviation to consider.
+
+### Lead B — POST 41/111: Supply Chain Management Clerk
+
+- **Employer:** Office of the Chief Justice
+- **Centre:** Gauteng Division of the High Court, Pretoria
+- **Reference:** 2026/176/OCJ
+- **Salary:** R237,453–R279,708 per annum (Level 05), approximately R19,787.75–R23,309 gross per month before deductions.
+- **Minimum qualification / experience:** Grade 12; no experience required.
+- **Knowledge expectations:** basic financial functions and data capture; public-service financial legislation/procedures and Treasury regulations (including PFMA); basic operating systems; public-sector legislative framework; MS Teams, reporting, planning and organising.
+- **Main duties:** invoice and creditor-payment processing; supplier/order records; asset-register verification; inventory/stores; preference-points support; procurement-status reporting and purchase orders.
+- **Official application email printed in advert:** 2026/176/OCJ@judiciary.org.za.
+- **Closing date:** 27 November 2026.
+
+**Fit assessment:** Strong practical overlap with the documented procurement/asset-records background, supplier sourcing, purchasing documentation, order processing and budget/reconciliation support. Main gap is public-sector procurement/financial prescripts; the advert asks for basic knowledge, so preparation must be honest and evidence-based. The advertised salary again exceeds the previous preferred band.
+
+### Application requirements from the official circular
+
+The circular says applications must use the **new Z83**, accompanied by a recent comprehensive CV, and be sent as PDF documents in one folder. The form must be fully completed, signed and initialled on both pages. The advert says contactable referees' telephone numbers and email addresses must be indicated. Certified qualifications and other supporting documents are requested only from shortlisted candidates. The stated closing date is 27 November 2026.
+
+### Preflight against files found in the Library
+
+- The current operations/procurement CV located in the Library correctly records the Belgium Campus procurement dates as **21 October 2021–30 May 2024**, security as **1 September 2020–16 October 2021**, the asset register above R2 million and 500+ annual orders. This is the strongest current CV source for these roles.
+- The latest located Z83 file is already populated for a different South African Police Service post. Its Section A has the wrong position, department and reference for both OCJ vacancies. **It must not be submitted unchanged.**
+- The current located Z83 also includes older reference-contact entries. The OCJ advert requires contactable referees with both telephone and email details. Confirm approved referee names/contact details and consent before reusing them; do not invent or silently restore a removed personal number.
+- The candidate's application contact preference is email. Both OCJ posts explicitly provide email application routes, so this is compatible with the preference. Referee contact details are a separate requirement from the candidate's own preferred contact channel.
+
+### Decision and next action
+
+**PRIORITY APPLICATION CANDIDATES — PREPARATION REQUIRED; NOT SUBMITTED.**
+
+These two official posts are stronger, more relevant opportunities than the aggregator-only vacancies logged earlier. Before submitting either or both:
+1. Choose whether the above-target salary band and each location are acceptable.
+2. Prepare a role-specific, correctly completed new Z83 for each reference number.
+3. Use the current operations/procurement CV, checked for exact dates and factual claims.
+4. Confirm a complete, approved referee list that satisfies the advert's phone-and-email requirement.
+5. Ensure each PDF packet is complete, signed, initialled and addressed to the matching vacancy-specific email.
+
+No email has been sent and no application is recorded as submitted. This record is a discovery and screening result, not proof of application.
