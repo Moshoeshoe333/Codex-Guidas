@@ -104,3 +104,21 @@ After this record was first written, workflow [#1008](https://github.com/Moshoes
 This is exact-head regression evidence for the workflow's declared tests and scope. It does not resolve the broader UI-008 open items, prove every browser/runtime path, close the baseline-pinned AUD sequence, replace independent review, or grant project-owner acceptance.
 
 **Updated status:** the specific WebKit viewport regression observed at #1007 is resolved in the tested #1008 head. The external demonstration/pitch track remains **HOLD** until the remaining UI-008 review and other preconditions in Section 4 are closed and formally accepted.
+
+
+## 11. Latest exact-head documentation-integrity rerun — 24 November 2026
+
+After the #1008 regression pass, the ScoutSA branch advanced to `d989fcd933a802d24a0a82118afd2cac8c68cc22` to record the focused Firefox/WebKit verification scope and limitations. Hosted workflow [#1009](https://github.com/Moshoeshoe333/ScoutSA/actions/runs/45380148470) completed with **success** against that exact new head.
+
+Observed in #1009:
+- Node policy/documentation tests: **128/128 passed, 0 failed**.
+- Configured Chromium browser smoke scripts: **12/12 passed**.
+- Discovery Request groups: **8/8 passed**.
+- Workspace Hub groups: **8/8 passed**.
+- Specialist workspace interaction groups: **25/25 passed**.
+- Focused Firefox import/export scripts: **4/4 passed**.
+- Focused WebKit import/export scripts: **4/4 passed**.
+
+The underlying UI-008 cross-browser matrix and limitations are documented in [ScoutSA's 24 November review](https://github.com/Moshoeshoe333/ScoutSA/blob/prototype/internal-demo/prototype/verification/UI-008-CROSS-BROWSER-IMPORT-EXPORT-REVIEW-2026-11-24.md). WebKit is headless Playwright on Linux, not physical Safari testing. The focused non-Chromium matrix covers four selected scripts; it is not a complete all-page browser/device audit.
+
+**Updated status:** exact-head automated regression evidence is current through `d989fcd...` and workflow #1009. **External demonstration remains HOLD.** UI-008 still has open analysis/build-boundary/independent-acceptance work; the baseline-pinned AUD sequence and explicit project-owner acceptance must still be resolved. No external validation, stakeholder contact, launch submission, pitch, production or pilot is authorised by this test result.
