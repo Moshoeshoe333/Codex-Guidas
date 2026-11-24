@@ -96,3 +96,12 @@ This additional lesson is provisional until exact-head regression execution and 
 
 
 | CG-041 | Independent regression suites should continue after one suite fails, while preserving a failing aggregate result and per-suite diagnostics. | ScoutSA OPA-019 | Derived; workflow mitigation committed, exact-head execution pending | Use bounded loops or matrices, cap each process and the overall job, report every suite outcome, and never convert partial success into a green aggregate. |
+
+
+## Additional lesson from external opportunity-exposure review (2026-11-24)
+
+| ID | Lesson | Origin | Evidence class | Reusable control |
+|---|---|---|---|---|
+| CG-042 | Deliberately widen exposure to relevant opportunities, but separately measure discoverability, access, trust and realised outcomes. | External reference: *The Luck Field Manual* / Polymath Investor, 2026-10-05; internal field note OFN-001 | Derived heuristic; not empirically validated or project-verified | Use bounded, low-cost experiments to increase relevant encounters and make credible work discoverable. Track qualified next steps and outcomes rather than impressions alone. Protect privacy, safety, quality and downside; do not treat visibility or persistence as proof of success. |
+
+Source and application boundaries: [Opportunity Exposure Field Note](../06-innovations/opportunity-exposure-field-note.md). This is a separate external heuristic, not an addition to or validation of the 33-tier or 33-perspective frameworks.
