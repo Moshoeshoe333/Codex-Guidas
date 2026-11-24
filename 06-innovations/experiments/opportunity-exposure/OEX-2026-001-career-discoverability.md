@@ -235,3 +235,52 @@ The official [DPSA Public Service Vacancy Circular 41 of 2026 — Annexure H / O
 - The current CV and Z83 use different labels for the Capitec role (CV: Banking Business Consultant; Z83: Bank Better Champion). Confirm the contract/HR title before finalising a corrected pack, or preserve the exact HR title consistently with a transparent parenthetical explanation if both are correct.
 
 **Current application state:** two initial emails sent; **zero application packs evidenced as attached**; correction required before deadline. No follow-up with attachments has been sent.
+
+
+## 15. Corrected application packs prepared — 24 November 2026
+
+Following the Sent-folder audit, two separate vacancy-specific application folders were prepared. The existing Sent messages were not resent.
+
+### Prepared files
+
+**Midrand — Post 41/112, reference 2026/177/OCJ**
+- Tailored Z83 Section A: Supply Chain Clerk / Office of the Chief Justice / 2026/177/OCJ.
+- Two-page operations/procurement CV.
+- Read-me signing and submission checklist.
+- Archive: `OCJ_2026-177_Midrand_Application_Pack.zip`.
+
+**Pretoria — Post 41/111, reference 2026/176/OCJ**
+- Tailored Z83 Section A: Supply Chain Management Clerk / Office of the Chief Justice / 2026/176/OCJ.
+- Same two-page operations/procurement CV.
+- Read-me signing and submission checklist.
+- Archive: `OCJ_2026-176_Pretoria_Application_Pack.zip`.
+
+### Corrections and verification performed
+
+- Replaced the old SAPS advertised post details in Section A of each Z83.
+- Preserved the candidate's current address/email, education and employment dates.
+- Reconciled the Capitec job title in the CV as “Banking Business Consultant (Bank Better Champion)” to align with both source records.
+- Rebuilt the referee section using Letitia van der Merwe (Belgium Campus HR; official main switchboard clearly labelled) and Hendrik Kruger (Security Manager; published campus contact) with email addresses.
+- Removed the old Lorrissa/private-mobile reference entry from the submitted form and CV.
+- Removed the old signature, old initials and old declaration date from the altered Z83s. The applicant must sign/date and initial both pages afresh.
+- Rendered and visually reviewed all four PDFs (two tailored Z83s and two CV copies). Text checks confirmed the old SAPS title/reference and prior signature date are absent.
+- Left both reason-for-leaving cells in Section F blank for the applicant to complete accurately; no reason was invented.
+- Added a read-me checklist in each folder. No identity-document copies or qualification certificates were added.
+
+### Transmission state — unchanged
+
+The two earlier emails remain in Sent but contain no attachments:
+- Midrand message ID `1a20d4981eef37e5`.
+- Pretoria message ID `1a20d497376630db`.
+
+No corrective follow-up with attachments has yet been sent. No application pack is yet evidenced as received by OCJ.
+
+### Remaining applicant actions
+
+1. Supply accurate reasons for leaving Capitec and Belgium Campus Procurement Officer, and insert them into each Z83.
+2. Confirm every personal and qualification detail, language proficiency and stated private-sector experience in the Z83.
+3. Confirm the two named referees remain acceptable and contactable.
+4. Sign/date and initial page 1 and page 2 of each revised Z83; save each as a legible PDF.
+5. Attach the completed Z83 and CV as PDFs to a corrective follow-up in each original Sent thread (do not create duplicate new applications).
+
+**Current state:** two original application emails sent without attachments; two corrected draft packs prepared; applicant completion and corrective transmission still outstanding. The deadline remains 27 November 2026.
