@@ -151,3 +151,19 @@ The most important transferable lesson is not “never speak to anyone before wr
 For ScoutSA, the stricter owner-approved order remains **Build → Test → Audit → Accept → Demonstrate → Pitch**.
 
 No ScoutSA source files were changed by this audit. No ScoutSA gate, acceptance state or external-engagement hold was changed.
+
+
+## Follow-up source review — 2026-11-24, later ScoutSA branch head
+
+After this audit, nested Match-Day Handoff hardening was committed on ScoutSA's same isolated prototype branch. The current branch head at this follow-up is `d639cdf380530e4a3cb65576db7d055ce36cb1cd`.
+
+- Importer source blob: `73c2434278cc81b56c61a1e14d742a81b108f74c`.
+- Browser smoke source blob: `4a58f43a38ef7cd19f9ead44eb48c693d1d3b2f5`.
+- Contract source blob: `6bc93fe2fb18caa3ecc0c1749e033c178ba9fda8`.
+- Session ledger now contains Section 23.
+
+The importer now has exact nested field allowlists for the current exporter records; bounded string and collection checks; source-origin and exact source-to-substitution/event/report checks; duplicate participation/appearance checks; substitution status/timing checks; and a rollback path for a post-validation render failure. New browser scenarios cover unknown nested properties, dangling source origin, null nested records, invalid/duplicate appearances, duplicate substitution relationships, oversized event collections and injected rendering failure.
+
+**Verification is in progress, not complete.** Push workflow run #941 (`45354775012`) is pinned to the exact head above. At the time of this follow-up, the headless policy/documentation step and Playwright/Chromium installation had completed successfully, while the aggregate browser smoke step was still running. No browser pass is claimed until the run reaches a terminal result and its browser step is inspected.
+
+This follow-up changes the status of F-04 from "not yet implemented" to "targeted source hardening committed; runtime verification pending." It does not establish that the new schema is bug-free, that every exporter state is covered, or that the importer is production-safe. The original source findings remain historically accurate at their inspected revision.
