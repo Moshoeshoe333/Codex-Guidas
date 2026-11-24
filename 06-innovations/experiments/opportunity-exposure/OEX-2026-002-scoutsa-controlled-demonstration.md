@@ -90,3 +90,17 @@ Stop the external phase immediately if the demo requires real/minor data, the pr
 ## 8. Current decision
 
 **HOLD.** Continue internal prototype completion, exact-head testing, UI-008 and independent review. Do not begin external exposure. The 23 November green run and 24 November #1003 green run are tied to their exact earlier commits; the 24 November #1007 failure and #1008 in-progress state are retained, not concealed.
+
+
+## 10. 24 November rerun update — exact-head regression corrected
+
+After this record was first written, workflow [#1008](https://github.com/Moshoeshoe333/ScoutSA/actions/runs/45379538765) completed successfully at exact branch head `0ed06bde6317aab847ec3283a1c1afbb0d7b4472`:
+
+- Node headless suite: **128/128 passed**.
+- Configured Chromium browser smoke checks: passed, including 8/8 Discovery & Request Review groups and 8/8 Workspace Hub groups.
+- Specialist workspace interaction groups: **25/25 passed**.
+- Focused Firefox and WebKit import / Blob-export checks: passed, including the 390px Player Tournament History viewport assertion that failed in #1007.
+
+This is exact-head regression evidence for the workflow's declared tests and scope. It does not resolve the broader UI-008 open items, prove every browser/runtime path, close the baseline-pinned AUD sequence, replace independent review, or grant project-owner acceptance.
+
+**Updated status:** the specific WebKit viewport regression observed at #1007 is resolved in the tested #1008 head. The external demonstration/pitch track remains **HOLD** until the remaining UI-008 review and other preconditions in Section 4 are closed and formally accepted.
