@@ -36,7 +36,7 @@ These records turn OFN-001 / CG-042 into three distinct, bounded experiments. Re
 | Experiment | Track | Current status | Next proof |
 |---|---|---|---|
 | [OEX-2026-001](experiments/opportunity-exposure/OEX-2026-001-career-discoverability.md) | Career discoverability | Pre-registered; baseline and CV-version preflight required; no applications recorded as sent | Verify original vacancy, criteria, salary and email-only application route before candidate-approved submission |
-| [OEX-2026-002](experiments/opportunity-exposure/OEX-2026-002-scoutsa-controlled-demonstration.md) | ScoutSA controlled demonstration | **HOLD**; 24 November exact-head browser workflow failure and UI-008 / independent acceptance remain unresolved | Complete exact-head rerun, close required review and obtain explicit owner acceptance before any external exposure |
+| [OEX-2026-002](experiments/opportunity-exposure/OEX-2026-002-scoutsa-controlled-demonstration.md) | ScoutSA controlled demonstration | **HOLD**; exact-head workflow #1008 passed at `0ed06bde`, but UI-008 / baseline-pinned audit / independent acceptance remain unresolved | Close remaining review and obtain explicit owner acceptance before any external exposure |
 | [OEX-2026-003](experiments/opportunity-exposure/OEX-2026-003-sme-security-snapshot.md) | SME security snapshot | Pre-registered; desk research only; no sales or outreach | Source-backed problem / alternatives / buyer map, then a separate approval for any buyer discovery |
 
 See the [portfolio index](experiments/opportunity-exposure/README.md). The three records are independent; no aggregate exposure score is used.
