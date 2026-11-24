@@ -14,7 +14,7 @@ Test selected ideas from the external Opportunity Exposure heuristic in three se
 
 | ID | Track | Current status | Immediate next proof | External activity |
 |---|---|---|---|---|
-| [OEX-2026-001](OEX-2026-001-career-discoverability.md) | Career discoverability and qualified access | Two OCJ emails sent without attachments; two corrected packs now contain applicant-confirmed reasons. Z83s remain unsigned; language/experience checks and final transmission are pending | Review Z83 details and referees, sign/date and initial both pages, then reply with the two PDFs in each original thread before 27 Nov; no duplicate new applications |
+| [OEX-2026-001](OEX-2026-001-career-discoverability.md) | Career discoverability and qualified access | Two original OCJ emails sent without attachments; both Z83s now carry applicant-authorised typed signature/date/initials, language and 4-year experience confirmations; two corrective reply drafts exist without attachments | Attach the matching Z83 and CV to each existing reply draft, verify recipients, then send before 27 Nov; no duplicate new applications |
 | [OEX-2026-002](OEX-2026-002-scoutsa-controlled-demonstration.md) | ScoutSA controlled demonstration readiness | **HOLD**; current exact-head CI / UI-008 / independent acceptance unresolved | Resolve current CI failure and rerun on exact head; close review and obtain explicit owner acceptance | **No outreach, interviews, pitch, launch submissions or promotion** |
 | [OEX-2026-003](OEX-2026-003-sme-security-snapshot.md) | SME security snapshot problem discovery | PRE-REGISTERED; desk research only | Build evidence-led need / alternatives / buyer map and a falsifiable one-page concept | **No sales, email, interviews, client data or paid activity** |
 
