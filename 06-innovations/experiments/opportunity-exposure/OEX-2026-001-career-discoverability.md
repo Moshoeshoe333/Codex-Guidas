@@ -131,3 +131,14 @@ The [SavageOne Operations Systems Coordinator](https://www.joblife.co.za/jobs/op
 - No employer-controlled vacancy source or direct email-only application route has yet been confirmed for that lead.
 - No CV has been submitted and no application or employer contact is recorded as completed.
 - **Current status remains PRE-REGISTERED / SCREENING.** No application should be sent until the original vacancy, end employer, essential requirements, closing date, salary or salary-clarification route, and email-only application path are established and the candidate approves the specific application.
+
+
+## 12. Employer-source and email-route check — Elio Electro Tech CC
+
+The Benoni procurement-assistant lead now has a matching employer-owned contact source:
+
+- The vacancy aggregator listing [Jobslin — Procurement Administrator Assistant / Jr Procurement Administrator](https://za.jobslin.com/job/547254/procurement-administrator-assistant-jr-procurement-administrator-in-gauteng) describes a full-time, entry-level vacancy at Elio Electro Tech CC and lists Grade 12.
+- The employer's official website identifies Elio Electro Tech CC and publishes **office@elio.co.za** as its general contact email, with its Benoni address at 31 Cardiff Avenue, Apex, Benoni: [official contact page](https://elio.co.za/contact-us/).
+- The official contact address is verified as a company contact, **not as a vacancy-specific recruitment address**. The job advert does not itself confirm that applications are accepted by email, the vacancy remains open, salary, or closing date.
+
+**Disposition:** Employer identity and general email contact have a stronger source basis than the earlier aggregator-only leads. The vacancy is still **NOT QUALIFIED** until availability, required documents, salary/range and email-only application route are confirmed. No enquiry has been sent. Do not send a CV or personal documents to a general inbox without first confirming the vacancy and intended application channel.
