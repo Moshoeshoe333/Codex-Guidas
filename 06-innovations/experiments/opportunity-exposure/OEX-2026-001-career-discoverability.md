@@ -105,3 +105,29 @@ Views, profile visits and aggregator result counts are diagnostic only. They are
 ## 9. Current decision
 
 **PRE-REGISTERED; baseline and CV-version preflight required.** Search discovery has begun, but the first four results remain leads only. The next useful action is to verify original vacancy sources and reject anything without a legitimate email route or clear fit. No application is being represented as sent.
+
+
+## 10. Vaal-focused follow-up search — 2026-11-24
+
+A narrower search was run for procurement, administration, logistics and systems roles in the Vaal. It returned a potentially relevant lead:
+
+| Lead | Observed information | Disposition |
+|---|---|---|
+| [Junior Procurement Specialist — Placements24, Vereeniging](https://za.jobtome.com/ai-search/junior-procurement-specialist-vereeniging-emfuleni-gauteng-za?job_details_id=87eb92658fdac1cf2fa309e543f90439) | Aggregator description covers supplier sourcing/quotations, requisitions and purchase orders under supervision, procurement records and supplier relations. The client is unnamed. Jobtome's detailed record showed salary as unavailable. Other aggregators display an estimated band of R180,000–R240,000/year (about R15,000–R20,000/month), but this is not an employer-confirmed salary and must not be relied on. | **POTENTIALLY RELEVANT LEAD; NOT QUALIFIED.** The lower end may fit the target band, but client identity, essential requirements, salary and email-only application route remain unverified. Do not submit a CV through an aggregator until destination and employer are verified. |
+
+Additional source references for the same lead:
+- [Expertini result](https://vereeniging.za.expertini.com/job/junior-procurement-specialist-vereeniging-placements24-292-10402842/) presents it as full-time and active, but still attributes the listing to Placements24 and does not name the end client.
+- [Jobslooker Vereeniging procurement results](https://za.jobslooker.com/vacancies-procurement-vereeniging%2Cgauteng) displays an annual estimate, not a verified employer salary.
+- [Jobsora Vereeniging procurement results](https://za.jobsora.com/jobs-procurement-vereeniging%2Cgauteng) repeats similar aggregator data. These are not independent confirmation of employer identity or pay.
+
+The second local procurement lead, [Elio Electro Tech CC — Junior Procurement Administrator, Benoni](https://za.jobslin.com/job/547254/procurement-administrator-assistant-jr-procurement-administrator-in-gauteng), is described by Jobslin as full-time, entry-level and Grade 12, with supplier communication, quotations, price comparison and smaller purchasing requirements; training is mentioned. It is outside the preferred Vaal/Johannesburg core and no salary or email route was established. Keep as a secondary lead only.
+
+The [SavageOne Operations Systems Coordinator](https://www.joblife.co.za/jobs/operations-systems-coordinator-d4b8d4b80ebbf15c?returnTo=%2Fjobs%3Fquery%3Dlending%26location%3DJohannesburg%252C%2BGauteng) listing is permanent/full-time in Johannesburg, but the advert does not specify education, experience, pay or closing date and routes applicants to an external JobG8 application. Because the email-only constraint is not established, it is not presently qualified.
+
+## 11. Search conclusion and status
+
+- Relevant search discovery has begun; the aggregator result totals are not market-size estimates.
+- The Vereeniging Junior Procurement Specialist is the strongest local lead found in this pass, but employer, pay and email route are not verified.
+- No employer-controlled vacancy source or direct email-only application route has yet been confirmed for that lead.
+- No CV has been submitted and no application or employer contact is recorded as completed.
+- **Current status remains PRE-REGISTERED / SCREENING.** No application should be sent until the original vacancy, end employer, essential requirements, closing date, salary or salary-clarification route, and email-only application path are established and the candidate approves the specific application.
