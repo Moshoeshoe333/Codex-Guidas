@@ -299,3 +299,24 @@ The applicant supplied the missing reasons for leaving. Both vacancy-specific Z8
 - The two original Sent emails still have no attachments. No follow-up with attachments has been sent. The corrective follow-ups must be sent as replies in the existing threads, not as duplicate new applications.
 
 **Current state:** two original emails sent without attachments; two corrected packs now include applicant-confirmed reasons; applicant review, fresh signatures/initials and corrective transmission remain outstanding. Deadline: 27 November 2026.
+
+
+## 17. Typed signature, applicant confirmations, and transmission limitation — 24 November 2026
+
+The applicant confirmed that the Z83 language entries and proficiency ratings are correct and that four years of private-sector experience is accurate.
+
+### Form completion
+- Both vacancy-specific Z83 PDFs now show the applicant-authorised bold typed signature **T.Moshoeshoe** and date **24/11/2026** in the declaration.
+- Applicant initials **T.M.** were placed in the printed initial fields on both pages of each form.
+- The previous reasons-for-leaving entries remain as applicant-confirmed, professionally phrased summaries; their private narrative is not reproduced in this public project log.
+- Both forms were rendered and visually inspected after signature/date/initial placement. Structural checks confirm two-page, openable, unencrypted PDFs.
+- The two vacancy-specific ZIP packs were rebuilt with the corresponding Z83, CV and checklist.
+
+### Email execution
+- The authenticated Gmail account contains a reply draft in the original Midrand thread, addressed to `2026/177/OCJ@judiciary.org.za`.
+- A reply draft was also created in the original Pretoria thread, addressed to `2026/176/OCJ@judiciary.org.za`.
+- The browser automation could open the Midrand thread and type the reply, but the OS file-picker dialog could not be opened, so the two PDFs could not be attached through that route.
+- The Gmail connector's reply/send attachment capability is unavailable in the current integration. No tool-supported attachment transmission was completed.
+- A post-attempt Gmail audit shows one sent message in each original thread (the original 24 Nov messages only), and no follow-up message has been sent. The two reply drafts are not sent and have no evidence of the required attachments.
+
+**Current state:** both Z83s have applicant-authorised typed signatures, dates and initials; the applicant's language and four-year experience confirmations are applied; both role-specific packs are ready. Two corrective reply drafts exist in the correct original threads, but neither has the PDFs attached, and neither has been sent. The applicant must download/attach the matching Z83 and CV in each draft and send before the 27 November 2026 deadline. Do not count either draft as an application submission.
