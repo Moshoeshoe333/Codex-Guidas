@@ -122,3 +122,10 @@ The transcribed archive itself characterises the manual as a practitioner's synt
 
 ---
 **Record integrity:** This field note captures an external idea and our proposed interpretation. It is not proof of implementation, market validation, scientific consensus or project approval.
+
+
+## 9. Controlled testing template
+
+Any future local application should use the [Opportunity Exposure Experiment Record](../09-templates/opportunity-exposure-experiment.md). It requires a bounded hypothesis, baseline, separately defined funnel stages, authority and safety checks, cost caps, an execution log, and a decision to continue/change/stop/defer. No local experiment validates the complete external manual.
+
+The ScoutSA-specific boundary is explicit: no external product pitch or live opportunity exposure before the agreed working prototype is built and tested, with safeguarding and access gates remaining separate.
