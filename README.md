@@ -27,7 +27,7 @@ We preserve reusable engineering knowledge so that each project benefits from th
 | [Lesson template](09-templates/lesson-template.md) | Standard format for new entries |
 | [Framework Assessment Record](09-templates/framework-assessment-record.md) | Proposed evidence-linked record for bounded framework assessments |
 | [Defect Intelligence](11-defect-intelligence/README.md) | Defect intake, similarity search, verification and learning loop |
-| [33-Perspective Register](doctrines/33-perspective-master-register.md) | Proposed lenses for evidence-led, proportionate decision review |
+| [33-Perspective Register](doctrines/33-perspective-master-register.md) | Proposed lenses for evidence-led, proportionate decision review |\n| [Prototype-First Integrity](doctrines/prototype-first-integrity.md) | Proposed doctrine for evidence-bounded external engagement and pitch readiness |
 
 ## Reusable knowledge packs
 
@@ -59,7 +59,7 @@ The first import is a curated synthesis from prior work on ScoutSA, SoulSync 3, 
 
 ## Source archaeology
 
-The initial source audit is recorded in [Repository Archaeology — 2026-11-18](10-source-audits/2026-11-18-repository-archaeology.md). It inspected selected primary files and commits across ScoutSA, SoulSync 3, SoulSyncMobile and NAVIGRE. It is a partial audit, not a fresh test execution. The [33-Tier Framework method](02-methodologies/33-tier-framework.md) is also indexed here; its own source explicitly leaves detailed specification and validation of all 33 tiers as open work.
+The initial source audit is recorded in [Repository Archaeology — 2026-11-18](10-source-audits/2026-11-18-repository-archaeology.md). The focused [ScoutSA Prototype and Engagement Audit — 2026-11-24](10-source-audits/2026-11-24-scoutsa-prototype-audit.md) supersedes the earlier ScoutSA engagement status where noted and records current prototype, verification and external-engagement boundaries. It inspected selected primary files and commits across ScoutSA, SoulSync 3, SoulSyncMobile and NAVIGRE. It is a partial audit, not a fresh test execution. The [33-Tier Framework method](02-methodologies/33-tier-framework.md) is also indexed here; its own source explicitly leaves detailed specification and validation of all 33 tiers as open work.
 
 ## UCI relationship boundary
 

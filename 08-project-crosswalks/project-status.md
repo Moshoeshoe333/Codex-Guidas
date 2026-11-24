@@ -94,3 +94,41 @@ This section supersedes any older summary where the inspected source files provi
 No UCI repository was present in the accessible repository listing during this audit. Keep UCI classified as a research/product concept until its source of truth is identified. Do not fabricate a repository or infer implementation.
 
 For full source references and audit limitations, see [Repository Archaeology — 2026-11-18](../10-source-audits/2026-11-18-repository-archaeology.md).
+
+
+---
+
+## Source-audit reconciliation — 2026-11-24
+
+This update supersedes the 18 November ScoutSA "controlled next move: external validation" statement. The project-owner decision recorded on 23 November is now stricter: external validation, stakeholder interviews, partnership/funding pitches and active promotion as a pitch asset remain on hold until the internal prototype is working, tested, independently reviewed and explicitly accepted.
+
+### ScoutSA — current prototype boundary
+
+- Repository: [Moshoeshoe333/ScoutSA](https://github.com/Moshoeshoe333/ScoutSA).
+- Inspected branch and exact head: `prototype/internal-demo`, `e4a0a5a5c130f4d6e94c70b72a786e196fb3ae27`.
+- The branch contains a static synthetic-data prototype. It is separate from mainline and does not authorize real player/minor data, production use, deployment, live pilot activity or mainline implementation.
+- The agreed order is **Build → Test → Audit → Accept → Demonstrate → Pitch**. No external validation or pitching before the working prototype has been tested, independently reviewed and explicitly accepted.
+- Historical workflow #893 passed at PR #11 head `61993f435f621db32a0e0fc2aefe33d2d569201e`; it is not evidence for the later current branch head. The 24 November audit did not obtain exact-head CI evidence. The available workflow lookup is PR-run-limited; empty results are inconclusive, not a failed run.
+- A current source mismatch was observed: the workflow lists 12 browser smoke scripts, while the README describes 11 configured scripts for the historical run. Reconcile the wording and counts at the relevant revision.
+- Match-Day Handoff now checks the exact 17-key root envelope and has a committed unknown-envelope regression. Nested schema allowlists, collection bounds, source-origin relationship enforcement and complete post-validation atomicity remain review items. No latest-head browser pass is claimed.
+- UI-008 remains OPEN. The recorded 21-page source-pattern scan is bounded evidence, not a full AST/runtime security audit.
+- Mainline implementation, real-data, production, deployment, external-validation, stakeholder-outreach and pitching gates remain unchanged.
+
+**Primary audit:** [ScoutSA Prototype and Engagement Audit — 2026-11-24](../10-source-audits/2026-11-24-scoutsa-prototype-audit.md).  
+**Transferable doctrine:** [Prototype-First Integrity and External Engagement](../doctrines/prototype-first-integrity.md).
+
+Transfer principles, not ScoutSA's project-specific authorization or safeguarding rules. The 18 November status remains historical context only.
+
+
+### ScoutSA — 24 November nested handoff follow-up
+
+At branch head `d639cdf380530e4a3cb65576db7d055ce36cb1cd`, the Match-Day Handoff importer has been hardened beyond the 17-key root envelope: exact nested field allowlists, bounded collection/text checks, source-origin and exact source-record pairing, duplicate appearance/substitution checks, and a staged import rollback path are committed. The contract and Section 23 of the ScoutSA session ledger record the limits and scope.
+
+Push workflow run #941 (`45354775012`) is pinned to that exact head. At the time this entry was written, policy/documentation checks and Playwright/Chromium installation were complete; the browser smoke step remained in progress. No browser test pass is claimed. UI-008 and all project-level external engagement/mainline/production holds remain unchanged.
+
+
+### ScoutSA — exact-head verification update, 24 November 2026
+
+The current `prototype/internal-demo` head `8cdd62e5ae3316024fddef6fc7afb50f38af2520` passed hosted workflow [#960](https://github.com/Moshoeshoe333/ScoutSA/actions/runs/45356935933): 122/122 Node tests, 12/12 configured browser smoke scripts and 24/24 specialist interaction groups. This exact-head result includes the nested Match-Day Handoff validation and rollback regressions, plus subsequent README/session-ledger reconciliation.
+
+The importer hardening is therefore now backed by a passing exact-head synthetic browser regression suite. It is still not a full security audit or production approval. UI-008 remains OPEN; prototype acceptance, the separate AUD sequence, mainline/real-data/production gates and the external-engagement hold remain unchanged.
