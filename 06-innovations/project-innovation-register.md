@@ -10,7 +10,7 @@ Ideas and directions are preserved here without confusing them with implemented 
 | SoulSync 3 | Deterministic policy core, immutable contracts, evidence verification and governed transitions | Implemented/tested in recorded runs, scope-specific | Re-run against current commit and supported runtimes |
 | SoulSyncMobile | Offline SMS/URL threat scanning with ALLOW / WARN / DENY | Prototype/design; build gate open in recorded state | Reproducible build, device runtime and adversarial corpus |
 | NAVIGRE | Indoor navigation and parking locator with confidence decay and scoring | Design/gate work recorded | Validate location confidence and parking discovery against real-world observations |
-| Portfolio | Opportunity Exposure / "luck surface area" field note | External heuristic recorded; not validated or adopted as policy | Run bounded, low-cost tests of relevant encounters and discoverability; measure qualified access and outcomes, with downside and safety limits |
+| Portfolio | Opportunity Exposure / "luck surface area" field note | External heuristic recorded; not validated or adopted as policy | Use the [Opportunity Exposure Experiment Record](../09-templates/opportunity-exposure-experiment.md) for any bounded local test; measure funnel stages separately and preserve downside, privacy and safety limits |
 | UCI | Cyber threat intelligence dashboard and structured attack analysis | Research/product concept | Define reliable sources, deduplication, attribution/confidence and analyst workflow before infrastructure |
 
 ## Experiment template
