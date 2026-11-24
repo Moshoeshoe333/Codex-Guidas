@@ -145,3 +145,44 @@ Do not build a product or contact buyers yet. First create a comparison matrix f
 Then identify the smallest, genuinely distinct problem statement and its buyer. If no defensible distinction survives, **stop or change the concept** rather than manufacture differentiation.
 
 **Updated decision:** DESK-RESEARCH ONLY. Current evidence is sufficient to reject the unqualified claim that the market has no affordable SME security-assessment options. It is not sufficient to validate a third-party/operator assurance gap, customer need, willingness to pay or business viability.
+
+
+## 11. Competitive counter-evidence — supplier assurance already advertised (2026-11-24)
+
+A further search surfaced a particularly relevant direct comparator:
+
+- [ASi Imperium — Supplier & Third-Party Security Assurance](https://www.asitechnologies.co.za/supplier-assurance) publicly advertises a supplier assessment **from R6,500 per supplier**. Its stated outputs include evidence reviewed against a control set, a scored report, operator-agreement points to raise and a dated fix-list. It also advertises a supplier-wide assurance programme with a value-chain map, ranked risk register, assessments of critical suppliers, scheduled re-checks, exposure monitoring and monthly summary. The page says legal drafting and certification are excluded.
+
+**Interpretation:** this directly overlaps the initial proposed third-party/operator assurance idea. It materially weakens any assumption that a supplier assurance product is absent from the South African market. It does not prove the advertised service's quality, delivery, affordability for the smallest SMEs, buyer demand or the full extent of competitors.
+
+## 12. Normalised public-offer comparison — preliminary
+
+All figures and scopes below are provider-advertised descriptions accessed or searched on 2026-11-24. They are **not independent evaluations, quotes or proof of service delivery**. Prices may change, exclude VAT, depend on endpoints, or require eligibility/contract conditions not captured here. Services are not directly comparable unless scope, depth, data access, deliverable, response commitment and tax basis are normalised.
+
+| Provider / public offer | Publicly stated price | Stated scope / output | Relation to hypothesis | Important caveat |
+|---|---:|---|---|---|
+| [RSAT Online — IT Risk Snapshot](https://www.rsat.online/services/) | R4,000 (1–50 endpoints); R6,000 (51–250); R8,000 (251+) | OpenVAS and SpiderFoot scans, Microsoft security stack, backups, firewall, executive risk report; 5–7 working days | Direct substitute for a generic SME risk snapshot | Provider page does not establish independent quality or buyer demand; endpoint-banded scan snapshot |
+| [HeartGuard — Audit / Shield](https://www.heartguard.co.za/) | Audit R6,500 (up to 50 endpoints); Shield from R3,500/month | External and endpoint vulnerability scan, cyber-health score, prioritised remediation plan; ongoing monitoring and evidence packs at higher recurring tiers | Direct substitute for exposure snapshot and continuing monitoring | Provider-advertised endpoint tiers; managed monitoring is not equivalent to independent supplier due diligence |
+| [Ingwe Digital — POPIA assessment / documentation](https://ingwedigital.co.za/cybersecurity) | R5,000 once-off; R1,200/month ongoing | Gap analysis, data-protection policy, privacy notice and breach-response plan | Adjacent substitute for privacy/compliance documentation | Legal adequacy and qualifications not independently assessed; regulatory assessment is not the same as technical risk testing |
+| [SureTel — SME cybersecurity / managed IT](https://suretel.co.za/services/cyber-security) | EDR included from R500 per managed user/month excl. VAT; page states a normal R7,500/month minimum on a 12-month agreement | Managed EDR, patching and vulnerability management; free remote-first 2–4 hour IT health/risk assessment; business-hours service, with explicit exclusions for 24/7 SOC and penetration testing in base offer | Adjacent substitute for a bundled MSP/managed control service | Ongoing managed IT, not a standalone independent supplier assessment; stated minimum and term matter |
+| [AKWEBSEC — Sentinel plans](https://www.akwebsec.co.za/) | Basic R300/month annual or R500 cancel-anytime; Standard R600/R1,000; Professional R1,500/R2,500 | Daily scans, SSL/uptime, security-header monitoring, manual reviews; higher tiers add limited-scope assessments and POPIA readiness | Low-cost adjacent monitoring substitute | Monitoring tiers differ materially from a one-off assessment or supplier assurance programme |
+| [ASi Imperium — Supplier & Third-Party Security Assurance](https://www.asitechnologies.co.za/supplier-assurance) | Supplier assessment from R6,500; programme quoted after mapping | Evidence reviewed against a control set, scored supplier report, operator-agreement points, fix-list; supplier portfolio mapping, ranked risks and scheduled reassessments | **Direct competitor / counter-evidence** to a third-party/operator assurance concept | Page expressly excludes legal drafting and certification; quality, delivery and customer references not independently assessed |
+
+### Revised interpretation
+
+1. There is visible advertised competition across basic risk snapshots, endpoint vulnerability exposure, managed detection/monitoring, POPIA documentation and supplier-specific assurance.
+2. The initial idea of a generic low-cost SME cyber snapshot is not a defensible differentiator by itself.
+3. The narrow third-party/operator angle is also not demonstrably novel: at least one South African provider publicly offers supplier-specific assessment and a supplier assurance programme.
+4. Price comparison alone is insufficient. The offers differ in endpoint count, supplier count, evidence depth, technical access, monitoring, consulting time, remediation, support hours, legal scope and VAT/contract terms.
+5. There may still be an underserved customer segment, workflow or price/access need, but no evidence yet establishes one. We must not manufacture a gap around an existing offer.
+
+### Revised next proof and stop rule
+
+Before any buyer outreach or product build:
+- inspect the exact scope, buyer, exclusions and evidence demands of at least two direct alternatives, especially ASi Imperium and RSAT;
+- identify any credible, independently documented segment they do not serve, rather than assuming one;
+- determine whether the proposed service could be delivered competently, lawfully and with acceptable liability;
+- estimate real analyst time and delivery costs, not just software costs;
+- abandon or materially change the concept if the only differentiation is a lower price, a dashboard, an AI-generated score, or relabelling the same supplier questionnaire.
+
+**Updated decision:** DESK-RESEARCH ONLY. The competitive scan provides substantial counter-evidence against a generic risk-snapshot proposition and meaningful counter-evidence against assuming a novel third-party assurance gap. No defensible market gap, buyer demand, willingness to pay or commercial model has been established.
