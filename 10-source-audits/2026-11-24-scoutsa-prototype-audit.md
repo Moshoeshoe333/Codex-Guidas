@@ -167,3 +167,17 @@ The importer now has exact nested field allowlists for the current exporter reco
 **Verification is in progress, not complete.** Push workflow run #941 (`45354775012`) is pinned to the exact head above. At the time of this follow-up, the headless policy/documentation step and Playwright/Chromium installation had completed successfully, while the aggregate browser smoke step was still running. No browser pass is claimed until the run reaches a terminal result and its browser step is inspected.
 
 This follow-up changes the status of F-04 from "not yet implemented" to "targeted source hardening committed; runtime verification pending." It does not establish that the new schema is bug-free, that every exporter state is covered, or that the importer is production-safe. The original source findings remain historically accurate at their inspected revision.
+
+
+## Latest exact-head verification — 2026-11-24
+
+The subsequent ScoutSA source and documentation updates were verified at exact branch head `8cdd62e5ae3316024fddef6fc7afb50f38af2520` by push workflow [#960](https://github.com/Moshoeshoe333/ScoutSA/actions/runs/45356935933).
+
+- **122/122** Node tests passed.
+- **12/12** configured Playwright/Chromium browser smoke scripts ran and passed.
+- **24/24** specialist workspace interaction groups passed.
+- The run's head SHA matches the ScoutSA branch head cited above.
+
+The run includes the nested Match-Day Handoff importer checks and the regression corrections made after earlier failed attempts. Those earlier failures exposed test/contract mismatches; they were investigated and corrected rather than treated as passes. The successful run is current-head synthetic regression evidence, not formal prototype acceptance, full AST/runtime security certification, real-world safeguarding, legal compliance, user validation or product-market-fit evidence.
+
+ScoutSA remains on its isolated `prototype/internal-demo` branch. UI-008 remains OPEN; the separate baseline-pinned AUD sequence remains blocked; mainline, real-data, production, deployment, pilot, external validation and pitching holds remain unchanged. The project has not been formally accepted as complete.
