@@ -106,3 +106,6 @@ These entries are derived from a bounded ScoutSA source audit, not universal cer
 
 
 **CG-044 follow-up — 2026-11-24:** ScoutSA has since committed targeted nested-schema and import-rollback hardening at `d639cdf380530e4a3cb65576db7d055ce36cb1cd`; exact-head browser verification was still running when this note was recorded. The lesson remains valid as a general validation principle, but its specific ScoutSA remediation status must be read from the follow-up source audit, not from the original finding alone.
+
+
+**CG-044 verification update — 24 November 2026:** ScoutSA's current branch head `8cdd62e5ae3316024fddef6fc7afb50f38af2520` passed workflow #960 with 122/122 Node tests, 12/12 browser smoke scripts and 24/24 specialist interaction groups. The nested-schema and import rollback regressions are now covered by this exact-head synthetic suite. This does not establish complete schema correctness, production safety or acceptance; see the latest exact-head verification section in the ScoutSA source audit.
