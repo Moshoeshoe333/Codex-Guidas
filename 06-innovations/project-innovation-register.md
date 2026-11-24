@@ -40,3 +40,6 @@ These records turn OFN-001 / CG-042 into three distinct, bounded experiments. Re
 | [OEX-2026-003](experiments/opportunity-exposure/OEX-2026-003-sme-security-snapshot.md) | SME security snapshot | Initial desk scan started; several existing offers found; differentiated need not established; no sales or outreach | Compare at least five offers on scope and cost; test whether third-party/operator assurance is a distinct buyer problem |
 
 See the [portfolio index](experiments/opportunity-exposure/README.md). The three records are independent; no aggregate exposure score is used.
+
+
+The OEX-2026-003 desk scan has identified direct counter-evidence to a novel supplier-assurance proposition: ASi Imperium publicly advertises supplier-specific assessments from R6,500. See the [experiment record](experiments/opportunity-exposure/OEX-2026-003-sme-security-snapshot.md). No distinct gap or buyer demand is established.
