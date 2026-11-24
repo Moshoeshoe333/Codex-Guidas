@@ -1,7 +1,7 @@
 # OEX-2026-001 — Career Discoverability and Qualified Access
 
 **Recorded:** 2026-11-24  
-**Status:** PRE-REGISTERED · BASELINE NOT YET RECORDED · NO APPLICATIONS SENT BY THIS RECORD  
+**Status:** APPLICATION CORRECTION IN PROGRESS · TWO ORIGINAL EMAILS SENT WITHOUT ATTACHMENTS · TWO CORRECTED PACKS UPDATED; SIGNATURES AND FOLLOW-UP PENDING  
 **Owner:** Project owner / candidate  
 **Template:** [CG-TPL-OEX-001](../../../../09-templates/opportunity-exposure-experiment.md)  
 **Related framework:** OFN-001 / CG-042  
@@ -284,3 +284,18 @@ No corrective follow-up with attachments has yet been sent. No application pack 
 5. Attach the completed Z83 and CV as PDFs to a corrective follow-up in each original Sent thread (do not create duplicate new applications).
 
 **Current state:** two original application emails sent without attachments; two corrected draft packs prepared; applicant completion and corrective transmission still outstanding. The deadline remains 27 November 2026.
+
+
+## 16. Applicant-confirmed reasons entered and packs refreshed — 24 November 2026
+
+The applicant supplied the missing reasons for leaving. Both vacancy-specific Z83 files have now been updated in Section F with concise, professionally phrased summaries. The underlying private account has not been copied into this public-facing project record.
+
+- Both Z83s now contain the applicant-confirmed reasons; neither reason-for-leaving cell remains blank.
+- The Capitec entry is phrased neutrally while preserving the material fact that workplace pressure preceded the resignation.
+- The Belgium Campus entry records organisational restructuring and the accepted severance option.
+- Both forms were rendered and visually inspected after the update. Structural checks confirm two-page, openable, unencrypted PDFs.
+- Both ZIP application packs were regenerated and checked to contain the correct vacancy-specific Z83, the CV and an updated read-me checklist.
+- Both Z83s remain unsigned and undated. The applicant must still review the language/proficiency entries, private-sector experience total and all personal details; confirm the referees; sign/date the declaration; and initial both pages.
+- The two original Sent emails still have no attachments. No follow-up with attachments has been sent. The corrective follow-ups must be sent as replies in the existing threads, not as duplicate new applications.
+
+**Current state:** two original emails sent without attachments; two corrected packs now include applicant-confirmed reasons; applicant review, fresh signatures/initials and corrective transmission remain outstanding. Deadline: 27 November 2026.
