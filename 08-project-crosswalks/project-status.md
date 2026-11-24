@@ -118,3 +118,10 @@ This update supersedes the 18 November ScoutSA "controlled next move: external v
 **Transferable doctrine:** [Prototype-First Integrity and External Engagement](../doctrines/prototype-first-integrity.md).
 
 Transfer principles, not ScoutSA's project-specific authorization or safeguarding rules. The 18 November status remains historical context only.
+
+
+### ScoutSA — 24 November nested handoff follow-up
+
+At branch head `d639cdf380530e4a3cb65576db7d055ce36cb1cd`, the Match-Day Handoff importer has been hardened beyond the 17-key root envelope: exact nested field allowlists, bounded collection/text checks, source-origin and exact source-record pairing, duplicate appearance/substitution checks, and a staged import rollback path are committed. The contract and Section 23 of the ScoutSA session ledger record the limits and scope.
+
+Push workflow run #941 (`45354775012`) is pinned to that exact head. At the time this entry was written, policy/documentation checks and Playwright/Chromium installation were complete; the browser smoke step remained in progress. No browser test pass is claimed. UI-008 and all project-level external engagement/mainline/production holds remain unchanged.
