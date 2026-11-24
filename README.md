@@ -21,7 +21,8 @@ We preserve reusable engineering knowledge so that each project benefits from th
 | [Security and safeguarding](04-security/safeguarding-and-threat-modeling.md) | Threat modelling, privacy and safety lessons |
 | [Testing and CI](05-testing-verification/verification-and-ci.md) | Verification layers and regression discipline |
 | [Innovation register](06-innovations/project-innovation-register.md) | Ideas, experiments and next proof |
-| [Opportunity Exposure field note](06-innovations/opportunity-exposure-field-note.md) | External 33-heuristic opportunity framework, source provenance and application guardrails |
+| [Opportunity Exposure field note](06-innovations/opportunity-exposure-field-note.md)
+| [Opportunity Exposure experiment portfolio](06-innovations/experiments/opportunity-exposure/README.md) | Three separate, pre-registered career, ScoutSA and SME opportunity experiments with explicit hold points | | External 33-heuristic opportunity framework, source provenance and application guardrails |
 | [Product validation](07-product-business/product-validation.md) | Usability, adoption and commercial evidence |
 | [Project crosswalk](08-project-crosswalks/project-status.md) | ScoutSA, SoulSync, SoulSyncMobile, NAVIGRE and UCI |
 | [UCI methodology integration boundary](08-project-crosswalks/uci-methodology-integration-boundary.md) | Proposed boundary between Codex-Guidas, UCI and the two 33 frameworks |
