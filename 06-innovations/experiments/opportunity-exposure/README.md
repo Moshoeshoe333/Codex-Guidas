@@ -14,7 +14,7 @@ Test selected ideas from the external Opportunity Exposure heuristic in three se
 
 | ID | Track | Current status | Immediate next proof | External activity |
 |---|---|---|---|---|
-| [OEX-2026-001](OEX-2026-001-career-discoverability.md) | Career discoverability and qualified access | PRE-REGISTERED; baseline and CV-version preflight required | Verify original employer vacancy sources, requirements, salary and email route; screen up to 8 high-fit leads | Candidate approval required for each application; no applications recorded as sent |
+| [OEX-2026-001](OEX-2026-001-career-discoverability.md) | Career discoverability and qualified access | PRE-REGISTERED; baseline and CV-version preflight required | Vaal Junior Procurement Specialist remains aggregator-only; Elio Benoni lead has an employer-verified general inbox, but no recruitment email or vacancy confirmation; screen only after these gaps are resolved | Candidate approval required for each application; no applications recorded as sent |
 | [OEX-2026-002](OEX-2026-002-scoutsa-controlled-demonstration.md) | ScoutSA controlled demonstration readiness | **HOLD**; current exact-head CI / UI-008 / independent acceptance unresolved | Resolve current CI failure and rerun on exact head; close review and obtain explicit owner acceptance | **No outreach, interviews, pitch, launch submissions or promotion** |
 | [OEX-2026-003](OEX-2026-003-sme-security-snapshot.md) | SME security snapshot problem discovery | PRE-REGISTERED; desk research only | Build evidence-led need / alternatives / buyer map and a falsifiable one-page concept | **No sales, email, interviews, client data or paid activity** |
 
