@@ -125,3 +125,10 @@ Transfer principles, not ScoutSA's project-specific authorization or safeguardin
 At branch head `d639cdf380530e4a3cb65576db7d055ce36cb1cd`, the Match-Day Handoff importer has been hardened beyond the 17-key root envelope: exact nested field allowlists, bounded collection/text checks, source-origin and exact source-record pairing, duplicate appearance/substitution checks, and a staged import rollback path are committed. The contract and Section 23 of the ScoutSA session ledger record the limits and scope.
 
 Push workflow run #941 (`45354775012`) is pinned to that exact head. At the time this entry was written, policy/documentation checks and Playwright/Chromium installation were complete; the browser smoke step remained in progress. No browser test pass is claimed. UI-008 and all project-level external engagement/mainline/production holds remain unchanged.
+
+
+### ScoutSA — exact-head verification update, 24 November 2026
+
+The current `prototype/internal-demo` head `8cdd62e5ae3316024fddef6fc7afb50f38af2520` passed hosted workflow [#960](https://github.com/Moshoeshoe333/ScoutSA/actions/runs/45356935933): 122/122 Node tests, 12/12 configured browser smoke scripts and 24/24 specialist interaction groups. This exact-head result includes the nested Match-Day Handoff validation and rollback regressions, plus subsequent README/session-ledger reconciliation.
+
+The importer hardening is therefore now backed by a passing exact-head synthetic browser regression suite. It is still not a full security audit or production approval. UI-008 remains OPEN; prototype acceptance, the separate AUD sequence, mainline/real-data/production gates and the external-engagement hold remain unchanged.
