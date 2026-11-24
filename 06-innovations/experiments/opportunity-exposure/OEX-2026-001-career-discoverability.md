@@ -199,3 +199,39 @@ These two official posts are stronger, more relevant opportunities than the aggr
 5. Ensure each PDF packet is complete, signed, initialled and addressed to the matching vacancy-specific email.
 
 No email has been sent and no application is recorded as submitted. This record is a discovery and screening result, not proof of application.
+
+
+## 14. OCJ application transmission audit — 24 November 2026
+
+The two vacancy emails were located in the authenticated Gmail Sent folder. They are genuine sent messages, not drafts.
+
+| Post | Reference | Sent timestamp (UTC) | Recipient | Sent-message ID | Attachment audit |
+|---|---|---|---|---|---|
+| Supply Chain Clerk, Midrand | 2026/177/OCJ | 2026-11-24 11:20:50Z | 2026/177/OCJ@judiciary.org.za | `1a20d4981eef37e5` | **No attachments** |
+| Supply Chain Management Clerk, Pretoria | 2026/176/OCJ | 2026-11-24 11:20:46Z | 2026/176/OCJ@judiciary.org.za | `1a20d497376630db` | **No attachments** |
+
+The messages state that a signed Z83 and comprehensive CV are attached, but the full Sent-folder message records contain no attachment metadata or attachment IDs. Therefore, the transmission of the required application documents is **not evidenced**. Do not count these as complete applications or claim that an application pack was received.
+
+### Official instruction re-check
+
+The official [DPSA Public Service Vacancy Circular 41 of 2026 — Annexure H / Office of the Chief Justice](https://www.gov.za/sites/default/files/PSV%20CIRCULAR%2041%20of%202026.pdf) and the [OCJ-hosted circular PDF](https://www.judiciary.org.za/images/vacancies/2026/Circular%2041%20of%202026.pdf) state:
+
+- New Z83, fully completed, signed and initialled on both pages.
+- Recent comprehensive CV only at initial application stage.
+- Contactable referees, with telephone numbers and email addresses indicated.
+- Documents sent in PDF format and put in one folder.
+- Correct job title, advertised office and reference number.
+- Closing date: 27 November 2026.
+- Certified qualification documents are requested from shortlisted candidates, not required in the initial email.
+
+### Corrective action and constraints
+
+- Do not resend the two original messages.
+- Prepare a separate complete PDF application folder for each reference number.
+- The Library Z83 is already populated for a different vacancy. Its Section A must be replaced separately for each OCJ post.
+- The existing Z83 was signed/dated before any new vacancy details were added. Do not reuse that signature on an altered application form; the candidate must re-sign and initial both pages after review.
+- Existing Z83 referee details include a personal mobile number previously requested to be removed from CV/reference material. Do not reinsert it.
+- The verified Belgium Campus HR email and official campus reception number may be used only with accurate labelling. Other referee telephone details remain unconfirmed; do not invent them or substitute a general customer-service number for an HR referee.
+- The current CV and Z83 use different labels for the Capitec role (CV: Banking Business Consultant; Z83: Bank Better Champion). Confirm the contract/HR title before finalising a corrected pack, or preserve the exact HR title consistently with a transparent parenthetical explanation if both are correct.
+
+**Current application state:** two initial emails sent; **zero application packs evidenced as attached**; correction required before deadline. No follow-up with attachments has been sent.
