@@ -59,9 +59,18 @@ class RecordTransactionTests(unittest.TestCase):
         self.assertEqual(self.snapshot(), before)
         self.assertFalse((self.root / new_record.TRANSACTION_JOURNAL).exists())
 
-    def test_w2_failure_before_first_replace_leaves_no_partial_state(self):
+    def test_w2_journal_is_prepared_before_first_replace(self):
         before = self.snapshot()
-        with mock.patch.object(new_record, "_replace_transaction_file", side_effect=OSError("injected first replace failure")):
+
+        def assert_prepared_then_fail(path, content):
+            journal_path = self.root / new_record.TRANSACTION_JOURNAL
+            self.assertTrue(journal_path.exists())
+            import json
+            self.assertEqual(json.loads(journal_path.read_text(encoding="utf-8"))["state"], "prepared")
+            self.assertEqual(self.snapshot(), before)
+            raise OSError("injected first replace failure")
+
+        with mock.patch.object(new_record, "_replace_transaction_file", side_effect=assert_prepared_then_fail):
             with self.assertRaises(OSError):
                 self.create()
         self.assertEqual(self.snapshot(), before)
@@ -154,6 +163,18 @@ class RecordTransactionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "journal|path|transaction"):
             new_record.recover_pending_transaction(self.root)
         self.assertEqual(self.snapshot(), before)
+        self.assertTrue(journal_path.exists())
+
+        # A path inside the repository is still forbidden unless it is the
+        # expected record/index pair; recovery must not be a generic file writer.
+        journal_path.write_text(
+            '{"version":1,"state":"prepared","entries":['
+            '{"path":"README.md","existed":false,"original_b64":null},'
+            '{"path":"01-lessons-learned/ledger.md","existed":true,"original_b64":"eA=="}]}',
+            encoding="utf-8",
+        )
+        with self.assertRaisesRegex(ValueError, "approved record/index pair"):
+            new_record.recover_pending_transaction(self.root)
         self.assertTrue(journal_path.exists())
 
 
