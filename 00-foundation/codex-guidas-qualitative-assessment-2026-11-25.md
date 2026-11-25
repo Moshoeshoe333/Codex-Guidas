@@ -80,4 +80,4 @@ Its long-term value will depend less on the number of frameworks or documents th
 
 This document records a qualitative assessment supplied by the project maintainer on 2026-11-25. It is retained as a perspective and positioning artifact, not as an independent audit result. The assessment is not a claim that every listed mechanism is implemented, every lesson is Verified, or any project is production-ready.
 
-Copyright © 2026 Codex-Guidas project author and contributors. All rights reserved, subject to third-party rights. See [COPYRIGHT.md](../COPYRIGHT.md). No open-source licence is granted by this assessment.
+Copyright © 2026 Tshepo Lux Moshoeshoe in original Codex-Guidas materials authored by the project maintainer; third-party and contributor-authored materials retain their respective rights. See [COPYRIGHT.md](../COPYRIGHT.md). No open-source licence is granted by this assessment.
