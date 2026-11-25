@@ -31,7 +31,7 @@ A filesystem generally cannot atomically replace two independent files as one op
 - Any failure before the committed marker triggers rollback from the journal.
 - Rollback is idempotent: restoring an original byte sequence repeatedly has the same result.
 - If rollback itself fails, retain the prepared journal. The next invocation must fail closed or retry recovery before allocating another ID.
-- If the committed marker is durable, do not roll back; cleanup can be retried.
+- If a committed marker is visible after a filesystem error, preserve the journal and report an uncertain commit outcome for inspection; do not silently roll back or silently claim failure with no recovery evidence. If the committed marker is durable, cleanup can be retried.
 - A process crash can leave a lock file. Automatic stale-lock removal is intentionally not implemented because process ownership cannot be safely inferred. An operator must establish that no writer is active before removing a stale lock.
 - This is recoverable single-host filesystem coordination, not a database transaction and not a guarantee against hardware/filesystem corruption.
 
@@ -50,7 +50,7 @@ A filesystem generally cannot atomically replace two independent files as one op
 
 ## Implementation constraints
 
-- Keep journal paths relative to the repository root; reject absolute paths, parent traversal and resolved paths outside the root.
+- Keep journal paths relative to the repository root; reject absolute paths, parent traversal, resolved paths outside the root, and any destination pair other than one approved record plus its matching lesson ledger or defect register.
 - Do not use insert_table_row as an in-place side effect inside the transaction. Construct updated register text first.
 - Preserve the original file bytes exactly during rollback.
 - Do not silently delete malformed journals or locks.
