@@ -80,3 +80,28 @@ This audit is a **read-only source review** of selected files and GitHub compare
 No lesson status, project gate, external project authority or implementation state is changed by this document.
 
 **Decision:** PR #1 remains unmerged and requires a migration-safe integration pass.
+
+## 7. Migration acceptance specification (proposed; not executed)
+
+This section defines the minimum evidence required before a migration branch can be accepted. It is an acceptance contract, not authorization to implement or merge.
+
+| Gate | Acceptance criterion | Required evidence | Failure disposition |
+|---|---|---|---|
+| M1 — Snapshot | Record exact base-main and feature-branch SHAs; repeat the inventory against those immutable refs. | Commit SHAs, compare output and path inventory. | Stop if refs move or inventory cannot be reproduced. |
+| M2 — ID inventory | Canonical source IDs and migrated record IDs each contain CG-001 through CG-042 exactly once. No missing, duplicate, malformed or unexpected IDs. | Machine-readable ID sets plus human-readable mismatch report. | Reject migration; do not allocate new IDs. |
+| M3 — Content preservation | Each migrated record preserves the source lesson's meaning, origin, evidence class, reusable control, limitations and project scope. | Per-ID source-to-target reconciliation; explicit exception log for any intentional editorial change. | Reject silent rewrites or unsupported metadata enrichment. |
+| M4 — CG-042 provenance | CG-042 retains the Luck Field Manual / Polymath Investor origin, 2026-10-05 date, OFN-001 link, and “Derived heuristic; not empirically validated or project-verified” boundary. Privacy, safety, quality and downside guardrails remain. | Exact source/target comparison and link validation for the field note and experiment records. | Reject omission, promotion, or treatment of experiment registration as outcome evidence. |
+| M5 — ID allocator | With legacy ledger IDs through CG-042 and an absent/empty individual-record directory, next lesson ID is CG-043. With migrated IDs through CG-042, next ID is also CG-043. | Direct unit tests against temporary repository fixtures. | Block allocator release until collision is impossible under the supported migration state. |
+| M6 — Index integrity | Markdown records remain authoritative; generated index IDs equal record IDs exactly, with no duplicates, omissions or dangling paths. Rebuilding twice produces identical output for unchanged inputs. | Index build logs, set-equality assertion, link/path validation and deterministic rebuild comparison. | Reject index drift; regenerate from source records, never hand-edit derived output as authority. |
+| M7 — Record-write recovery | Failure between record-file creation and register/index update cannot silently leave an apparently successful partial record. Retry and pre-existing-target behaviour are deterministic. | Fault-injection tests for write/update failure, malformed or missing register header, existing target, and retry after failure. | Require rollback or an explicit detectable/recoverable incomplete state; no silent orphan. |
+| M8 — Retrieval behaviour | Exact, partial, multi-term, tag, project and type queries return expected fixtures; negative queries do not fabricate results. Known all-term/synonym limitations are documented. | Query fixture matrix with expected IDs and observed output. | Fix false results or document bounded recall; never claim semantic completeness. |
+| M9 — Validation boundaries | Malformed frontmatter, duplicate keys/IDs, dangling evidence refs, malformed evidence tables and placeholder claims fail safely. Derived/Proposed lessons are not promoted by migration. | Negative test results and record-status diff. | Reject silent coercion, auto-promotion or evidence-class inflation. |
+| M10 — Workflow assurance | Required workflow runs on the exact proposed integration SHA; inspect triggers, permissions, dependencies/actions, runtime and every job result. | Run URL, exact head SHA, job logs and status summary. | No green-by-inheritance from PR head, prior commit or another branch. |
+| M11 — Mainline preservation | README, innovation register, OFN-001 field note, experiment records and unrelated current-main content remain intact unless a separately reviewed change explains otherwise. | Changed-path review and targeted source/target comparisons. | Reconcile each overlap; do not overwrite newer mainline work. |
+| M12 — Authority and review | Migration does not change project gates, ratification, lesson verification status or external-project authority. Final diff receives independent review and explicit maintainer approval. | Exact-head diff, review record and approval. | Keep PR unmerged; implementation evidence does not self-ratify. |
+
+### Minimum release decision
+
+Acceptance requires all M1–M12. A failed, skipped, unexecuted or unobservable gate is not a pass. Report each gate as PASS, FAIL, NOT RUN or BLOCKED, with a source reference. Do not collapse partial success into a single green status.
+
+The migration may be considered technically acceptable only after exact-head checks and independent review. Merge remains a separate maintainer decision. This specification itself does not authorize implementation, status promotion, or merge.
