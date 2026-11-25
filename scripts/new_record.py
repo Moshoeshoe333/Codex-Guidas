@@ -274,6 +274,17 @@ def _validated_journal(root: Path) -> dict:
                 raise ValueError("Invalid original bytes in transaction journal") from exc
         elif entry["original_b64"] is not None:
             raise ValueError("Unexpected original bytes for a previously absent file")
+
+    lesson_pair = (
+        "01-lessons-learned/ledger.md" in seen
+        and any(re.fullmatch(r"01-lessons-learned/lessons/CG-\\d{3}\\.md", item) for item in seen)
+    )
+    defect_pair = (
+        "11-defect-intelligence/README.md" in seen
+        and any(re.fullmatch(r"11-defect-intelligence/DEF-\\d{4}-\\d{3}(?:-[a-z0-9-]+)?\\.md", item) for item in seen)
+    )
+    if len(seen) != 2 or not (lesson_pair or defect_pair):
+        raise ValueError("Transaction journal paths are not an approved record/index pair")
     return journal
 
 
@@ -348,10 +359,18 @@ def _apply_transaction_unlocked(root: Path, updates: dict[Path, bytes]) -> None:
             _replace_transaction_file(path.resolve(), content)
         journal["state"] = "committed"
         _write_transaction_journal(root, journal)
-    except Exception:
+    except Exception as transaction_error:
         if (root / TRANSACTION_JOURNAL).exists():
             try:
+                pending = _validated_journal(root)
+                if pending["state"] == "committed":
+                    raise RuntimeError(
+                        "The committed marker is visible but a filesystem durability error occurred; "
+                        "the journal is preserved and the transaction outcome requires inspection"
+                    ) from transaction_error
                 _recover_pending_transaction_unlocked(root)
+            except RuntimeError:
+                raise
             except Exception as recovery_error:
                 raise RuntimeError(
                     "Record transaction failed and automatic rollback also failed; "
