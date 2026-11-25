@@ -33,7 +33,7 @@ A filesystem generally cannot atomically replace two independent files as one op
 - If rollback itself fails, retain the prepared journal. The next invocation must fail closed or retry recovery before allocating another ID.
 - If a committed marker is visible after a filesystem error, preserve the journal and report an uncertain commit outcome for inspection; do not silently roll back or silently claim failure with no recovery evidence. If the committed marker is durable, cleanup can be retried.
 - A process crash can leave a lock file. Automatic stale-lock removal is intentionally not implemented because process ownership cannot be safely inferred. An operator must establish that no writer is active before removing a stale lock.
-- This is recoverable single-host filesystem coordination, not a database transaction and not a guarantee against hardware/filesystem corruption.
+- This is recoverable single-host filesystem coordination, not a database transaction and not a guarantee against hardware/filesystem corruption. On Windows, Python does not provide a portable directory-handle fsync through os.open; file contents are flushed before replacement, but directory-entry crash durability is weaker than on the POSIX CI runner.
 
 ## W1–W8 acceptance matrix
 
