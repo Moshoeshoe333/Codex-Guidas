@@ -162,3 +162,75 @@ The individual records contain structured metadata that is not represented in th
 - M5–M12 — NOT RUN: allocator, index, write-recovery, retrieval, negative-validation, workflow, preservation and independent-approval gates remain unexecuted.
 
 This reconciliation is source-level evidence only. It does not authorize implementation, lesson-status changes, or merge.
+
+
+## 10. Structured metadata semantic review — 25 November 2026
+
+A read-only inspection was performed against the PR #1 feature-branch copies of:
+
+- `00-foundation/record-taxonomy.md`;
+- `00-foundation/metadata-schema.md`;
+- `09-templates/lesson-template.md`;
+- `scripts/codex.py`; and
+- all 41 individual lesson-record frontmatter blocks, CG-001 through CG-041.
+
+No source files, metadata, tests, scripts or workflows were changed by this review.
+
+### 10.1 Semantics that are explicitly separated and appear internally coherent
+
+- `status` is the lesson lifecycle classification (Observed, Derived, Proposed, Verified or Superseded).
+- `evidence_class` preserves the source's evidence wording and is not a second lifecycle status.
+- `verification_status` is separately represented (pending, source-only, not-claimed, verified or blocked).
+- `verification_due` is a follow-up date, not a verification result.
+- `layer` and `component` are described as retrieval facets, not architecture certification.
+- `severity` is not applicable to lesson records unless formally assessed; the inspected lesson records use null.
+- `last_reviewed` is explicitly described as the 2026-11-19 structural metadata/content review, not a fresh source audit.
+- The inspected records do not claim a Verified lesson or set `verification_status: verified`. Pending verification dates remain tracking metadata, not completion evidence.
+
+These distinctions align with the taxonomy's warning that an allowed status or green metadata validator does not establish the truth of a claim.
+
+### 10.2 Unresolved taxonomy and normalization questions
+
+1. **Layer meanings are not defined.** The schema allows `mind`, `body`, `spirit`, `infra`, `process`, `cross-cutting` and `unknown`, but the taxonomy does not define their intended meaning or provide assignment criteria. Examples include CG-001 using `spirit` with `user-interface`, CG-028 using `mind` with `testing-and-ci`, and CG-033 using `mind` with `immutability`. These may be deliberate retrieval choices; the current documentation does not provide enough criteria to judge them as correct or incorrect.
+
+2. **Component values have no controlled vocabulary or assignment guidance.** The schema says component should be a known component, but neither the taxonomy nor validator supplies an authoritative component registry. The inspected values include `user-interface`, `testing-and-ci`, `safeguarding`, `localization`, `scoring`, `persistence`, `repository-integrity` and `immutability`. The validator checks only string-or-null, so a typo or semantically inconsistent assignment can pass.
+
+3. **Project identifiers are not normalized by a registry.** The records use values such as `SoulSync 3`, `SOULSYNCMOBILE`, `Mall-Navigre`, `ScoutSA`, `UCI` and `cross-project`. These appear to identify distinct projects or scopes, but no canonical identifier map, alias policy or validation rule is defined. This can fragment project-filtered retrieval if equivalent spellings are introduced later.
+
+4. **The phrase “verification_status is a retrieval field” is narrower than its operational use.** The field is also coupled to Verified lifecycle status by validation rules and drives the pending-verification queue. That behaviour is sensible, but the taxonomy should describe it as a verification-tracking state used for retrieval/queueing, not merely a passive retrieval label.
+
+5. **`failure_mode` is free text.** This is useful for nuanced records, but the validator cannot detect inconsistent naming or duplicate concepts. No controlled taxonomy is currently specified. This is a retrieval-quality limitation, not proof that any individual failure-mode value is wrong.
+
+### 10.3 What this review does and does not establish
+
+| Area | Result | Boundary |
+|---|---|---|
+| Lifecycle/evidence/verification separation | PASS — definition-level | The taxonomy clearly distinguishes these concepts; this does not independently validate every source claim. |
+| Required metadata shape in inspected records | PARTIAL | Frontmatter was inspected; no validator or tests were executed. |
+| Layer assignment semantics | BLOCKED / underspecified | Allowed values exist, but definitions and assignment criteria are absent. |
+| Component assignment semantics | BLOCKED / underspecified | No controlled vocabulary or semantic validator exists. |
+| Project identifier normalization | BLOCKED / underspecified | No canonical registry or alias policy exists. |
+| Verification tracking interpretation | PARTIAL | Behaviour is visible in schema and code; wording should reflect queue/validation use as well as retrieval. |
+| Per-record source-to-metadata correctness | NOT RUN | Requires a source-to-record assignment review; structural consistency cannot prove semantic correctness. |
+| Runtime, tests and CI | NOT RUN | No execution was performed. |
+
+### 10.4 Recommended resolution before migration acceptance
+
+Treat these as documentation/schema questions to resolve in a separately reviewed migration proposal:
+
+- Define each layer and provide inclusion/exclusion examples.
+- Decide whether components and project identifiers require canonical registries; if yes, publish the registries and a safe alias/migration policy.
+- Clarify the operational meaning of `verification_status`.
+- Add a per-record metadata rationale or review matrix for layer, component and project assignments, with explicit `unknown`/null where the source does not justify a classification.
+- Add tests for invalid layer values, unknown component/project identifiers if registries are adopted, and preservation of lifecycle/evidence/verification distinctions.
+
+Do not bulk-relabel records based on intuition. In particular, the examples above are review questions, not confirmed misclassifications. Any taxonomy or assignment change must preserve historical meaning and be independently reviewed.
+
+### 10.5 Gate impact
+
+- M3 — remains PARTIAL: core content comparison passes for CG-001–CG-041, but semantic correctness of several metadata facets is not established and CG-042 is absent.
+- M9 — NOT RUN: the code was inspected, but negative validator tests were not executed.
+- M12 — NOT RUN: no independent review or maintainer approval has been recorded.
+- M1, M2 and M4–M8, M10–M11 retain the dispositions in Section 9 unless new exact evidence is supplied.
+
+This section records a read-only semantic review. It does not authorize metadata edits, implementation, status promotion, project-gate changes or merge.
