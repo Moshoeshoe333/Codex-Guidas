@@ -122,3 +122,43 @@ A direct GitHub Contents API read was performed against the PR #1 feature branch
 **Inventory result:** path presence is confirmed for 41/42 canonical IDs; CG-042 is absent from the PR #1 individual-record directory. This independently confirms the one-record path gap described in R1–R3.
 
 **Important limitation:** this is a filename/path inventory, not a per-record content reconciliation. It does not establish that the 41 files preserve the exact wording, provenance, evidence classes, reusable controls, limitations or scope of their corresponding mainline ledger rows. M3 remains NOT RUN until each source/target pair is compared. No record file was changed, and no migration or implementation was performed.
+
+
+## 9. Per-record content reconciliation — 25 November 2026
+
+A read-only, per-ID comparison was performed for all 41 feature-branch records against the corresponding canonical rows in current `main`'s `01-lessons-learned/ledger.md`. The compared fields were:
+
+- lesson statement/title;
+- source/origin;
+- evidence-class wording; and
+- reusable-control wording.
+
+**Observed result:** all four fields matched for every ID from CG-001 through CG-041 (164 field comparisons; 41 records × 4 fields). No wording mismatch was observed in this comparison.
+
+A separate row-level comparison of current `main` and the PR #1 feature-branch archive `ledger-archive-2026-11-19.md` found 41 archived rows and 42 current-main rows. All 41 shared rows matched exactly after whitespace normalization; the only current-main ID absent from the archive is CG-042.
+
+### Reconciliation disposition
+
+| Scope | Result | Interpretation |
+|---|---|---|
+| CG-001–CG-041 path inventory | PASS | All 41 expected individual record paths exist exactly once in the feature directory. |
+| CG-001–CG-041 core content fields | PASS | Lesson, origin, evidence class and reusable control match the current canonical ledger rows. |
+| Shared archive rows | PASS | All 41 archived ledger rows match their current-main counterparts. |
+| CG-042 migration | BLOCKED | Canonical current-main row exists; feature archive and individual-record directory omit it. |
+| Full 42-record migration completeness | FAIL / BLOCKED | 41/42 records are represented on the feature branch; full-set equality is not met. |
+| Metadata semantics beyond compared fields | NOT RUN | Project tags, layer/component taxonomy, lifecycle status, review dates, source-path metadata and verification-status fields require a separate schema/meaning review. |
+| Runtime, tests and CI | NOT RUN | No local execution or hosted workflow run was performed for this reconciliation. |
+
+### Metadata interpretation boundary
+
+The individual records contain structured metadata that is not represented in the legacy ledger columns (for example project tags, layer/component labels, lifecycle status, review dates and verification status). Those fields are not proven correct merely because the four core content fields match. In particular, lifecycle status and evidence class are separate concepts and must not be conflated. The migration review must validate the metadata taxonomy and each assigned value against its definitions and source evidence; no status promotion is authorized by this comparison.
+
+### Gate update
+
+- M1 — PARTIAL: the reviewed refs and source paths are identified, but integration-time snapshot re-freeze remains required.
+- M2 — FAIL: CG-042 is absent from the feature record set; expected 42, observed 41.
+- M3 — PARTIAL: the four core content fields pass for CG-001–CG-041; CG-042 and the additional metadata semantics remain unresolved.
+- M4 — BLOCKED: CG-042 has not yet been migrated or compared.
+- M5–M12 — NOT RUN: allocator, index, write-recovery, retrieval, negative-validation, workflow, preservation and independent-approval gates remain unexecuted.
+
+This reconciliation is source-level evidence only. It does not authorize implementation, lesson-status changes, or merge.
