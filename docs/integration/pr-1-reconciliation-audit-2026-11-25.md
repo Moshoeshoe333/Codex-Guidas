@@ -9,7 +9,7 @@
 
 PR #1 contains useful structured-record, retrieval, assurance and CI foundations, but it is not safe to merge or rebase as-is. The branch is **44 commits ahead and 40 behind** current `main`. Its compare reports 84 changed paths, including 41 new lesson records, a rewritten lesson ledger, new scripts/tests and workflow/configuration files.
 
-Current `main` contains newer Opportunity Exposure material absent from the feature branch's lesson migration. A full read of the canonical lesson ledger confirms that **CG-042 is already a formal lesson entry** at the end of `01-lessons-learned/ledger.md`. It is a derived heuristic linked to external field note `OFN-001`, explicitly not empirically validated or project-verified. The innovation register's `OFN-001 / CG-042` reference is therefore consistent with the lesson ledger. PR #1's archive and individual lesson files stop at CG-041, so CG-042 must be migrated as an existing lesson, not newly invented or omitted.
+Current `main` contains newer Opportunity Exposure material absent from the feature branch's lesson migration. A full read of the canonical lesson ledger confirms that **CG-042 is already a formal lesson entry** at the end of `01-lessons-learned/ledger.md`. It is a derived heuristic linked to external field note `OFN-001`, explicitly not empirically validated or project-verified. The innovation register's `OFN-001 / CG-042` reference is therefore consistent with the lesson ledger. PR #1's archive and individual lesson files stop at CG-041, so CG-042 must be migrated as an existing lesson, not newly invented or omitted. The complete GitHub compare inventory lists exactly 41 added paths under `01-lessons-learned/lessons/`: `CG-001.md` through `CG-041.md`, with no additional lesson record path. Current `main` therefore has 42 canonical ledger IDs versus 41 individual lesson files on the feature branch; the feature branch is missing exactly one current canonical ID, CG-042.
 
 ## 2. Blocking integrity conditions
 
@@ -26,7 +26,7 @@ Current `main` contains newer Opportunity Exposure material absent from the feat
 
 ### R2 — ID allocation must not collide with unmigrated legacy IDs
 
-The proposed `scripts/new_record.py` `next_id()` implementation scans only `01-lessons-learned/lessons/CG-*.md`. Current `main` still stores CG-001 through CG-041 in the monolithic ledger and has no individual lesson directory in its tree.
+The proposed `scripts/new_record.py` `next_id()` implementation scans only `01-lessons-learned/lessons/CG-*.md`. Current `main` stores CG-001 through CG-042 in the monolithic ledger and has no individual lesson directory in its tree.
 
 If the allocator is introduced before the complete migration, it can allocate an ID already present in the legacy ledger. The concrete first-collision case is: legacy ledger contains CG-001–CG-042, the individual-record directory is absent/empty, and the allocator proposes CG-001 instead of the next unused ID. This is a migration-order defect, not a theoretical concern.
 
@@ -64,7 +64,7 @@ PR #1 changes `01-lessons-learned/ledger.md` from a substantive register into an
 ## 5. Integration sequence
 
 1. Freeze the current mainline snapshot and record its exact SHA.
-2. Build a migration inventory of all lesson IDs on current mainline and on the feature branch.
+2. Build a migration inventory of all lesson IDs on current mainline and on the feature branch. The source compare currently establishes 42 canonical mainline ledger IDs (CG-001–CG-042) and 41 feature-branch individual files (CG-001–CG-041); re-run this inventory at integration time against the then-current refs.
 3. Reconcile CG-001–CG-041 against the current ledger; do not assume metadata migration independently verifies source claims.
 4. Migrate the existing CG-042 lesson verbatim in meaning, preserving its Derived heuristic classification and OFN-001 provenance.
 5. Resolve the ID allocator's legacy-collision risk and add the regression case where a legacy ledger ending at CG-042 yields CG-043 as the next ID.
