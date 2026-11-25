@@ -1,5 +1,7 @@
 """Fault-injection tests for recoverable record/index transactions."""
 
+# W1-W8 are intentionally independent failure-boundary assertions.
+
 from __future__ import annotations
 
 import base64
