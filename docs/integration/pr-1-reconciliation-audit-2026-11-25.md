@@ -234,3 +234,112 @@ Do not bulk-relabel records based on intuition. In particular, the examples abov
 - M1, M2 and M4–M8, M10–M11 retain the dispositions in Section 9 unless new exact evidence is supplied.
 
 This section records a read-only semantic review. It does not authorize metadata edits, implementation, status promotion, project-gate changes or merge.
+
+
+## 11. CG-042 source reconciliation and proposed migration target — 25 November 2026
+
+A read-only review of current `main` was performed for:
+
+- `01-lessons-learned/ledger.md` — canonical CG-042 row;
+- `06-innovations/opportunity-exposure-field-note.md` — OFN-001;
+- `06-innovations/experiments/opportunity-exposure/README.md` — portfolio boundary;
+- `OEX-2026-001-career-discoverability.md`;
+- `OEX-2026-002-scoutsa-controlled-demonstration.md`; and
+- `OEX-2026-003-sme-security-snapshot.md`.
+
+The source row in the current mainline ledger states:
+
+- **Lesson:** “Deliberately widen exposure to relevant opportunities, but separately measure discoverability, access, trust and realised outcomes.”
+- **Origin:** External reference, *The Luck Field Manual* / Polymath Investor, 2026-10-05; internal field note OFN-001.
+- **Evidence class:** “Derived heuristic; not empirically validated or project-verified”.
+- **Reusable control:** “Use bounded, low-cost experiments to increase relevant encounters and make credible work discoverable. Track qualified next steps and outcomes rather than impressions alone. Protect privacy, safety, quality and downside; do not treat visibility or persistence as proof of success.”
+
+### 11.1 Source limitations and application boundaries
+
+OFN-001 identifies the manual as an external practitioner's synthesis / directional heuristic, not an empirically validated causal model. The field note distinguishes it from the 33-tier technical framework and 33-perspective register. Its applications are proposals to test, not approved project requirements.
+
+The experiment portfolio states that its three tracks are pre-registered and are not completed market experiments. Current boundaries include:
+- Career discoverability: application-correction work is in progress; the portfolio does not claim a completed outcome or improved response rate.
+- ScoutSA: external demonstration remains HOLD pending its own exact-head, audit, independent-review and project-owner acceptance gates.
+- SME security snapshot: desk research only; existing public competitors are counter-evidence to a generic market-gap claim, and buyer demand/willingness to pay remain unestablished.
+
+These records are context and boundary evidence. They do not validate the external manual, establish commercial outcomes, or authorise activity in any project. The CG-042 lesson should link to OFN-001 without importing volatile experiment execution status into the lesson's reusable control.
+
+### 11.2 Proposed CG-042 target record (specification only; not created)
+
+The following is a candidate migration target. It is not a committed record and must be compared against the frozen mainline source at integration time.
+
+```yaml
+id: "CG-042"
+record_type: "lesson"
+status: "Derived"
+projects: ["cross-project"]
+layer: "unknown"
+component: null
+failure_mode: null
+severity: null
+origin_date: "2026-10-05"
+last_reviewed: "2026-11-25"
+verification_due: null
+evidence_class: "Derived heuristic; not empirically validated or project-verified"
+verification_status: "not-claimed"
+source_path: "01-lessons-learned/ledger.md (frozen current-main source ref to be recorded at M1)"
+review_scope: "migration_source_and_metadata_review_only; no causal validation or project experiment verification"
+tags: ["opportunity-exposure", "discoverability", "access", "trust", "outcomes", "bounded-experiments"]
+```
+
+**Candidate record body:**
+
+```markdown
+# CG-042 — Deliberately widen exposure to relevant opportunities, but separately measure discoverability, access, trust and realised outcomes.
+
+**Source / origin:** External reference: *The Luck Field Manual* / Polymath Investor, 2026-10-05; internal field note OFN-001.
+
+**Evidence class (preserved):** Derived heuristic; not empirically validated or project-verified.
+
+**Lesson status:** Derived.
+
+## Reusable control
+
+Use bounded, low-cost experiments to increase relevant encounters and make credible work discoverable. Track qualified next steps and outcomes rather than impressions alone. Protect privacy, safety, quality and downside; do not treat visibility or persistence as proof of success.
+
+## Provenance and limitations
+
+This lesson is derived from an external practitioner heuristic and its internal source note, OFN-001. It is not an empirically validated causal model, a guarantee of opportunity or success, or an approved requirement for any project. The field note preserves the source attribution, paraphrase boundary, counterweights and source register.
+
+The three linked opportunity-exposure experiment tracks are separate, pre-registered applications with their own permissions, measures, risks and decision gates. Registration is not execution or outcome evidence. A result in one track does not validate another track or the external manual as a whole.
+
+This external heuristic is separate from the Codex-Guidas 33-tier technical framework and 33-perspective register. Shared use of the number 33 does not establish equivalence or validation.
+
+**Source note:** [Opportunity Exposure Field Note — OFN-001](../06-innovations/opportunity-exposure-field-note.md).
+
+**Verification boundary:** No empirical, causal, market, project-control or outcome verification is claimed by this migration.
+```
+
+### 11.3 Field-by-field decision notes
+
+- `status: Derived` preserves the canonical lifecycle classification; do not promote to Verified.
+- `evidence_class` preserves the full source wording verbatim; do not shorten it to “Derived”.
+- `verification_status: not-claimed` is preferred over `pending`: the record is not asserting a control awaiting a technical rerun. It is a derived external heuristic with no empirical validation claim.
+- `origin_date: 2026-10-05` refers to the attributed manual date, not the later internal note date.
+- `last_reviewed: 2026-11-25` records this migration-source/metadata review only. It must not be represented as an empirical review.
+- `layer: unknown` and `component: null` deliberately avoid inventing a classification while the layer/component taxonomy remains underspecified (Section 10).
+- `projects: ["cross-project"]` is a candidate retrieval scope, not evidence that any project has adopted or validated the heuristic.
+- The candidate source path must be pinned to the exact frozen mainline commit during M1. Do not let a moving branch name stand in for immutable provenance.
+- Tags are retrieval aids only; they are not evidence, authority or status.
+
+### 11.4 CG-042 migration disposition
+
+| Check | Result |
+|---|---|
+| Canonical source lesson and origin | FOUND in current mainline ledger |
+| OFN-001 source note and attribution | FOUND |
+| Explicit non-validation boundary | FOUND and must be retained |
+| Experiment portfolio and three separate tracks | FOUND; tracks retain independent status/permission boundaries |
+| Proposed target wording and metadata | DRAFTED as specification only |
+| Target record created on PR #1 | NO |
+| Source/target exact comparison | NOT RUN — no target exists |
+| Link validation / index inclusion | NOT RUN |
+| Empirical or project verification | NOT CLAIMED |
+
+The proposed target uses conservative metadata where taxonomy definitions are absent. It is a migration specification, not permission to create or commit the record. M1 must freeze exact source refs; M2–M4 must be re-run against the actual target; all M5–M12 gates remain governed by Section 7.
