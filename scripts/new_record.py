@@ -189,6 +189,11 @@ def _insert_table_row_text(original: str, header_prefix: str, row: str, source: 
 
 
 def _fsync_directory(directory: Path) -> None:
+    # Windows does not expose a portable directory-handle fsync through os.open.
+    # File contents are still flushed before replace; directory-entry crash
+    # durability is therefore weaker on Windows and is documented explicitly.
+    if os.name == "nt":
+        return
     descriptor = os.open(directory, os.O_RDONLY)
     try:
         os.fsync(descriptor)
