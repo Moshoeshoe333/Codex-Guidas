@@ -67,3 +67,10 @@ The initial source audit is recorded in [Repository Archaeology — 2026-11-18](
 ## UCI relationship boundary
 
 Codex-Guidas is a reusable engineering knowledge base, not an institutional command layer. UCI maintains its own proposed institutional governance; projects retain their own implementation and release authority. The UCI cross-reference is informational and does not make the proposed charter binding on Codex-Guidas or other projects.
+
+
+## Project assessment and rights notice
+
+A dated [qualitative Codex-Guidas assessment](00-foundation/codex-guidas-qualitative-assessment-2026-11-25.md) records a supplied perspective on the repository's strengths, maturity and limitations. It is not an independent audit, certification or proof that every documented control is implemented or verified.
+
+See [COPYRIGHT.md](COPYRIGHT.md) for the repository copyright and reuse boundary. **No open-source licence is currently declared**; a copyright notice does not grant third-party reuse permission.
