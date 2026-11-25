@@ -546,3 +546,61 @@ No hosted workflow pass/fail evidence for the exact head was established in this
 M6 remains NOT RUN until the complete equality, path-integrity, deterministic-rebuild and non-mutation checks are executed against a frozen source snapshot. M10 remains NOT RUN until the exact proposed integration SHA has inspectable hosted workflow evidence. The current empty status response is not a green result.
 
 This section remains a read-only audit. It does not authorize implementation, branch rewriting, status promotion, project-gate changes or merge.
+
+
+## 14. M1 migration baseline freeze — 25 November 2026
+
+### 14.1 Frozen source revision
+
+The migration baseline is pinned to the immutable current-mainline commit:
+
+- Repository: `Moshoeshoe333/Codex-Guidas`
+- Branch at inspection: `main`
+- Frozen commit: `6d1c38bb2b29936d059a36750d1cfc70815f4ed3`
+- Commit URL: https://github.com/Moshoeshoe333/Codex-Guidas/commit/6d1c38bb2b29936d059a36750d1cfc70815f4ed3
+- The repository's latest-commit query returned this same SHA as the current mainline tip at the time of the freeze.
+- This is a source snapshot reference, not a branch lock. Any later mainline change creates a new baseline and requires reconciliation; do not silently substitute a moving `main` ref.
+
+### 14.2 Frozen source artifacts and blob identities
+
+| Source artifact | Blob SHA at frozen commit | Purpose |
+|---|---|---|
+| `01-lessons-learned/ledger.md` | `d2ba7d44d583c7d372e2484b5bd98a4224576003` | Canonical pre-migration lesson ledger and CG-042 source row |
+| `06-innovations/opportunity-exposure-field-note.md` | `d6a5e110c0e1ec887f75a96e6c8d2eb61cc8687f` | OFN-001 source attribution, limitations and counterweights |
+| `06-innovations/experiments/opportunity-exposure/README.md` | `1f0dd59d0e7f406d4085d08a458b83fbd80fb39e` | Three-track portfolio register and independent status boundaries |
+| `06-innovations/experiments/opportunity-exposure/OEX-2026-001-career-discoverability.md` | `eb3a49b392c0a31846cb6c855f2d00d0dcc13472` | Career discoverability track |
+| `06-innovations/experiments/opportunity-exposure/OEX-2026-002-scoutsa-controlled-demonstration.md` | `2c42257b432253cc2cd8a4c0a38d5c278b9ac07f` | ScoutSA controlled-demonstration track |
+| `06-innovations/experiments/opportunity-exposure/OEX-2026-003-sme-security-snapshot.md` | `29a94b9cd7e1756dd47c10e771a5a126334ee18a` | SME security snapshot track |
+
+The full source contents were fetched at the frozen commit. The blob SHAs above are the exact file identities returned by the repository API.
+
+### 14.3 Canonical lesson inventory check
+
+The frozen `01-lessons-learned/ledger.md` contains 42 distinct lesson IDs:
+- First: `CG-001`
+- Last: `CG-042`
+- IDs are sequential from CG-001 through CG-042 in the parsed ledger table.
+- The CG-042 row exactly records: “Deliberately widen exposure to relevant opportunities, but separately measure discoverability, access, trust and realised outcomes.”
+- Its origin is the external reference *The Luck Field Manual* / Polymath Investor, dated 2026-10-05, plus internal field note OFN-001.
+- Its evidence class is “Derived heuristic; not empirically validated or project-verified”.
+- Its reusable control retains bounded, low-cost experiments, qualified next steps/outcomes, privacy, safety, quality and downside protections, and the warning not to treat visibility or persistence as proof of success.
+
+This establishes the pre-migration ledger inventory at the frozen source revision. It does not establish equivalence with PR #1's individual-record projection or generated JSON index.
+
+### 14.4 M1 disposition
+
+| M1 criterion | Evidence | Result |
+|---|---|---|
+| Immutable baseline commit identified | Exact mainline SHA recorded | PASS |
+| Canonical lesson ledger pinned | Exact path and blob SHA recorded | PASS |
+| CG-042 source row captured | Exact source row and evidence wording checked | PASS |
+| OFN-001 and all three experiment tracks pinned | Exact paths and blob SHAs recorded | PASS |
+| Source limitations and separate track boundaries preserved as migration constraints | Source artifacts pinned; Section 11 target specification retained | PASS |
+| Full migration target inventory reconciled | PR #1 branch still diverges and CG-042 target absent | NOT RUN |
+| Source/target content and metadata equivalence | No CG-042 target record exists on PR #1 | NOT RUN |
+
+**M1 disposition: SOURCE BASELINE FROZEN; MIGRATION RECONCILIATION NOT COMPLETE.** The frozen snapshot is now suitable as the immutable reference for subsequent M2–M4 comparisons. M1's source-freeze subcriteria pass; this must not be represented as approval of the migration or closure of the overall integration gate.
+
+### 14.5 Scope and authority boundary
+
+This phase records source identities and a canonical inventory only. It does not create or modify CG-042 on PR #1, change scripts/tests, alter mainline, rewrite branches, promote a lesson to Verified, authorize any project experiment, or approve a merge. The next phase is a read-only source-to-target reconciliation of all 42 lessons and their metadata against the PR #1 branch at its exact head. Any change to that head invalidates the target-side comparison and requires a fresh exact-head audit.
