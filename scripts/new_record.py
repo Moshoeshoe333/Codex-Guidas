@@ -18,8 +18,8 @@ from typing import Iterator
 ROOT = Path(__file__).resolve().parents[1]
 TRANSACTION_JOURNAL = ".codex-record-transaction.json"
 TRANSACTION_LOCK = ".codex-record-transaction.lock"
-LESSON_ID_RE = re.compile(r"CG-(\\d{3})")
-LESSON_LINK_RE = re.compile(r"\\[(CG-\\d{3})\\]\\(lessons/(CG-\\d{3})\\.md\\)")
+LESSON_ID_RE = re.compile(r"CG-(\d{3})")
+LESSON_LINK_RE = re.compile(r"\[(CG-\d{3})\]\(lessons/(CG-\d{3})\.md\)")
 
 
 def _lesson_ids_from_ledger(path: Path) -> set[str]:
@@ -38,7 +38,7 @@ def _lesson_ids_from_ledger(path: Path) -> set[str]:
         stripped = line.strip()
         if not stripped.startswith("|"):
             break
-        if re.fullmatch(r"\\|[\\s|:-]+\\|", stripped):
+        if re.fullmatch(r"\|[\s|:-]+\|", stripped):
             continue
         cells = [cell.strip() for cell in stripped.strip("|").split("|")]
         if not cells or not cells[0]:
@@ -70,7 +70,7 @@ def _lesson_ids_from_files(directory: Path) -> set[str]:
         return set()
     ids: set[str] = set()
     for path in directory.glob("CG-*.md"):
-        match = re.fullmatch(r"(CG-\\d{3})\\.md", path.name)
+        match = re.fullmatch(r"(CG-\d{3})\.md", path.name)
         if not match:
             raise ValueError(f"Malformed lesson record filename; expected CG-NNN.md: {path}")
         ids.add(match.group(1))
@@ -91,7 +91,7 @@ def next_id(record_type: str, root: Path = ROOT, year: int | None = None) -> str
     numbers = [
         int(match.group(1))
         for path in paths
-        if (match := re.fullmatch(rf"DEF-{current_year}-(\\d{{3}})(?:-.+)?", path.name))
+        if (match := re.fullmatch(rf"DEF-{current_year}-(\d{{3}})(?:-.+)?", path.name))
     ]
     return f"DEF-{current_year}-{max(numbers, default=0) + 1:03d}"
 
@@ -131,12 +131,12 @@ def frontmatter(record_id: str, record_type: str, project: str | None, severity:
         f"{key}: " + ("null" if value is None else json.dumps(value, ensure_ascii=False))
         for key, value in metadata
     ]
-    return "---\\n" + "\\n".join(lines) + "\\n---\\n"
+    return "---\n" + "\n".join(lines) + "\n---\n"
 
 
 def quick_body(record_id: str, record_type: str, title: str, severity: str) -> str:
     if record_type == "lesson":
-        return f"""\\n# {record_id} — {title}
+        return f"""\n# {record_id} — {title}
 
 **Status:** Proposed intake; evidence and applicability review pending.  
 **Captured on:** {date.today().isoformat()}
@@ -155,7 +155,7 @@ def quick_body(record_id: str, record_type: str, title: str, severity: str) -> s
 ## Residual risk and next review
 [What remains uncertain, and what is the smallest next verification?]
 """
-    return f"""\\n# {record_id} — {title}
+    return f"""\n# {record_id} — {title}
 
 **State:** New  
 **Provisional severity:** {severity} — re-triage when impact evidence is available.  
@@ -185,7 +185,7 @@ def _insert_table_row_text(original: str, header_prefix: str, row: str, source: 
     while end < len(lines) and lines[end].startswith("|"):
         end += 1
     lines.insert(end, row)
-    return "\\n".join(lines).rstrip() + "\\n"
+    return "\n".join(lines).rstrip() + "\n"
 
 
 def _fsync_directory(directory: Path) -> None:
@@ -310,7 +310,7 @@ def _transaction_lock(root: Path) -> Iterator[None]:
             "before manually removing a stale lock"
         ) from exc
     try:
-        os.write(descriptor, f"pid={os.getpid()}\\n".encode("ascii"))
+        os.write(descriptor, f"pid={os.getpid()}\n".encode("ascii"))
         os.fsync(descriptor)
         yield
     finally:
@@ -407,12 +407,12 @@ def create_record(record_type: str, title: str, project: str | None = None, quic
             body = quick_body(record_id, record_type, title.strip(), severity)
         else:
             template = template_path.read_text(encoding="utf-8")
-            if not template.startswith("---\\n") or "\\n---\\n" not in template[4:]:
+            if not template.startswith("---\n") or "\n---\n" not in template[4:]:
                 raise ValueError(f"Template frontmatter is malformed: {template_path}")
-            body = template.split("\\n---\\n", 1)[1].lstrip()
+            body = template.split("\n---\n", 1)[1].lstrip()
             body = body.replace("CG-XXX", record_id).replace("DEF-YYYY-NNN", record_id)
             body = body.replace("[Concise lesson title]", title.strip()).replace("[Short factual title]", title.strip())
-            body = "\\n" + body
+            body = "\n" + body
 
         target_dir.mkdir(parents=True, exist_ok=True)
         original_index = index_path.read_text(encoding="utf-8")
