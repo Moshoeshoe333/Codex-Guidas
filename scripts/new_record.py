@@ -277,11 +277,11 @@ def _validated_journal(root: Path) -> dict:
 
     lesson_pair = (
         "01-lessons-learned/ledger.md" in seen
-        and any(re.fullmatch(r"01-lessons-learned/lessons/CG-\\d{3}\\.md", item) for item in seen)
+        and any(re.fullmatch(r"01-lessons-learned/lessons/CG-\d{3}\.md", item) for item in seen)
     )
     defect_pair = (
         "11-defect-intelligence/README.md" in seen
-        and any(re.fullmatch(r"11-defect-intelligence/DEF-\\d{4}-\\d{3}(?:-[a-z0-9-]+)?\\.md", item) for item in seen)
+        and any(re.fullmatch(r"11-defect-intelligence/DEF-\d{4}-\d{3}(?:-[a-z0-9-]+)?\.md", item) for item in seen)
     )
     if len(seen) != 2 or not (lesson_pair or defect_pair):
         raise ValueError("Transaction journal paths are not an approved record/index pair")
