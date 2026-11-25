@@ -343,3 +343,101 @@ This external heuristic is separate from the Codex-Guidas 33-tier technical fram
 | Empirical or project verification | NOT CLAIMED |
 
 The proposed target uses conservative metadata where taxonomy definitions are absent. It is a migration specification, not permission to create or commit the record. M1 must freeze exact source refs; M2–M4 must be re-run against the actual target; all M5–M12 gates remain governed by Section 7.
+
+
+## 12. Lesson allocator and record-creation failure analysis — 25 November 2026
+
+Read-only source inspection was performed on PR #1 branch `codex/retrieval-enforcement-2026-11-19` for:
+
+- `scripts/new_record.py`;
+- `scripts/codex.py`;
+- `scripts/build_index.py`; and
+- `tests/test_codex.py`.
+
+No scripts or tests were changed or executed.
+
+### 12.1 Confirmed allocator defect against the legacy-ledger migration state
+
+In `scripts/new_record.py`, `next_id("lesson")` enumerates only:
+
+```python
+(root / "01-lessons-learned" / "lessons").glob("CG-*.md")
+```
+
+It chooses the maximum number found in those filenames and defaults to zero. It does not inspect `01-lessons-learned/ledger.md`.
+
+**Deterministic consequence:** when the existing ledger contains CG-001 through CG-042 but the individual-record directory is empty (the pre-migration state identified in Sections 8–9), the allocator returns CG-001. That is an ID collision with the canonical source ledger, even though the new individual-record directory itself contains no files.
+
+This is a confirmed source-level defect under the documented migration precondition. The exact runtime reproduction was NOT RUN.
+
+**Required regression cases:**
+
+| Case | Fixture | Required result |
+|---|---|---|
+| A1 — legacy ledger only | Ledger contains CG-001…CG-042; lesson directory empty | Allocate CG-043 |
+| A2 — migrated records | Individual files CG-001…CG-042; ledger/index agrees | Allocate CG-043 |
+| A3 — mixed migration | Ledger highest ID 042; files highest ID 040 | Allocate CG-043; never reuse an ID present in either source |
+| A4 — file ahead of ledger | Files include CG-043; ledger ends at 042 | Allocate CG-044 or fail closed pending reconciliation; never allocate 043 |
+| A5 — duplicate/malformed ledger IDs | Duplicate, malformed or inconsistent references | Fail with actionable diagnostic; do not silently choose a potentially colliding ID |
+| A6 — gap in sequence | Existing IDs 001 and 003, no 002 | Allocate max+1 (004), not the first gap, unless a separately approved allocation policy says otherwise |
+
+The allocator must be defined against an authoritative, reconciled ID inventory. During migration, it must account for both legacy and individual-record representations or explicitly refuse allocation until reconciliation completes. It must not treat a missing file projection as proof that an ID is unused.
+
+### 12.2 Record creation is not transactional across the record and register
+
+The inspected `create_record()` sequence is:
+
+1. Determine ID and target.
+2. Create target directory.
+3. Write the individual record file.
+4. Insert the corresponding row into the lesson ledger or defect register.
+5. Return the target path.
+
+If step 4 raises (for example, missing/malformed table header, permission or I/O failure), step 3 has already persisted the record. There is no rollback or explicit incomplete-state marker in the inspected function.
+
+This is a confirmed partial-write exposure in source structure. A fault-injection reproduction was NOT RUN.
+
+**Required failure/recovery tests:**
+
+| Case | Injected condition | Required result |
+|---|---|---|
+| W1 — missing register | Record file write succeeds; register absent | Atomic rollback, or a detectable incomplete state with exact recovery instructions |
+| W2 — malformed register | Expected table header absent | No silent orphan; report both target and failed register operation |
+| W3 — register write failure | Raise OSError after record write | Roll back created file where safe, or preserve an explicit recoverable transaction marker |
+| W4 — retry after failure | Retry same creation after W1–W3 | No duplicate ID, no overwrite, no ambiguous half-complete state |
+| W5 — pre-existing target | Target path already exists | Refuse before mutating register or target |
+| W6 — successful creation | Valid template and register | Exactly one record and exactly one matching register row |
+| W7 — malformed template | Non-quick template has invalid frontmatter delimiter | No record or register mutation |
+| W8 — interrupted process | Simulate interruption between record and register writes | Next validation/recovery pass detects the incomplete transaction |
+
+A simple catch-and-delete is not automatically sufficient: rollback must not delete a file that existed before the operation or remove a register row not created by this operation. The implementation proposal should define the transaction boundary and recovery semantics before code is changed.
+
+### 12.3 Existing test coverage does not exercise the allocator
+
+The inspected `tests/test_codex.py` dynamically imports `scripts/codex.py`. Its fixtures and tests cover record parsing, duplicate keys/IDs, validation, evidence references, retrieval, review queue and local links. The inspected file does not import `scripts/new_record.py` or test `next_id()` / `create_record()`.
+
+This is a coverage gap in the inspected test module, not proof that no other test file exists. The full PR test inventory and workflow configuration still require a repository-wide exact-head review.
+
+### 12.4 Index integrity boundary
+
+The inspected `scripts/build_index.py` describes Markdown records as the source for a derived JSON index. The validator in `scripts/codex.py` compares lesson-file IDs with the Markdown ledger's linked IDs. Neither observation alone establishes that the full migration preserves every record's content and metadata, nor that the generated JSON index is byte-deterministic across repeated builds.
+
+Required migration checks remain:
+- exact set equality: canonical lesson IDs = individual record IDs = ledger/index IDs = generated JSON IDs;
+- uniqueness and no dangling record paths;
+- deterministic index rebuild twice from the same immutable source snapshot;
+- no source Markdown changes caused by index generation;
+- explicit handling of extra, malformed or duplicate IDs.
+
+### 12.5 Disposition and acceptance impact
+
+| Item | Source finding | Status |
+|---|---|---|
+| Legacy ledger collision | Allocator scans record filenames only; ledger-only CG-001…042 can yield CG-001 | **CONFIRMED SOURCE DEFECT; runtime reproduction NOT RUN** |
+| Allocator regression coverage | Inspected test module does not import/test allocator | **CONFIRMED GAP IN INSPECTED MODULE; full test inventory NOT RUN** |
+| Partial record/register write | Record file is written before register insertion; no rollback/recovery in inspected function | **CONFIRMED SOURCE EXPOSURE; fault injection NOT RUN** |
+| Index determinism and exact migration equality | Build/validation code inspected only in part | **NOT RUN / NOT ESTABLISHED** |
+
+M5 remains NOT RUN and cannot pass until A1–A6 are implemented and executed against the agreed migration states. M7 remains NOT RUN and cannot pass until W1–W8 are addressed with fault-injection evidence. M6 remains NOT RUN until exact-set and deterministic-rebuild evidence is attached. M10 still requires the exact proposed integration SHA and hosted workflow run evidence.
+
+This section is a source-level audit and test specification. It does not modify PR #1, authorize implementation, promote any status, or authorize merge.
