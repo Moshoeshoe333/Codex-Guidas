@@ -1,6 +1,6 @@
 """Fault-injection tests for recoverable record/index transactions."""
 
-# W1-W8 are intentionally independent failure-boundary assertions.
+# W1-W8 remain independent failure-boundary assertions; keep each failure observable.
 
 from __future__ import annotations
 
