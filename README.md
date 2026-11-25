@@ -24,6 +24,7 @@ We preserve reusable engineering knowledge so that each project benefits from th
 | [Startup repository benchmark](docs/research/2026-11-19-startup-repo-and-engineering-knowledge-benchmark.md) | Research on startup engineering failures, comparable products and proportionate repository controls |
 | [Defect prediction experiment](docs/research/defect-prediction-experiment-proposal.md) | Proposed, human-reviewed JIT risk-prioritisation experiment; no automated gate |
 | [Reading map](docs/reading-map.md) | Find tutorials, how-to guides, reference material and explanations |
+| [AI Engineering Learning and Application Map](docs/learning/ai-engineering-learning-map.md) | A selective route through 40 AI learning resources, with project relevance and evidence boundaries |
 | [New Repository Bootstrap and Assurance](packs/new-repository-bootstrap/README.md) | Establish a proportionate repository baseline and apply risk-triggered overlays |
 | [First knowledge search tutorial](docs/tutorials/first-knowledge-search.md) | Run the CLI and interpret the results safely |
 | [Architecture patterns](03-architecture/project-patterns.md) | Reusable design patterns and boundaries |

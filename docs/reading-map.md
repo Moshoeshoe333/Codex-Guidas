@@ -34,6 +34,12 @@ How-to guidance should name prerequisites, decision authority, expected outcome 
 
 Reference material should be precise, bounded and updated alongside the thing it describes.
 
+## Learning resources — build a capability deliberately
+
+- [AI Engineering Learning and Application Map](learning/ai-engineering-learning-map.md) — a selective path through AI foundations, machine learning, deep learning, LLM applications and specialist study, with portfolio-specific evidence requirements.
+
+Use the map to choose one resource for a real learning need. It is not a mandatory curriculum, certification or implementation approval.
+
 ## Explanation — understand the reasoning
 
 - [Operating principles](../00-foundation/operating-principles.md)
