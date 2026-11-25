@@ -441,3 +441,108 @@ Required migration checks remain:
 M5 remains NOT RUN and cannot pass until A1–A6 are implemented and executed against the agreed migration states. M7 remains NOT RUN and cannot pass until W1–W8 are addressed with fault-injection evidence. M6 remains NOT RUN until exact-set and deterministic-rebuild evidence is attached. M10 still requires the exact proposed integration SHA and hosted workflow run evidence.
 
 This section is a source-level audit and test specification. It does not modify PR #1, authorize implementation, promote any status, or authorize merge.
+
+
+## 13. Index integrity, test coverage and hosted workflow audit — 25 November 2026
+
+This section extends the read-only review to the exact PR #1 head:
+
+- PR #1 head: `ea7b36e0e78c79c019bce9982bc419e39eeb7461`
+- Comparison base: `6d1c38bb2b29936d059a36750d1cfc70815f4ed3`
+- PR #1 branch: `codex/retrieval-enforcement-2026-11-19`
+- Comparison: `main...ea7b36e0e78c79c019bce9982bc419e39eeb7461`
+- GitHub compare result: `diverged`, 44 commits ahead, 40 behind; 44 commits in the head-side comparison.
+- PR #1 remains open and draft.
+
+The following exact-head files were inspected read-only: `scripts/build_index.py`, `scripts/codex.py`, `tests/test_capture_and_index.py`, `tests/test_codex.py`, `00-foundation/metadata-schema.md`, and `.github/workflows/knowledge-integrity.yml`. No code or tests were changed or executed.
+
+### 13.1 Index builder behaviour
+
+The index builder:
+
+- Reads individual Markdown lesson files matching `CG-*.md` and defect files matching `DEF-*.md`.
+- Extracts an explicit subset of frontmatter fields and the first H1 title.
+- Sorts records by `(id, record_path)`.
+- Serializes JSON with stable indentation and a trailing newline.
+- Exposes `--check`, which compares an existing output file byte-for-byte with a freshly rendered index.
+
+This is a useful deterministic design at source level. It does not, by itself, prove that a generated index was built or that all canonical sources are reconciled.
+
+### 13.2 Test coverage: determinism claim is stronger than the assertion
+
+The test named `test_index_is_deterministic_and_preserves_explicit_tags` invokes `build_index_data(root)` once. It asserts record count, tag preservation and title extraction. It does not invoke the builder twice, compare serialized output, exercise `render_index()`, or test the CLI `--check` path.
+
+The workflow invokes `build_index.py --output /tmp/knowledge-index.json` and checks that one expected defect ID has a particular tag. It does not invoke `--check`, compare two independent builds, compare all generated IDs to source IDs, or verify that index generation leaves source Markdown unchanged.
+
+Therefore:
+- Deterministic sorting/serialization is **SUPPORTED BY SOURCE INSPECTION**.
+- Repeated-build determinism is **NOT TESTED BY THE INSPECTED TEST**.
+- Workflow enforcement of `--check` or full index equality is **NOT PRESENT IN THE INSPECTED WORKFLOW**.
+- No index build or test was executed during this audit.
+
+### 13.3 Cross-source equality and validation boundary
+
+The inspected `codex.py` validator:
+- Checks unique IDs across discovered individual lesson and defect record files.
+- Compares the set of individual lesson-file IDs with valid linked IDs extracted from `01-lessons-learned/ledger.md`.
+- Checks local Markdown links for missing targets.
+- Does not, in the inspected validation path, compare a complete canonical ID inventory across legacy lesson rows, lesson files, defect register rows, and generated JSON index records.
+- Does not establish semantic equivalence of migrated record content or metadata.
+
+The index builder consumes the individual lesson/defect files; it does not independently reconcile those files against the legacy lesson ledger or defect register before emitting JSON. A generated index can therefore be internally well-formed while a migration or source-reconciliation defect remains elsewhere.
+
+Required acceptance evidence:
+1. Define the canonical source inventory and parsing rules for lesson and defect IDs.
+2. Assert exact set equality between the agreed canonical source, individual record files, Markdown indexes/registers, and generated JSON index.
+3. Assert uniqueness and reject malformed, duplicate, missing and extra IDs.
+4. Assert every emitted `record_path` resolves to the intended file.
+5. Build twice from the same immutable snapshot and compare exact bytes.
+6. Confirm the build/check process does not mutate source Markdown.
+7. Exercise both successful and stale/missing-index `--check` cases.
+
+### 13.4 Hosted workflow source review
+
+The workflow is named `Knowledge integrity` and declares:
+- Triggers: pushes to `main`, all pull requests, and manual dispatch.
+- Workflow permission: `contents: read`.
+- Runner: `ubuntu-latest`.
+- Python: `3.12`.
+- Pinned commit SHAs for checkout and setup-python actions.
+- Steps for unittest discovery, knowledge validation, assurance-register validation, fixed-date queue smoke tests, temporary JSON index generation, and tag/search/review-queue smoke tests.
+
+Positive source-level properties:
+- Read-only repository permission is declared.
+- Third-party GitHub Actions are pinned to full commit SHAs.
+- The workflow has no deployment or repository-write step in the inspected file.
+
+Limits and follow-up:
+- No explicit `timeout-minutes`, concurrency policy, or Python version matrix is declared.
+- Pull requests are not path-filtered; all PRs trigger the workflow.
+- Several smoke tests use fixed historical `--as-of` dates and hard-coded expected IDs. Those fixtures must be kept synchronized with the intended source data and should not be confused with a current-date operational review.
+- The workflow definition is not execution evidence.
+
+### 13.5 Exact-head hosted evidence
+
+For exact head `ea7b36e0e78c79c019bce9982bc419e39eeb7461`, the connector returned:
+- PR-triggered workflow-runs list: empty.
+- Combined commit status entries: empty.
+
+The workflow-runs action is documented as returning PR-triggered runs only and the first page. The empty response is therefore recorded narrowly: **no PR-triggered workflow run was returned by this query, and no combined status entries were returned**. This does not prove that no workflow of any trigger type has ever run, and it does not prove a pass.
+
+No hosted workflow pass/fail evidence for the exact head was established in this audit. M10 remains **NOT RUN / NOT ESTABLISHED**.
+
+### 13.6 Updated acceptance disposition
+
+| Area | Finding | Disposition |
+|---|---|---|
+| Index serialization | Sorted records and stable JSON serialization are implemented in source | SOURCE-INSPECTED; not executed |
+| Repeated-build determinism | Named test calls builder once; no repeated comparison | NOT TESTED |
+| Workflow index assurance | Builds temporary JSON and checks one known record/tag; no `--check` or full-set equality | INSUFFICIENT FOR FULL INDEX INTEGRITY |
+| Cross-source ID equality | Lesson-file/ledger set comparison exists; complete ledger/register/file/JSON reconciliation is not established | PARTIAL |
+| Workflow source design | Read-only permission and SHA-pinned actions; no explicit timeout/concurrency/matrix | SOURCE-INSPECTED |
+| Exact-head CI evidence | No PR-triggered run returned and combined status list empty for exact head | NOT ESTABLISHED; NOT A PASS |
+| Branch integration risk | 44 ahead / 40 behind; diverged | RECONCILIATION REQUIRED; NO BLIND REBASE OR MERGE |
+
+M6 remains NOT RUN until the complete equality, path-integrity, deterministic-rebuild and non-mutation checks are executed against a frozen source snapshot. M10 remains NOT RUN until the exact proposed integration SHA has inspectable hosted workflow evidence. The current empty status response is not a green result.
+
+This section remains a read-only audit. It does not authorize implementation, branch rewriting, status promotion, project-gate changes or merge.
