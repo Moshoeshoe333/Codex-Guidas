@@ -9,27 +9,27 @@
 
 PR #1 contains useful structured-record, retrieval, assurance and CI foundations, but it is not safe to merge or rebase as-is. The branch is **44 commits ahead and 40 behind** current `main`. Its compare reports 84 changed paths, including 41 new lesson records, a rewritten lesson ledger, new scripts/tests and workflow/configuration files.
 
-Current `main` contains newer material absent from the feature branch's lesson migration, especially **CG-042** and the Opportunity Exposure field note and experiment records. Reconciliation must preserve that material and its explicit non-authoritative status.
+Current `main` contains newer Opportunity Exposure material absent from the feature branch's lesson migration. The source check found an important distinction: the lesson ledger currently ends at **CG-041**; the innovation register labels the Opportunity Exposure material `OFN-001 / CG-042`, but there is no CG-042 row in the canonical lesson ledger. The field note itself is present and explicitly non-authoritative. Reconciliation must preserve it and resolve whether `CG-042` is intended as a formal lesson ID or only a cross-reference before creating or migrating a lesson record.
 
 ## 2. Blocking integrity conditions
 
 ### R1 — CG-042 must survive the migration
 
-- Current `main` records CG-042 in `01-lessons-learned/ledger.md`.
-- PR #1's archived ledger and individual lesson files stop at CG-041.
-- Current mainline also contains `06-innovations/opportunity-exposure-field-note.md`, the opportunity-exposure experiment directory and the project innovation-register entry.
-- CG-042 is a **derived heuristic, not empirically validated or project-verified**. Its provenance and limitations must remain attached.
-- Do not infer that the feature branch's 2026-11-19 archive supersedes mainline content added later.
+- The current `main` lesson ledger contains entries CG-001 through CG-041; the inspected complete ledger does **not** contain a CG-042 row.
+- The innovation register describes the Opportunity Exposure experiments as `OFN-001 / CG-042`, while the field note's own canonical record ID is `OFN-001`.
+- The field note, experiment portfolio and innovation-register entry are present on current `main`; the field note classifies the material as an external heuristic, not a validated causal model or project policy.
+- The relationship between `CG-042` and `OFN-001` is therefore ambiguous: it may be an intended lesson cross-reference that was never added to the lesson ledger, rather than an existing canonical lesson record.
+- PR #1's archived ledger and individual lesson files stop at CG-041. Do not infer that its 2026-11-19 archive supersedes mainline material added later.
 
-**Required resolution:** create an individual CG-042 record from the exact current mainline wording and provenance, preserve the field note and experiment artifacts, and include CG-042 in the rebuilt lesson index.
+**Required resolution:** preserve `OFN-001`, its provenance, limitations and experiment artifacts. Before adding a CG-042 lesson, decide whether a distinct lesson is intended; if yes, author it from an explicitly reviewed statement and link it to OFN-001. Do not silently convert the field note into a lesson or claim that a CG-042 ledger entry already exists.
 
 ### R2 — ID allocation must not collide with unmigrated legacy IDs
 
-The proposed `scripts/new_record.py` `next_id()` implementation scans only `01-lessons-learned/lessons/CG-*.md`. Current `main` still stores lesson IDs in a monolithic ledger and has no individual lesson directory in its tree.
+The proposed `scripts/new_record.py` `next_id()` implementation scans only `01-lessons-learned/lessons/CG-*.md`. Current `main` still stores CG-001 through CG-041 in the monolithic ledger and has no individual lesson directory in its tree.
 
-If the record allocator is introduced before the complete migration (including CG-042), it can allocate an ID already present in the legacy ledger. This is a migration-order defect, not a theoretical concern.
+If the allocator is introduced before the complete migration, it can allocate an ID already present in the legacy ledger. The concrete first-collision case is: legacy ledger contains CG-001–CG-041, the individual-record directory is absent/empty, and the allocator proposes CG-001 instead of the next unused ID. This is a migration-order defect, not a theoretical concern.
 
-**Required resolution:** either (a) migrate all current IDs into individual records and validate uniqueness before enabling the allocator, or (b) make the allocator check both individual records and the legacy ledger during a staged migration. Add a regression test where a legacy ledger contains CG-042 but the individual-record directory does not.
+**Required resolution:** either (a) migrate all current canonical lesson IDs into individual records and validate uniqueness before enabling the allocator, or (b) make the allocator check both individual records and the legacy ledger during a staged migration. Add a regression test where the legacy ledger contains CG-041 but the individual-record directory does not; the next allocated ID must be CG-042. Separately resolve whether the innovation-register label `CG-042` is a formal lesson ID or an OFN-001 cross-reference.
 
 ### R3 — Ledger/index transition must be atomic at repository level
 
