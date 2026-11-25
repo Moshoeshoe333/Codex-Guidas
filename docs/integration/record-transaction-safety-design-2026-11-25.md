@@ -50,7 +50,7 @@ A filesystem generally cannot atomically replace two independent files as one op
 
 ## Implementation constraints
 
-- Keep journal paths relative to the repository root; reject absolute paths, parent traversal, resolved paths outside the root, and any destination pair other than one approved record plus its matching lesson ledger or defect register.
+- Keep journal paths relative to the repository root; reject absolute paths, parent traversal, symlinked paths, resolved paths outside the root, and any destination pair other than one previously absent record plus its matching pre-existing lesson ledger or defect register.
 - Do not use insert_table_row as an in-place side effect inside the transaction. Construct updated register text first.
 - Preserve the original file bytes exactly during rollback.
 - Do not silently delete malformed journals or locks.
