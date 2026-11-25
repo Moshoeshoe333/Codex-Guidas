@@ -105,3 +105,20 @@ This section defines the minimum evidence required before a migration branch can
 Acceptance requires all M1–M12. A failed, skipped, unexecuted or unobservable gate is not a pass. Report each gate as PASS, FAIL, NOT RUN or BLOCKED, with a source reference. Do not collapse partial success into a single green status.
 
 The migration may be considered technically acceptable only after exact-head checks and independent review. Merge remains a separate maintainer decision. This specification itself does not authorize implementation, status promotion, or merge.
+
+
+## 8. Read-only lesson path inventory — 25 November 2026
+
+A direct GitHub Contents API read was performed against the PR #1 feature branch directory:
+
+`01-lessons-learned/lessons/` at `codex/retrieval-enforcement-2026-11-19`.
+
+**Observed path inventory:**
+- Directory response contains exactly 41 entries.
+- Names are the contiguous sequence `CG-001.md` through `CG-041.md`.
+- No `CG-042.md` entry is present.
+- The current `main` ledger read contains canonical IDs CG-001 through CG-042.
+
+**Inventory result:** path presence is confirmed for 41/42 canonical IDs; CG-042 is absent from the PR #1 individual-record directory. This independently confirms the one-record path gap described in R1–R3.
+
+**Important limitation:** this is a filename/path inventory, not a per-record content reconciliation. It does not establish that the 41 files preserve the exact wording, provenance, evidence classes, reusable controls, limitations or scope of their corresponding mainline ledger rows. M3 remains NOT RUN until each source/target pair is compared. No record file was changed, and no migration or implementation was performed.
