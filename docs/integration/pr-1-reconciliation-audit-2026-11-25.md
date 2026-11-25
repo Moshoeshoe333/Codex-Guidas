@@ -56,7 +56,7 @@ PR #1 changes `01-lessons-learned/ledger.md` from a substantive register into an
 | R4 | Record metadata | Review every migrated record for preserved wording, origin, source path, project scope, status and verification boundary. Migration metadata must not imply source re-audit. |
 | R5 | Search | Test exact, partial, multi-term, tag, project, type and negative queries; document that all-term matching can miss synonyms and semantic equivalents. |
 | R6 | Evidence parsing | Test malformed frontmatter, duplicate keys, malformed evidence tables, dangling evidence IDs and placeholder values. |
-| R7 | Record creation | Test failure between record-file creation and ledger/index update; ensure no orphan or duplicate record is silently left behind. |
+| R7 | Record creation | Source-level risk: `create_record()` writes the new Markdown file before `insert_table_row()` updates the ledger/register. If the register update fails, the record may remain orphaned. Define atomic or recoverable semantics; inject failure between writes and assert rollback or a detectable/recoverable incomplete state. Also test existing targets, malformed/missing register headers and retry behaviour. |
 | R8 | Assurance register | Validate JSON/schema/path references and confirm every assurance claim remains explicitly proposed or unassessed unless supported by evidence. |
 | R9 | CI | Confirm workflow triggers, permissions, action provenance, runtime versions and exact-head execution. No passing status is currently established for the PR #1 head in this review. |
 | R10 | Current mainline | Preserve current README, project innovation register, Opportunity Exposure note and experiments; inspect all overlapping paths before transplanting feature changes. |
