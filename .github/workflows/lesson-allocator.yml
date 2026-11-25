@@ -6,6 +6,7 @@ on:
       - "scripts/new_record.py"
       - "tests/test_lesson_allocator.py"
       - "tests/test_record_transaction.py"
+      - "docs/integration/record-transaction-safety-design-2026-11-25.md"
       - ".github/workflows/lesson-allocator.yml"
   workflow_dispatch:
 
