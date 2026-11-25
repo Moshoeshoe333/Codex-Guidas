@@ -240,9 +240,12 @@ def _safe_journal_path(root: Path, relative: str) -> Path:
     if candidate.is_absolute() or not relative or ".." in candidate.parts:
         raise ValueError(f"Unsafe path in transaction journal: {relative!r}")
     root_resolved = root.resolve()
+    expected = root_resolved / candidate
     resolved = (root / candidate).resolve()
     if not resolved.is_relative_to(root_resolved):
         raise ValueError(f"Transaction journal path escapes repository root: {relative!r}")
+    if resolved != expected:
+        raise ValueError(f"Symlinked transaction journal path is not permitted: {relative!r}")
     return resolved
 
 
@@ -290,6 +293,17 @@ def _validated_journal(root: Path) -> dict:
     )
     if len(seen) != 2 or not (lesson_pair or defect_pair):
         raise ValueError("Transaction journal paths are not an approved record/index pair")
+
+    record_path = next(item for item in seen if item not in {
+        "01-lessons-learned/ledger.md", "11-defect-intelligence/README.md"
+    })
+    index_path = next(item for item in seen if item != record_path)
+    record_entry = next(item for item in entries if item["path"] == record_path)
+    index_entry = next(item for item in entries if item["path"] == index_path)
+    if record_entry["existed"] or record_entry["original_b64"] is not None:
+        raise ValueError("New record journal entry must describe a previously absent record")
+    if not index_entry["existed"] or not isinstance(index_entry["original_b64"], str):
+        raise ValueError("Index journal entry must preserve the previously existing index bytes")
     return journal
 
 
@@ -347,9 +361,14 @@ def recover_pending_transaction(root: Path = ROOT) -> None:
 def _apply_transaction_unlocked(root: Path, updates: dict[Path, bytes]) -> None:
     entries = []
     for path, _content in updates.items():
+        try:
+            relative_path = path.relative_to(root)
+        except ValueError as exc:
+            raise ValueError(f"Transaction destination is outside repository root: {path}") from exc
         resolved = path.resolve()
-        if not resolved.is_relative_to(root.resolve()):
-            raise ValueError(f"Transaction destination is outside repository root: {path}")
+        expected = root.resolve() / relative_path
+        if not resolved.is_relative_to(root.resolve()) or resolved != expected:
+            raise ValueError(f"Transaction destination escapes repository root or uses a symlink: {path}")
         existed = resolved.exists()
         original = resolved.read_bytes() if existed else None
         entries.append({
