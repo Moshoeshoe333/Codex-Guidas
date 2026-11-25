@@ -770,3 +770,33 @@ It does **not** provide a true atomic commit across multiple independent files. 
 | Merge authorization | No maintainer merge instruction | NOT AUTHORIZED |
 
 The PR #5 and PR #7 work remains isolated and unmerged. PR #7 is stacked on PR #5 and must not be merged independently of its dependency. PR #1 remains untouched. The next technical work package, after review of the allocator/transaction changes, is index integrity: exact-set reconciliation across canonical records and projections, path integrity, deterministic repeated builds, and proof that index generation does not mutate Markdown sources.
+
+
+## 18. Index integrity source review and M6 acceptance contract — 25 November 2026
+
+A source review was performed against PR #1 branch `codex/retrieval-enforcement-2026-11-19`, exact head `ea7b36e0e78c79c019bce9982bc419e39eeb7461`. Exact file blob SHAs and findings are recorded in [Index integrity — source review and acceptance work package](index-integrity-gap-analysis-2026-11-25.md).
+
+### 18.1 Findings
+
+- The proposed JSON builder reads individual lesson and defect Markdown files, projects selected metadata, sorts by ID/path and provides a byte-comparison `--check` mode.
+- The builder does not itself reconcile the discovered lesson files against the frozen mainline lesson inventory, the lesson ledger, defect README register or historical defect ledger.
+- The builder does not independently reject duplicate IDs, metadata-ID/filename mismatch or unexpected record types before producing an index.
+- The existing test named `test_index_is_deterministic_and_preserves_explicit_tags` calls the builder once and checks record count, tags and title. It does not compare repeated builds or exact serialized output.
+- The inspected workflow writes the JSON index to `/tmp` and smoke-checks one known record/tag. It does not run `--check`, prove full-set equality or assert Markdown source non-mutation.
+- The existing validator compares lesson index links against the individual lesson-file set, but does not compare that set with the frozen pre-migration source inventory. Thus a migrated ledger and migrated file directory can agree while both omit CG-042.
+- Defect register authority must be made explicit before exact-set validation: the README contains the operational defect register, while `ledger.md` is a historical defect-intelligence ledger with a distinct purpose. They must not be treated as interchangeable without a documented decision.
+
+### 18.2 M6 acceptance contract
+
+The new gap-analysis document defines I1–I10: immutable source inventory; identity/filename/type consistency; exact lesson-ledger equality; canonical defect-register decision and equality; JSON exact-set equality; path integrity; repeated-build determinism; CLI `--check` behaviour; Markdown source non-mutation; and full hosted workflow enforcement.
+
+### 18.3 Gate disposition
+
+- **M6 — index exact-set/deterministic integrity: NOT RUN / OPEN.**
+- CG-042 omission remains an explicit migration blocker until reconciled against the frozen mainline inventory.
+- No index implementation, tests, workflow or mainline files were changed by this source review.
+- PR #1 remains untouched and diverged.
+- PR #5 and PR #7 remain open, draft and unmerged; their focused test evidence does not establish M6.
+- No M1–M12 completion, project gate transition or merge authorization is claimed.
+
+The next implementation work package is an isolated index-integrity change after review of the allocator/transaction work and an explicit decision about the canonical defect-register source.
