@@ -604,3 +604,69 @@ This establishes the pre-migration ledger inventory at the frozen source revisio
 ### 14.5 Scope and authority boundary
 
 This phase records source identities and a canonical inventory only. It does not create or modify CG-042 on PR #1, change scripts/tests, alter mainline, rewrite branches, promote a lesson to Verified, authorize any project experiment, or approve a merge. The next phase is a read-only source-to-target reconciliation of all 42 lessons and their metadata against the PR #1 branch at its exact head. Any change to that head invalidates the target-side comparison and requires a fresh exact-head audit.
+
+
+## 15. Frozen-baseline migration reconciliation — M2 to M4 — 25 November 2026
+
+This review compares PR #1 at exact head `ea7b36e0e78c79c019bce9982bc419e39eeb7461` with the frozen mainline source snapshot `6d1c38bb2b29936d059a36750d1cfc70815f4ed3` recorded in Section 14. The PR #1 head did not change during this read-only comparison.
+
+### 15.1 M2 — inventory and migration coverage
+
+- Frozen source ledger inventory: 42 unique, sequential IDs, CG-001 through CG-042.
+- PR #1 individual lesson files: CG-001 through CG-041 (41 records).
+- CG-042 individual target file: absent.
+- PR #1 retains the archived pre-split ledger containing the 41 earlier lesson rows; the frozen current-mainline ledger contains all 42.
+- No duplicate or missing ID was found within the 41-file target sequence itself; the migration is incomplete relative to the 42-record frozen source.
+
+**M2 disposition: PARTIAL / FAIL FOR COMPLETE MIGRATION.** The 41-record projection is present, but CG-042 is missing. Do not treat the PR #1 migration as complete.
+
+### 15.2 M3 — source-to-target content comparison
+
+The earlier four-field comparison in Section 9 was tied to the same frozen mainline base SHA recorded in Section 14. It compared 41 individual target records against the source ledger and found:
+- 41/41 lesson titles matched;
+- 41/41 origin/source fields matched;
+- 41/41 evidence-class wording matched;
+- 41/41 reusable-control wording matched;
+- all 41 shared archive rows matched;
+- CG-042 has no target record and therefore cannot be compared.
+
+This represents 164/164 compared core fields matching across the 41 migrated records. It does not mean every metadata field is identical to the source ledger; the target schema adds retrieval and review metadata that did not exist in the legacy table. Nor does it establish independent re-verification of the lessons' underlying project claims.
+
+**M3 disposition: PARTIAL.** All compared core fields for CG-001–CG-041 match, but the 42-record source-to-target reconciliation is incomplete until CG-042 is migrated and compared field by field.
+
+### 15.3 M4 — metadata semantics review across CG-001–CG-041
+
+The exact-head frontmatter of all 41 individual lesson records was inspected. The schema and taxonomy files were also inspected at the same PR #1 head.
+
+**Observed consistency:**
+- Lifecycle `status`, source `evidence_class` and `verification_status` remain separate fields.
+- The observed lifecycle values are within the declared lesson vocabulary; no record in the inspected set claims `status: Verified`.
+- Verification values are within the declared vocabulary (`pending`, `source-only`, `not-claimed`); no record claims `verification_status: verified`.
+- Records marked `pending` carry a `verification_due` date in the inspected set.
+- Layer values observed are members of the schema's allowed retrieval values: `mind`, `body`, `spirit`, `infra`, `process`; the schema also allows `cross-cutting` and `unknown`.
+- Component values are strings or explicit nulls, consistent with the schema's type rule.
+- Dates are represented as ISO dates or null in the inspected records.
+- `severity` is null on the inspected lesson records, consistent with the rule that severity is not applicable to lessons absent formal assessment.
+- The records' shared `source_path` points to the preserved archived ledger; `review_scope` limits the migration review to metadata/ledger-entry review and explicitly disclaims source re-execution.
+- No inspected record claims that migration alone independently verified the underlying source project behaviour.
+
+**Taxonomy limitations remain:**
+- The schema declares layer values as retrieval tags but does not define operational meanings or assignment criteria for each layer. Values can therefore be syntactically valid without their semantic assignment being independently justified.
+- The component field has no controlled vocabulary or canonical component registry; the strings are usable retrieval facets but cannot be treated as normalized classifications.
+- Project identifiers are not governed by a canonical registry/alias policy. Examples in the inspected records include differing forms such as `SoulSync 3`, `SOULSYNCMOBILE`, `Mall-Navigre`, `ScoutSA`, `UCI` and `cross-project`. The evidence does not establish that these names are all aliases or that they should be normalized identically.
+- The records do not carry per-field rationale explaining why a specific layer, component or project tag was selected. This prevents an auditor from independently assessing the semantic correctness of every retrieval classification from metadata alone.
+
+These are taxonomy governance and semantic traceability limitations. They are not, on the evidence inspected, proof that a particular individual record has been deliberately or demonstrably misclassified.
+
+**M4 disposition: STRUCTURAL REVIEW COMPLETE; SEMANTIC TAXONOMY OPEN.** The metadata is structurally consistent with the inspected schema rules, but semantic classification cannot be fully certified without controlled definitions, registries and per-record rationale. Do not promote metadata validity into content verification.
+
+### 15.4 Consolidated M1–M4 gate position
+
+| Gate | Result | Reason |
+|---|---|---|
+| M1 — immutable source baseline | SOURCE FREEZE PASS | Exact mainline SHA and source artifact blob identities pinned in Section 14 |
+| M2 — inventory/migration coverage | PARTIAL / FAIL | 41 of 42 source lessons represented; CG-042 missing |
+| M3 — source/target core content | PARTIAL | 164/164 compared fields match for CG-001–CG-041; CG-042 not migrated or compared |
+| M4 — metadata semantics | STRUCTURAL REVIEW COMPLETE; OPEN | Types/vocabularies are structurally consistent; layer/component/project semantics remain underspecified |
+
+No M2–M4 result authorizes implementation, migration of CG-042, taxonomy changes, branch rewriting, status promotion, or merge. Any subsequent change to the PR #1 head requires re-pinning and re-running the target-side comparison. The next step remains a separately scoped implementation decision after this reconciliation evidence is reviewed.
