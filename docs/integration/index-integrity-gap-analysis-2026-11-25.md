@@ -75,19 +75,34 @@ Therefore, equality between a migrated ledger and a migrated file directory is n
 | I9 | Index generation is read-only with respect to source records | Hash or byte-snapshot all Markdown source files before and after build/check; assert no source mutation. |
 | I10 | Hosted workflow enforces the full contract | Run the complete tests, validator, build, exact-set reconciliation, repeated-build comparison and CLI --check on the exact PR head. |
 
-## 5. Design boundaries and sequencing
+## 5. Defect-register source-of-truth decision
+
+**Decision for M6: `11-defect-intelligence/README.md` is the canonical operational defect register. `11-defect-intelligence/ledger.md` is treated as historical defect-intelligence evidence, not as a second operational register.**
+
+This decision follows the reviewed source structure: the README explicitly presents and maintains the defect register, while the ledger preserves historical defect-intelligence records. The two artifacts therefore have distinct responsibilities and must not be subjected to interchangeable equality rules.
+
+Implementation consequences:
+- I4 will parse the operational register entries in `11-defect-intelligence/README.md` and compare their canonical DEF IDs with the individual defect-record files.
+- `11-defect-intelligence/ledger.md` will be retained as historical evidence and checked for internal link/path integrity where appropriate; it will not independently define the current operational defect-file inventory.
+- Any ambiguity, malformed register row, duplicate ID, missing target or unregistered defect file must fail closed rather than be silently skipped.
+- The validator must report which source supplied each expected ID set, so future maintainers can audit the authority chain.
+- This is a scoped source-of-truth decision for M6 in this integration work package. It does not grant the README authority over unrelated project registers or override future explicit maintainer ratification.
+
+The decision resolves the previously open source-selection question. It does not prove that the register and defect files currently reconcile; that remains an implementation and execution test.
+
+## 6. Design boundaries and sequencing
 
 1. Do not transplant the diverged PR #1 branch wholesale.
 2. Keep the frozen mainline ID inventory as an immutable migration reference.
-3. Decide and document the authoritative defect register before asserting defect-register equality; the README register and historical defect ledger have different apparent roles.
+3. Use the README as the canonical operational defect register and the ledger as historical evidence, as defined in Section 5.
 4. Build a minimal accepted source contract and test matrix before implementation.
 5. Keep builder output separate from Markdown source-of-truth files.
 6. Do not use a green single-record smoke test as proof of complete index integrity.
 7. Do not mark M6 PASS until I1–I10 have exact-head evidence and the migration source inventory is reconciled.
 8. Do not infer full M1–M12 acceptance or merge authorization from this work package.
 
-## 6. Current disposition
+## 7. Current disposition
 
 **M6 — index exact-set and deterministic integrity: NOT RUN / OPEN.**
 
-This is a source-observed gap analysis and proposed acceptance contract. No index implementation, tests, workflow or mainline files were changed by this assessment. The next implementation should be isolated after review of PR #5/PR #7 and explicit confirmation of the canonical defect-register source.
+This is a source-observed gap analysis and proposed acceptance contract. The defect-register source decision is now explicit in Section 5. No index implementation, tests, workflow or mainline files were changed by this assessment. The next implementation remains isolated and is gated on review of the PR #5 allocator and PR #7 transaction changes.
