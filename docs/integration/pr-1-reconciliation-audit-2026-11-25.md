@@ -13,7 +13,7 @@ Current `main` contains newer Opportunity Exposure material absent from the feat
 
 ## 2. Blocking integrity conditions
 
-### R1 — CG-042 must survive the migration
+### R1 — Preserve OFN-001 and resolve the CG-042 cross-reference
 
 - The current `main` lesson ledger contains entries CG-001 through CG-041; the inspected complete ledger does **not** contain a CG-042 row.
 - The innovation register describes the Opportunity Exposure experiments as `OFN-001 / CG-042`, while the field note's own canonical record ID is `OFN-001`.
@@ -33,7 +33,7 @@ If the allocator is introduced before the complete migration, it can allocate an
 
 ### R3 — Ledger/index transition must be atomic at repository level
 
-PR #1 changes `01-lessons-learned/ledger.md` from a substantive register into an index and adds `ledger-archive-2026-11-19.md`. The archive preserves the pre-split ledger through CG-041, but it does not contain later CG-042 material.
+PR #1 changes `01-lessons-learned/ledger.md` from a substantive register into an index and adds `ledger-archive-2026-11-19.md`. The archive preserves the pre-split ledger through CG-041, but it does not contain the later OFN-001 field note or experiment portfolio.
 
 **Required resolution:** reconcile the full current mainline ledger first; preserve the historical archive as historical, not as the latest source of truth; build the new index from all migrated records; validate exact set equality between record IDs and index IDs.
 
@@ -63,9 +63,9 @@ PR #1 changes `01-lessons-learned/ledger.md` from a substantive register into an
 1. Freeze the current mainline snapshot and record its exact SHA.
 2. Build a migration inventory of all lesson IDs on current mainline and on the feature branch.
 3. Reconcile CG-001–CG-041 against the current ledger; do not assume metadata migration independently verifies source claims.
-4. Add CG-042 as an individual record with its original heuristic status, source attribution, limitations and cross-link to the field note.
-5. Resolve the ID allocator's legacy-collision risk and add the CG-042 regression case.
-6. Rebuild the index and assert exact record/index ID-set equality, including CG-042.
+4. Resolve whether `CG-042` is intended to be a formal lesson or only a cross-reference to `OFN-001`; create a lesson record only after that decision is explicit.
+5. Resolve the ID allocator's legacy-collision risk and add the regression case where a legacy ledger ending at CG-041 yields CG-042 as the next ID.
+6. Rebuild the index and assert exact record/index ID-set equality for the canonical lesson records; include CG-042 only if it is formally created and approved as a lesson.
 7. Port the retrieval scripts, tests and workflow in a focused integration branch; review file-level differences against current mainline.
 8. Execute all checks on the exact proposed head and inspect the run SHA, logs and failures.
 9. Submit the integrated branch for review. Do not merge until checks, review and maintainer ratification are complete.
