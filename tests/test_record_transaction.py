@@ -177,6 +177,21 @@ class RecordTransactionTests(unittest.TestCase):
             new_record.recover_pending_transaction(self.root)
         self.assertTrue(journal_path.exists())
 
+        # An approved-looking record path must not resolve through a symlink
+        # to a different file inside the repository.
+        link = self.root / "01-lessons-learned" / "lessons" / "CG-999.md"
+        link.symlink_to(self.root / "README.md")
+        journal_path.write_text(
+            '{"version":1,"state":"prepared","entries":['
+            '{"path":"01-lessons-learned/lessons/CG-999.md","existed":false,"original_b64":null},'
+            '{"path":"01-lessons-learned/ledger.md","existed":true,"original_b64":"eA=="}]}',
+            encoding="utf-8",
+        )
+        with self.assertRaisesRegex(ValueError, "Symlinked"):
+            new_record.recover_pending_transaction(self.root)
+        self.assertTrue(journal_path.exists())
+        self.assertTrue(link.is_symlink())
+
 
 if __name__ == "__main__":
     unittest.main()
