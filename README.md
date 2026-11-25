@@ -15,6 +15,7 @@ We preserve reusable engineering knowledge so that each project benefits from th
 | Area | Purpose |
 |---|---|
 | [Operating principles](00-foundation/operating-principles.md) | Portfolio-wide rules and evidence ladder |
+| [AI Engineering Learning and Application Map](docs/learning/ai-engineering-learning-map.md) | Selective AI learning route, portfolio relevance and evidence boundaries |
 | [Lessons learned ledger](01-lessons-learned/ledger.md) | Cross-project lessons CG-001 onward |
 | [Evidence-first development](02-methodologies/evidence-first-development.md) | Research, decision, implementation and verification workflow |
 | [Architecture patterns](03-architecture/project-patterns.md) | Reusable design patterns and boundaries |
