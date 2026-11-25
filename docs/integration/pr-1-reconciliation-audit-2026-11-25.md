@@ -710,3 +710,63 @@ Therefore:
 - No merge, status promotion or owning-project gate change is authorized.
 
 The allocator work package must not be treated as accepted until the exact-head workflow has run successfully and the implementation/tests have been reviewed. If the PR head changes, repeat the exact-head evidence check.
+
+
+## 17. Allocator and record/index transaction verification update — 25 November 2026
+
+This section supersedes the earlier “not yet executed” statements in Section 16.3 for the exact work-package heads recorded below. It does not change the frozen M1 baseline, the PR #1 reconciliation findings, or any owning-project gate.
+
+### 17.1 PR #5 allocator acceptance evidence
+
+- PR: [#5 — reconcile lesson ID allocation across legacy and migrated records](https://github.com/Moshoeshoe333/Codex-Guidas/pull/5)
+- Branch: `codex/integration-core-capture-2026-11-25`
+- Exact tested PR head: `724058c167775244dd55316abd7dc12725b099fb`
+- Hosted workflow: [Lesson allocator regression, run #1](https://github.com/Moshoeshoe333/Codex-Guidas/actions/runs/45627741868)
+- Runner: Ubuntu 26.04; Python 3.12.16
+- Result: A1–A6 suite, 8/8 tests passed.
+
+The hosted log shows all eight allocator tests passing, including legacy-only allocation, migrated records, mixed state, file-ahead state, duplicate/malformed identifiers, mismatched links and max-plus-one gap behaviour.
+
+**Assessment:** The focused allocator execution criterion that was previously NOT RUN is now evidenced as PASS for this exact PR #5 head. Full integration acceptance remains separate. PR #5 remains open, draft and unmerged; no merge or branch rewrite is authorized.
+
+### 17.2 PR #7 record/index transaction safety
+
+- PR: [#7 — make record and index creation recoverable](https://github.com/Moshoeshoe333/Codex-Guidas/pull/7)
+- Branch: `codex/record-transaction-safety-2026-11-25`
+- Base branch: PR #5 branch at `724058c167775244dd55316abd7dc12725b099fb`
+- Tested code/test head: `2b006d6736c9ad9607c0f70becd74ab4b1c70d8d`
+- Current PR head at this audit update: `dd8dc5f75a382e63de4e2af897b8d86f32b4c84a`
+- Difference after the tested code/test head: workflow-comment-only edits; no implementation or test logic changed.
+- Hosted workflow: [Record transaction and allocator regression, run #8](https://github.com/Moshoeshoe333/Codex-Guidas/actions/runs/45631882338)
+- Runner: Ubuntu 26.04; Python 3.12.16
+- Allocator suite: 8/8 passed.
+- Transaction suite: W1–W8, 8/8 passed.
+
+The W1–W8 log records passing tests for preparation failure, journal-before-replacement ordering, rollback after a partial record/index write, rollback before the committed marker, committed cleanup recovery, idempotent prepared-journal recovery, lock refusal, malformed/path-traversal journal refusal and symlinked-target rejection (the latter is an additional assertion in W8).
+
+An earlier intermediate workflow on superseded commit `83ee597c192c63431ce33edd58519e1d3a8bdd13` failed while regex escaping was incorrect. The regex correction and later hardening were committed; subsequent hosted runs, including run #8, passed. The failed intermediate run is retained as development history, not hidden or counted as a final pass.
+
+### 17.3 What the transaction implementation does and does not establish
+
+The current implementation uses:
+- an exclusive repository-local lock around recovery, ID allocation and writes;
+- a write-ahead journal with original file snapshots and prepared/committed states;
+- in-memory construction of the record and updated index before destination mutation;
+- individual same-directory atomic file replacements;
+- rollback of prepared transactions and cleanup of committed journals;
+- journal path allowlisting, traversal and symlink rejection, and checks that the record was previously absent while the index already existed.
+
+It does **not** provide a true atomic commit across multiple independent files. It is recoverable single-host filesystem coordination, not a database transaction or cross-host distributed lock. A process crash can leave a lock file; stale-lock takeover is intentionally manual and must only occur after confirming no writer is active. On Windows, portable Python directory-handle fsync is unavailable in this implementation, so directory-entry crash durability is weaker than on the POSIX CI runner.
+
+### 17.4 Updated gate/evidence disposition
+
+| Criterion | Updated evidence | Disposition |
+|---|---|---|
+| A1–A6 allocator cases | PR #5 exact tested head; hosted 8/8 | Focused execution PASS; code review/integration acceptance remains separate |
+| W1–W8 transaction cases | PR #7 tested code/test head; hosted 8/8 | Focused execution PASS; code review and platform limitations remain open |
+| M6 index exact-set/deterministic rebuild | No new execution evidence in these PRs | NOT RUN / OPEN |
+| Full PR #1 retrieval integration | Not transplanted; PR #1 remains diverged | NOT RUN / OPEN |
+| Full M1–M12 acceptance | Not all criteria executed or reviewed | NOT PASSED |
+| Merge authorization | No maintainer merge instruction | NOT AUTHORIZED |
+
+The PR #5 and PR #7 work remains isolated and unmerged. PR #7 is stacked on PR #5 and must not be merged independently of its dependency. PR #1 remains untouched. The next technical work package, after review of the allocator/transaction changes, is index integrity: exact-set reconciliation across canonical records and projections, path integrity, deterministic repeated builds, and proof that index generation does not mutate Markdown sources.
