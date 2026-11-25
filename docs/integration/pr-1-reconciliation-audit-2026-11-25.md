@@ -30,7 +30,9 @@ The proposed `scripts/new_record.py` `next_id()` implementation scans only `01-l
 
 If the allocator is introduced before the complete migration, it can allocate an ID already present in the legacy ledger. The concrete first-collision case is: legacy ledger contains CG-001–CG-042, the individual-record directory is absent/empty, and the allocator proposes CG-001 instead of the next unused ID. This is a migration-order defect, not a theoretical concern.
 
-**Required resolution:** either (a) migrate all current canonical lesson IDs into individual records and validate uniqueness before enabling the allocator, or (b) make the allocator check both individual records and the legacy ledger during a staged migration. Add a regression test where the legacy ledger contains CG-042 but the individual-record directory does not; the next allocated ID must be CG-043. Confirm the migrated individual-record set includes CG-001 through CG-042 exactly once.
+**Test gap observed:** the inspected `tests/test_codex.py` imports and exercises `scripts/codex.py`; it does not import or test `scripts/new_record.py`. The allocator therefore has no visible regression coverage in that suite for legacy-ledger collisions.
+
+**Required resolution:** either (a) migrate all current canonical lesson IDs into individual records and validate uniqueness before enabling the allocator, or (b) make the allocator check both individual records and the legacy ledger during a staged migration. Add a direct allocator regression test where the legacy ledger contains CG-042 but the individual-record directory does not; the next allocated ID must be CG-043. Also test duplicate/corrupt ID inputs and verify the migrated individual-record set includes CG-001 through CG-042 exactly once.
 
 ### R3 — Ledger/index transition must be atomic at repository level
 
