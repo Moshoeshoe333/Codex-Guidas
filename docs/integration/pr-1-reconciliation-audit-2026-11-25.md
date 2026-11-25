@@ -670,3 +670,43 @@ These are taxonomy governance and semantic traceability limitations. They are no
 | M4 — metadata semantics | STRUCTURAL REVIEW COMPLETE; OPEN | Types/vocabularies are structurally consistent; layer/component/project semantics remain underspecified |
 
 No M2–M4 result authorizes implementation, migration of CG-042, taxonomy changes, branch rewriting, status promotion, or merge. Any subsequent change to the PR #1 head requires re-pinning and re-running the target-side comparison. The next step remains a separately scoped implementation decision after this reconciliation evidence is reviewed.
+
+
+## 16. Approved-scope execution — isolated allocator work package — 25 November 2026
+
+The user's instruction to proceed is treated as ratification to begin the previously proposed implementation scope, subject to the phase gates and explicit non-scope boundaries. Work has started on a clean branch from the frozen mainline; the diverged PR #1 branch has not been rebased, merged or modified.
+
+### 16.1 New isolated work branch and pull request
+
+- Branch: `codex/integration-core-capture-2026-11-25`
+- Base: frozen `main` commit `6d1c38bb2b29936d059a36750d1cfc70815f4ed3`
+- Pull request: [PR #5 — reconcile lesson ID allocation across legacy and migrated records](https://github.com/Moshoeshoe333/Codex-Guidas/pull/5)
+- Exact PR head at this check: `724058c167775244dd55316abd7dc12725b099fb`
+- PR #5 state: open, draft, unmerged; 3 files changed.
+- PR #1 remains untouched and diverged.
+
+### 16.2 Implementation scope now present on PR #5
+
+- Lesson ID allocation reads both the canonical lesson ledger and individual lesson filenames, taking the maximum across both representations.
+- Legacy bare IDs and migrated Markdown links are accepted.
+- Missing or malformed ledger structure, malformed IDs, duplicate ledger IDs, inconsistent link targets and malformed individual filenames fail closed.
+- Gaps use max-plus-one allocation rather than reusing the first missing number.
+- Focused regression tests cover A1–A6, including duplicate, malformed and mismatched-link cases.
+- A focused GitHub Actions workflow uses full commit SHAs for checkout and Python setup, declares `contents: read`, and runs only the allocator regression file.
+- Template validation is moved before target-directory creation so a malformed template does not create a directory as a side effect.
+
+### 16.3 Verification status and remaining limitations
+
+For exact PR #5 head `724058c167775244dd55316abd7dc12725b099fb`, the workflow-runs query returned an empty list and the combined status query returned no status entries at the time checked.
+
+Therefore:
+- The code and tests are **committed to the PR branch**.
+- A1–A6 are **specified in tests but NOT YET EXECUTED / NOT YET ESTABLISHED AS PASS**.
+- Hosted CI is **NOT YET ESTABLISHED** for this exact head.
+- No local test execution is claimed.
+- The record/register partial-write exposure remains open; W1–W8 have not been addressed by this work package.
+- CG-042 has not been migrated.
+- PR #1's full retrieval implementation has not been transplanted.
+- No merge, status promotion or owning-project gate change is authorized.
+
+The allocator work package must not be treated as accepted until the exact-head workflow has run successfully and the implementation/tests have been reviewed. If the PR head changes, repeat the exact-head evidence check.
