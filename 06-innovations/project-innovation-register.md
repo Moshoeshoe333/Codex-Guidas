@@ -70,3 +70,12 @@ The portfolio will not replace Python or TypeScript wholesale. Rust is a selecti
 - Every project retains its own gate, ratification, and release authority. This cross-project note does not transfer authority between repositories.
 
 **Next action:** treat SoulSync-3 as the first Rust learning/parity candidate, limited to a proposal and contract preparation. No Rust implementation or project gate transition is authorized by this register entry.
+
+
+## GCHQ-derived UCI evidence-pipeline concept (2026-11-27)
+
+**Status: PROPOSED RESEARCH DIRECTION ONLY — no service or collection authorization.**
+
+A possible refinement to UCI's existing threat-intelligence concept is a source-preserving, staged evidence workflow: intake/reference → validation and safe handling → normalization/enrichment → analyst assessment → peer review → publication/correction decision. Keep original source artefacts distinct from derivatives and analyst interpretation, record transformation/version and explicit skipped/unsupported/error states, and apply retention/minimisation controls. Read-only linked-data exploration and representative-subset analytics are optional future techniques only where a concrete use case and fidelity evidence justify them. Never use reduced samples as evidence for incident conclusions or discard rare/high-severity signals.
+
+Next proof: assess this workflow against the already documented UCI threat-intelligence methodology, risk register and Gate 0 service/data boundaries. No infrastructure, collection, scan service, active testing, public release, or customer activity is authorized.
