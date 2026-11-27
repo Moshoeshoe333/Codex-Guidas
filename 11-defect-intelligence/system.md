@@ -74,7 +74,7 @@ Use impact-based severity, not emotional language or the number of files changed
 
 Severity may change as evidence develops. Record who changed it, when and why. A security or safeguarding concern should be escalated under the relevant project policy even if its immediate user impact is not yet known.
 
-## 5. State model
+## 6. State model
 
 - **New:** recorded, not yet triaged.
 - **Triaged:** impact and owner assessed.
