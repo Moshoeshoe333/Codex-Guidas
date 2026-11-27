@@ -14,6 +14,7 @@ We preserve reusable engineering knowledge so that each project benefits from th
 
 | Area | Purpose |
 |---|---|
+| [Project Operating Guide](00-foundation/project-operating-guide.md) | Practical lifecycle for applying Codex-Guidas to project research, decisions, design, implementation, verification, agent use and learning |
 | [Operating principles](00-foundation/operating-principles.md) | Portfolio-wide rules and evidence ladder |
 | [Lessons learned ledger](01-lessons-learned/ledger.md) | Cross-project lessons CG-001 onward |
 | [Evidence-first development](02-methodologies/evidence-first-development.md) | Research, decision, implementation and verification workflow |
