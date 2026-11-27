@@ -38,5 +38,9 @@ Question → contract → independent query lanes → source fetching → eviden
 
 The report identifies Claim ID, status, evidence, contradictions, dates, source independence, missing proof and limitations. Claim strength must never exceed evidence strength.
 
+## External repository learning
+
+When a research question requires learning from other codebases, use the bounded [External Repository Learning Method](external-repository-learning.md) and [review template](../09-templates/external-repository-review.md). Pin exact source revisions, distinguish source observations from derived lessons, inspect project fit independently and record "already covered / no change" where appropriate. Do not convert an external pattern into implementation authority.
+
 ## Stop conditions
 Stop and reassess if a gate is unresolved, sensitive data/access is unapproved, a test failure is unexplained, source-of-truth ownership is unclear, scope exceeds the contract, or no user/risk/learning/milestone benefit remains.
