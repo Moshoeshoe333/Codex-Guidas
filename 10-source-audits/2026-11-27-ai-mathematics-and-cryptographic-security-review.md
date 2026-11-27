@@ -150,6 +150,7 @@ Our practical response is to strengthen what we control now: minimise the sensit
 - [Lean FRO / Mathlib Initiative joint statement, 21 November 2026](https://leanprover-community.github.io/blog/posts/riemann-hypothesis/)
 - [Andrew Sutherland (MIT) — original RH Lean proof verification files](https://math.mit.edu/~drew/grh/)
 - [Andrew Sutherland (MIT) — shorter RH Lean proof verification files, updated 26 November 2026](https://math.mit.edu/~drew/shortgrh/)
+- [Andrew Sutherland (MIT) — shorter RH Lean proof verification files, updated 26 November 2026](https://math.mit.edu/~drew/shortgrh/)
 - [Associated Press — reported Anthropic/Claude RH claim](https://apnews.com/article/4fe8b69a891f160f9e7f0c85af8c55c8)
 - [OpenAI — Navier–Stokes proof claim, 8 September 2026](https://openai.com/index/navier-stokes-solution/)
 - [math.observer — independent status and claim tracking](https://math.observer/)
