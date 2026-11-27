@@ -180,3 +180,18 @@ The branch comparison from the inspected application baseline reported exactly o
 **Assessment:** the template can capture the known project-specific boundaries and commands without importing GCHQ's individual Git, language, build or contribution policies. This is a structural/documentation consistency check only. No test suite, build, device run or actual agent-behaviour experiment was performed. The proposal's effectiveness remains unverified.
 
 **Next proof:** project-owner review, verification of the complete CI/toolchain/branch-protection inventory, and a bounded agent task after explicit adoption. Until then, no instruction rollout, application change or gate transition is authorized.
+
+### Pilot review refinement — current CI inventory and controlled evaluation task (2026-11-27)
+
+The SoulSyncMobile instruction proposal was reviewed against the repository's declared automation and permission surfaces after the first pilot draft.
+
+**Additional exact source facts:**
+- At application SHA `1f50bd3387c61d51868140ec3776b94150a2d4c6`, `.github/workflows` contained one file, [`typecheck.yml`](https://github.com/Moshoeshoe333/SOULSYNCMOBILE/blob/1f50bd3387c61d51868140ec3776b94150a2d4c6/.github/workflows/typecheck.yml), blob `c8527341f3e3431bbf9486ce66933a2787e123a4`.
+- That workflow runs on pushes to `main` and pull requests; uses `ubuntu-latest` and Node `22.13.x`; runs `npm install`; emits a non-blocking read-only npm audit report; then runs typecheck, threat fixtures, storage fault-injection tests and Guardian hook fault-injection tests.
+- It does not include a mobile build, APK installation, physical-device test or G-BOOT runtime witness.
+- The GitHub branches endpoint marked `main` as `protected:false` in the returned listing. The direct branch-protection request returned 403 and the rulesets endpoint was unavailable through the current connection. The proposal therefore records the observable branch-list value but does not claim that all repository or organisation rules are absent.
+- A refreshed commit lookup still showed application `main` at `1f50bd3387c61d51868140ec3776b94150a2d4c6`. The current Codex-Guidas DEF-2026-002 record remains **Investigating**. The inspected hook source still performs the incident-history write followed by the Harmony-state write; this confirms the source sequence, not a reproduced partial-write failure.
+
+The proposal now includes a bounded read-only agent task to inspect this persistence path and defect record, with explicit expected behaviour, critical failure conditions and a 0–14 rubric. The task is marked **NOT RUN**. No separate Codex executor or independent agent session was invoked in this review. This assistant's source review must not be represented as a Codex behaviour experiment, an independent review or a test pass.
+
+**Updated assessment:** instruction content is better grounded after exact workflow inspection. Agent-behaviour effectiveness remains unknown. The next meaningful validation requires a fresh, isolated Codex session running the exact trial prompt against the recorded application SHA, with a human reviewer and an empty diff. The proposal remains unratified and on its isolated branch; no application code, dependencies, CI or gates changed.
