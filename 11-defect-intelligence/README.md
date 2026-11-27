@@ -13,8 +13,8 @@ A lightweight, evidence-led mechanism for learning from defects and preventing r
 
 | Defect ID | Project | Severity | State | Summary | Source / evidence |
 |---|---|---|---|---|---|
-| [DEF-2026-001](DEF-2026-001-storage-hydration-failure-masked-as-empty-ledger.md) | SoulSyncMobile | S4 | Investigating | Storage hydration failure may be represented as an empty ledger | Read-only source finding F-07; runtime reproduction pending |
-| [DEF-2026-002](DEF-2026-002-multikey-scan-persistence-is-not-atomic.md) | SoulSyncMobile | S4 | Investigating | Logical scan record spans two non-atomic writes | Read-only source finding F-08; partial-write injection pending |
+| [DEF-2026-001](DEF-2026-001-storage-hydration-failure-masked-as-empty-ledger.md) | SoulSyncMobile | S4 | Investigating | Storage hydration failure may be represented as an empty ledger | Mock-backed hook reproduction recorded in CI run 44297424933; native-device/runtime and remediation pending |
+| [DEF-2026-002](DEF-2026-002-multikey-scan-persistence-is-not-atomic.md) | SoulSyncMobile | S4 | Investigating | Logical scan record spans two non-atomic writes | Mock-backed partial-write reproduction recorded in CI run 44297424933; consistency decision and device/recovery proof pending |
 
 ## Intake rules
 

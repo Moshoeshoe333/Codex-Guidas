@@ -90,7 +90,7 @@ The detailed report contains eight findings:
 
 **Linked verification designs:** P-01 through P-09 in the detailed report. All nine are proposed synthetic-only probes and remain NOT RUN until execution evidence is attached.
 
-**Immediate next step:** Define the persistence contract and execute controlled, isolated synthetic tests for hydration failure and partial-write failure. Capture actual outcomes before proposing application changes.
+**Immediate next step at initial review (2026-11-18):** Define the persistence contract and execute controlled, isolated synthetic tests. Subsequent work added and executed targeted Guardian hook fault tests; see the dated follow-up sections below. This historical initial recommendation is not the current evidence state.
 
 **Authorization boundary:** This record does not authorize modifications to SoulSyncMobile, CI dispatch, release, production data handling or deployment. Any remediation requires a separate proposal and owner approval.
 
@@ -130,7 +130,7 @@ The detailed report contains eight findings:
 - **CI integration:** Added `npm run test:storage-faults` to `.github/workflows/typecheck.yml` in commit `8886b367225a2b4f80d98ca4d19b060135ad18e4`. No workflow was manually dispatched; GitHub automatically queued runs on `main` pushes. Run `44294591099` failed at `npm run typecheck` with TS5097 because the test imported `../storageManager.ts` while `allowImportingTsExtensions` is not enabled. Corrected the test to use an extensionless import and updated the test-only loader to resolve it (`bbd70470a48b1c72f0e11d1571d51c3cee4189d0`, `955103f2ea16b1d3b3f002b9b14e2713916e14aa`). Run `44294672395` passed TypeScript typecheck but failed the pre-existing `test:threat` command because Node 22 could not resolve extensionless imports (`ERR_MODULE_NOT_FOUND`). Run `44294689420` failed for the same resolver issue. The shared loader now resolves the existing threat-engine and fixture modules as well as the storage manager; `test:threat` now uses that loader. Run `44294923393` reached the fixture assertion and failed specifically on stale `EWALLET-001` expected severity 28; three existing indicators match its text, so the correct characterization under current scoring is 42. Fixture expectation corrected in target commit `4396215ebb190c856312eb083909bf4f6757e4fd`. Final run `44295046974` on that exact commit completed SUCCESS with typecheck + both test suites passing.
 - **Workflow hygiene lesson:** Creating several sequential commits directly on `main` caused repeated, overlapping push-triggered CI runs. For future multi-file changes, prefer one atomic tree commit or a dedicated branch/PR so validation runs once against a coherent snapshot. No manual CI dispatch occurred.
 - **Dependency observation:** The `npm install` log for run `44294312497` reported 23 dependency vulnerabilities (2 moderate, 21 high). This is an untriaged package-manager summary only; package identities, paths, exploitability and production impact are not yet established. Do not run `npm audit fix` or upgrade dependencies without a separate scoped review.
-- **Next gate:** Separately design a hook-level test for hydration failure and the incident-write/Harmony-write partial-commit case; this may require a test renderer or a carefully isolated seam and must not change app runtime code without approval. Investigate the reported npm audit summary through a read-only dependency review before proposing upgrades. The current 23-vulnerability summary is untriaged. Do not change app runtime code until the persistence authority/commit contract is explicitly decided.
+- **Next gate at this follow-up's time:** Design and execute a hook-level test for hydration failure and the incident-write/Harmony-write partial-commit case. This was subsequently completed in the CI witness documented below. Remaining gates are owner ratification of the persistence authority/commit contract, native-device/restart/UI recovery validation, and a separate read-only dependency review before any upgrade. The recorded npm audit summary is not an approved fix recommendation. Do not change app runtime code until the persistence contract and dependency compatibility questions are resolved.
 
 
 ### Follow-up protocol — SSM-PERSISTENCE-FI-001
@@ -140,7 +140,7 @@ The detailed report contains eight findings:
 - **Priority sequence:** P-01 hydration read failure → P-04 partial two-write failure → P-07 write rejection → P-02 malformed JSON → P-03 invalid record shape.
 - **Safety boundary:** Isolated mock storage and synthetic fixtures only. No real SMS/banking data, no production storage, no application behavior changes and no CI dispatch under this protocol.
 - **Decision required before execution:** Project-owner approval for test-only changes and ratification of the logical persistence authority/commit model. If that contract is undecided, assertions remain BLOCKED-PENDING-DECISION.
-- **Current result:** All five probes remain NOT RUN. This protocol is not evidence of application behaviour.
+- **Current result for this standalone five-probe protocol:** All five probes remain NOT RUN in the record of this protocol. This does not mean the later, separate Guardian hook fault-injection suite was unexecuted; its CI witness is recorded below. This protocol is not itself evidence of application behaviour.
 
 
 

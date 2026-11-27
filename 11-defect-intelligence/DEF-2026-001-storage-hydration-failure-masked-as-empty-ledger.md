@@ -1,14 +1,15 @@
 # DEF-2026-001 — Storage hydration failure can be masked as an empty ledger
 
 - **State:** Investigating
-- **Severity:** S4 (source-level observation; runtime impact not reproduced)
+- **Severity:** S4 (mock-backed hook behaviour reproduced in CI; native-device/user impact not established)
 - **Date detected:** 2026-11-18
-- **Last updated:** 2026-11-18
+- **Last updated:** 2026-11-27
 - **Owning project/repository:** SoulSyncMobile — `Moshoeshoe333/SOULSYNCMOBILE`
 - **Affected branch/ref:** `main`
-- **Affected full commit SHA:** `b85a83c9f672a11c71b94090826710475d8b6f86` (repository head observed during read-only inspection; source blobs below)
+- **Original detection baseline:** `b85a83c9f672a11c71b94090826710475d8b6f86` (initial read-only inspection)
+- **Latest revalidated application baseline (2026-11-27):** `1f50bd3387c61d51868140ec3776b94150a2d4c6` (`main`; relevant hook and UI source blobs remain unchanged)
 - **Owner:** SoulSyncMobile project maintainer (to be assigned)
-- **Related issue/PR/CI run/log:** None inspected; no runtime reproduction or CI run claimed
+- **Related CI run:** [44297424933](https://github.com/Moshoeshoe333/SOULSYNCMOBILE/actions/runs/44297424933) — successful on exact test commit `1b989d1145587cf223fc9bbeecf8d1856536152c`
 - **Related lessons:** CG-002, CG-011
 - **Reporter/source:** Codex-Guidas Tri-Tier 33 read-only pilot 01
 
@@ -21,7 +22,7 @@ A successfully loaded empty ledger must be distinguishable from unavailable, cor
 ## 3. Observed behaviour
 In the inspected source, the Guardian state hook catches errors loading Harmony state and incident logs, resets the snapshot to empty/unmeasured defaults, and sets `ready=true`. The dashboard uses readiness to enable analysis and displays incident count without a storage-health/error indicator.
 
-This is a source-path observation. The failure was not dynamically injected and the user-visible sequence was not reproduced.
+This was initially a source-path observation. A later synthetic, mock-backed hook test reproduced the readiness/empty-ledger behaviour in CI on exact commit `1b989d1145587cf223fc9bbeecf8d1856536152c` (run `44297424933`). The test asserts `ready=true`, an empty in-memory incident ledger and an empty exported incident array after injected storage-read failure. This is controlled hook-harness evidence, not a native AsyncStorage, device-restart or user-session observation. Production behaviour remains unverified on a physical device.
 
 ## 4. Impact and scope
 - **Actual impact:** Not established; no runtime reproduction or user report inspected.
@@ -35,14 +36,16 @@ This is a source-path observation. The failure was not dynamically injected and 
 |---|---|---|---|---|
 | E-001 | Source | `SOULSYNCMOBILE` `src/hooks/useGuardianState.ts`, blob `db52b38fd4c9f8909f33df78c8e2752e18993fe2` | Hydration catch path resets snapshot and sets ready | Source inspection only; no fault injection |
 | E-002 | Source | `SOULSYNCMOBILE` `App.tsx`, blob `17b1b37df4f93547c099129cff883571c5e9b1d5` | Dashboard readiness/count presentation lacks explicit storage error state | Source inspection only; no UI runtime witness |
-| E-003 | Assessment | Codex-Guidas `doctrines/tri-tier-33/pilots/2026-11-18-soulsyncmobile-readonly-pilot-01.md`, blob `fd2b543792afd9dbcd05808f29eab170a96ad043`, finding F-07 | Consolidated finding and limitations | Assessment is not an independent runtime test |
+| E-003 | Assessment | Codex-Guidas `doctrines/tri-tier-33/pilots/2026-11-18-soulsyncmobile-readonly-pilot-01.md`, blob `fd2b543792afd9dbcd05808f29eab170a96ad043`, finding F-07 | Initial consolidated finding and limitations | Assessment is not an independent runtime test |
+| E-004 | Test source | `SOULSYNCMOBILE` `src/hooks/__tests__/useGuardianState.fault-injection.test.ts`, blob `b8894b23422f2dd7c949f716812a2ff078da1dde` at current application baseline `1f50bd3387c61d51868140ec3776b94150a2d4c6` | Defines the synthetic hydration-read rejection case and asserts ready/empty hook state and empty export | Test source alone is not execution evidence; mock-backed hook harness only |
+| E-005 | CI execution | [GitHub Actions run 44297424933](https://github.com/Moshoeshoe333/SOULSYNCMOBILE/actions/runs/44297424933), head commit `1b989d1145587cf223fc9bbeecf8d1856536152c` | Run completed SUCCESS; `npm run test:guardian-faults` passed 2/2, including the hydration case; typecheck, threat fixtures 13/13 and storage fault tests 10/10 also passed | Run is on an ancestor of current `main`; it proves the recorded harness tests at that exact commit, not native-device or current-HEAD runtime behaviour |
 
 ## 6. Root-cause analysis
-- **Status:** Suspected design/handling cause; not runtime-confirmed
+- **Status:** Synthetic hook-harness behaviour reproduced; native runtime and user impact not confirmed
 - **Hypothesis:** Hydration error handling collapses a storage failure into the same state representation used for a successfully loaded empty ledger.
 - **Evidence supporting:** E-001 and E-002.
 - **Evidence contradicting:** No contrary evidence inspected; caller/runtime behaviour remains untested.
-- **Discriminating test still needed:** P-01 — use a synthetic storage adapter whose `getItem` rejects; verify the hook and UI distinguish unavailable storage from loaded-empty state.
+- **Remaining discriminating proof:** Agree the owner-approved storage-state contract; test UI error communication, restart/restoration and native AsyncStorage behaviour on the supported device/runtime. Do not count the mock-backed CI run as device proof.
 
 ## 7. Similarity search
 - **Search terms:** storage hydration failure; empty ledger fallback; fail-closed; persistence read error
@@ -61,16 +64,16 @@ None authorized or implemented. Remediation requires owner review after P-01 rep
 ## 10. Regression and acceptance evidence
 | Check | Command / procedure | Environment | Exact commit | Expected | Actual | Evidence link |
 |---|---|---|---|---|---|---|
-| P-01 | Synthetic adapter rejects `getItem`; inspect hook and UI state | Not run | Target SHA above | Unavailable is distinct from loaded-empty | Not run | Pilot report F-07 / P-01 |
+| P-01 | `npm run test:guardian-faults` — synthetic adapter rejects `getItem` in the hook harness | GitHub Actions, run `44297424933` | `1b989d1145587cf223fc9bbeecf8d1856536152c` | Test records `ready=true`, empty in-memory incidents and empty export after read rejection | PASS as a mock-backed characterization; suite 2/2 | [Run 44297424933](https://github.com/Moshoeshoe333/SOULSYNCMOBILE/actions/runs/44297424933) |
 
 ## 11. Residual risk and follow-up
-Runtime behaviour, platform scope, recovery path and user impact remain unknown. Next action: execute P-01 in an isolated synthetic test harness after test scope is authorized; do not change application code as part of this record.
+Native AsyncStorage behaviour, process/device restart, restoration, visible error communication, platform scope and actual user impact remain unknown. The hook-level synthetic test now reproduces the characterized ready/empty state in CI. Next action: obtain owner approval for the storage-state contract and define the native/runtime and UI acceptance checks. No application remediation is authorized by this record.
 
 ## 12. Closure decision
 - **Decision:** Keep open / Investigating
 - **Approver/authority:** SoulSyncMobile project owner
 - **Acceptance criteria met:** No
-- **Reason:** No runtime reproduction, corrective change or regression evidence.
+- **Reason:** The mock-backed characterization test passed, but no owner-approved contract, corrective change, native-device/runtime validation or recovery proof exists.
 - **Closure evidence:** None
 
 ## 13. Reusable lesson
