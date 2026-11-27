@@ -17,6 +17,8 @@ We preserve reusable engineering knowledge so that each project benefits from th
 | [Operating principles](00-foundation/operating-principles.md) | Portfolio-wide rules and evidence ladder |
 | [Lessons learned ledger](01-lessons-learned/ledger.md) | Cross-project lessons CG-001 onward |
 | [Evidence-first development](02-methodologies/evidence-first-development.md) | Research, decision, implementation and verification workflow |
+| [External Repository Learning Method](02-methodologies/external-repository-learning.md) | A bounded method for inspecting external repositories, extracting evidence-backed patterns and deciding project fit |
+| [External Repository Review Record](09-templates/external-repository-review.md) | Reusable source-pinned review template with project-fit and non-adoption decisions |
 | [Architecture patterns](03-architecture/project-patterns.md) | Reusable design patterns and boundaries |
 | [Security and safeguarding](04-security/safeguarding-and-threat-modeling.md) | Threat modelling, privacy and safety lessons |
 | [Testing and CI](05-testing-verification/verification-and-ci.md) | Verification layers and regression discipline |
