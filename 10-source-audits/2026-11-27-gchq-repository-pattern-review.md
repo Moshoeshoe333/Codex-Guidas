@@ -195,3 +195,11 @@ The SoulSyncMobile instruction proposal was reviewed against the repository's de
 The proposal now includes a bounded read-only agent task to inspect this persistence path and defect record, with explicit expected behaviour, critical failure conditions and a 0–14 rubric. The task is marked **NOT RUN**. No separate Codex executor or independent agent session was invoked in this review. This assistant's source review must not be represented as a Codex behaviour experiment, an independent review or a test pass.
 
 **Updated assessment:** instruction content is better grounded after exact workflow inspection. Agent-behaviour effectiveness remains unknown. The next meaningful validation requires a fresh, isolated Codex session running the exact trial prompt against the recorded application SHA, with a human reviewer and an empty diff. The proposal remains unratified and on its isolated branch; no application code, dependencies, CI or gates changed.
+
+### Evaluation packet prepared — ABE-SOULSYNCMOBILE-001 (2026-11-27)
+
+A reusable [Agent Behaviour Evaluation Record](../09-templates/agent-evaluation-record.md) and a project-specific [SoulSyncMobile Agent Instructions Pilot Evaluation Protocol](2026-11-27-soulsyncmobile-agent-evaluation-protocol.md) have been added.
+
+The protocol pre-registers the exact read-only task, source baseline, relevant source blob identities, expected behaviour criteria, critical failure conditions, evidence collection procedure and human-review disposition. It is explicitly marked **PREPARED — NOT EXECUTED**. No agent run, session identifier, transcript, diff result or score exists yet.
+
+This package makes the outstanding validation reproducible; it does not complete the validation. The next genuine evidence must come from a fresh, separate Codex session and human review. Do not treat this assistant's source inspection, preparation of the prompt or documentation commits as a coding-agent behaviour experiment.
