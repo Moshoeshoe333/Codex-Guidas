@@ -198,7 +198,7 @@ Record not-assessed areas as gaps, not passes. Do not average away a critical se
 
 ## 7. Use coding agents under an explicit contract
 
-For each receiving repository, adapt the [Agent Instructions Template](../09-templates/agent-instructions-template.md) into project-local instructions. Verify every repository fact, command, permission, protected path and gate before marking those instructions active.
+For each receiving repository, adapt the [Agent Instructions Template](../09-templates/agent-instructions-template.md) into project-local instructions. This repository's own [AGENTS.md](../AGENTS.md) is the concrete local example. Verify every repository fact, command, permission, protected path and gate before marking instructions active.
 
 A useful agent contract states:
 

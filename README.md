@@ -14,6 +14,7 @@ We preserve reusable engineering knowledge so that each project benefits from th
 
 | Area | Purpose |
 |---|---|
+| [Repository Agent Instructions](AGENTS.md) | Active repository-local permissions, source-of-truth, evidence and completion boundaries for coding agents |
 | [Project Operating Guide](00-foundation/project-operating-guide.md) | Practical lifecycle for applying Codex-Guidas to project research, decisions, design, implementation, verification, agent use and learning |
 | [Project Onboarding Method](00-foundation/project-onboarding.md) | Establish a project's identity, ownership, baseline, boundaries, gates and first bounded milestone |
 | [Operating principles](00-foundation/operating-principles.md) | Portfolio-wide rules and evidence ladder |

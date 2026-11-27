@@ -101,7 +101,7 @@ For consequential or hard-to-reverse choices, use an [Architecture Decision Reco
 Start with the receiving project's existing controls. Add only the relevant reusable practices:
 - [Evidence-First Engineering](../02-methodologies/evidence-first-development.md) for claims, research and implementation evidence;
 - [Project Task Contract](../09-templates/project-task-contract.md) for material tasks;
-- [Agent Instructions Template](../09-templates/agent-instructions-template.md) where coding agents are used;
+- [Agent Instructions Template](../09-templates/agent-instructions-template.md) where coding agents are used; this repository's [AGENTS.md](../AGENTS.md) is an example to study, not a policy to copy unchanged;
 - [Security and Safeguarding](../04-security/safeguarding-and-threat-modeling.md) for trust, data and human safety boundaries;
 - [Verification and CI](../05-testing-verification/verification-and-ci.md) for reproducible checks;
 - relevant [Knowledge Packs](../packs/README.md), after reading their maturity and completing a local adoption record;
