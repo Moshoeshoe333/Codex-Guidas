@@ -60,6 +60,11 @@ Transfer principles, not assumptions: a technique must be adapted and re-validat
 
 The first import is a curated synthesis from prior work on ScoutSA, SoulSync 3, SoulSyncMobile, NAVIGRE and the UCI threat-intelligence concept. It is intentionally conservative where current repository evidence has not yet been re-audited.
 
+
+## External repository pattern review
+
+The selective source review of [CyberChef, Bailo, Stroom, Sleeper, LD-Explorer and Coreax](10-source-audits/2026-11-27-gchq-repository-pattern-review.md) records source commits, transferable patterns, non-adoption decisions and applicability boundaries. It is static source inspection, not a test run or product audit. Lessons CG-043–CG-048 capture the derived controls; local adoption remains project-specific.
+
 ## Source archaeology
 
 The initial source audit is recorded in [Repository Archaeology — 2026-11-18](10-source-audits/2026-11-18-repository-archaeology.md). It inspected selected primary files and commits across ScoutSA, SoulSync 3, SoulSyncMobile and NAVIGRE. It is a partial audit, not a fresh test execution. The [33-Tier Framework method](02-methodologies/33-tier-framework.md) is also indexed here; its own source explicitly leaves detailed specification and validation of all 33 tiers as open work.
