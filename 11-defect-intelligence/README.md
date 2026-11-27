@@ -15,6 +15,7 @@ A lightweight, evidence-led mechanism for learning from defects and preventing r
 |---|---|---|---|---|---|
 | [DEF-2026-001](DEF-2026-001-storage-hydration-failure-masked-as-empty-ledger.md) | SoulSyncMobile | S4 | Investigating | Storage hydration failure may be represented as an empty ledger | Mock-backed hook reproduction recorded in CI run 44297424933; native-device/runtime and remediation pending |
 | [DEF-2026-002](DEF-2026-002-multikey-scan-persistence-is-not-atomic.md) | SoulSyncMobile | S4 | Investigating | Logical scan record spans two non-atomic writes | Mock-backed partial-write reproduction recorded in CI run 44297424933; consistency decision and device/recovery proof pending |
+| [DEF-2026-003](DEF-2026-003-raw-scan-content-retained-in-asyncstorage.md) | SoulSyncMobile | S4 | Investigating | Raw scanned message text is retained in AsyncStorage without app-level payload encryption in this path | Source blobs at app SHA `1f50bd3...`; no exploitation or user impact demonstrated |
 
 ## Intake rules
 
