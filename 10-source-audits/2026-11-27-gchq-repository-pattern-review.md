@@ -123,7 +123,11 @@ These non-adoption decisions are intentional. Repeating an existing control or a
 7. Use read-only federation and formal data-shape validation only for a demonstrated cross-source problem.
 8. Transfer principles, not frameworks or dependencies. Reassess fit, cost, security, maintainability and project authority locally.
 
-## 5. Evidence limitations
+## 5. Reusable intake method
+
+This review now serves as an example record for the [External Repository Learning Method](../02-methodologies/external-repository-learning.md), using the [External Repository Review Record template](../09-templates/external-repository-review.md). Future reviews should reuse the method and template, not copy this review's candidate patterns or assume the same projects have the same needs.
+
+## 6. Evidence limitations
 
 - This is selective static source inspection at the exact branch heads listed above; branches can advance after this review.
 - No code was executed, no tests were run, no security posture was independently tested and no benchmarks were reproduced.
