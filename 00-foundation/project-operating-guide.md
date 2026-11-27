@@ -96,7 +96,7 @@ Before material work, record:
 | Risks and constraints | Security, privacy, safeguarding, legal, reliability and cost concerns |
 | Stop / rollback condition | What finding, failure or scope change halts the work? |
 
-Use the [acceptance contract](../02-methodologies/evidence-first-development.md) as the starting point. Keep small, reversible tasks lightweight; do not create ceremony that adds no decision value.
+Use the [Project Task Contract Template](../09-templates/project-task-contract.md) for work that needs a durable handover or approval record, alongside the [acceptance contract](../02-methodologies/evidence-first-development.md). Keep small, reversible tasks lightweight; do not create ceremony that adds no decision value.
 
 ### Step 3 — Establish the baseline
 

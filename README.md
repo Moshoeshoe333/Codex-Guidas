@@ -20,6 +20,7 @@ We preserve reusable engineering knowledge so that each project benefits from th
 | [Evidence-first development](02-methodologies/evidence-first-development.md) | Research, decision, implementation and verification workflow |
 | [External Repository Learning Method](02-methodologies/external-repository-learning.md) | A bounded method for inspecting external repositories, extracting evidence-backed patterns and deciding project fit |
 | [External Repository Review Record](09-templates/external-repository-review.md) | Reusable source-pinned review template with project-fit and non-adoption decisions |
+| [Project Task Contract Template](09-templates/project-task-contract.md) | Reusable scope, baseline, permissions, evidence, acceptance and closeout record for material work |
 | [Agent Instructions Template](09-templates/agent-instructions-template.md) | Adaptable project-local operating contract for coding agents, including permissions, commands and verification boundaries |
 | [Agent Behaviour Evaluation Record](09-templates/agent-evaluation-record.md) | Pre-registered scoring and evidence record for bounded coding-agent trials |
 | [Architecture patterns](03-architecture/project-patterns.md) | Reusable design patterns and boundaries |
