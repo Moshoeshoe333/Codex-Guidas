@@ -94,3 +94,16 @@ This section supersedes any older summary where the inspected source files provi
 No UCI repository was present in the accessible repository listing during this audit. Keep UCI classified as a research/product concept until its source of truth is identified. Do not fabricate a repository or infer implementation.
 
 For full source references and audit limitations, see [Repository Archaeology — 2026-11-18](../10-source-audits/2026-11-18-repository-archaeology.md).
+
+
+## External repository pattern review — portfolio applicability (2026-11-27)
+
+The current [GCHQ repository pattern review](../10-source-audits/2026-11-27-gchq-repository-pattern-review.md) confirms the following selective outcomes. This is a design reminder, not new runtime evidence.
+
+- **ScoutSA:** no project-ledger update. Existing governance already distinguishes evidence, revisions, human authority and youth safeguards; external validation remains the controlled next activity and implementation holds remain unchanged.
+- **SoulSync 3:** no project-ledger update. The existing deterministic Python contract, immutable structures and golden-vector direction are more appropriate than generic recipes or statistical reduction. RUST-001/002 boundaries remain unchanged.
+- **SoulSyncMobile:** no project-ledger update. Its offline layered threat pipeline and fixture discipline already align with the useful processing principles; another methodology expansion would compete with the still-open physical G-BOOT witness.
+- **NAVIGRE / Mall-Navigre:** no project-ledger update. Its explicit freshness → authorization → route → operational-state → verification chain already captures the important stage boundaries. R1–R6, evidence levels and frozen Gate 3 remain unchanged.
+- **UCI-Foundation:** repository identity is now confirmed as [`Moshoeshoe333/UCI-Foundation`](https://github.com/Moshoeshoe333/UCI-Foundation). The proposed threat-intelligence methodology receives a bounded, source-preserving pipeline refinement; it remains proposed methodology only. No collection, active testing, customer data processing, publication or service operation is authorized by this review.
+
+This addendum supersedes the 2026-11-18 point-in-time note that no UCI repository was visible during that earlier audit. It does not rewrite the historical observation or imply that UCI is operational.
