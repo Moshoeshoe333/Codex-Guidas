@@ -159,3 +159,24 @@ A follow-up inspection examined agent/developer guidance at the same repository 
 **Codex-Guidas refinement:** a proposed [Agent Instructions Template](../09-templates/agent-instructions-template.md) has been added for project owners to adapt. It is a template only; it does not create or ratify an AGENTS.md in ScoutSA, SoulSync, SoulSyncMobile, NAVIGRE or UCI. Lesson [CG-050](../01-lessons-learned/ledger.md) records the derived control.
 
 **Evidence limits:** this was static document inspection at the exact revisions above. No external repository was cloned or executed; no commands, builds, test suites, deployments or security checks were run. The absence of a root AGENTS.md in Sleeper does not imply an absence of its developer or contribution rules.
+
+### Internal pilot — SoulSyncMobile agent-instruction proposal (2026-11-27)
+
+To test the reusable [Agent Instructions Template](../09-templates/agent-instructions-template.md) against a real project, a project-specific draft was prepared for `Moshoeshoe333/SOULSYNCMOBILE`.
+
+**Inspected baseline:** application `main` at `1f50bd3387c61d51868140ec3776b94150a2d4c6`. Primary inputs included the application README, `package.json`, `SECURITY.md`, `docs/technical-evaluation.md`, the typed threat contract, the threat fixture test, the threat analysis implementation, the storage manager and Guardian hook. The current forensic-ledger README and methodology delta were also read, along with the separate runtime-evidence repository README.
+
+**Repository-specific findings:**
+- No root `AGENTS.md` or `CONTRIBUTING.md` was found at the inspected application baseline. The workflow inventory and branch-protection policy were not fully established; the draft explicitly leaves them unassumed.
+- The source-of-truth separation between application, forensic ledger and runtime-evidence repositories was carried forward.
+- The draft preserves the offline-first design, deterministic `ALLOW/WARN/DENY` contract, AsyncStorage bootstrap status, unselected Rust proposal, SQLite G8 gate and open G-BOOT runtime boundary.
+- It keeps DEF-2026-001 and DEF-2026-002 marked as investigating source-level findings without presenting them as runtime-reproduced defects or authorizing remediation.
+- All four declared test commands and the typecheck command were cross-checked against the inspected `package.json`. Commands were not executed.
+
+**Pilot artefact:** [`AGENTS.proposed.md`](https://github.com/Moshoeshoe333/SOULSYNCMOBILE/blob/proposal/agent-instructions-pilot/AGENTS.proposed.md), on branch `proposal/agent-instructions-pilot`. Draft commit: [`dba876d69b444429bee1daa13087dd22d3903732`](https://github.com/Moshoeshoe333/SOULSYNCMOBILE/commit/dba876d69b444429bee1daa13087dd22d3903732).
+
+The branch comparison from the inspected application baseline reported exactly one added file, `AGENTS.proposed.md`; no application source, tests, dependencies, CI workflows or runtime evidence were changed. The file is deliberately not named `AGENTS.md`, remains unratified and is not active repository policy.
+
+**Assessment:** the template can capture the known project-specific boundaries and commands without importing GCHQ's individual Git, language, build or contribution policies. This is a structural/documentation consistency check only. No test suite, build, device run or actual agent-behaviour experiment was performed. The proposal's effectiveness remains unverified.
+
+**Next proof:** project-owner review, verification of the complete CI/toolchain/branch-protection inventory, and a bounded agent task after explicit adoption. Until then, no instruction rollout, application change or gate transition is authorized.
