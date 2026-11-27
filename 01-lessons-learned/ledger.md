@@ -129,3 +129,11 @@ All six lessons are **DERIVED**, not Verified. The review is selective static in
 | CG-049 | "No project change" is a valid outcome of external technical research; adoption must be earned by a demonstrated local gap. | Codex-Guidas external repository review process; six-repository GCHQ review and project-fit reconciliation | Derived methodology rule; effectiveness not yet evaluated longitudinally | Compare each candidate pattern against the receiving project's current source and gates. Record adopt / reminder / already covered / defer / reject. Do not duplicate an existing control or create work solely to demonstrate research activity. |
 
 Source method: [External Repository Learning Method](../02-methodologies/external-repository-learning.md) and [review template](../09-templates/external-repository-review.md). Example: [2026-11-27 GCHQ review](../10-source-audits/2026-11-27-gchq-repository-pattern-review.md).
+
+## Additional lesson from GCHQ agent-instruction review (2026-11-27)
+
+| ID | Lesson | Origin | Evidence class | Reusable control |
+|---|---|---|---|---|
+| CG-050 | Coding-agent instructions must be repository-specific, operationally testable and explicit about authority; a generic prompt must not silently grant repository or production permissions. | Bailo AGENTS.md and Stroom AGENTS.md at their reviewed 2026-11-27 heads; Sleeper developer guide at commit `746a08b` (no root AGENTS.md found at that revision). | Derived from selective source inspection; effectiveness not yet evaluated in our projects. | State scope and precedence, action permissions, protected/generated paths, architecture boundaries, verified environment and commands, testing requirements, security/data rules and escalation conditions. Link specialist guides. Recheck facts at the receiving repository's exact head; do not copy another project's Git or contribution policy. |
+
+Source record: [2026-11-27 GCHQ repository pattern review](../10-source-audits/2026-11-27-gchq-repository-pattern-review.md); reusable starting point: [Agent Instructions Template](../09-templates/agent-instructions-template.md).
