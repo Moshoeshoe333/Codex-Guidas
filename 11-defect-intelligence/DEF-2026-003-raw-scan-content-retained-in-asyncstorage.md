@@ -132,3 +132,21 @@ The project owner has not yet approved the raw-input retention and protection co
 ## 14. Reusable lesson
 
 Existing CG-011, CG-026 and CG-052 provide relevant boundaries. CG-052 is a broader crypto-agility lesson; it does not itself verify this project's local data storage. This record may inform a privacy-by-design lesson after owner triage and project-specific verification.
+
+
+## 15. Candidate remediation follow-up — PR #22 (2026-11-27)
+
+**Disposition:** Mainline finding remains **Investigating**. The affected `main` baseline above has not changed. A candidate correction exists on a separate feature branch; it is not a verified or merged fix.
+
+- **Candidate PR:** https://github.com/Moshoeshoe333/SOULSYNCMOBILE/pull/22
+- **Branch:** `feat/gate-a-privacy-first-triage`
+- **Inspected application source snapshot:** `d13038507107e993c55d1ae34f688f18bdeaef5e`
+- **Guardian hook blob:** `2a4f258f1254c788f0e95e2d5c020a8407ebc46f`
+
+At the inspected candidate snapshot, `src/hooks/useGuardianState.ts` imports the pure analysis function and returns a bounded in-memory `analyzeInput` callback; it does not call a persistent-storage adapter. A recursive tree inspection found 34 paths, no truncation, and no path-name match for `storage` or `async-storage`. The PR description and candidate README record removal of the AsyncStorage adapter/dependency and scan-history feature.
+
+This is a candidate removal of the app-controlled raw-scan retention path for the current MVP. It does **not** prove that keyboards, clipboard, operating-system backups, crash/diagnostic reporting, device compromise or third-party telemetry retain no input. Those require separate platform/device checks. No POPIA compliance claim follows from this source change.
+
+**Latest candidate CI:** run [46017679147](https://github.com/Moshoeshoe333/SOULSYNCMOBILE/actions/runs/46017679147), exact source SHA `d13038507107e993c55d1ae34f688f18bdeaef5e`, concluded **FAILURE**. Job `140568882798` returned no step records; the job-log endpoint returned 404 / BlobNotFound. The failing phase and cause remain unknown. No passing typecheck/test witness or native-device witness is claimed.
+
+**Acceptance/closure:** Not met. Keep this finding open against mainline until the candidate is merged through project governance and the exact merged source is rechecked; execute approved device, backup, log/export and deletion/privacy probes; record residual risks. Do not relabel the source-level candidate as VERIFIED.

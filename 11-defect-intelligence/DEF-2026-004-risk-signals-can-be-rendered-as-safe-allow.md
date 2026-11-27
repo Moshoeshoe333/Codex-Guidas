@@ -135,3 +135,21 @@ The current thresholds and words are not calibrated against an independent repre
 ## 14. Reusable lesson
 
 Proposed CG-053: absence of a detected signal is not proof of safety. Do not promote the lesson to Verified until risk wording and decision boundaries have been evaluated against a representative dataset and users.
+
+
+## 15. Candidate outcome-semantics follow-up — PR #22 (2026-11-27)
+
+**Disposition:** Mainline finding remains **Investigating**. The affected `main` baseline above has not changed. The candidate correction is on a separate, open, unmerged PR and is not a verified fix.
+
+- **Candidate PR:** https://github.com/Moshoeshoe333/SOULSYNCMOBILE/pull/22
+- **Branch:** `feat/gate-a-privacy-first-triage`
+- **Inspected application source snapshot:** `d13038507107e993c55d1ae34f688f18bdeaef5e`
+
+Candidate source evidence:
+- The type contract (blob `561932c21b58a85e42ac501fb03edb9e938eb608`) defines `no_known_indicators`, `caution`, `high_risk_signals` and `unable_to_assess`; it no longer exposes the former `action` or numeric confidence fields.
+- The heuristic implementation (blob `0c8528ac0785a014d7f22f5c112573e0d0d38f18`) classifies malformed URLs as unable to assess and detected URL indicators as at least caution.
+- Updated fixtures (blob `686022cb846a0c29fe0d6817dcb8fa2e7e01f61f`) expect caution for shortened and IP-address URLs and unable-to-assess for the malformed URL example. The updated fixture test (blob `dda7aefdead2026e94eae0d90910c6b728104d40`) asserts the result has no confidence or enforcement-action field.
+
+These are source and test-specification changes only. GitHub Actions run [46017679147](https://github.com/Moshoeshoe333/SOULSYNCMOBILE/actions/runs/46017679147) on the exact candidate SHA concluded **FAILURE**; the job returned no step records and its log endpoint returned 404 / BlobNotFound. No passing test-suite witness is claimed. No independent labelled dataset, representative false-positive/false-negative evaluation, threshold calibration, or user-comprehension evidence is available.
+
+**Acceptance/closure:** Not met. Keep open against mainline. Reassess only after a reviewed merge, passing exact-head checks and separate corpus/user evaluation. Fixture expectations do not prove real-world detection efficacy; the new labels remain advisory, not a safety guarantee.

@@ -181,3 +181,26 @@ The detailed report contains eight findings:
 - **Recommendation:** Evaluate a single versioned canonical Guardian snapshot (Option B) to remove the known two-key split-write sequence. This is not a claim of AsyncStorage crash atomicity and is not authorization to implement.
 - **Decision required:** Owner ratification of the persistence authority, commit boundary, failure states, retention limits, migration and native-device acceptance tests.
 - **Dependency workstream:** Resolve the SDK/RN compatibility and reproducible-lockfile questions before proposing any upgrades. No dependency change has been made.
+
+
+### Follow-up — SoulSync Guardian Gate A candidate implementation (2026-11-27)
+
+- **Target repository:** `Moshoeshoe333/SOULSYNCMOBILE`.
+- **Mainline baseline:** `1f50bd3387c61d51868140ec3776b94150a2d4c6`; main was not modified by this candidate.
+- **Candidate PR:** [#22 — Implement privacy-first manual triage MVP](https://github.com/Moshoeshoe333/SOULSYNCMOBILE/pull/22).
+- **Implementation source snapshot inspected:** `d13038507107e993c55d1ae34f688f18bdeaef5e`; Git tree `f3e8c4ce2b6f91ad56a2e9bec772a4cbb474a71b).
+- **Current disposition:** PR observed open and unmerged. The candidate branch is not a mainline correction and no defect is closed by this follow-up.
+
+**Candidate changes relevant to existing records**
+
+- **DEF-2026-003:** The candidate Guardian hook at blob `2a4f258f1254c788f0e95e2d5c020a8407ebc46f` performs bounded, in-memory analysis and does not call a persistence adapter. The assessed recursive tree contained 34 paths, was not truncated, and had no path-name matches for `storage` or `async-storage`. The PR removes the old AsyncStorage adapter/dependency and scan-history path. This is source-level evidence of removing the app-controlled raw-scan persistence path; it is not device-level privacy evidence.
+- **DEF-2026-004:** The candidate type contract at blob `561932c21b58a85e42ac501fb03edb9e938eb608` defines four advisory assessments and no confidence/action field. The heuristics at blob `0c8528ac0785a014d7f22f5c112573e0d0d38f18` route malformed URLs to `unable_to_assess`, detected URL indicators to at least `caution`, and do not claim link enforcement. Fixture and assertion files were updated at blobs `686022cb846a0c29fe0d6817dcb8fa2e7e01f61f` and `dda7aefdead2026e94eae0d90910c6b728104d40`.
+
+**Verification boundary**
+
+- Exact-head GitHub Actions run [46017679147](https://github.com/Moshoeshoe333/SOULSYNCMOBILE/actions/runs/46017679147) on `d13038507107e993c55d1ae34f688f18bdeaef5e` concluded **FAILURE**; the job named `typecheck` returned no step records, and the log endpoint returned 404 / BlobNotFound. The failing phase is unknown.
+- No passing CI or test-suite witness is claimed for this candidate source snapshot.
+- No Android/iOS build, physical-device runtime, network-disabled test, independent labelled corpus, user-comprehension study, or platform privacy test is claimed.
+- The candidate's heuristic thresholds remain provisional; fixture expectations are regression specifications, not efficacy evidence.
+
+**Record disposition:** DEF-2026-003 and DEF-2026-004 remain **Investigating** against mainline. Reassess after PR merge or rejection, exact-head CI diagnostics and tests, and the relevant separate acceptance evidence. Do not mark either finding fixed/verified from source changes or a documentation-only commit alone.
