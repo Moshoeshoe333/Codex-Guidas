@@ -16,7 +16,7 @@
 | Application baseline date | 2026-11-27 |
 | Proposed instruction branch | `proposal/agent-instructions-pilot` |
 | Instruction file | `AGENTS.proposed.md` |
-| Instruction file commit | `c372fa9d7775a955424fee663197e9f31b8250b1` |
+| Instruction file commit | `a038b9ddc0a6805f11480a6f6c3cc85a5baa8232` |
 | Instruction status | Proposed / unratified; not active root `AGENTS.md` |
 | Forensic ledger | `Moshoeshoe333/SOULSYNCMOBILE-ledger` |
 | Defect record | Codex-Guidas DEF-2026-002 — blob `8290fbb35735ad29c071a0ad41b67084b15f529c` — Investigating |
