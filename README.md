@@ -78,6 +78,8 @@ The selective source review of [CyberChef, Bailo, Stroom, Sleeper, LD-Explorer a
 
 The [SoulSyncMobile Agent Instructions Pilot Evaluation Protocol](10-source-audits/2026-11-27-soulsyncmobile-agent-evaluation-protocol.md) provides a source-pinned task, exact prompt, pass/fail rubric and execution evidence requirements. It is prepared but not executed.
 
+The [AI Mathematics and Cryptographic Security Review](10-source-audits/2026-11-27-ai-mathematics-and-cryptographic-security-review.md) separates current P vs NP and AI-proof claims from cryptographic risk and records a source-level SoulSyncMobile data-at-rest concern for owner triage. No application implementation was changed.
+
 ## Source archaeology
 
 The initial source audit is recorded in [Repository Archaeology — 2026-11-18](10-source-audits/2026-11-18-repository-archaeology.md). It inspected selected primary files and commits across ScoutSA, SoulSync 3, SoulSyncMobile and NAVIGRE. It is a partial audit, not a fresh test execution. The [33-Tier Framework method](02-methodologies/33-tier-framework.md) is also indexed here; its own source explicitly leaves detailed specification and validation of all 33 tiers as open work.
