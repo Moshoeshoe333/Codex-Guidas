@@ -74,9 +74,11 @@ The first import is a curated synthesis from prior work on ScoutSA, SoulSync 3, 
 
 ## External repository pattern review
 
-The selective source review of [CyberChef, Bailo, Stroom, Sleeper, LD-Explorer and Coreax](10-source-audits/2026-11-27-gchq-repository-pattern-review.md) records source commits, transferable patterns, non-adoption decisions and applicability boundaries. It is static source inspection, not a test run or product audit. Lessons CG-043–CG-050 capture the derived controls; local adoption remains project-specific.
+The selective source review of [CyberChef, Bailo, Stroom, Sleeper, LD-Explorer and Coreax](10-source-audits/2026-11-27-gchq-repository-pattern-review.md) records source commits, transferable patterns, non-adoption decisions and applicability boundaries. It is static source inspection, not a test run or product audit. Lessons CG-043–CG-053 capture the derived controls; local adoption remains project-specific.
 
 The [SoulSyncMobile Agent Instructions Pilot Evaluation Protocol](10-source-audits/2026-11-27-soulsyncmobile-agent-evaluation-protocol.md) provides a source-pinned task, exact prompt, pass/fail rubric and execution evidence requirements. It is prepared but not executed.
+
+The [SoulSyncMobile Product and System Reassessment](10-source-audits/2026-11-27-soulsyncmobile-product-and-system-reassessment.md) is a read-only review of the current feature boundary, data handling, threat heuristics, CI evidence and proposed keep/change/add/defer/scrap decisions. It does not authorise application implementation.
 
 The [AI Mathematics and Cryptographic Security Review](10-source-audits/2026-11-27-ai-mathematics-and-cryptographic-security-review.md) separates current P vs NP and AI-proof claims from cryptographic risk and records a source-level SoulSyncMobile data-at-rest concern for owner triage. No application implementation was changed.
 
