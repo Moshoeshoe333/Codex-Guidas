@@ -3,7 +3,8 @@
 **Snapshot date:** 2026-11-27  
 **Scope:** GitHub repositories visible to the connected `Moshoeshoe333` account at the time of inspection.  
 **Method:** repository discovery, exact `main` branch HEAD capture, README inspection, and selected canonical-status / technology-decision reads.  
-**Status:** Portfolio orientation snapshot — **not** a complete code audit, security audit, release review, or revalidation of every project gate.
+**Status:** Portfolio orientation snapshot — **not** a complete code audit, security audit, release review, or revalidation of every project gate.  
+**Capture timing:** branch heads were captured before this inventory was published. The Codex-Guidas row therefore records its pre-publication baseline `f411895dfa05d5097e78b70984f4a071cd900d97`; the inventory itself was published in commit `7fd554580e0ba8fc7e6bff6e46a1be5fe5a97abc`.
 
 > This inventory answers: which repositories exist, what role their visible records describe, what exact `main` revision was inspected, and where status evidence needs refreshing. It does not authorize changes in any receiving repository.
 
@@ -20,7 +21,7 @@ A project status is current only to the date and revision of its governing sourc
 
 ### Codex-Guidas — engineering knowledge and governance
 
-| Repository | Main HEAD | Inspected source | Orientation and evidence ceiling |
+| Repository | Main HEAD at capture | Inspected source | Orientation and evidence ceiling |
 |---|---|---|---|
 | [Codex-Guidas](https://github.com/Moshoeshoe333/Codex-Guidas) | `f411895dfa05d5097e78b70984f4a071cd900d97` | README, root `AGENTS.md`, Project Operating Guide, onboarding/ADR/task templates, defect records and system | The portfolio's reusable engineering knowledge base and project-operating guide. This snapshot records the repository's own documentation changes; it is not a full audit of every methodology or pack. |
 
