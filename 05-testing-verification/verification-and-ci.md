@@ -36,3 +36,16 @@ Preserve failing output and reproduction steps; identify the earliest failing bo
 - ScoutSA had a PostgreSQL 17 CI runtime witness; this was a limited technical witness, not proof of a complete production application.
 
 Re-check original workflows and artifacts before reusing these statements as current status.
+
+## Additional verification discipline — pipeline, ingestion and sampling (2026-11-27)
+
+The [GCHQ repository pattern review](../10-source-audits/2026-11-27-gchq-repository-pattern-review.md) suggests several refinements for future work:
+
+- **Stage-level tests:** test each meaningful transformation's accepted input, output contract, invalid input, boundary cases, resource limits and explicit failure/unknown outcomes. For workflows, add integration tests for stage ordering and the data passed between stages.
+- **Intermediate diagnostics:** where step-through/debug traces are useful, verify that they correspond to actual execution and do not disclose secrets or unnecessary personal data.
+- **Ingestion state tests:** exercise unmatched inputs, rejected jobs, partial failures, retries, duplicate submissions and recovery. A queued/accepted job is not a completed ingest.
+- **Artefact-scan semantics:** test unsupported type, over-limit size, scanner skip, scanner error and clean completed result separately. Only the last state may support a claim of a completed clean scan within the scanner's stated scope.
+- **Sampling/coreset validation:** benchmark against the full dataset and a simple random baseline; use multiple seeds for stochastic methods; report sample size, downstream task metrics, distribution/coverage limits, runtime and preprocessing effects. Do not discard rare or high-impact cases merely to improve average performance.
+- **Performance gates:** use representative workloads and report both quality/correctness and resource cost. A speed gain does not compensate for degraded correctness, lost coverage or weakened safeguards.
+
+These are proposed verification practices. They do not add new tests, change test counts, or establish a verification status in any project.
