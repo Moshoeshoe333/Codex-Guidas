@@ -15,11 +15,14 @@ We preserve reusable engineering knowledge so that each project benefits from th
 | Area | Purpose |
 |---|---|
 | [Project Operating Guide](00-foundation/project-operating-guide.md) | Practical lifecycle for applying Codex-Guidas to project research, decisions, design, implementation, verification, agent use and learning |
+| [Project Onboarding Method](00-foundation/project-onboarding.md) | Establish a project's identity, ownership, baseline, boundaries, gates and first bounded milestone |
 | [Operating principles](00-foundation/operating-principles.md) | Portfolio-wide rules and evidence ladder |
 | [Lessons learned ledger](01-lessons-learned/ledger.md) | Cross-project lessons CG-001 onward |
 | [Evidence-first development](02-methodologies/evidence-first-development.md) | Research, decision, implementation and verification workflow |
 | [External Repository Learning Method](02-methodologies/external-repository-learning.md) | A bounded method for inspecting external repositories, extracting evidence-backed patterns and deciding project fit |
 | [External Repository Review Record](09-templates/external-repository-review.md) | Reusable source-pinned review template with project-fit and non-adoption decisions |
+| [Project Onboarding Record](09-templates/project-onboarding-record.md) | Reusable intake and baseline record for new projects, existing repositories and new maintainers |
+| [Architecture Decision Record](09-templates/architecture-decision-record.md) | Evidence-linked record for consequential, reversible or hard-to-reverse project decisions |
 | [Project Task Contract Template](09-templates/project-task-contract.md) | Reusable scope, baseline, permissions, evidence, acceptance and closeout record for material work |
 | [Agent Instructions Template](09-templates/agent-instructions-template.md) | Adaptable project-local operating contract for coding agents, including permissions, commands and verification boundaries |
 | [Agent Behaviour Evaluation Record](09-templates/agent-evaluation-record.md) | Pre-registered scoring and evidence record for bounded coding-agent trials |

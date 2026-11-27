@@ -26,7 +26,7 @@ For GPS, reputation and threat feeds, store observation time, source, accuracy/c
 **NAVIGRE:** A location-confidence design recorded a 0.5/block parameter and 24-hour half-life. Treat this as project-specific, not a universal GPS standard.
 
 ## Architecture decision records
-Record context, problem, options, decision, rationale, evidence, assumptions, consequences, risks, revisit trigger and status (proposed / accepted / superseded).
+Record context, problem, options, decision, rationale, evidence, assumptions, consequences, risks, revisit trigger and status (proposed / accepted / superseded). Use the [Architecture Decision Record template](../09-templates/architecture-decision-record.md). An accepted ADR records approval of the decision, not implementation, testing or deployment proof.
 
 ## Avoiding overengineering
 Before adding a service, abstraction, table, framework or integration, identify the demonstrated problem, smallest adequate alternative, operating cost, reversal path and acceptance test. A future possibility alone is insufficient justification.

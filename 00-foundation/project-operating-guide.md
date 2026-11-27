@@ -24,6 +24,8 @@ If two sources conflict, the owner is unclear, or a request crosses an unresolve
 
 ## 2. Start with the receiving project
 
+For a new project or a material onboarding event, start with the [Project Onboarding Method](project-onboarding.md) and its [onboarding record](../09-templates/project-onboarding-record.md). For a consequential architecture or technology choice, use the [Architecture Decision Record](../09-templates/architecture-decision-record.md). Then follow the receiving project's local startup procedure.
+
 For an existing project:
 
 1. Read the [Codex-Guidas README](../README.md) and [Operating Principles](operating-principles.md).
@@ -52,7 +54,7 @@ Use the most relevant Codex-Guidas materials; not every task needs every instrum
 | General principles and portfolio boundaries | [Operating Principles](operating-principles.md) |
 | Research, claims, decisions and evidence | [Evidence-First Development](../02-methodologies/evidence-first-development.md) |
 | Learning from external repositories | [External Repository Learning Method](../02-methodologies/external-repository-learning.md) and [review template](../09-templates/external-repository-review.md) |
-| Architecture, system boundaries and invariants | [Architecture Patterns](../03-architecture/project-patterns.md) and [Invariants Catalogue](../03-architecture/invariants-catalogue.md) |
+| Architecture, system boundaries and invariants | [Architecture Patterns](../03-architecture/project-patterns.md), [Invariants Catalogue](../03-architecture/invariants-catalogue.md) and [ADR Template](../09-templates/architecture-decision-record.md) |
 | Security, privacy, threat modelling and safeguarding | [Safeguarding and Threat Modelling](../04-security/safeguarding-and-threat-modeling.md) |
 | Tests, CI, runtime proof and verification | [Verification and CI](../05-testing-verification/verification-and-ci.md) |
 | Ideas and experiments | [Project Innovation Register](../06-innovations/project-innovation-register.md) |
