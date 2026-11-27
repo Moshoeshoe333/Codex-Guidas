@@ -30,3 +30,28 @@ Record context, problem, options, decision, rationale, evidence, assumptions, co
 
 ## Avoiding overengineering
 Before adding a service, abstraction, table, framework or integration, identify the demonstrated problem, smallest adequate alternative, operating cost, reversal path and acceptance test. A future possibility alone is insufficient justification.
+
+## External patterns assessed — 2026-11-27
+
+The following are optional refinements derived from the [GCHQ repository pattern review](../10-source-audits/2026-11-27-gchq-repository-pattern-review.md). They do not supersede project-specific architecture or authorize implementation.
+
+### Typed and inspectable processing stages
+For a genuine multi-step process, define each stage's input/output contract, validation rules, resource limits, allowed side effects and explicit completed / skipped / unsupported / failed / unknown outcome. Keep intermediate diagnostics inspectable when useful. A stage result is not authorization or proof of a downstream claim.
+
+### Source-to-derived lineage
+Where source artefacts are used, keep the original source identity separate from normalized data, enrichment, analyst interpretation and publication. Record transformation/version, timestamps and corrections so results can be reproduced or challenged. Apply purpose limitation, data minimisation, access and retention/deletion requirements; preservation does not mean indefinite storage.
+
+### Lifecycle revisions and review
+For governed artefacts, distinguish stable subject identity from revision identity, authorship, review/approval and scan status. Use versioned schemas where records evolve. Unsupported, skipped or failed scanning must remain distinct from a clean completed scan. Do not introduce a registry or review engine unless the product has a real governed lifecycle.
+
+### Scale and asynchronous work
+Queues, batchers, distributed storage and serverless compute are design choices for demonstrated volume/cost/latency problems—not defaults. Any asynchronous process should expose job identity, accepted/queued/running/rejected/failed/completed states, matched inputs and retry/recovery behaviour.
+
+### Linked-data exploration
+Read-only federation and formal shape validation can help investigate a real cross-source relationship problem. Preserve source boundaries and report validation findings. RDF, SPARQL and SHACL are optional techniques; syntax validity or shape conformance does not establish factual truth.
+
+### Representative data reduction
+Sampling/coresets may help exploratory statistics or performance work only after fidelity is measured against full-data and simple-random baselines across appropriate metrics and repeated seeds. Keep rare, high-severity and materially important records available for full inspection. No reduced dataset replaces source evidence or a complete incident corpus.
+
+### Explicit non-adoption
+Do not import CyberChef's generic recipe model, Bailo's complete ML lifecycle, Stroom's ingestion platform, Sleeper's cloud-scale architecture, LD-Explorer's RDF stack or Coreax's coreset algorithms wholesale. Each project must demonstrate need, cost/maintenance fit, security and privacy implications, reversal path and acceptance criteria before considering implementation.
