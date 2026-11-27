@@ -69,5 +69,18 @@ Unknowns, accepted risk, deferred work, owner and due/review date.
 - **Reason:**
 - **Closure evidence:**
 
-## 13. Reusable lesson
+## 13. Record propagation and synchronization
+
+- **Canonical DEF record path:**
+- **Defect README register updated in same change:** Yes / No / Not applicable
+- **Chronological ledger follow-up added or linked:** Yes / No / Not needed (reason)
+- **Upstream source/run rechecked directly:** Yes / No (state limitation)
+- **Exact tested commit and current project HEAD distinguished:** Yes / No
+- **Historical statements dated or qualified:** Yes / No
+- **Related links checked:** Yes / No
+- **Atomic change / commit identity:**
+
+A new evidence event must not leave the detailed record or current index describing an older state without a clear as-of boundary.
+
+## 14. Reusable lesson
 Existing CG-XXX updated / new CG-XXX proposed / no cross-project lesson (explain).

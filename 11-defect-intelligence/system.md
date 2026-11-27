@@ -1,9 +1,9 @@
 # Codex-Guidas Defect Intelligence System
 
 **Status:** Proposed operating mechanism — ready for controlled manual use.  
-**Version:** 0.1  
+**Version:** 0.2  
 **Owner:** Project maintainers  
-**Last reviewed:** 2026-11-18
+**Last reviewed:** 2026-11-27
 
 ## 1. Purpose
 
@@ -39,7 +39,28 @@ A defect record must link to:
 
 Do not paste secrets, personal data, access tokens, private player information or sensitive incident details into this repository. Redact and link to access-controlled evidence where appropriate.
 
-## 4. Severity and priority
+## 4. Evidence propagation and record synchronization
+
+Keep three record roles distinct:
+
+- **Detailed DEF record:** canonical current state, evidence ledger, open questions, corrective action and closure decision for one defect.
+- **Defect README register:** concise navigation/index view. Its state, severity and evidence summary must agree with the detailed DEF record.
+- **Defect ledger:** chronological and cross-project learning context. A later follow-up entry supplements the detailed record; it does not replace updating the canonical record and index.
+
+When a material evidence event occurs (new reproduction, CI run, source revalidation, correction, owner decision or closure):
+
+1. Verify the upstream source or run directly where access permits. Capture the exact repository, branch, full tested commit, run ID, result and limitations.
+2. Re-check the receiving project's current branch head. State clearly when evidence comes from an ancestor or older revision.
+3. Update the detailed DEF record with the new evidence and its limits. Preserve what was known at earlier dates; add a dated follow-up rather than silently rewriting history.
+4. Update the README register summary and state in the same change.
+5. Append a dated ledger note or link to the relevant evidence when chronology or cross-project learning warrants it.
+6. Inspect all affected references and commit the coherent update atomically where practical.
+
+Do not let a historical statement such as "not run" remain unqualified as a current status after a later run exists. Conversely, do not infer that every planned probe passed because one targeted test suite passed. Keep evidence scope precise.
+
+If evidence cannot be independently rechecked, label it as reported or source-recorded rather than independently verified. If the source record and index disagree, flag the inconsistency and resolve it before relying on the status.
+
+## 5. Severity and priority
 
 Use impact-based severity, not emotional language or the number of files changed.
 
@@ -68,7 +89,7 @@ Severity may change as evidence develops. Record who changed it, when and why. A
 
 Do not use “fixed” as a synonym for “closed.” Code can be changed while verification remains pending.
 
-## 6. Evidence and root-cause discipline
+## 7. Evidence and root-cause discipline
 
 Every record separates:
 
@@ -80,7 +101,7 @@ Every record separates:
 
 A symptom is not a root cause. Temporal correlation is not proof of causation. A green test does not prove an untested path safe.
 
-## 7. Similarity search
+## 8. Similarity search
 
 Before proposing a fix, search:
 1. the lessons ledger by symptom, component and failure mode;
@@ -90,7 +111,7 @@ Before proposing a fix, search:
 
 Record the search terms and matching IDs. If no match is found, record that too. A match is a lead, not proof.
 
-## 8. Fix and verification contract
+## 9. Fix and verification contract
 
 A corrective change should state:
 - expected behaviour and violated invariant;
@@ -105,7 +126,7 @@ Verification must record exact repository, branch, full commit SHA, command, env
 
 Never transfer a successful result to a different commit without an explicit evidence rule and re-verification.
 
-## 9. Learning promotion
+## 10. Learning promotion
 
 Promote a defect into the cross-project lesson ledger only when it has a reusable principle or control.
 
@@ -116,7 +137,7 @@ Promote a defect into the cross-project lesson ledger only when it has a reusabl
 
 Do not create a new lesson for every defect. Prefer linking to an existing lesson and improving its evidence.
 
-## 10. Automation boundaries
+## 11. Automation boundaries
 
 Automation may:
 - collect CI metadata and logs;
@@ -134,7 +155,7 @@ Automation must not, without explicit authorized review:
 
 Model-generated similarity and root-cause suggestions are hypotheses only. Human maintainers remain accountable for triage, authorization and closure.
 
-## 11. Minimal operational metrics
+## 12. Minimal operational metrics
 
 Review monthly or at a meaningful release boundary:
 - new defects by severity;
@@ -147,7 +168,7 @@ Review monthly or at a meaningful release boundary:
 
 Do not optimize for fewer reported defects. A rise in recorded defects may reflect better detection. Interpret trends alongside exposure, usage and reporting quality.
 
-## 12. Definition of done
+## 13. Definition of done
 
 A defect is eligible for closure only when:
 - the observed failure and impact are described;
@@ -158,6 +179,6 @@ A defect is eligible for closure only when:
 - residual risks and follow-up work are explicit;
 - the owning project's authority approves closure.
 
-## 13. First implementation boundary
+## 14. First implementation boundary
 
 Start with manual Markdown records and search. Do not build a database, bot, dashboard or cross-repository automation until repeated usage demonstrates a real bottleneck. The first proof is whether the process helps us find and prevent a repeated defect with less time and better evidence.

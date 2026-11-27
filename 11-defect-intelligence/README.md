@@ -24,6 +24,9 @@ A lightweight, evidence-led mechanism for learning from defects and preventing r
 4. Link exact commits and CI/runtime evidence; do not paste secrets or personal data.
 5. Search existing CG lessons and DEF records before proposing a new control.
 6. Update this register when state or severity changes.
+7. For each material evidence event, synchronize the detailed DEF record, this register and any relevant chronological ledger follow-up in one coherent change. The detailed DEF record is the canonical current-state record; the ledger is chronology/context, not a substitute.
+
+**Record integrity:** Update the detailed record and this index together. Do not leave a current register summary saying a test is pending when a later execution is recorded elsewhere; preserve earlier dates as historical observations and state the exact revision/run for any newer evidence.
 
 ## Historical incident migration
 
