@@ -120,3 +120,12 @@ Source and application boundaries: [Opportunity Exposure Field Note](../06-innov
 All six lessons are **DERIVED**, not Verified. The review is selective static inspection, not an external-project test run or an internal project audit. See [External Repository Pattern Review — 2026-11-27](../10-source-audits/2026-11-27-gchq-repository-pattern-review.md).
 
 **Transfer rule:** a pattern enters a project only after its owner confirms a real local need, records scope and non-adoption boundaries, and verifies it against that project's own contracts and gates.
+
+
+## Additional lesson from external-repository learning practice (2026-11-27)
+
+| ID | Lesson | Origin | Evidence class | Reusable control |
+|---|---|---|---|---|
+| CG-049 | "No project change" is a valid outcome of external technical research; adoption must be earned by a demonstrated local gap. | Codex-Guidas external repository review process; six-repository GCHQ review and project-fit reconciliation | Derived methodology rule; effectiveness not yet evaluated longitudinally | Compare each candidate pattern against the receiving project's current source and gates. Record adopt / reminder / already covered / defer / reject. Do not duplicate an existing control or create work solely to demonstrate research activity. |
+
+Source method: [External Repository Learning Method](../02-methodologies/external-repository-learning.md) and [review template](../09-templates/external-repository-review.md). Example: [2026-11-27 GCHQ review](../10-source-audits/2026-11-27-gchq-repository-pattern-review.md).
