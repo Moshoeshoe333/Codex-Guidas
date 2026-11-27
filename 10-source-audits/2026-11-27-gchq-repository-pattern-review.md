@@ -141,3 +141,21 @@ This review now serves as an example record for the [External Repository Learnin
 ### Post-review refinement — SoulSyncMobile (2026-11-27)
 
 After the portfolio table was drafted, the current SoulSyncMobile threat-analysis source was checked at application commit [`1f50bd3387c61d51868140ec3776b94150a2d4c6`](https://github.com/Moshoeshoe333/SOULSYNCMOBILE/commit/1f50bd3387c61d51868140ec3776b94150a2d4c6). The analysis identified one bounded, non-defect review question: URL parse exceptions in the current classifier skip that candidate, while the public result does not expose a separate parse outcome. A short reminder was therefore added to the independent [SoulSyncMobile forensic ledger](https://github.com/Moshoeshoe333/SOULSYNCMOBILE-ledger/blob/main/methodology-delta.md). It does not change the application, scoring, thresholds, policy mapping, or G-BOOT state. The original “no change” assessment remains valid for the other portfolio projects.
+
+### Post-review refinement — agent instruction patterns (2026-11-27)
+
+A follow-up inspection examined agent/developer guidance at the same repository heads already listed above:
+
+| Repository / source | Exact reviewed revision | Observed operating-guidance pattern |
+|---|---|---|
+| [Bailo AGENTS.md](https://github.com/gchq/Bailo/blob/bea1713706f710bc776fcc5a1460d80f61bcd59a/AGENTS.md) | `bea1713706f710bc776fcc5a1460d80f61bcd59a` | Describes the monorepo and layer boundaries; provides verified commands by component; distinguishes unit, integration and end-to-end tests; records runtime/tool versions, code conventions, security controls and contribution rules. |
+| [Stroom AGENTS.md](https://github.com/gchq/stroom/blob/d6d3a22117bd56730ad7ca6f9ac232c6c40cad0c/AGENTS.md) | `d6d3a22117bd56730ad7ca6f9ac232c6c40cad0c` | Leads with high-impact agent rules; records project-specific Git and branch boundaries, human-only issue/PR actions, generated and third-party paths, specialized UI guidance, coding conventions and required build checks. |
+| [Sleeper developer guide](https://github.com/gchq/sleeper/blob/746a08b4aa746955a478429efb8cdfaee13eda3f/docs/developer-guide.md) | `746a08b4aa746955a478429efb8cdfaee13eda3f` | Uses a linked-document model for environment setup, build and deployment tools, module architecture, coding conventions, test strategy, validation and specialized development workflows. No root AGENTS.md was found at this reviewed revision. |
+
+**Derived pattern:** effective agent guidance is a local operating contract, not a universal prompt. It should tell an agent what repository it is in, which boundaries it must preserve, what actions it may take, which commands are valid, what material is protected, what proof is required and when human review is mandatory. A concise root guide can link to specialist documents rather than duplicating them.
+
+**Important non-transfer decision:** do not adopt the GCHQ repositories' individual Git permissions, language conventions, technology versions, build commands or contribution rules as portfolio-wide defaults. These are project-owned policies and legitimately differ. At the receiving project, inspect the current instructions and require an explicit owner decision for consequential permissions such as commits, pushes, history changes, issue/PR operations, deployments, production data and spending.
+
+**Codex-Guidas refinement:** a proposed [Agent Instructions Template](../09-templates/agent-instructions-template.md) has been added for project owners to adapt. It is a template only; it does not create or ratify an AGENTS.md in ScoutSA, SoulSync, SoulSyncMobile, NAVIGRE or UCI. Lesson [CG-050](../01-lessons-learned/ledger.md) records the derived control.
+
+**Evidence limits:** this was static document inspection at the exact revisions above. No external repository was cloned or executed; no commands, builds, test suites, deployments or security checks were run. The absence of a root AGENTS.md in Sleeper does not imply an absence of its developer or contribution rules.
