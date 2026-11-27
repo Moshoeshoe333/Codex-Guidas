@@ -124,13 +124,13 @@ The current thresholds and words are not calibrated against an independent repre
 ## 13. Record propagation and synchronization
 
 - **Canonical DEF record path:** 11-defect-intelligence/DEF-2026-004-risk-signals-can-be-rendered-as-safe-allow.md
-- **Defect README register updated:** Pending
+- **Defect README register updated:** Yes — commit f6586a0e17a2009dde969222c4c10c080eeeb5b8
 - **Chronological ledger follow-up added or linked:** Pending
 - **Upstream source/run rechecked directly:** Yes — source blobs and current CI run re-fetched for exact main SHA
 - **Exact tested commit and current project HEAD distinguished:** Yes — current main SHA is the tested SHA
 - **Historical statements dated or qualified:** Yes
-- **Related links checked:** Pending
-- **Atomic change / commit identity:** Pending
+- **Related links checked:** Yes — source, fixture, UI and CI references read back
+- **Atomic change / commit identity:** Detailed DEF created in fefecd2201d27eda5ceea47de1cf7dbfd6b42ce5; register updated in f6586a0e17a2009dde969222c4c10c080eeeb5b8. These linked documentation changes were not one atomic multi-file commit.
 
 ## 14. Reusable lesson
 
