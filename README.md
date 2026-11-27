@@ -76,6 +76,8 @@ The first import is a curated synthesis from prior work on ScoutSA, SoulSync 3, 
 
 The selective source review of [CyberChef, Bailo, Stroom, Sleeper, LD-Explorer and Coreax](10-source-audits/2026-11-27-gchq-repository-pattern-review.md) records source commits, transferable patterns, non-adoption decisions and applicability boundaries. It is static source inspection, not a test run or product audit. Lessons CG-043–CG-053 capture the derived controls; local adoption remains project-specific.
 
+The [2026-11-27 NAVIGRE and SoulSyncMobile Mainline Evidence Rebaseline](10-source-audits/2026-11-27-mall-navigre-soulsyncmobile-rebaseline.md) records exact-main CI, separate forensic branches, open documentation PRs and the still-open physical-device/runtime gaps.
+
 The [SoulSyncMobile Agent Instructions Pilot Evaluation Protocol](10-source-audits/2026-11-27-soulsyncmobile-agent-evaluation-protocol.md) provides a source-pinned task, exact prompt, pass/fail rubric and execution evidence requirements. It is prepared but not executed.
 
 The [SoulSyncMobile Product and System Reassessment](10-source-audits/2026-11-27-soulsyncmobile-product-and-system-reassessment.md) is a read-only review of the current feature boundary, data handling, threat heuristics, CI evidence and proposed keep/change/add/defer/scrap decisions. It does not authorise application implementation.
