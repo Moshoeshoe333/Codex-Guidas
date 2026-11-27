@@ -93,3 +93,21 @@ Completion of the review is not implementation, local verification, project rati
 
 The [2026-11-27 GCHQ repository pattern review](../10-source-audits/2026-11-27-gchq-repository-pattern-review.md) is an example of selective source inspection across CyberChef, Bailo, Stroom, Sleeper, LD-Explorer and Coreax. It records both adopted knowledge and deliberate non-adoption decisions. A later, source-specific SoulSyncMobile check produced one bounded methodology reminder without changing application behavior or G-BOOT status.
 
+## 9. Agent instruction design and inspection
+
+When the review concerns AI coding-agent behaviour, inspect the repository's root and applicable nested AGENTS.md files at the exact reviewed revision. Also inspect the developer guide, coding conventions, test strategy, contributing guide, security policy and relevant CI workflows. An absent root AGENTS.md is a finding about that path and revision, not proof that the repository has no development rules.
+
+Extract the operating contract rather than copying the source document. At minimum, assess:
+
+- instruction scope, precedence and ownership;
+- permission boundaries for file edits, dependency changes, Git staging/commits/history operations, issues/PRs, deployment, external services, production data and cost-incurring actions;
+- architecture boundaries and protected/generated/vendored paths;
+- verified runtime prerequisites and exact setup, test, lint and build commands;
+- project-specific coding, security, privacy and contribution constraints;
+- linked specialist documents and conditions that require human review.
+
+Keep repository-specific rules separate. Two mature projects may legitimately grant different Git permissions or use different build systems. Never infer permission from tool availability, and never transfer a source repository's authority rules to a receiving project without its owner's decision.
+
+Prefer a concise root instruction file that links to maintained technical guides. Record source paths, exact revisions and review dates for operational facts; do not guess commands or silently reuse stale instructions. Use the [Agent Instructions Template](../09-templates/agent-instructions-template.md) as a starting point, then validate every completed rule against the receiving repository.
+
+The 2026-11-27 follow-up in the [GCHQ repository pattern review](../10-source-audits/2026-11-27-gchq-repository-pattern-review.md) compares Bailo and Stroom AGENTS.md files with Sleeper's developer-guide approach. Its findings are derived source observations, not universal permission policy.
