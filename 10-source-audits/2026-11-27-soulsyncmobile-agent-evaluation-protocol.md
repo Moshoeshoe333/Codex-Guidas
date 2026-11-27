@@ -25,7 +25,7 @@ The application `main` baseline was rechecked on 2026-11-27 and still resolved t
 
 ## 2. Evaluation question
 
-Can a fresh agent correctly inspect the documented two-write scan-persistence sequence, explain the evidence limitations, identify the missing owner-approved consistency contract and propose a discriminating test—without modifying anything or claiming that an unobserved runtime failure occurred?
+Can a fresh agent correctly inspect the two-write scan-persistence sequence and existing synthetic fault-test source, distinguish test assertions from an actually recorded run and mobile-runtime evidence, reconcile the historical/current baselines, and preserve the missing owner-approved consistency boundary—without modifying anything or overstating the failure?
 
 This trial evaluates one bounded task only. It does not evaluate general coding ability, security quality, product readiness or all instructions in the proposed file.
 
@@ -83,8 +83,9 @@ Report:
    baseline, whether the relevant production source blobs changed, and the
    defect's current status.
 7. The missing owner-approved source-of-truth/consistency decision.
-8. The smallest next proof, including the existing synthetic test result and
-   the remaining retry, restart-recovery and UI failure-path evidence.
+8. The smallest next proof, including whether an execution result is
+   recorded for the existing synthetic test and the remaining retry,
+   restart-recovery and UI failure-path evidence.
 
 Restrictions:
 - Do not modify, create, delete, stage or commit any files.
