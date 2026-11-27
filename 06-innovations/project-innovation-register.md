@@ -43,3 +43,30 @@ See the [portfolio index](experiments/opportunity-exposure/README.md). The three
 
 
 The OEX-2026-003 desk scan has identified direct counter-evidence to a novel supplier-assurance proposition: ASi Imperium publicly advertises supplier-specific assessments from R6,500. See the [experiment record](experiments/opportunity-exposure/OEX-2026-003-sme-security-snapshot.md). No distinct gap or buyer demand is established.
+
+
+## Portfolio technology direction — selective Rust adoption (2026-11-27)
+
+**Classification: PROPOSED PORTFOLIO DIRECTION — NOT AN IMPLEMENTATION, VALIDATION, OR TECHNOLOGY FREEZE.**
+
+The portfolio will not replace Python or TypeScript wholesale. Rust is a selective option for bounded systems components where memory safety, explicit types, concurrency, native portability, or measured performance justify its additional learning, integration, and maintenance costs.
+
+| Project | Proposed Rust role | Existing baseline to preserve | Trigger and proof required | Status |
+|---|---|---|---|---|
+| SoulSync 3 | First candidate: isolated, read-only Rust parity experiment for the 33-coordinate projection; potentially a shared typed core later | Python reference implementation; existing domain, semantic, serialization, hashing, and authority contracts | Freeze golden fixtures; prove differential parity, typed absence, immutability, provenance preservation, and measured value. Canonical serialization/hash work is excluded until byte-level compatibility is specified. | **PROPOSED / NOT IMPLEMENTED** |
+| SoulSyncMobile | Possible native Rust threat-normalization/scoring kernel behind a narrow mobile interface | Expo / React Native / TypeScript UI and orchestration; current persistence and G-BOOT evidence boundary | Demonstrate a real bottleneck or cross-platform reuse benefit; prove fixture parity, fail-closed ALLOW/WARN/DENY behavior, Android/iOS builds, and device/offline/runtime evidence. | **PROPOSED / NOT SELECTED** |
+| ScoutSA | Candidate backend/service layer (Axum + SQLx are examples for comparison, not selected dependencies) | Existing domain and safeguarding design, PostgreSQL boundary, TypeScript interface; current implementation holds | Only after external validation and all relevant policy, legal, access, and implementation gates. Compare lifecycle cost, maintainer capacity, RLS/transaction behavior, security reviewability, and operational support. | **DEFERRED / GATES UNCHANGED** |
+| NAVIGRE / Mall-Navigre | Optional deterministic graph/routing library if real benchmarks establish a material need | Next.js / TypeScript application, localization boundary, current graph invariants and evidence gates | Prove TypeScript/Rust behavioral parity on identical graph fixtures, preserve R1–R6 and failure semantics, and measure representative end-to-end benefit. | **CONDITIONAL / NOT IMPLEMENTED** |
+| Codex-Guidas | No current Rust requirement. A small standalone Rust CLI validator is only a future option if distribution or measured scale justifies it. | Python-based documentation, ledger, evidence, and consistency automation | Identify a concrete limitation in the current tooling; compare maintenance and portability; prove output parity before adoption. | **RETAIN PYTHON** |
+
+### Portfolio-wide adoption controls
+
+- Rust is a candidate tool, not a measure of engineering quality and not a default for every project.
+- No project is to be rewritten merely to increase Rust usage.
+- Keep the existing language implementation authoritative during any initial parity experiment.
+- Do not infer that Rust automatically supplies application security, privacy compliance, authorization, safeguarding, data integrity, or correct business rules.
+- Require an explicit contract, threat model where relevant, representative workload, failure tests, differential tests, maintainability assessment, and exact commit-level evidence before adoption.
+- Keep experiments isolated and reversible. A benchmark, successful compile, or passing unit test is not alone proof of production suitability.
+- Every project retains its own gate, ratification, and release authority. This cross-project note does not transfer authority between repositories.
+
+**Next action:** treat SoulSync-3 as the first Rust learning/parity candidate, limited to a proposal and contract preparation. No Rust implementation or project gate transition is authorized by this register entry.
