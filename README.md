@@ -34,7 +34,8 @@ We preserve reusable engineering knowledge so that each project benefits from th
 | [Opportunity Exposure field note](06-innovations/opportunity-exposure-field-note.md) | External 33-heuristic opportunity framework, source provenance and application guardrails |
 | [Opportunity Exposure experiment portfolio](06-innovations/experiments/opportunity-exposure/README.md) | Three separate, pre-registered career, ScoutSA and SME opportunity experiments with explicit hold points |
 | [Product validation](07-product-business/product-validation.md) | Usability, adoption and commercial evidence |
-| [Project crosswalk](08-project-crosswalks/project-status.md) | ScoutSA, SoulSync, SoulSyncMobile, NAVIGRE and UCI |
+| [Repository inventory](08-project-crosswalks/repository-inventory.md) | 13-repository portfolio snapshot, exact main SHAs, supporting repositories, Rust decision states and re-audit triggers |
+| [Historical project crosswalk](08-project-crosswalks/project-status.md) | Cross-project lessons and status synthesis, explicitly dated 2026-11-18 |
 | [UCI methodology integration boundary](08-project-crosswalks/uci-methodology-integration-boundary.md) | Proposed boundary between Codex-Guidas, UCI and the two 33 frameworks |
 | [Lesson template](09-templates/lesson-template.md) | Standard format for new entries |
 | [Opportunity Exposure experiment record](09-templates/opportunity-exposure-experiment.md) | Bounded method for testing one exposure hypothesis with separate funnel stages and downside controls |

@@ -3,6 +3,8 @@
 **As-of:** 2026-11-18  
 **Status:** Historical synthesis from prior project discussions and selected recorded identifiers. Not a fresh audit of every repository.
 
+**Portfolio navigation:** The [Repository Inventory](repository-inventory.md) is a separate 2026-11-27 snapshot of repository identities, exact `main` SHAs, supporting repositories and evidence-freshness triggers. This historical crosswalk remains as-of 2026-11-18; it is not silently refreshed by the inventory.
+
 ## ScoutSA
 **Purpose:** South African grassroots football opportunity network; initial focus on Vaal Triangle / Sedibeng, with a path toward Gauteng and national reach.
 
