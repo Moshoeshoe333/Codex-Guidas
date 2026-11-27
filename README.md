@@ -18,7 +18,7 @@ We preserve reusable engineering knowledge so that each project benefits from th
 | [Lessons learned ledger](01-lessons-learned/ledger.md) | Cross-project lessons CG-001 onward |
 | [Evidence-first development](02-methodologies/evidence-first-development.md) | Research, decision, implementation and verification workflow |
 | [External Repository Learning Method](02-methodologies/external-repository-learning.md) | A bounded method for inspecting external repositories, extracting evidence-backed patterns and deciding project fit |
-| [External Repository Review Record](09-templates/external-repository-review.md) | Reusable source-pinned review template with project-fit and non-adoption decisions |
+| [External Repository Review Record](09-templates/external-repository-review.md) | Reusable source-pinned review template with project-fit and non-adoption decisions |\n| [Agent Instructions Template](09-templates/agent-instructions-template.md) | Adaptable project-local operating contract for coding agents, including permissions, commands and verification boundaries |
 | [Architecture patterns](03-architecture/project-patterns.md) | Reusable design patterns and boundaries |
 | [Security and safeguarding](04-security/safeguarding-and-threat-modeling.md) | Threat modelling, privacy and safety lessons |
 | [Testing and CI](05-testing-verification/verification-and-ci.md) | Verification layers and regression discipline |
@@ -65,7 +65,7 @@ The first import is a curated synthesis from prior work on ScoutSA, SoulSync 3, 
 
 ## External repository pattern review
 
-The selective source review of [CyberChef, Bailo, Stroom, Sleeper, LD-Explorer and Coreax](10-source-audits/2026-11-27-gchq-repository-pattern-review.md) records source commits, transferable patterns, non-adoption decisions and applicability boundaries. It is static source inspection, not a test run or product audit. Lessons CG-043–CG-048 capture the derived controls; local adoption remains project-specific.
+The selective source review of [CyberChef, Bailo, Stroom, Sleeper, LD-Explorer and Coreax](10-source-audits/2026-11-27-gchq-repository-pattern-review.md) records source commits, transferable patterns, non-adoption decisions and applicability boundaries. It is static source inspection, not a test run or product audit. Lessons CG-043–CG-050 capture the derived controls; local adoption remains project-specific.
 
 ## Source archaeology
 
