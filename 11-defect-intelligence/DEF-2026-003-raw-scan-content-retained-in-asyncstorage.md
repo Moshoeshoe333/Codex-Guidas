@@ -9,7 +9,7 @@
 - **Affected full commit SHA:** `1f50bd3387c61d51868140ec3776b94150a2d4c6` (rechecked 2026-11-27)
 - **Owner:** SoulSyncMobile project maintainer (to be assigned)
 - **Related issue/PR/CI run/log:** None; no exploitation, device extraction or user impact is claimed
-- **Related lessons:** CG-002, CG-011, CG-026; CG-052 (crypto agility / data protection) when recorded
+- **Related lessons:** CG-002, CG-011, CG-026 and CG-052
 - **Reporter/source:** Codex-Guidas source review prompted by 2026-11-27 AI mathematics and cryptographic security review
 
 ## 1. Summary
@@ -121,14 +121,14 @@ The project owner has not yet approved the raw-input retention and protection co
 ## 13. Record propagation and synchronization
 
 - **Canonical DEF record path:** `11-defect-intelligence/DEF-2026-003-raw-scan-content-retained-in-asyncstorage.md`
-- **Defect README register updated in same change:** Pending
-- **Chronological ledger follow-up added or linked:** Pending
+- **Defect README register updated:** Yes — commit `45efb9da1a4ce23ca0f2e1041925417757ead169`
+- **Chronological ledger follow-up added or linked:** CG-052 added in commit `14a081dd2249e6a44de589d4e99a34ff7d8723df`; no defect-specific chronology note is needed yet
 - **Upstream source/run rechecked directly:** Yes — GitHub source blobs re-fetched for app baseline `1f50bd3387c61d51868140ec3776b94150a2d4c6`; React Native and OWASP guidance reviewed
 - **Exact tested commit and current project HEAD distinguished:** Yes; source check only, not test evidence
 - **Historical statements dated or qualified:** Yes
-- **Related links checked:** Pending
-- **Atomic change / commit identity:** Pending
+- **Related links checked:** Yes — research note and defect-register entry read back
+- **Atomic change / commit identity:** Detailed DEF created in `4df8ca60212a6a83b8b8e530b83453d70e4b0053`; register/lesson propagation followed in separate commits. These are linked documentation updates, not a single atomic multi-file commit.
 
 ## 14. Reusable lesson
 
-Existing CG-011 and CG-026 apply to fail-closed and repository evidence boundaries. CG-052 is a broader crypto-agility lesson; it does not itself verify this project's local data storage. This record may inform a privacy-by-design lesson after owner triage and project-specific verification.
+Existing CG-011, CG-026 and CG-052 provide relevant boundaries. CG-052 is a broader crypto-agility lesson; it does not itself verify this project's local data storage. This record may inform a privacy-by-design lesson after owner triage and project-specific verification.
