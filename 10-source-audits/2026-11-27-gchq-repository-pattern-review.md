@@ -107,7 +107,7 @@ Transferable lesson: representative reduction is an analytical approximation, no
 | UCI-Foundation | Source-preserving staged intelligence intake, versioned transformations, explicit scan states, bounded read-only source exploration and cautious analytical sampling. | **ADD TO PROPOSED METHODOLOGY ONLY**. No collection, scanning service, publication, deployment or customer activity is authorized. |
 | ScoutSA | Reviewable steps and version-aware evidence may be useful later, but current safeguards, unresolved semantics, external-validation priority and implementation holds dominate. | **NO PROJECT-LEDGER CHANGE**. Avoid duplicate governance and no gate movement. |
 | SoulSync 3 | Explicit types, immutability, golden vectors and deterministic contract evidence already dominate its current work. Generic recipe processing and coreset reduction add no demonstrated value to Coordinate99. | **NO PROJECT-LEDGER CHANGE**. Preserve current Python reference and ratification boundaries. |
-| SoulSyncMobile | Offline layered threat analysis, explicit ALLOW/WARN/DENY semantics and adversarial fixtures already align with several relevant patterns. More methodology documentation would compete with the open physical G-BOOT witness. | **NO PROJECT-LEDGER CHANGE**. Preserve runtime-evidence priority and G-BOOT OPEN. |
+| SoulSyncMobile | Offline layered threat analysis and adversarial fixtures already align with several patterns; a targeted source check identified a narrow review question about intermediate URL-parse outcomes. | **BOUNDED METHODOLOGY-LEDGER NOTE ADDED** (MD-CYBERCHEF-001); no application code change. Preserve runtime-evidence priority and G-BOOT OPEN. |
 | NAVIGRE / Mall-Navigre | Its existing freshness → authorization → route → operational state → verified result chain already separates the critical truths. Gate 3 remains frozen and route/geometry evidence remains bounded. | **NO PROJECT-LEDGER CHANGE**. Do not add generic recipe/RDF infrastructure or change any gate. |
 
 These non-adoption decisions are intentional. Repeating an existing control or adding architecture without an evidenced gap would reduce the value of the ledgers.
@@ -132,3 +132,8 @@ These non-adoption decisions are intentional. Repeating an existing control or a
 - All receiving projects must re-check the cited source, scope and current repository state before relying on an adoption decision.
 
 **Governing rule:** learn broadly; adopt narrowly; verify locally; preserve project authority.
+
+
+### Post-review refinement — SoulSyncMobile (2026-11-27)
+
+After the portfolio table was drafted, the current SoulSyncMobile threat-analysis source was checked at application commit [`1f50bd3387c61d51868140ec3776b94150a2d4c6`](https://github.com/Moshoeshoe333/SOULSYNCMOBILE/commit/1f50bd3387c61d51868140ec3776b94150a2d4c6). The analysis identified one bounded, non-defect review question: URL parse exceptions in the current classifier skip that candidate, while the public result does not expose a separate parse outcome. A short reminder was therefore added to the independent [SoulSyncMobile forensic ledger](https://github.com/Moshoeshoe333/SOULSYNCMOBILE-ledger/blob/main/methodology-delta.md). It does not change the application, scoring, thresholds, policy mapping, or G-BOOT state. The original “no change” assessment remains valid for the other portfolio projects.
